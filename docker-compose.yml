@@ -1,0 +1,70 @@
+# ============================================================================
+# TOARUOS-ARNOLD DOCKER COMPOSE
+# "GET YOUR ASS TO MARS" - Simplified container orchestration
+# ============================================================================
+#
+# Usage:
+#   docker-compose build              - Build the container
+#   docker-compose run builder make   - Build the kernel
+#   docker-compose run builder make run   - Build and run (needs X11)
+#   docker-compose run builder make iso   - Create bootable ISO
+#
+# ============================================================================
+
+version: '3.8'
+
+services:
+  # Main build service - "THE TERMINATOR"
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: toaruos-arnold-builder:latest
+    container_name: arnold-builder
+    volumes:
+      # Mount current directory as /kernel
+      - .:/kernel
+      # Cache for faster rebuilds
+      - build-cache:/kernel/build
+    working_dir: /kernel
+    command: make
+    
+  # Interactive shell for development - "STICK AROUND"
+  shell:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: toaruos-arnold-builder:latest
+    container_name: arnold-shell
+    volumes:
+      - .:/kernel
+      - build-cache:/kernel/build
+    working_dir: /kernel
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+
+  # QEMU runner with X11 forwarding (Linux only) - "GET YOUR ASS TO MARS"
+  qemu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: toaruos-arnold-builder:latest
+    container_name: arnold-qemu
+    volumes:
+      - .:/kernel
+      - build-cache:/kernel/build
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    working_dir: /kernel
+    environment:
+      - DISPLAY=${DISPLAY}
+    command: make run
+    network_mode: host
+
+volumes:
+  build-cache:
+    driver: local
+
+# ============================================================================
+# "HASTA LA VISTA, BABY"
+# ============================================================================

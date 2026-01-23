@@ -1,0 +1,990 @@
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  TOARUOS-ARNOLD KERNEL"
+TALK TO YOURSELF "  'COME WITH ME IF YOU WANT TO BOOT'"
+TALK TO YOURSELF "  Written entirely in ArnoldC - The most muscular kernel ever created"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Multiboot info structure offsets - I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE"
+
+LET ME TELL YOU SOMETHING MB_FLAGS 0
+LET ME TELL YOU SOMETHING MB_MEM_LOWER 4
+LET ME TELL YOU SOMETHING MB_MEM_UPPER 8
+LET ME TELL YOU SOMETHING MB_FRAMEBUFFER_ADDR 88
+LET ME TELL YOU SOMETHING MB_FRAMEBUFFER_PITCH 92
+LET ME TELL YOU SOMETHING MB_FRAMEBUFFER_WIDTH 96
+LET ME TELL YOU SOMETHING MB_FRAMEBUFFER_HEIGHT 100
+LET ME TELL YOU SOMETHING MB_FRAMEBUFFER_BPP 104
+LET ME TELL YOU SOMETHING MB_FRAMEBUFFER_TYPE 105
+
+LET ME TELL YOU SOMETHING MULTIBOOT_MAGIC 0x2BADB002
+
+TALK TO YOURSELF "Keyboard port constants - LISTEN TO THE PORT"
+
+LET ME TELL YOU SOMETHING KBD_STATUS_PORT 0x64
+LET ME TELL YOU SOMETHING KBD_DATA_PORT 0x60
+LET ME TELL YOU SOMETHING KBD_STATUS_OUTPUT 0x01
+LET ME TELL YOU SOMETHING KBD_RELEASE_MASK 0x80
+
+TALK TO YOURSELF "Color constants - CONSIDER THAT A DIVORCE from boring colors"
+
+LET ME TELL YOU SOMETHING COLOR_BLACK 0x00000000
+LET ME TELL YOU SOMETHING COLOR_WHITE 0x00FFFFFF
+LET ME TELL YOU SOMETHING COLOR_RED 0x00FF0000
+LET ME TELL YOU SOMETHING COLOR_GREEN 0x0000FF00
+LET ME TELL YOU SOMETHING COLOR_BLUE 0x000000FF
+LET ME TELL YOU SOMETHING COLOR_ARNOLD_RED 0x00CC0000
+LET ME TELL YOU SOMETHING COLOR_TERMINATOR_SILVER 0x00C0C0C0
+LET ME TELL YOU SOMETHING COLOR_PREDATOR_GREEN 0x0039FF14
+
+TALK TO YOURSELF "Bitmap font glyph indices - LET'S PARTY"
+
+LET ME TELL YOU SOMETHING GLYPH_SPACE 0
+LET ME TELL YOU SOMETHING GLYPH_APOSTROPHE 1
+LET ME TELL YOU SOMETHING GLYPH_A 2
+LET ME TELL YOU SOMETHING GLYPH_B 3
+LET ME TELL YOU SOMETHING GLYPH_C 4
+LET ME TELL YOU SOMETHING GLYPH_E 5
+LET ME TELL YOU SOMETHING GLYPH_I 6
+LET ME TELL YOU SOMETHING GLYPH_K 7
+LET ME TELL YOU SOMETHING GLYPH_L 8
+LET ME TELL YOU SOMETHING MESSAGE_LEN 12
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  STRUCT: Framebuffer Info - THIS IS WHAT I AM"
+TALK TO YOURSELF "============================================================================"
+
+THIS IS WHAT I AM FramebufferInfo
+THIS IS WHAT I'M MADE OF address
+    THIS IS A WARRIOR
+THIS IS WHAT I'M MADE OF pitch
+    THIS IS A WARRIOR
+THIS IS WHAT I'M MADE OF width
+    THIS IS A WARRIOR
+THIS IS WHAT I'M MADE OF height
+    THIS IS A WARRIOR
+THIS IS WHAT I'M MADE OF bpp
+    THIS IS A WARRIOR
+THIS IS WHAT I'M MADE OF bytesPerPixel
+    THIS IS A WARRIOR
+I'M DONE DESCRIBING MYSELF
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  BITMAP FONT DATA - 8x8 GLYPHS"
+TALK TO YOURSELF "============================================================================"
+
+HEY CHRISTMAS TREE fontData
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 72
+PUT THEM IN LINE
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x18 0x18 0x00 0x00 0x00 0x00 0x00 0x00
+0x18 0x24 0x42 0x7E 0x42 0x42 0x42 0x00
+0x7C 0x42 0x42 0x7C 0x42 0x42 0x7C 0x00
+0x3C 0x42 0x40 0x40 0x40 0x42 0x3C 0x00
+0x7E 0x40 0x40 0x7C 0x40 0x40 0x7E 0x00
+0x3E 0x08 0x08 0x08 0x08 0x08 0x3E 0x00
+0x42 0x44 0x48 0x70 0x48 0x44 0x42 0x00
+0x40 0x40 0x40 0x40 0x40 0x40 0x7E 0x00
+
+HEY CHRISTMAS TREE message
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 12
+PUT THEM IN LINE
+0x49 0x27 0x4C 0x4C 0x20 0x42 0x45 0x20 0x42 0x41 0x43 0x4B
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: putPixel - SEE YOU AT THE PARTY, RICHTER"
+TALK TO YOURSELF "  Draws a single pixel to the framebuffer"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY putPixel
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE x
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE y
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE color
+
+TALK TO YOURSELF "Calculate pixel offset - GET TO THE CHOPPER"
+
+HEY CHRISTMAS TREE offset
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE rowOffset
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE pixelAddr
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "offset = y * pitch + x * 4 (assuming 32bpp)"
+
+GET TO THE CHOPPER rowOffset
+HERE IS MY INVITATION y
+YOU'RE FIRED fbPitch
+ENOUGH TALK
+
+GET TO THE CHOPPER offset
+HERE IS MY INVITATION x
+YOU'RE FIRED 4
+GET UP rowOffset
+ENOUGH TALK
+
+GET TO THE CHOPPER pixelAddr
+HERE IS MY INVITATION fbAddr
+GET UP offset
+ENOUGH TALK
+
+TALK TO YOURSELF "Write the pixel - FIRE AT will"
+
+WRITE TO pixelAddr
+THIS IS A WARRIOR
+HERE IS MY INVITATION color
+ENOUGH TALK
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: fillRect - STICK AROUND... and fill this rectangle"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY fillRect
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE startX
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE startY
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rectWidth
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rectHeight
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE color
+
+TALK TO YOURSELF "Loop through all pixels in the rectangle"
+
+HEY CHRISTMAS TREE currentY
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE currentX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE endY
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE endX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueY
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE continueX
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+GET TO THE CHOPPER endY
+HERE IS MY INVITATION startY
+GET UP rectHeight
+ENOUGH TALK
+
+GET TO THE CHOPPER endX
+HERE IS MY INVITATION startX
+GET UP rectWidth
+ENOUGH TALK
+
+GET TO THE CHOPPER currentY
+HERE IS MY INVITATION startY
+ENOUGH TALK
+
+TALK TO YOURSELF "Outer loop - Y coordinates - STICK AROUND for the gains"
+
+STICK AROUND continueY
+
+    GET TO THE CHOPPER currentX
+    HERE IS MY INVITATION startX
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueX
+    HERE IS MY INVITATION 1
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Inner loop - X coordinates - MORE REPS"
+    
+    STICK AROUND continueX
+    
+        TALK TO YOURSELF "Draw pixel - DO IT NOW"
+        DO IT NOW putPixel fbAddr fbPitch currentX currentY color
+        
+        GET TO THE CHOPPER currentX
+        HERE IS MY INVITATION currentX
+        GET UP 1
+        ENOUGH TALK
+        
+        TALK TO YOURSELF "Check if we should continue X loop"
+        GET TO THE CHOPPER continueX
+        HERE IS MY INVITATION currentX
+        YOU'RE NOT BIG ENOUGH endX
+        ENOUGH TALK
+    
+    CHILL
+    
+    GET TO THE CHOPPER currentY
+    HERE IS MY INVITATION currentY
+    GET UP 1
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Check if we should continue Y loop"
+    GET TO THE CHOPPER continueY
+    HERE IS MY INVITATION currentY
+    YOU'RE NOT BIG ENOUGH endY
+    ENOUGH TALK
+
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawBorder - YOU'RE ONE UGLY RECTANGLE"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawBorder
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE startX
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE startY
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rectWidth
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rectHeight
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE borderWidth
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE color
+
+TALK TO YOURSELF "Draw top border"
+DO IT NOW fillRect fbAddr fbPitch startX startY rectWidth borderWidth color
+
+TALK TO YOURSELF "Draw bottom border"
+HEY CHRISTMAS TREE bottomY
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET TO THE CHOPPER bottomY
+HERE IS MY INVITATION startY
+GET UP rectHeight
+GET DOWN borderWidth
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddr fbPitch startX bottomY rectWidth borderWidth color
+
+TALK TO YOURSELF "Draw left border"
+DO IT NOW fillRect fbAddr fbPitch startX startY borderWidth rectHeight color
+
+TALK TO YOURSELF "Draw right border"
+HEY CHRISTMAS TREE rightX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET TO THE CHOPPER rightX
+HERE IS MY INVITATION startX
+GET UP rectWidth
+GET DOWN borderWidth
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddr fbPitch rightX startY borderWidth rectHeight color
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: clearScreen - ERASED FROM EXISTENCE"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY clearScreen
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE screenWidth
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE screenHeight
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE color
+
+DO IT NOW fillRect fbAddr fbPitch 0 0 screenWidth screenHeight color
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawArnoldLogo - THE TERMINATOR LOGO"
+TALK TO YOURSELF "  Draws a stylized 'A' for Arnold"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawArnoldLogo
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE centerX
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE centerY
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE size
+
+HEY CHRISTMAS TREE halfSize
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE x1
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE y1
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET TO THE CHOPPER halfSize
+HERE IS MY INVITATION size
+HE HAD TO SPLIT 2
+ENOUGH TALK
+
+TALK TO YOURSELF "Draw left leg of A"
+GET TO THE CHOPPER x1
+HERE IS MY INVITATION centerX
+GET DOWN halfSize
+ENOUGH TALK
+
+GET TO THE CHOPPER y1
+HERE IS MY INVITATION centerY
+GET UP halfSize
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddr fbPitch x1 centerY 10 size 0x00FF0000
+
+TALK TO YOURSELF "Draw right leg of A"
+GET TO THE CHOPPER x1
+HERE IS MY INVITATION centerX
+GET UP halfSize
+GET DOWN 10
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddr fbPitch x1 centerY 10 size 0x00FF0000
+
+TALK TO YOURSELF "Draw horizontal bar of A"
+GET TO THE CHOPPER x1
+HERE IS MY INVITATION centerX
+GET DOWN halfSize
+ENOUGH TALK
+
+GET TO THE CHOPPER y1
+HERE IS MY INVITATION centerY
+GET UP halfSize
+HE HAD TO SPLIT 2
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddr fbPitch x1 y1 size 10 0x00FF0000
+
+TALK TO YOURSELF "Draw top of A"
+GET TO THE CHOPPER x1
+HERE IS MY INVITATION centerX
+GET DOWN 5
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddr fbPitch x1 centerY 10 10 0x00FF0000
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: pollKeyboard - LISTEN TO THE PORT"
+TALK TO YOURSELF "  Returns scancode or 0 if none"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY pollKeyboard
+
+HEY CHRISTMAS TREE status
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE scancode
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS status
+LISTEN TO THE PORT KBD_STATUS_PORT
+
+GET TO THE CHOPPER status
+HERE IS MY INVITATION status
+CRUSH THEM TOGETHER KBD_STATUS_OUTPUT
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE status
+    GET YOUR ASS TO MARS scancode
+    LISTEN TO THE PORT KBD_DATA_PORT
+YOU HAVE NO RESPECT FOR LOGIC
+
+I'LL BE BACK scancode
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: getGlyphIndex - WHAT'S THE CHOICE"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY getGlyphIndex
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ascii
+
+HEY CHRISTMAS TREE index
+THIS IS A TINY WARRIOR
+YOU SET US UP GLYPH_SPACE
+
+WHAT'S THE CHOICE ascii
+WHEN IT'S 0x20
+    GET TO THE CHOPPER index
+    HERE IS MY INVITATION GLYPH_SPACE
+    ENOUGH TALK
+    GET OUT
+WHEN IT'S 0x27
+    GET TO THE CHOPPER index
+    HERE IS MY INVITATION GLYPH_APOSTROPHE
+    ENOUGH TALK
+    GET OUT
+WHEN IT'S 0x41
+    GET TO THE CHOPPER index
+    HERE IS MY INVITATION GLYPH_A
+    ENOUGH TALK
+    GET OUT
+WHEN IT'S 0x42
+    GET TO THE CHOPPER index
+    HERE IS MY INVITATION GLYPH_B
+    ENOUGH TALK
+    GET OUT
+WHEN IT'S 0x43
+    GET TO THE CHOPPER index
+    HERE IS MY INVITATION GLYPH_C
+    ENOUGH TALK
+    GET OUT
+WHEN IT'S 0x45
+    GET TO THE CHOPPER index
+    HERE IS MY INVITATION GLYPH_E
+    ENOUGH TALK
+    GET OUT
+WHEN IT'S 0x49
+    GET TO THE CHOPPER index
+    HERE IS MY INVITATION GLYPH_I
+    ENOUGH TALK
+    GET OUT
+WHEN IT'S 0x4B
+    GET TO THE CHOPPER index
+    HERE IS MY INVITATION GLYPH_K
+    ENOUGH TALK
+    GET OUT
+WHEN IT'S 0x4C
+    GET TO THE CHOPPER index
+    HERE IS MY INVITATION GLYPH_L
+    ENOUGH TALK
+    GET OUT
+NO MORE CHOICES
+
+I'LL BE BACK index
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawGlyph - 8x8 bitmap"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawGlyph
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE startX
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE startY
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE glyphIndex
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE color
+
+HEY CHRISTMAS TREE row
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE col
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE glyphOffset
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE glyphRowIndex
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE rowByte
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE mask
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE pixelOn
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE pixelX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE pixelY
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueRow
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE continueCol
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+GET TO THE CHOPPER glyphOffset
+HERE IS MY INVITATION glyphIndex
+YOU'RE FIRED 8
+ENOUGH TALK
+
+STICK AROUND continueRow
+    GET TO THE CHOPPER glyphRowIndex
+    HERE IS MY INVITATION glyphOffset
+    GET UP row
+    ENOUGH TALK
+
+    GET TO THE CHOPPER rowByte
+    HERE IS MY INVITATION WHICH ONE fontData glyphRowIndex
+    ENOUGH TALK
+
+    GET TO THE CHOPPER mask
+    HERE IS MY INVITATION 0x80
+    ENOUGH TALK
+
+    GET TO THE CHOPPER col
+    HERE IS MY INVITATION 0
+    ENOUGH TALK
+
+    GET TO THE CHOPPER continueCol
+    HERE IS MY INVITATION 1
+    ENOUGH TALK
+
+    STICK AROUND continueCol
+        GET TO THE CHOPPER pixelOn
+        HERE IS MY INVITATION rowByte
+        CRUSH THEM TOGETHER mask
+        ENOUGH TALK
+
+        BECAUSE I'M GOING TO SAY PLEASE pixelOn
+            GET TO THE CHOPPER pixelX
+            HERE IS MY INVITATION startX
+            GET UP col
+            ENOUGH TALK
+
+            GET TO THE CHOPPER pixelY
+            HERE IS MY INVITATION startY
+            GET UP row
+            ENOUGH TALK
+
+            DO IT NOW putPixel fbAddr fbPitch pixelX pixelY color
+        YOU HAVE NO RESPECT FOR LOGIC
+
+        GET TO THE CHOPPER mask
+        HERE IS MY INVITATION mask
+        PUSH IT RIGHT 1
+        ENOUGH TALK
+
+        GET TO THE CHOPPER col
+        HERE IS MY INVITATION col
+        GET UP 1
+        ENOUGH TALK
+
+        GET TO THE CHOPPER continueCol
+        HERE IS MY INVITATION col
+        YOU'RE NOT BIG ENOUGH 8
+        ENOUGH TALK
+    CHILL
+
+    GET TO THE CHOPPER row
+    HERE IS MY INVITATION row
+    GET UP 1
+    ENOUGH TALK
+
+    GET TO THE CHOPPER continueRow
+    HERE IS MY INVITATION row
+    YOU'RE NOT BIG ENOUGH 8
+    ENOUGH TALK
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawText - I'LL BE BACK"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawText
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE startX
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE startY
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE color
+
+HEY CHRISTMAS TREE index
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueText
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE charCode
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE glyphIndex
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE xPos
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+STICK AROUND continueText
+    GET TO THE CHOPPER charCode
+    HERE IS MY INVITATION WHICH ONE message index
+    ENOUGH TALK
+
+    GET YOUR ASS TO MARS glyphIndex
+    DO IT NOW getGlyphIndex charCode
+
+    GET TO THE CHOPPER xPos
+    HERE IS MY INVITATION index
+    YOU'RE FIRED 9
+    GET UP startX
+    ENOUGH TALK
+
+    DO IT NOW drawGlyph fbAddr fbPitch xPos startY glyphIndex color
+
+    GET TO THE CHOPPER index
+    HERE IS MY INVITATION index
+    GET UP 1
+    ENOUGH TALK
+
+    GET TO THE CHOPPER continueText
+    HERE IS MY INVITATION index
+    YOU'RE NOT BIG ENOUGH MESSAGE_LEN
+    ENOUGH TALK
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  MAIN FUNCTION: arnold_main - IT'S SHOWTIME"
+TALK TO YOURSELF "  The kernel entry point - where legends are born"
+TALK TO YOURSELF "============================================================================"
+
+IT'S SHOWTIME
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  CHECKING MULTIBOOT - DID GRUB DO ITS JOB?"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Arguments passed from bootloader: magic (esp+4), multiboot_info (esp+8)"
+TALK TO YOURSELF "For now, we'll read the framebuffer info from known memory locations"
+
+HEY CHRISTMAS TREE fbAddress
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE fbPitch
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE fbWidth
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE fbHeight
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE fbBpp
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Write ARNOLD to VGA text mode as startup indicator"
+
+HEY CHRISTMAS TREE vgaText
+THIS IS A WARRIOR
+YOU SET US UP 0xB8000
+
+TALK TO YOURSELF "Write A-R-N-O-L-D in green on black (0x0A = green, 0x41 = A)"
+
+WRITE TO vgaText
+THIS IS A WARRIOR
+HERE IS MY INVITATION 0x0A41
+ENOUGH TALK
+
+GET TO THE CHOPPER vgaText
+HERE IS MY INVITATION vgaText
+GET UP 2
+ENOUGH TALK
+
+WRITE TO vgaText
+THIS IS A WARRIOR
+HERE IS MY INVITATION 0x0A52
+ENOUGH TALK
+
+GET TO THE CHOPPER vgaText
+HERE IS MY INVITATION vgaText
+GET UP 2
+ENOUGH TALK
+
+WRITE TO vgaText
+THIS IS A WARRIOR
+HERE IS MY INVITATION 0x0A4E
+ENOUGH TALK
+
+GET TO THE CHOPPER vgaText
+HERE IS MY INVITATION vgaText
+GET UP 2
+ENOUGH TALK
+
+WRITE TO vgaText
+THIS IS A WARRIOR
+HERE IS MY INVITATION 0x0A4F
+ENOUGH TALK
+
+GET TO THE CHOPPER vgaText
+HERE IS MY INVITATION vgaText
+GET UP 2
+ENOUGH TALK
+
+WRITE TO vgaText
+THIS IS A WARRIOR
+HERE IS MY INVITATION 0x0A4C
+ENOUGH TALK
+
+GET TO THE CHOPPER vgaText
+HERE IS MY INVITATION vgaText
+GET UP 2
+ENOUGH TALK
+
+WRITE TO vgaText
+THIS IS A WARRIOR
+HERE IS MY INVITATION 0x0A44
+ENOUGH TALK
+
+TALK TO YOURSELF "Read framebuffer info from bootloader-provided getter functions"
+
+GET YOUR ASS TO MARS fbAddress
+DO IT NOW get_fb_addr
+
+GET YOUR ASS TO MARS fbPitch
+DO IT NOW get_fb_pitch
+
+GET YOUR ASS TO MARS fbWidth
+DO IT NOW get_fb_width
+
+GET YOUR ASS TO MARS fbHeight
+DO IT NOW get_fb_height
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  PHASE 1: CLEAR SCREEN - ERASING YOUR EXISTENCE"
+TALK TO YOURSELF "============================================================================"
+
+DO IT NOW clearScreen fbAddress fbPitch fbWidth fbHeight 0x00001020
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  PHASE 2: DRAW THE ARNOLD RECTANGLE - GET TO THE CHOPPER"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Draw a big red rectangle in the center - THE TERMINATOR BOX"
+
+HEY CHRISTMAS TREE rectX
+THIS IS A WARRIOR
+YOU SET US UP 312
+
+HEY CHRISTMAS TREE rectY
+THIS IS A WARRIOR
+YOU SET US UP 234
+
+HEY CHRISTMAS TREE rectW
+THIS IS A WARRIOR
+YOU SET US UP 400
+
+HEY CHRISTMAS TREE rectH
+THIS IS A WARRIOR
+YOU SET US UP 300
+
+TALK TO YOURSELF "Draw the main rectangle - CONSIDER THAT A DIVORCE from blank screens"
+DO IT NOW fillRect fbAddress fbPitch rectX rectY rectW rectH 0x00CC0000
+
+TALK TO YOURSELF "Draw a border around it - YOU'RE ONE UGLY MOTHERFUCKER"
+HEY CHRISTMAS TREE borderX
+THIS IS A WARRIOR
+YOU SET US UP 300
+
+HEY CHRISTMAS TREE borderY
+THIS IS A WARRIOR
+YOU SET US UP 222
+
+HEY CHRISTMAS TREE borderW
+THIS IS A WARRIOR
+YOU SET US UP 424
+
+HEY CHRISTMAS TREE borderH
+THIS IS A WARRIOR
+YOU SET US UP 324
+
+DO IT NOW drawBorder fbAddress fbPitch borderX borderY borderW borderH 6 0x00FFFFFF
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  PHASE 3: DRAW SMALLER RECTANGLES - MORE GAINS"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Draw Terminator eyes - red rectangles"
+DO IT NOW fillRect fbAddress fbPitch 400 300 40 20 0x00FF0000
+DO IT NOW fillRect fbAddress fbPitch 560 300 40 20 0x00FF0000
+
+TALK TO YOURSELF "Draw a mouth - gotta have that Arnold smirk"
+DO IT NOW fillRect fbAddress fbPitch 420 400 160 10 0x00FFFFFF
+
+TALK TO YOURSELF "Draw slogan - I'LL BE BACK"
+HEY CHRISTMAS TREE textWidth
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE textX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE textY
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET TO THE CHOPPER textWidth
+HERE IS MY INVITATION MESSAGE_LEN
+YOU'RE FIRED 9
+ENOUGH TALK
+
+GET TO THE CHOPPER textX
+HERE IS MY INVITATION fbWidth
+GET DOWN textWidth
+HE HAD TO SPLIT 2
+ENOUGH TALK
+
+GET TO THE CHOPPER textY
+HERE IS MY INVITATION rectY
+GET UP rectH
+GET DOWN 40
+ENOUGH TALK
+
+DO IT NOW drawText fbAddress fbPitch textX textY COLOR_WHITE
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  PHASE 4: DRAW CORNER DECORATIONS - PREDATOR STYLE"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Top-left corner decoration"
+DO IT NOW fillRect fbAddress fbPitch 50 50 100 10 0x0039FF14
+DO IT NOW fillRect fbAddress fbPitch 50 50 10 100 0x0039FF14
+
+TALK TO YOURSELF "Top-right corner decoration"
+DO IT NOW fillRect fbAddress fbPitch 874 50 100 10 0x0039FF14
+DO IT NOW fillRect fbAddress fbPitch 964 50 10 100 0x0039FF14
+
+TALK TO YOURSELF "Bottom-left corner decoration"
+DO IT NOW fillRect fbAddress fbPitch 50 708 100 10 0x0039FF14
+DO IT NOW fillRect fbAddress fbPitch 50 618 10 100 0x0039FF14
+
+TALK TO YOURSELF "Bottom-right corner decoration"
+DO IT NOW fillRect fbAddress fbPitch 874 708 100 10 0x0039FF14
+DO IT NOW fillRect fbAddress fbPitch 964 618 10 100 0x0039FF14
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  PHASE 5: DRAW STATUS BAR - SYSTEM ONLINE"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Bottom status bar background"
+HEY CHRISTMAS TREE statusBarY
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET TO THE CHOPPER statusBarY
+HERE IS MY INVITATION fbHeight
+GET DOWN 28
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddress fbPitch 0 statusBarY fbWidth 28 0x00202020
+
+TALK TO YOURSELF "Status indicator - green means GO"
+HEY CHRISTMAS TREE indicatorX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE indicatorY
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE indicatorSize
+THIS IS A WARRIOR
+YOU SET US UP 12
+
+GET TO THE CHOPPER indicatorX
+HERE IS MY INVITATION 10
+ENOUGH TALK
+
+GET TO THE CHOPPER indicatorY
+HERE IS MY INVITATION fbHeight
+GET DOWN 20
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddress fbPitch indicatorX indicatorY indicatorSize indicatorSize 0x0000FF00
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  KERNEL INITIALIZED - I'LL BE BACK"
+TALK TO YOURSELF "============================================================================"
+
+HEY CHRISTMAS TREE scancode
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE isRelease
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Main loop - poll keyboard and update indicator"
+
+STICK AROUND @NO PROBLEMO
+    GET YOUR ASS TO MARS scancode
+    DO IT NOW pollKeyboard
+
+    BECAUSE I'M GOING TO SAY PLEASE scancode
+        GET TO THE CHOPPER isRelease
+        HERE IS MY INVITATION scancode
+        CRUSH THEM TOGETHER KBD_RELEASE_MASK
+        ENOUGH TALK
+
+        BECAUSE I'M GOING TO SAY PLEASE isRelease
+            GET TO THE CHOPPER scancode
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+        BULLSHIT
+            WHAT'S THE CHOICE scancode
+            WHEN IT'S 0x1E
+                DO IT NOW fillRect fbAddress fbPitch indicatorX indicatorY indicatorSize indicatorSize 0x0000FF00
+                GET OUT
+            WHEN IT'S 0x30
+                DO IT NOW fillRect fbAddress fbPitch indicatorX indicatorY indicatorSize indicatorSize 0x00FF0000
+                GET OUT
+            WHEN IT'S 0x2E
+                DO IT NOW fillRect fbAddress fbPitch indicatorX indicatorY indicatorSize indicatorSize 0x000000FF
+                GET OUT
+            WHEN IT'S 0x01
+                DO IT NOW fillRect fbAddress fbPitch indicatorX indicatorY indicatorSize indicatorSize 0x00FFFFFF
+                GET OUT
+            OTHERWISE
+                DO IT NOW fillRect fbAddress fbPitch indicatorX indicatorY indicatorSize indicatorSize 0x00C0C0C0
+            NO MORE CHOICES
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    WAIT A MOMENT
+CHILL
+
+YOU HAVE BEEN TERMINATED

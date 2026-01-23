@@ -1,0 +1,18 @@
+# Build artifacts
+build/*.o
+build/*.bin
+build/gen/
+
+# Temporary files
+frames/
+*.ppm
+*.log
+frame60.png
+
+# Screenshots (keep demo.mp4 and screenshot.png)
+screenshot.ppm
+
+# Editor files
+*.swp
+*~
+.vscode/

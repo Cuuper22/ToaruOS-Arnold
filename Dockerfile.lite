@@ -1,0 +1,46 @@
+# ============================================================================
+# TOARUOS-ARNOLD DOCKER BUILD ENVIRONMENT (LITE VERSION)
+# "COME WITH ME IF YOU WANT TO BUILD" - Faster build, uses gcc -m32
+# ============================================================================
+#
+# This lighter Dockerfile uses gcc with -m32 flag instead of building
+# a full cross-compiler. Faster to build but slightly less portable.
+#
+# Usage:
+#   docker build -f Dockerfile.lite -t toaruos-arnold-lite .
+#   docker run -v ${PWD}:/kernel toaruos-arnold-lite make
+#
+# ============================================================================
+
+FROM ubuntu:22.04
+
+LABEL maintainer="ToaruOS-Arnold Team"
+LABEL description="Lightweight build environment for ArnoldC kernel"
+LABEL version="1.0-lite"
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install build dependencies - "DO IT NOW"
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc \
+    gcc-multilib \
+    g++-multilib \
+    nasm \
+    openjdk-17-jre-headless \
+    grub-pc-bin \
+    grub-common \
+    xorriso \
+    mtools \
+    qemu-system-x86 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /kernel
+
+# Use system GCC with -m32
+ENV CC=gcc
+ENV LD=ld
+
+CMD ["make"]
+
+# "I'LL BE BACK" - End of Dockerfile.lite
