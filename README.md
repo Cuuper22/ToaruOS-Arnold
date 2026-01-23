@@ -6,6 +6,12 @@ A bare-metal OS kernel written entirely in ArnoldC - the most muscular programmi
 
 ![ToaruOS-Arnold Screenshot](screenshot.png)
 
+## Demo
+
+![ToaruOS-Arnold Demo](demo.gif)
+
+*The status indicator in the bottom-left changes color based on keyboard input: A=Green, B=Red, C=Blue, ESC=White*
+
 ## Features
 
 - **Pure ArnoldC Kernel**: The entire kernel is written in ArnoldC, compiled to x86 assembly
