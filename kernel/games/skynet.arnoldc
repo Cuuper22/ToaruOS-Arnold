@@ -1,0 +1,1072 @@
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  SKYNET DEFENSE - 'JUDGMENT DAY IS COMING'"
+TALK TO YOURSELF "  Defend against waves of Terminator robots!"
+TALK TO YOURSELF "  Simplified tower defense gameplay"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Game constants"
+LET ME TELL YOU SOMETHING SKY_TURRET_X 100
+LET ME TELL YOU SOMETHING SKY_TURRET_Y 350
+LET ME TELL YOU SOMETHING SKY_TURRET_SIZE 40
+LET ME TELL YOU SOMETHING SKY_BULLET_SPEED 15
+LET ME TELL YOU SOMETHING SKY_ENEMY_SPEED 2
+LET ME TELL YOU SOMETHING SKY_MAX_ENEMIES 6
+LET ME TELL YOU SOMETHING SKY_MAX_BULLETS 5
+LET ME TELL YOU SOMETHING SKY_ENEMY_SIZE 30
+
+TALK TO YOURSELF "Colors"
+LET ME TELL YOU SOMETHING SKY_BG_COLOR 0x00101020
+LET ME TELL YOU SOMETHING SKY_TURRET_COLOR 0x0039FF14
+LET ME TELL YOU SOMETHING SKY_BULLET_COLOR 0x00FFFF00
+LET ME TELL YOU SOMETHING SKY_ENEMY_COLOR 0x00CC0000
+LET ME TELL YOU SOMETHING SKY_HUD_COLOR 0x00404040
+
+TALK TO YOURSELF "Enemy positions and states"
+HEY CHRISTMAS TREE skyEnemyX
+LINE THEM UP
+THIS IS A WARRIOR
+HOW MANY 6
+PUT THEM IN LINE
+1100 1300 1500 1700 1900 2100
+
+HEY CHRISTMAS TREE skyEnemyY
+LINE THEM UP
+THIS IS A WARRIOR
+HOW MANY 6
+PUT THEM IN LINE
+100 200 300 400 500 600
+
+HEY CHRISTMAS TREE skyEnemyActive
+LINE THEM UP
+THIS IS A WARRIOR
+HOW MANY 6
+PUT THEM IN LINE
+1 1 1 0 0 0
+
+TALK TO YOURSELF "Bullet positions and states"
+HEY CHRISTMAS TREE skyBulletX
+LINE THEM UP
+THIS IS A WARRIOR
+HOW MANY 5
+PUT THEM IN LINE
+0 0 0 0 0
+
+HEY CHRISTMAS TREE skyBulletY
+LINE THEM UP
+THIS IS A WARRIOR
+HOW MANY 5
+PUT THEM IN LINE
+0 0 0 0 0
+
+HEY CHRISTMAS TREE skyBulletActive
+LINE THEM UP
+THIS IS A WARRIOR
+HOW MANY 5
+PUT THEM IN LINE
+0 0 0 0 0
+
+TALK TO YOURSELF "Game state"
+HEY CHRISTMAS TREE skyTurretAngle
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE skyScore
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE skyLives
+THIS IS A WARRIOR
+YOU SET US UP 5
+
+HEY CHRISTMAS TREE skyWave
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE skyGameOver
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE skyAimY
+THIS IS A WARRIOR
+YOU SET US UP 350
+
+TALK TO YOURSELF "Title string"
+HEY CHRISTMAS TREE skyTitle
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x53 0x4B 0x59 0x4E 0x45 0x54 0x20 0x44 0x45 0x46 0x45 0x4E 0x53 0x45 0x00 0x00
+LET ME TELL YOU SOMETHING SKY_TITLE_LEN 14
+
+TALK TO YOURSELF "Game Over string"
+HEY CHRISTMAS TREE skyGameOverStr
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x4A 0x55 0x44 0x47 0x4D 0x45 0x4E 0x54 0x20 0x44 0x41 0x59 0x21 0x00 0x00 0x00
+LET ME TELL YOU SOMETHING SKY_GO_LEN 13
+
+TALK TO YOURSELF "Score string"
+HEY CHRISTMAS TREE skyScoreStr
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 8
+PUT THEM IN LINE
+0x53 0x43 0x4F 0x52 0x45 0x3A 0x00 0x00
+LET ME TELL YOU SOMETHING SKY_SCORE_LEN 6
+
+TALK TO YOURSELF "Lives string"
+HEY CHRISTMAS TREE skyLivesStr
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 8
+PUT THEM IN LINE
+0x4C 0x49 0x56 0x45 0x53 0x3A 0x00 0x00
+LET ME TELL YOU SOMETHING SKY_LIVES_LEN 6
+
+TALK TO YOURSELF "Wave string"
+HEY CHRISTMAS TREE skyWaveStr
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 8
+PUT THEM IN LINE
+0x57 0x41 0x56 0x45 0x3A 0x00 0x00 0x00
+LET ME TELL YOU SOMETHING SKY_WAVE_LEN 5
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: initSkynetGame - Reset game"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY initSkynetGame
+
+HEY CHRISTMAS TREE i
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueInit
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+TALK TO YOURSELF "Reset enemies"
+STICK AROUND continueInit
+    HEY CHRISTMAS TREE baseX
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER baseX
+    HERE IS MY INVITATION i
+    YOU'RE FIRED 200
+    GET UP 1100
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER WHICH ONE skyEnemyX i
+    HERE IS MY INVITATION baseX
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE yPos
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER yPos
+    HERE IS MY INVITATION i
+    YOU'RE FIRED 100
+    GET UP 100
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER WHICH ONE skyEnemyY i
+    HERE IS MY INVITATION yPos
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE isFirstThree
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isFirstThree
+    HERE IS MY INVITATION i
+    YOU'RE NOT BIG ENOUGH 3
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE isFirstThree
+        GET TO THE CHOPPER WHICH ONE skyEnemyActive i
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    BULLSHIT
+        GET TO THE CHOPPER WHICH ONE skyEnemyActive i
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    GET TO THE CHOPPER i
+    HERE IS MY INVITATION i
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueInit
+    HERE IS MY INVITATION i
+    YOU'RE NOT BIG ENOUGH 6
+    ENOUGH TALK
+CHILL
+
+TALK TO YOURSELF "Reset bullets"
+GET TO THE CHOPPER i
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+GET TO THE CHOPPER continueInit
+HERE IS MY INVITATION 1
+ENOUGH TALK
+
+STICK AROUND continueInit
+    GET TO THE CHOPPER WHICH ONE skyBulletActive i
+    HERE IS MY INVITATION 0
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER i
+    HERE IS MY INVITATION i
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueInit
+    HERE IS MY INVITATION i
+    YOU'RE NOT BIG ENOUGH 5
+    ENOUGH TALK
+CHILL
+
+TALK TO YOURSELF "Reset game state"
+GET TO THE CHOPPER skyScore
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+GET TO THE CHOPPER skyLives
+HERE IS MY INVITATION 5
+ENOUGH TALK
+
+GET TO THE CHOPPER skyWave
+HERE IS MY INVITATION 1
+ENOUGH TALK
+
+GET TO THE CHOPPER skyGameOver
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+GET TO THE CHOPPER skyAimY
+HERE IS MY INVITATION 350
+ENOUGH TALK
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawSkynetTurret - Draw the defense turret"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawSkynetTurret
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+TALK TO YOURSELF "Draw turret base"
+DO IT NOW fillRect fbAddr fbPitch SKY_TURRET_X SKY_TURRET_Y SKY_TURRET_SIZE SKY_TURRET_SIZE SKY_TURRET_COLOR
+
+TALK TO YOURSELF "Draw turret barrel pointing at aim"
+HEY CHRISTMAS TREE barrelX
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER barrelX
+HERE IS MY INVITATION SKY_TURRET_X
+GET UP SKY_TURRET_SIZE
+ENOUGH TALK
+
+HEY CHRISTMAS TREE barrelEndX
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER barrelEndX
+HERE IS MY INVITATION barrelX
+GET UP 40
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddr fbPitch barrelX skyAimY 50 8 SKY_TURRET_COLOR
+
+TALK TO YOURSELF "Draw crosshair at aim position"
+HEY CHRISTMAS TREE crossX
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER crossX
+HERE IS MY INVITATION barrelEndX
+GET UP 30
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddr fbPitch crossX skyAimY 20 2 0x00FF0000
+HEY CHRISTMAS TREE crossY1
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER crossY1
+HERE IS MY INVITATION skyAimY
+GET DOWN 10
+ENOUGH TALK
+HEY CHRISTMAS TREE crossX2
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER crossX2
+HERE IS MY INVITATION crossX
+GET UP 10
+ENOUGH TALK
+DO IT NOW fillRect fbAddr fbPitch crossX2 crossY1 2 20 0x00FF0000
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawSkynetEnemy - Draw a Terminator robot"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawSkynetEnemy
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE enemyIndex
+
+HEY CHRISTMAS TREE ex
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE ey
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE isActive
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET TO THE CHOPPER isActive
+HERE IS MY INVITATION WHICH ONE skyEnemyActive enemyIndex
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE isActive
+    GET TO THE CHOPPER ex
+    HERE IS MY INVITATION WHICH ONE skyEnemyX enemyIndex
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER ey
+    HERE IS MY INVITATION WHICH ONE skyEnemyY enemyIndex
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Draw robot body"
+    DO IT NOW fillRect fbAddr fbPitch ex ey SKY_ENEMY_SIZE SKY_ENEMY_SIZE SKY_ENEMY_COLOR
+    
+    TALK TO YOURSELF "Draw robot eyes"
+    HEY CHRISTMAS TREE eyeX1
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER eyeX1
+    HERE IS MY INVITATION ex
+    GET UP 5
+    ENOUGH TALK
+    HEY CHRISTMAS TREE eyeY
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER eyeY
+    HERE IS MY INVITATION ey
+    GET UP 8
+    ENOUGH TALK
+    DO IT NOW fillRect fbAddr fbPitch eyeX1 eyeY 6 6 0x00FF0000
+    
+    HEY CHRISTMAS TREE eyeX2
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER eyeX2
+    HERE IS MY INVITATION ex
+    GET UP 19
+    ENOUGH TALK
+    DO IT NOW fillRect fbAddr fbPitch eyeX2 eyeY 6 6 0x00FF0000
+    
+    TALK TO YOURSELF "Draw metal skeleton look"
+    HEY CHRISTMAS TREE skelX
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER skelX
+    HERE IS MY INVITATION ex
+    GET UP 10
+    ENOUGH TALK
+    HEY CHRISTMAS TREE skelY
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER skelY
+    HERE IS MY INVITATION ey
+    GET UP 18
+    ENOUGH TALK
+    DO IT NOW fillRect fbAddr fbPitch skelX skelY 10 8 0x00808080
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawSkynetBullet - Draw a bullet"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawSkynetBullet
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE bulletIndex
+
+HEY CHRISTMAS TREE bx
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE by
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE isActive
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET TO THE CHOPPER isActive
+HERE IS MY INVITATION WHICH ONE skyBulletActive bulletIndex
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE isActive
+    GET TO THE CHOPPER bx
+    HERE IS MY INVITATION WHICH ONE skyBulletX bulletIndex
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER by
+    HERE IS MY INVITATION WHICH ONE skyBulletY bulletIndex
+    ENOUGH TALK
+    
+    DO IT NOW fillRect fbAddr fbPitch bx by 15 6 SKY_BULLET_COLOR
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawSkynetGame - Draw entire game"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawSkynetGame
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+HEY CHRISTMAS TREE i
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueLoop
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+TALK TO YOURSELF "Draw background"
+DO IT NOW fillRect fbAddr fbPitch 0 0 1024 768 SKY_BG_COLOR
+
+TALK TO YOURSELF "Draw HUD background"
+DO IT NOW fillRect fbAddr fbPitch 0 0 1024 50 SKY_HUD_COLOR
+
+TALK TO YOURSELF "Draw title"
+DO IT NOW drawStringAt fbAddr fbPitch 420 15 skyTitle SKY_TITLE_LEN 0x00FFFFFF SKY_HUD_COLOR
+
+TALK TO YOURSELF "Draw score"
+DO IT NOW drawStringAt fbAddr fbPitch 20 15 skyScoreStr SKY_SCORE_LEN 0x00FFFF00 SKY_HUD_COLOR
+
+TALK TO YOURSELF "Draw lives"
+DO IT NOW drawStringAt fbAddr fbPitch 700 15 skyLivesStr SKY_LIVES_LEN 0x0000FF00 SKY_HUD_COLOR
+
+TALK TO YOURSELF "Draw wave"
+DO IT NOW drawStringAt fbAddr fbPitch 850 15 skyWaveStr SKY_WAVE_LEN 0x0000FFFF SKY_HUD_COLOR
+
+TALK TO YOURSELF "Draw defense line"
+DO IT NOW fillRect fbAddr fbPitch 70 60 4 650 0x00FFFF00
+
+TALK TO YOURSELF "Draw turret"
+DO IT NOW drawSkynetTurret fbAddr fbPitch
+
+TALK TO YOURSELF "Draw enemies"
+GET TO THE CHOPPER i
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+STICK AROUND continueLoop
+    DO IT NOW drawSkynetEnemy fbAddr fbPitch i
+    
+    GET TO THE CHOPPER i
+    HERE IS MY INVITATION i
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueLoop
+    HERE IS MY INVITATION i
+    YOU'RE NOT BIG ENOUGH 6
+    ENOUGH TALK
+CHILL
+
+TALK TO YOURSELF "Draw bullets"
+GET TO THE CHOPPER i
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+GET TO THE CHOPPER continueLoop
+HERE IS MY INVITATION 1
+ENOUGH TALK
+
+STICK AROUND continueLoop
+    DO IT NOW drawSkynetBullet fbAddr fbPitch i
+    
+    GET TO THE CHOPPER i
+    HERE IS MY INVITATION i
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueLoop
+    HERE IS MY INVITATION i
+    YOU'RE NOT BIG ENOUGH 5
+    ENOUGH TALK
+CHILL
+
+TALK TO YOURSELF "Draw game over if dead"
+BECAUSE I'M GOING TO SAY PLEASE skyGameOver
+    DO IT NOW drawStringAt fbAddr fbPitch 400 350 skyGameOverStr SKY_GO_LEN 0x00FF0000 SKY_BG_COLOR
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "Draw controls"
+HEY CHRISTMAS TREE ctrlStr
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 32
+PUT THEM IN LINE
+0x55 0x50 0x2F 0x44 0x4F 0x57 0x4E 0x3A 0x41 0x69 0x6D 0x20 0x53 0x50 0x41 0x43
+0x45 0x3A 0x46 0x69 0x72 0x65 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+DO IT NOW drawStringAt fbAddr fbPitch 400 730 ctrlStr 22 0x00606060 SKY_BG_COLOR
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: updateSkynetGame - Update game logic"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY updateSkynetGame
+
+BECAUSE I'M GOING TO SAY PLEASE skyGameOver
+    I'LL BE BACK
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE i
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueLoop
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+TALK TO YOURSELF "Update bullets"
+STICK AROUND continueLoop
+    HEY CHRISTMAS TREE isActive
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isActive
+    HERE IS MY INVITATION WHICH ONE skyBulletActive i
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE isActive
+        HEY CHRISTMAS TREE bx
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER bx
+        HERE IS MY INVITATION WHICH ONE skyBulletX i
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER bx
+        HERE IS MY INVITATION bx
+        GET UP SKY_BULLET_SPEED
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER WHICH ONE skyBulletX i
+        HERE IS MY INVITATION bx
+        ENOUGH TALK
+        
+        TALK TO YOURSELF "Deactivate if off screen"
+        HEY CHRISTMAS TREE offScreen
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER offScreen
+        HERE IS MY INVITATION bx
+        LET OFF SOME STEAM BENNET 1024
+        ENOUGH TALK
+        
+        BECAUSE I'M GOING TO SAY PLEASE offScreen
+            GET TO THE CHOPPER WHICH ONE skyBulletActive i
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    GET TO THE CHOPPER i
+    HERE IS MY INVITATION i
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueLoop
+    HERE IS MY INVITATION i
+    YOU'RE NOT BIG ENOUGH 5
+    ENOUGH TALK
+CHILL
+
+TALK TO YOURSELF "Update enemies"
+GET TO THE CHOPPER i
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+GET TO THE CHOPPER continueLoop
+HERE IS MY INVITATION 1
+ENOUGH TALK
+
+HEY CHRISTMAS TREE anyActive
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+STICK AROUND continueLoop
+    HEY CHRISTMAS TREE isActive
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isActive
+    HERE IS MY INVITATION WHICH ONE skyEnemyActive i
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE isActive
+        GET TO THE CHOPPER anyActive
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE ex
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER ex
+        HERE IS MY INVITATION WHICH ONE skyEnemyX i
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER ex
+        HERE IS MY INVITATION ex
+        GET DOWN SKY_ENEMY_SPEED
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER WHICH ONE skyEnemyX i
+        HERE IS MY INVITATION ex
+        ENOUGH TALK
+        
+        TALK TO YOURSELF "Check if reached defense line"
+        HEY CHRISTMAS TREE reachedLine
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER reachedLine
+        HERE IS MY INVITATION ex
+        YOU'RE NOT BIG ENOUGH 80
+        ENOUGH TALK
+        
+        BECAUSE I'M GOING TO SAY PLEASE reachedLine
+            GET TO THE CHOPPER WHICH ONE skyEnemyActive i
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+            
+            GET TO THE CHOPPER skyLives
+            HERE IS MY INVITATION skyLives
+            GET DOWN 1
+            ENOUGH TALK
+            
+            TALK TO YOURSELF "Check game over"
+            HEY CHRISTMAS TREE noLives
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER noLives
+            HERE IS MY INVITATION skyLives
+            YOU'RE NOT BIG ENOUGH 1
+            ENOUGH TALK
+            
+            BECAUSE I'M GOING TO SAY PLEASE noLives
+                GET TO THE CHOPPER skyGameOver
+                HERE IS MY INVITATION 1
+                ENOUGH TALK
+            YOU HAVE NO RESPECT FOR LOGIC
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    GET TO THE CHOPPER i
+    HERE IS MY INVITATION i
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueLoop
+    HERE IS MY INVITATION i
+    YOU'RE NOT BIG ENOUGH 6
+    ENOUGH TALK
+CHILL
+
+TALK TO YOURSELF "Check bullet-enemy collisions"
+HEY CHRISTMAS TREE b
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueBullets
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+STICK AROUND continueBullets
+    HEY CHRISTMAS TREE bulletActive
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER bulletActive
+    HERE IS MY INVITATION WHICH ONE skyBulletActive b
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE bulletActive
+        HEY CHRISTMAS TREE bx
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER bx
+        HERE IS MY INVITATION WHICH ONE skyBulletX b
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE by
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER by
+        HERE IS MY INVITATION WHICH ONE skyBulletY b
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER i
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER continueLoop
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+        
+        STICK AROUND continueLoop
+            HEY CHRISTMAS TREE enemyActive
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER enemyActive
+            HERE IS MY INVITATION WHICH ONE skyEnemyActive i
+            ENOUGH TALK
+            
+            BECAUSE I'M GOING TO SAY PLEASE enemyActive
+                HEY CHRISTMAS TREE ex
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER ex
+                HERE IS MY INVITATION WHICH ONE skyEnemyX i
+                ENOUGH TALK
+                
+                HEY CHRISTMAS TREE ey
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER ey
+                HERE IS MY INVITATION WHICH ONE skyEnemyY i
+                ENOUGH TALK
+                
+                TALK TO YOURSELF "Check collision"
+                HEY CHRISTMAS TREE xHit
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                
+                HEY CHRISTMAS TREE xOk1
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER xOk1
+                HERE IS MY INVITATION bx
+                LET OFF SOME STEAM BENNET ex
+                ENOUGH TALK
+                
+                HEY CHRISTMAS TREE exEnd
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER exEnd
+                HERE IS MY INVITATION ex
+                GET UP SKY_ENEMY_SIZE
+                ENOUGH TALK
+                
+                HEY CHRISTMAS TREE xOk2
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER xOk2
+                HERE IS MY INVITATION bx
+                YOU'RE NOT BIG ENOUGH exEnd
+                ENOUGH TALK
+                
+                GET TO THE CHOPPER xHit
+                HERE IS MY INVITATION xOk1
+                KNOCK KNOCK xOk2
+                ENOUGH TALK
+                
+                HEY CHRISTMAS TREE yHit
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                
+                HEY CHRISTMAS TREE yOk1
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER yOk1
+                HERE IS MY INVITATION by
+                LET OFF SOME STEAM BENNET ey
+                ENOUGH TALK
+                
+                HEY CHRISTMAS TREE eyEnd
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER eyEnd
+                HERE IS MY INVITATION ey
+                GET UP SKY_ENEMY_SIZE
+                ENOUGH TALK
+                
+                HEY CHRISTMAS TREE yOk2
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER yOk2
+                HERE IS MY INVITATION by
+                YOU'RE NOT BIG ENOUGH eyEnd
+                ENOUGH TALK
+                
+                GET TO THE CHOPPER yHit
+                HERE IS MY INVITATION yOk1
+                KNOCK KNOCK yOk2
+                ENOUGH TALK
+                
+                HEY CHRISTMAS TREE hit
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER hit
+                HERE IS MY INVITATION xHit
+                KNOCK KNOCK yHit
+                ENOUGH TALK
+                
+                BECAUSE I'M GOING TO SAY PLEASE hit
+                    TALK TO YOURSELF "Enemy destroyed!"
+                    GET TO THE CHOPPER WHICH ONE skyEnemyActive i
+                    HERE IS MY INVITATION 0
+                    ENOUGH TALK
+                    
+                    GET TO THE CHOPPER WHICH ONE skyBulletActive b
+                    HERE IS MY INVITATION 0
+                    ENOUGH TALK
+                    
+                    GET TO THE CHOPPER skyScore
+                    HERE IS MY INVITATION skyScore
+                    GET UP 100
+                    ENOUGH TALK
+                YOU HAVE NO RESPECT FOR LOGIC
+            YOU HAVE NO RESPECT FOR LOGIC
+            
+            GET TO THE CHOPPER i
+            HERE IS MY INVITATION i
+            GET UP 1
+            ENOUGH TALK
+            
+            GET TO THE CHOPPER continueLoop
+            HERE IS MY INVITATION i
+            YOU'RE NOT BIG ENOUGH 6
+            ENOUGH TALK
+        CHILL
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    GET TO THE CHOPPER b
+    HERE IS MY INVITATION b
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueBullets
+    HERE IS MY INVITATION b
+    YOU'RE NOT BIG ENOUGH 5
+    ENOUGH TALK
+CHILL
+
+TALK TO YOURSELF "Spawn new wave if all enemies dead"
+HEY CHRISTMAS TREE noActive
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER noActive
+HERE IS MY INVITATION anyActive
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE noActive
+    GET TO THE CHOPPER skyWave
+    HERE IS MY INVITATION skyWave
+    GET UP 1
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Respawn enemies"
+    GET TO THE CHOPPER i
+    HERE IS MY INVITATION 0
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueLoop
+    HERE IS MY INVITATION 1
+    ENOUGH TALK
+    
+    STICK AROUND continueLoop
+        HEY CHRISTMAS TREE baseX
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER baseX
+        HERE IS MY INVITATION i
+        YOU'RE FIRED 200
+        GET UP 1100
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER WHICH ONE skyEnemyX i
+        HERE IS MY INVITATION baseX
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER WHICH ONE skyEnemyActive i
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER i
+        HERE IS MY INVITATION i
+        GET UP 1
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER continueLoop
+        HERE IS MY INVITATION i
+        YOU'RE NOT BIG ENOUGH 6
+        ENOUGH TALK
+    CHILL
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: skynetFire - Fire a bullet"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY skynetFire
+
+BECAUSE I'M GOING TO SAY PLEASE skyGameOver
+    DO IT NOW initSkynetGame
+    I'LL BE BACK
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE i
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueLoop
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+TALK TO YOURSELF "Find inactive bullet"
+STICK AROUND continueLoop
+    HEY CHRISTMAS TREE isActive
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isActive
+    HERE IS MY INVITATION WHICH ONE skyBulletActive i
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE notActive
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER notActive
+    HERE IS MY INVITATION isActive
+    YOU ARE NOT YOU YOU ARE ME 0
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE notActive
+        TALK TO YOURSELF "Activate bullet"
+        HEY CHRISTMAS TREE startX
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER startX
+        HERE IS MY INVITATION SKY_TURRET_X
+        GET UP SKY_TURRET_SIZE
+        GET UP 50
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER WHICH ONE skyBulletX i
+        HERE IS MY INVITATION startX
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER WHICH ONE skyBulletY i
+        HERE IS MY INVITATION skyAimY
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER WHICH ONE skyBulletActive i
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER continueLoop
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    GET TO THE CHOPPER i
+    HERE IS MY INVITATION i
+    GET UP 1
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE atEnd
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER atEnd
+    HERE IS MY INVITATION i
+    YOU'RE AT LEAST AS BIG AS 5
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE atEnd
+        GET TO THE CHOPPER continueLoop
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: skynetAimUp - Move aim up"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY skynetAimUp
+
+GET TO THE CHOPPER skyAimY
+HERE IS MY INVITATION skyAimY
+GET DOWN 20
+ENOUGH TALK
+
+HEY CHRISTMAS TREE tooHigh
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER tooHigh
+HERE IS MY INVITATION skyAimY
+YOU'RE NOT BIG ENOUGH 60
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE tooHigh
+    GET TO THE CHOPPER skyAimY
+    HERE IS MY INVITATION 60
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: skynetAimDown - Move aim down"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY skynetAimDown
+
+GET TO THE CHOPPER skyAimY
+HERE IS MY INVITATION skyAimY
+GET UP 20
+ENOUGH TALK
+
+HEY CHRISTMAS TREE tooLow
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER tooLow
+HERE IS MY INVITATION skyAimY
+LET OFF SOME STEAM BENNET 700
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE tooLow
+    GET TO THE CHOPPER skyAimY
+    HERE IS MY INVITATION 700
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  End of SKYNET DEFENSE Game"
+TALK TO YOURSELF "============================================================================"
