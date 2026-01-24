@@ -952,6 +952,89 @@ DO IT NOW drawStringAt fbAddr fbPitch 350 400 welcomeMsg WELCOME_LEN COLOR_WHITE
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  STUB: randomSeedFromTimer - Initialize RNG from timer"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY randomSeedFromTimer
+
+TALK TO YOURSELF "This is a stub - real implementation would seed from timer"
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  STUB: playBootJingle - Play boot sound"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY playBootJingle
+
+TALK TO YOURSELF "This is a stub - real implementation would play PC speaker notes"
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  STUB: drawCursor - Draw mouse cursor"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawCursor
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+HEY CHRISTMAS TREE mx
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE my
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS mx
+DO IT NOW get_mouse_x
+
+GET YOUR ASS TO MARS my
+DO IT NOW get_mouse_y
+
+TALK TO YOURSELF "Draw a simple white cross cursor"
+DO IT NOW putPixel fbAddr fbPitch mx my COLOR_WHITE
+
+HEY CHRISTMAS TREE mx1
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER mx1
+HERE IS MY INVITATION mx
+GET UP 1
+ENOUGH TALK
+DO IT NOW putPixel fbAddr fbPitch mx1 my COLOR_WHITE
+
+HEY CHRISTMAS TREE mx2
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER mx2
+HERE IS MY INVITATION mx
+GET DOWN 1
+ENOUGH TALK
+DO IT NOW putPixel fbAddr fbPitch mx2 my COLOR_WHITE
+
+HEY CHRISTMAS TREE my1
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER my1
+HERE IS MY INVITATION my
+GET UP 1
+ENOUGH TALK
+DO IT NOW putPixel fbAddr fbPitch mx my1 COLOR_WHITE
+
+HEY CHRISTMAS TREE my2
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER my2
+HERE IS MY INVITATION my
+GET DOWN 1
+ENOUGH TALK
+DO IT NOW putPixel fbAddr fbPitch mx my2 COLOR_WHITE
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  MAIN FUNCTION - IT'S SHOWTIME"
 TALK TO YOURSELF "============================================================================"
 
