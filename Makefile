@@ -43,8 +43,18 @@ KERNEL_ELF = $(BUILD_DIR)/toaruos-arnold.elf
 ISO_FILE = $(BUILD_DIR)/toaruos-arnold.iso
 
 # Source files - "HEY CHRISTMAS TREE"
+# Use KERNEL_VERSION to select kernel (default: v3)
+KERNEL_VERSION ?= v3
 ASM_SOURCES = $(BOOT_DIR)/multiboot.asm
-ARNOLD_SRC = $(KERNEL_DIR)/kernel.arnoldc
+
+ifeq ($(KERNEL_VERSION),v3)
+    ARNOLD_SRC = $(KERNEL_DIR)/kernel_v3.arnoldc
+else ifeq ($(KERNEL_VERSION),v2)
+    ARNOLD_SRC = $(KERNEL_DIR)/kernel_v2.arnoldc
+else
+    ARNOLD_SRC = $(KERNEL_DIR)/kernel.arnoldc
+endif
+
 ARNOLD_GEN_SRC = $(GEN_DIR)/kernel.arnoldc
 ARNOLD_ASM = $(GEN_DIR)/kernel.asm
 
@@ -122,11 +132,24 @@ $(ARNOLD_GEN_SRC): $(ARNOLD_SRC) | directories
 	cp $< $@
 
 # Generate ArnoldC assembly
+# External declarations for v3 kernel (includes all new functions)
+EXTERNS_V3 = extern get_fb_addr\nextern get_fb_pitch\nextern get_fb_width\nextern get_fb_height\n\
+extern get_timer_ticks\nextern sleep_ticks\n\
+extern get_mouse_x\nextern get_mouse_y\nextern get_mouse_buttons\n\
+extern speaker_on\nextern speaker_off\nextern speaker_set_frequency
+
+# External declarations for v1/v2 kernel
+EXTERNS_V2 = extern get_fb_addr\nextern get_fb_pitch\nextern get_fb_width\nextern get_fb_height
+
 $(ARNOLD_ASM): $(ARNOLD_GEN_SRC)
-	@echo "[ARN ] Generating kernel ASM - IT'S SHOWTIME"
+	@echo "[ARN ] Generating kernel ASM - IT'S SHOWTIME ($(KERNEL_VERSION))"
 	$(ARNOLDC) -asm $(ARNOLD_GEN_SRC)
 	@echo "[ARN ] Adding extern declarations for bootloader functions"
-	@sed -i '5a extern get_fb_addr\nextern get_fb_pitch\nextern get_fb_width\nextern get_fb_height' $(ARNOLD_ASM)
+ifeq ($(KERNEL_VERSION),v3)
+	@sed -i '5a $(EXTERNS_V3)' $(ARNOLD_ASM)
+else
+	@sed -i '5a $(EXTERNS_V2)' $(ARNOLD_ASM)
+endif
 
 # Assemble ArnoldC kernel
 $(BUILD_DIR)/kernel.o: $(ARNOLD_ASM)

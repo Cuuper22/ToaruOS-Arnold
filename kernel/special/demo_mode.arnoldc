@@ -1,0 +1,278 @@
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  DEMO MODE - 'THE SHOWCASE'"
+TALK TO YOURSELF "  ==========================================="
+TALK TO YOURSELF "  PHASE 5 CREATIVE SURPRISE!"
+TALK TO YOURSELF "  Auto-running demo that showcases all OS features!"
+TALK TO YOURSELF "  Perfect for presentations and videos!"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Demo state"
+HEY CHRISTMAS TREE demoStep
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE demoTimer
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE demoRunning
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Demo step constants"
+LET ME TELL YOU SOMETHING DEMO_BOOT 0
+LET ME TELL YOU SOMETHING DEMO_DESKTOP 1
+LET ME TELL YOU SOMETHING DEMO_TERMINAL 2
+LET ME TELL YOU SOMETHING DEMO_SNAKE 3
+LET ME TELL YOU SOMETHING DEMO_PONG 4
+LET ME TELL YOU SOMETHING DEMO_MUSIC 5
+LET ME TELL YOU SOMETHING DEMO_END 6
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: startDemo - Begin automated demo"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY startDemo
+
+GET TO THE CHOPPER demoStep
+HERE IS MY INVITATION DEMO_BOOT
+ENOUGH TALK
+
+GET TO THE CHOPPER demoRunning
+HERE IS MY INVITATION 1
+ENOUGH TALK
+
+GET YOUR ASS TO MARS demoTimer
+DO IT NOW get_timer_ticks
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: stopDemo - Stop automated demo"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY stopDemo
+
+GET TO THE CHOPPER demoRunning
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: isDemoRunning - Check if demo is running"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY isDemoRunning
+GIVE THESE PEOPLE AIR
+
+I'LL BE BACK demoRunning
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: getDemoStep - Get current demo step"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY getDemoStep
+GIVE THESE PEOPLE AIR
+
+I'LL BE BACK demoStep
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: advanceDemo - Move to next demo step"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY advanceDemo
+
+GET TO THE CHOPPER demoStep
+HERE IS MY INVITATION demoStep
+GET UP 1
+ENOUGH TALK
+
+GET YOUR ASS TO MARS demoTimer
+DO IT NOW get_timer_ticks
+
+HEY CHRISTMAS TREE isEnd
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isEnd
+HERE IS MY INVITATION demoStep
+LET OFF SOME STEAM BENNET DEMO_END
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE isEnd
+    GET TO THE CHOPPER demoStep
+    HERE IS MY INVITATION DEMO_BOOT
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawDemoOverlay - Draw demo mode indicator"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawDemoOverlay
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+HEY CHRISTMAS TREE demoLabel
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x44 0x45 0x4D 0x4F 0x20 0x4D 0x4F 0x44 0x45 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+
+TALK TO YOURSELF "Draw semi-transparent overlay at top-right"
+DO IT NOW fillRect fbAddr fbPitch 900 5 120 20 0x00FF0000
+DO IT NOW drawStringAt fbAddr fbPitch 905 10 demoLabel 9 0x00FFFFFF 0x00FF0000
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawDemoStepInfo - Show current demo step info"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawDemoStepInfo
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+HEY CHRISTMAS TREE infoY
+THIS IS A WARRIOR
+YOU SET US UP 740
+
+HEY CHRISTMAS TREE stepStr1
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 24
+PUT THEM IN LINE
+0x42 0x4F 0x4F 0x54 0x20 0x53 0x45 0x51 0x55 0x45 0x4E 0x43 0x45 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+
+HEY CHRISTMAS TREE stepStr2
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 24
+PUT THEM IN LINE
+0x44 0x45 0x53 0x4B 0x54 0x4F 0x50 0x20 0x47 0x55 0x49 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+
+HEY CHRISTMAS TREE stepStr3
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 24
+PUT THEM IN LINE
+0x54 0x45 0x52 0x4D 0x49 0x4E 0x41 0x4C 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+
+HEY CHRISTMAS TREE stepStr4
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 24
+PUT THEM IN LINE
+0x53 0x4E 0x41 0x4B 0x45 0x20 0x47 0x41 0x4D 0x45 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+
+HEY CHRISTMAS TREE stepStr5
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 24
+PUT THEM IN LINE
+0x50 0x4F 0x4E 0x47 0x20 0x47 0x41 0x4D 0x45 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+
+HEY CHRISTMAS TREE stepStr6
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 24
+PUT THEM IN LINE
+0x4D 0x55 0x53 0x49 0x43 0x20 0x50 0x4C 0x41 0x59 0x45 0x52 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+
+TALK TO YOURSELF "Draw info bar"
+DO IT NOW fillRect fbAddr fbPitch 0 infoY 1024 28 0x00202020
+
+WHAT'S THE CHOICE demoStep
+WHEN IT'S 0
+    DO IT NOW drawStringAt fbAddr fbPitch 20 infoY stepStr1 13 0x00FFFFFF 0x00202020
+    GET OUT
+WHEN IT'S 1
+    DO IT NOW drawStringAt fbAddr fbPitch 20 infoY stepStr2 11 0x00FFFFFF 0x00202020
+    GET OUT
+WHEN IT'S 2
+    DO IT NOW drawStringAt fbAddr fbPitch 20 infoY stepStr3 8 0x00FFFFFF 0x00202020
+    GET OUT
+WHEN IT'S 3
+    DO IT NOW drawStringAt fbAddr fbPitch 20 infoY stepStr4 10 0x00FFFFFF 0x00202020
+    GET OUT
+WHEN IT'S 4
+    DO IT NOW drawStringAt fbAddr fbPitch 20 infoY stepStr5 9 0x00FFFFFF 0x00202020
+    GET OUT
+WHEN IT'S 5
+    DO IT NOW drawStringAt fbAddr fbPitch 20 infoY stepStr6 12 0x00FFFFFF 0x00202020
+    GET OUT
+NO MORE CHOICES
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: updateDemo - Update demo state based on timer"
+TALK TO YOURSELF "  Returns 1 if step changed, 0 otherwise"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY updateDemo
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE changed
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+BECAUSE I'M GOING TO SAY PLEASE demoRunning
+    HEY CHRISTMAS TREE currentTick
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    
+    GET YOUR ASS TO MARS currentTick
+    DO IT NOW get_timer_ticks
+    
+    HEY CHRISTMAS TREE elapsed
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    
+    GET TO THE CHOPPER elapsed
+    HERE IS MY INVITATION currentTick
+    GET DOWN demoTimer
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Each step runs for 5 seconds (500 ticks at 100Hz)"
+    HEY CHRISTMAS TREE stepDuration
+    THIS IS A WARRIOR
+    YOU SET US UP 500
+    
+    HEY CHRISTMAS TREE shouldAdvance
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER shouldAdvance
+    HERE IS MY INVITATION elapsed
+    LET OFF SOME STEAM BENNET stepDuration
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE shouldAdvance
+        DO IT NOW advanceDemo
+        
+        GET TO THE CHOPPER changed
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+I'LL BE BACK changed
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  End of Demo Mode Module"
+TALK TO YOURSELF "============================================================================"

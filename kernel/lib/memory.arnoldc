@@ -1,0 +1,423 @@
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  MEMORY MODULE - 'I NEED YOUR MEMORY'"
+TALK TO YOURSELF "  Simple bump allocator for kernel memory management"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Heap configuration"
+TALK TO YOURSELF "Heap starts at 1MB (0x100000) and extends to 16MB"
+LET ME TELL YOU SOMETHING HEAP_START 0x100000
+LET ME TELL YOU SOMETHING HEAP_END 0x1000000
+LET ME TELL YOU SOMETHING HEAP_SIZE 0xF00000
+
+TALK TO YOURSELF "Current heap pointer (bump allocator)"
+HEY CHRISTMAS TREE heapPtr
+THIS IS A WARRIOR
+YOU SET US UP 0x100000
+
+TALK TO YOURSELF "Total allocated bytes"
+HEY CHRISTMAS TREE totalAllocated
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: initMemory - Initialize the memory allocator"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY initMemory
+
+GET TO THE CHOPPER heapPtr
+HERE IS MY INVITATION HEAP_START
+ENOUGH TALK
+
+GET TO THE CHOPPER totalAllocated
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: malloc - Allocate memory (bump allocator)"
+TALK TO YOURSELF "  Returns pointer to allocated memory, or 0 if out of memory"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY malloc
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE size
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE newPtr
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE alignedSize
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Align size to 4 bytes"
+GET TO THE CHOPPER alignedSize
+HERE IS MY INVITATION size
+GET UP 3
+ENOUGH TALK
+
+GET TO THE CHOPPER alignedSize
+HERE IS MY INVITATION alignedSize
+CRUSH THEM TOGETHER 0xFFFFFFFC
+ENOUGH TALK
+
+TALK TO YOURSELF "Calculate new heap pointer"
+GET TO THE CHOPPER newPtr
+HERE IS MY INVITATION heapPtr
+GET UP alignedSize
+ENOUGH TALK
+
+TALK TO YOURSELF "Check if we have enough memory"
+HEY CHRISTMAS TREE hasSpace
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET TO THE CHOPPER hasSpace
+HERE IS MY INVITATION newPtr
+YOU'RE NOT BIGGER THAN HEAP_END
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE hasSpace
+    TALK TO YOURSELF "Allocation successful"
+    GET TO THE CHOPPER result
+    HERE IS MY INVITATION heapPtr
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Update heap pointer"
+    GET TO THE CHOPPER heapPtr
+    HERE IS MY INVITATION newPtr
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Track total allocated"
+    GET TO THE CHOPPER totalAllocated
+    HERE IS MY INVITATION totalAllocated
+    GET UP alignedSize
+    ENOUGH TALK
+BULLSHIT
+    TALK TO YOURSELF "Out of memory"
+    GET TO THE CHOPPER result
+    HERE IS MY INVITATION 0
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: free - Free memory (no-op for bump allocator)"
+TALK TO YOURSELF "  In a bump allocator, we don't actually free individual allocations"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY free
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ptr
+
+TALK TO YOURSELF "No-op for bump allocator"
+TALK TO YOURSELF "Memory is only reclaimed when heap is reset"
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: resetHeap - Reset heap to initial state"
+TALK TO YOURSELF "  Frees all allocated memory at once"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY resetHeap
+
+GET TO THE CHOPPER heapPtr
+HERE IS MY INVITATION HEAP_START
+ENOUGH TALK
+
+GET TO THE CHOPPER totalAllocated
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: getHeapUsed - Get total bytes allocated"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY getHeapUsed
+GIVE THESE PEOPLE AIR
+
+I'LL BE BACK totalAllocated
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: getHeapFree - Get remaining free heap space"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY getHeapFree
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE freeSpace
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET TO THE CHOPPER freeSpace
+HERE IS MY INVITATION HEAP_END
+GET DOWN heapPtr
+ENOUGH TALK
+
+I'LL BE BACK freeSpace
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: memset - Fill memory with a value"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY memset
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ptr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE count
+
+HEY CHRISTMAS TREE i
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueLoop
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+GET TO THE CHOPPER continueLoop
+HERE IS MY INVITATION count
+LET OFF SOME STEAM BENNET 0
+ENOUGH TALK
+
+STICK AROUND continueLoop
+    TALK TO YOURSELF "Write byte to memory"
+    WRITE TO ptr
+    THIS IS A TINY WARRIOR
+    HERE IS MY INVITATION value
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Increment pointer"
+    GET TO THE CHOPPER ptr
+    HERE IS MY INVITATION ptr
+    GET UP 1
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Increment counter"
+    GET TO THE CHOPPER i
+    HERE IS MY INVITATION i
+    GET UP 1
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Check if done"
+    GET TO THE CHOPPER continueLoop
+    HERE IS MY INVITATION i
+    YOU'RE NOT BIG ENOUGH count
+    ENOUGH TALK
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: memcpy - Copy memory from source to destination"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY memcpy
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE dest
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE src
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE count
+
+HEY CHRISTMAS TREE i
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE byte
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueLoop
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+GET TO THE CHOPPER continueLoop
+HERE IS MY INVITATION count
+LET OFF SOME STEAM BENNET 0
+ENOUGH TALK
+
+STICK AROUND continueLoop
+    TALK TO YOURSELF "Read byte from source"
+    HEY CHRISTMAS TREE srcAddr
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER srcAddr
+    HERE IS MY INVITATION src
+    GET UP i
+    ENOUGH TALK
+    
+    LOOK AT srcAddr
+    THIS IS A TINY WARRIOR
+    GET TO THE CHOPPER byte
+    HERE IS MY INVITATION LOOK AT srcAddr
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Write byte to destination"
+    HEY CHRISTMAS TREE destAddr
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER destAddr
+    HERE IS MY INVITATION dest
+    GET UP i
+    ENOUGH TALK
+    
+    WRITE TO destAddr
+    THIS IS A TINY WARRIOR
+    HERE IS MY INVITATION byte
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Increment counter"
+    GET TO THE CHOPPER i
+    HERE IS MY INVITATION i
+    GET UP 1
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Check if done"
+    GET TO THE CHOPPER continueLoop
+    HERE IS MY INVITATION i
+    YOU'RE NOT BIG ENOUGH count
+    ENOUGH TALK
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: memcmp - Compare two memory regions"
+TALK TO YOURSELF "  Returns 0 if equal, non-zero if different"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY memcmp
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ptr1
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ptr2
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE count
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE i
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE byte1
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE byte2
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueLoop
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+GET TO THE CHOPPER continueLoop
+HERE IS MY INVITATION count
+LET OFF SOME STEAM BENNET 0
+ENOUGH TALK
+
+STICK AROUND continueLoop
+    TALK TO YOURSELF "Read bytes from both pointers"
+    HEY CHRISTMAS TREE addr1
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER addr1
+    HERE IS MY INVITATION ptr1
+    GET UP i
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE addr2
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER addr2
+    HERE IS MY INVITATION ptr2
+    GET UP i
+    ENOUGH TALK
+    
+    LOOK AT addr1
+    THIS IS A TINY WARRIOR
+    GET TO THE CHOPPER byte1
+    HERE IS MY INVITATION LOOK AT addr1
+    ENOUGH TALK
+    
+    LOOK AT addr2
+    THIS IS A TINY WARRIOR
+    GET TO THE CHOPPER byte2
+    HERE IS MY INVITATION LOOK AT addr2
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Compare"
+    HEY CHRISTMAS TREE areDifferent
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER areDifferent
+    HERE IS MY INVITATION byte1
+    YOU ARE NOT ME byte2
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE areDifferent
+        GET TO THE CHOPPER result
+        HERE IS MY INVITATION byte1
+        GET DOWN byte2
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER continueLoop
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    BULLSHIT
+        TALK TO YOURSELF "Increment counter"
+        GET TO THE CHOPPER i
+        HERE IS MY INVITATION i
+        GET UP 1
+        ENOUGH TALK
+        
+        TALK TO YOURSELF "Check if done"
+        GET TO THE CHOPPER continueLoop
+        HERE IS MY INVITATION i
+        YOU'RE NOT BIG ENOUGH count
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+CHILL
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: zalloc - Allocate zero-initialized memory"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY zalloc
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE size
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE ptr
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS ptr
+DO IT NOW malloc size
+
+BECAUSE I'M GOING TO SAY PLEASE ptr
+    DO IT NOW memset ptr 0 size
+YOU HAVE NO RESPECT FOR LOGIC
+
+I'LL BE BACK ptr
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  End of Memory Module"
+TALK TO YOURSELF "============================================================================"

@@ -1,0 +1,435 @@
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  RANDOM MODULE - 'YOU NEVER KNOW WHAT'S NEXT'"
+TALK TO YOURSELF "  Linear Congruential Generator (LCG) for pseudo-random numbers"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "LCG parameters (same as glibc)"
+TALK TO YOURSELF "next = (a * prev + c) mod m"
+TALK TO YOURSELF "a = 1103515245, c = 12345, m = 2^31"
+LET ME TELL YOU SOMETHING RANDOM_A 1103515245
+LET ME TELL YOU SOMETHING RANDOM_C 12345
+LET ME TELL YOU SOMETHING RANDOM_M 0x7FFFFFFF
+
+TALK TO YOURSELF "Random seed (initialized from timer)"
+HEY CHRISTMAS TREE randomSeed
+THIS IS A WARRIOR
+YOU SET US UP 12345
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: randomSeedFromTimer - Seed RNG from timer ticks"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY randomSeedFromTimer
+
+HEY CHRISTMAS TREE ticks
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS ticks
+DO IT NOW get_timer_ticks
+
+TALK TO YOURSELF "Mix the seed a bit"
+GET TO THE CHOPPER randomSeed
+HERE IS MY INVITATION ticks
+CONFUSE THEM 0xDEADBEEF
+ENOUGH TALK
+
+TALK TO YOURSELF "Ensure non-zero"
+BECAUSE I'M GOING TO SAY PLEASE randomSeed
+    HEY CHRISTMAS TREE isZero
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isZero
+    HERE IS MY INVITATION randomSeed
+    YOU ARE NOT YOU YOU ARE ME 0
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isZero
+        GET TO THE CHOPPER randomSeed
+        HERE IS MY INVITATION 12345
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: setSeed - Set random seed directly"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY setSeed
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE seed
+
+GET TO THE CHOPPER randomSeed
+HERE IS MY INVITATION seed
+ENOUGH TALK
+
+TALK TO YOURSELF "Ensure non-zero"
+BECAUSE I'M GOING TO SAY PLEASE randomSeed
+    HEY CHRISTMAS TREE isZero
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isZero
+    HERE IS MY INVITATION randomSeed
+    YOU ARE NOT YOU YOU ARE ME 0
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isZero
+        GET TO THE CHOPPER randomSeed
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: random - Get next random number (0 to 2^31-1)"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY random
+GIVE THESE PEOPLE AIR
+
+TALK TO YOURSELF "next = (a * seed + c) & 0x7FFFFFFF"
+TALK TO YOURSELF "Using simplified calculation to avoid overflow issues"
+
+HEY CHRISTMAS TREE next
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Xorshift algorithm for better distribution"
+TALK TO YOURSELF "temp = seed ^ (seed << 13)"
+GET TO THE CHOPPER next
+HERE IS MY INVITATION randomSeed
+PUSH IT LEFT 13
+CONFUSE THEM randomSeed
+ENOUGH TALK
+
+TALK TO YOURSELF "temp = temp ^ (temp >> 17)"
+HEY CHRISTMAS TREE shifted
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER shifted
+HERE IS MY INVITATION next
+PUSH IT RIGHT 17
+ENOUGH TALK
+GET TO THE CHOPPER next
+HERE IS MY INVITATION next
+CONFUSE THEM shifted
+ENOUGH TALK
+
+TALK TO YOURSELF "temp = temp ^ (temp << 5)"
+GET TO THE CHOPPER shifted
+HERE IS MY INVITATION next
+PUSH IT LEFT 5
+ENOUGH TALK
+GET TO THE CHOPPER next
+HERE IS MY INVITATION next
+CONFUSE THEM shifted
+ENOUGH TALK
+
+TALK TO YOURSELF "Mask to positive"
+GET TO THE CHOPPER next
+HERE IS MY INVITATION next
+CRUSH THEM TOGETHER 0x7FFFFFFF
+ENOUGH TALK
+
+TALK TO YOURSELF "Update seed"
+GET TO THE CHOPPER randomSeed
+HERE IS MY INVITATION next
+ENOUGH TALK
+
+I'LL BE BACK next
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: randomRange - Get random number in range [min, max]"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY randomRange
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE minVal
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE maxVal
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE randVal
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE range
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Get random value"
+GET YOUR ASS TO MARS randVal
+DO IT NOW random
+
+TALK TO YOURSELF "Calculate range"
+GET TO THE CHOPPER range
+HERE IS MY INVITATION maxVal
+GET DOWN minVal
+GET UP 1
+ENOUGH TALK
+
+TALK TO YOURSELF "result = min + (randVal % range)"
+GET TO THE CHOPPER result
+HERE IS MY INVITATION randVal
+I LET HIM GO range
+GET UP minVal
+ENOUGH TALK
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: randomBool - Get random boolean (0 or 1)"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY randomBool
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS result
+DO IT NOW randomRange 0 1
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: randomPercent - Get random percentage (0-100)"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY randomPercent
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS result
+DO IT NOW randomRange 0 100
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: randomChance - Returns 1 if random < percent threshold"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY randomChance
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE percent
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE roll
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS roll
+DO IT NOW randomPercent
+
+GET TO THE CHOPPER result
+HERE IS MY INVITATION roll
+YOU'RE NOT BIG ENOUGH percent
+ENOUGH TALK
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: randomX - Random X position on screen"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY randomX
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS result
+DO IT NOW randomRange 0 1023
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: randomY - Random Y position on screen"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY randomY
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS result
+DO IT NOW randomRange 0 767
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: randomColor - Random RGB color"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY randomColor
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE r
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE g
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE b
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE color
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS r
+DO IT NOW randomRange 0 255
+
+GET YOUR ASS TO MARS g
+DO IT NOW randomRange 0 255
+
+GET YOUR ASS TO MARS b
+DO IT NOW randomRange 0 255
+
+TALK TO YOURSELF "Combine into 0x00RRGGBB"
+GET TO THE CHOPPER color
+HERE IS MY INVITATION r
+PUSH IT LEFT 16
+ENOUGH TALK
+
+HEY CHRISTMAS TREE gShifted
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER gShifted
+HERE IS MY INVITATION g
+PUSH IT LEFT 8
+ENOUGH TALK
+
+GET TO THE CHOPPER color
+HERE IS MY INVITATION color
+JOIN THEM TOGETHER gShifted
+JOIN THEM TOGETHER b
+ENOUGH TALK
+
+I'LL BE BACK color
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: shuffleArray - Fisher-Yates shuffle (in place)"
+TALK TO YOURSELF "  Shuffles array of u32 values"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY shuffleArray
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE arrayPtr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE arrayLen
+
+HEY CHRISTMAS TREE i
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE j
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE temp
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueLoop
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+TALK TO YOURSELF "Start from end and swap with random earlier element"
+GET TO THE CHOPPER i
+HERE IS MY INVITATION arrayLen
+GET DOWN 1
+ENOUGH TALK
+
+STICK AROUND continueLoop
+    TALK TO YOURSELF "Get random index from 0 to i"
+    GET YOUR ASS TO MARS j
+    DO IT NOW randomRange 0 i
+    
+    TALK TO YOURSELF "Swap arr[i] and arr[j]"
+    GET TO THE CHOPPER temp
+    HERE IS MY INVITATION WHICH ONE arrayPtr i
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE valJ
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER valJ
+    HERE IS MY INVITATION WHICH ONE arrayPtr j
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "arr[i] = arr[j]"
+    GET TO THE CHOPPER WHICH ONE arrayPtr i
+    HERE IS MY INVITATION valJ
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "arr[j] = temp"
+    GET TO THE CHOPPER WHICH ONE arrayPtr j
+    HERE IS MY INVITATION temp
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Decrement and check"
+    GET TO THE CHOPPER i
+    HERE IS MY INVITATION i
+    GET DOWN 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueLoop
+    HERE IS MY INVITATION i
+    LET OFF SOME STEAM BENNET 0
+    ENOUGH TALK
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: randomDirection - Random direction (0=up, 1=right, 2=down, 3=left)"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY randomDirection
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS result
+DO IT NOW randomRange 0 3
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  End of Random Module"
+TALK TO YOURSELF "============================================================================"

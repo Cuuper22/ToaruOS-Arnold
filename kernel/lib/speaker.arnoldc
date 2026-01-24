@@ -1,0 +1,403 @@
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  PC SPEAKER MODULE - 'MAKE SOME NOISE'"
+TALK TO YOURSELF "  8-bit music system for Arnold-themed audio"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  Musical Note Frequencies (in Hz)"
+TALK TO YOURSELF "  Standard tuning A4 = 440Hz"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Octave 3"
+LET ME TELL YOU SOMETHING NOTE_C3 131
+LET ME TELL YOU SOMETHING NOTE_CS3 139
+LET ME TELL YOU SOMETHING NOTE_D3 147
+LET ME TELL YOU SOMETHING NOTE_DS3 156
+LET ME TELL YOU SOMETHING NOTE_E3 165
+LET ME TELL YOU SOMETHING NOTE_F3 175
+LET ME TELL YOU SOMETHING NOTE_FS3 185
+LET ME TELL YOU SOMETHING NOTE_G3 196
+LET ME TELL YOU SOMETHING NOTE_GS3 208
+LET ME TELL YOU SOMETHING NOTE_A3 220
+LET ME TELL YOU SOMETHING NOTE_AS3 233
+LET ME TELL YOU SOMETHING NOTE_B3 247
+
+TALK TO YOURSELF "Octave 4"
+LET ME TELL YOU SOMETHING NOTE_C4 262
+LET ME TELL YOU SOMETHING NOTE_CS4 277
+LET ME TELL YOU SOMETHING NOTE_D4 294
+LET ME TELL YOU SOMETHING NOTE_DS4 311
+LET ME TELL YOU SOMETHING NOTE_E4 330
+LET ME TELL YOU SOMETHING NOTE_F4 349
+LET ME TELL YOU SOMETHING NOTE_FS4 370
+LET ME TELL YOU SOMETHING NOTE_G4 392
+LET ME TELL YOU SOMETHING NOTE_GS4 415
+LET ME TELL YOU SOMETHING NOTE_A4 440
+LET ME TELL YOU SOMETHING NOTE_AS4 466
+LET ME TELL YOU SOMETHING NOTE_B4 494
+
+TALK TO YOURSELF "Octave 5"
+LET ME TELL YOU SOMETHING NOTE_C5 523
+LET ME TELL YOU SOMETHING NOTE_CS5 554
+LET ME TELL YOU SOMETHING NOTE_D5 587
+LET ME TELL YOU SOMETHING NOTE_DS5 622
+LET ME TELL YOU SOMETHING NOTE_E5 659
+LET ME TELL YOU SOMETHING NOTE_F5 698
+LET ME TELL YOU SOMETHING NOTE_FS5 740
+LET ME TELL YOU SOMETHING NOTE_G5 784
+LET ME TELL YOU SOMETHING NOTE_GS5 831
+LET ME TELL YOU SOMETHING NOTE_A5 880
+LET ME TELL YOU SOMETHING NOTE_AS5 932
+LET ME TELL YOU SOMETHING NOTE_B5 988
+
+TALK TO YOURSELF "Octave 6"
+LET ME TELL YOU SOMETHING NOTE_C6 1047
+LET ME TELL YOU SOMETHING NOTE_D6 1175
+LET ME TELL YOU SOMETHING NOTE_E6 1319
+LET ME TELL YOU SOMETHING NOTE_F6 1397
+LET ME TELL YOU SOMETHING NOTE_G6 1568
+LET ME TELL YOU SOMETHING NOTE_A6 1760
+
+TALK TO YOURSELF "Special values"
+LET ME TELL YOU SOMETHING NOTE_REST 0
+LET ME TELL YOU SOMETHING NOTE_END 0xFFFF
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  External assembly functions (from multiboot.asm)"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "speaker_on() - Enable the PC speaker"
+TALK TO YOURSELF "speaker_off() - Disable the PC speaker"
+TALK TO YOURSELF "speaker_set_frequency(freq) - Set speaker frequency in Hz"
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: playNote - Play a single note"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY playNote
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE frequency
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE durationMs
+
+TALK TO YOURSELF "Check for rest (silence)"
+BECAUSE I'M GOING TO SAY PLEASE frequency
+    HEY CHRISTMAS TREE isRest
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isRest
+    HERE IS MY INVITATION frequency
+    YOU ARE NOT YOU YOU ARE ME 0
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isRest
+        DO IT NOW speaker_off
+        DO IT NOW sleepMs durationMs
+        I'LL BE BACK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "Set frequency and turn on speaker"
+DO IT NOW speaker_set_frequency frequency
+DO IT NOW speaker_on
+
+TALK TO YOURSELF "Wait for duration"
+DO IT NOW sleepMs durationMs
+
+TALK TO YOURSELF "Turn off speaker"
+DO IT NOW speaker_off
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: playBeep - Play a quick beep"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY playBeep
+
+DO IT NOW playNote NOTE_A4 50
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: playError - Play error sound"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY playError
+
+DO IT NOW playNote NOTE_C4 100
+DO IT NOW playNote NOTE_C3 200
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: playSuccess - Play success sound"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY playSuccess
+
+DO IT NOW playNote NOTE_C5 80
+DO IT NOW playNote NOTE_E5 80
+DO IT NOW playNote NOTE_G5 120
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: playGameOver - Play game over sound"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY playGameOver
+
+DO IT NOW playNote NOTE_G4 150
+DO IT NOW playNote NOTE_E4 150
+DO IT NOW playNote NOTE_C4 150
+DO IT NOW playNote NOTE_C3 400
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: playMenuSelect - Play menu selection sound"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY playMenuSelect
+
+DO IT NOW playNote NOTE_E5 30
+DO IT NOW playNote NOTE_A5 50
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: playMenuMove - Play menu navigation sound"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY playMenuMove
+
+DO IT NOW playNote NOTE_C5 20
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  Arnold Theme Song Data"
+TALK TO YOURSELF "  'COME WITH ME IF YOU WANT TO LIVE' - Terminator Theme inspired"
+TALK TO YOURSELF "============================================================================"
+
+HEY CHRISTMAS TREE terminatorTheme
+LINE THEM UP
+THIS IS A SMALL WARRIOR
+HOW MANY 64
+PUT THEM IN LINE
+262 200 262 200 196 200 196 200 
+175 200 175 200 165 200 165 200 
+175 200 196 200 262 200 262 400 
+0 100 262 100 262 100 294 100 
+330 200 294 200 262 400 196 200 
+175 200 165 400 0 200 165 100 
+175 100 196 200 262 200 294 200 
+262 400 0 0 0xFFFF 0
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  Predator Theme Data"
+TALK TO YOURSELF "  'GET TO THE CHOPPER' - Jungle action theme"
+TALK TO YOURSELF "============================================================================"
+
+HEY CHRISTMAS TREE predatorTheme
+LINE THEM UP
+THIS IS A SMALL WARRIOR
+HOW MANY 48
+PUT THEM IN LINE
+165 150 196 150 247 150 262 300 
+0 50 262 100 247 100 196 100 
+165 300 0 100 330 150 392 150 
+494 150 523 300 0 50 523 100 
+494 100 392 100 330 300 0 100 
+165 200 247 200 330 200 392 400 
+0xFFFF 0
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  Boot Jingle - 'IT'S SHOWTIME'"
+TALK TO YOURSELF "============================================================================"
+
+HEY CHRISTMAS TREE bootJingle
+LINE THEM UP
+THIS IS A SMALL WARRIOR
+HOW MANY 20
+PUT THEM IN LINE
+330 80 392 80 494 80 659 120 
+0 30 523 80 659 80 784 200 
+0 0 0xFFFF 0
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: playTheme - Play a theme from note/duration pairs"
+TALK TO YOURSELF "  Theme format: [freq1, dur1, freq2, dur2, ...] ending with 0xFFFF"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY playTheme
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE themePtr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE themeLen
+
+HEY CHRISTMAS TREE i
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE freq
+THIS IS A SMALL WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE dur
+THIS IS A SMALL WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continuePlay
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+STICK AROUND continuePlay
+    TALK TO YOURSELF "Get frequency"
+    GET TO THE CHOPPER freq
+    HERE IS MY INVITATION WHICH ONE themePtr i
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "Check for end marker"
+    HEY CHRISTMAS TREE isEnd
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isEnd
+    HERE IS MY INVITATION freq
+    YOU ARE NOT YOU YOU ARE ME 0xFFFF
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isEnd
+        GET TO THE CHOPPER continuePlay
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    BULLSHIT
+        TALK TO YOURSELF "Get duration"
+        GET TO THE CHOPPER i
+        HERE IS MY INVITATION i
+        GET UP 1
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER dur
+        HERE IS MY INVITATION WHICH ONE themePtr i
+        ENOUGH TALK
+        
+        TALK TO YOURSELF "Play the note"
+        DO IT NOW playNote freq dur
+        
+        TALK TO YOURSELF "Move to next note pair"
+        GET TO THE CHOPPER i
+        HERE IS MY INVITATION i
+        GET UP 1
+        ENOUGH TALK
+        
+        TALK TO YOURSELF "Check bounds"
+        HEY CHRISTMAS TREE atEnd
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER atEnd
+        HERE IS MY INVITATION i
+        YOU'RE AT LEAST AS BIG AS themeLen
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE atEnd
+            GET TO THE CHOPPER continuePlay
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: playBootJingle - Play the boot sequence jingle"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY playBootJingle
+
+DO IT NOW playTheme bootJingle 20
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: playTerminatorTheme - Play Terminator inspired theme"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY playTerminatorTheme
+
+DO IT NOW playTheme terminatorTheme 64
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: playPredatorTheme - Play Predator inspired theme"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY playPredatorTheme
+
+DO IT NOW playTheme predatorTheme 48
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  Game Sound Effects"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Snake game - eat food"
+LISTEN TO ME VERY CAREFULLY playSfxEat
+DO IT NOW playNote NOTE_E5 30
+DO IT NOW playNote NOTE_G5 30
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Pong - ball hit paddle"
+LISTEN TO ME VERY CAREFULLY playSfxPaddleHit
+DO IT NOW playNote NOTE_C5 20
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Pong - ball hit wall"
+LISTEN TO ME VERY CAREFULLY playSfxWallHit
+DO IT NOW playNote NOTE_G4 20
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Breakout - brick break"
+LISTEN TO ME VERY CAREFULLY playSfxBrickBreak
+DO IT NOW playNote NOTE_A5 30
+DO IT NOW playNote NOTE_C6 30
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Score point"
+LISTEN TO ME VERY CAREFULLY playSfxScore
+DO IT NOW playNote NOTE_G5 50
+DO IT NOW playNote NOTE_B5 50
+DO IT NOW playNote NOTE_D6 100
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Lose life"
+LISTEN TO ME VERY CAREFULLY playSfxLoseLife
+DO IT NOW playNote NOTE_E4 100
+DO IT NOW playNote NOTE_C4 100
+DO IT NOW playNote NOTE_A3 150
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Level complete"
+LISTEN TO ME VERY CAREFULLY playSfxLevelComplete
+DO IT NOW playNote NOTE_C5 100
+DO IT NOW playNote NOTE_E5 100
+DO IT NOW playNote NOTE_G5 100
+DO IT NOW playNote NOTE_C6 200
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Explosion (for Skynet Defense)"
+LISTEN TO ME VERY CAREFULLY playSfxExplosion
+DO IT NOW playNote NOTE_C3 50
+DO IT NOW playNote NOTE_E3 50
+DO IT NOW playNote NOTE_G3 50
+DO IT NOW playNote NOTE_C3 100
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Chopper (for Get to the Chopper)"
+LISTEN TO ME VERY CAREFULLY playSfxChopper
+DO IT NOW playNote NOTE_E4 30
+DO IT NOW playNote NOTE_G4 30
+DO IT NOW playNote NOTE_B4 30
+DO IT NOW playNote NOTE_E4 30
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  End of PC Speaker Module"
+TALK TO YOURSELF "============================================================================"

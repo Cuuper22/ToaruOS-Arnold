@@ -1,0 +1,640 @@
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  MOUSE MODULE - 'THE MOUSE KNOWS ALL'"
+TALK TO YOURSELF "  PS/2 Mouse driver for GUI navigation"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Mouse button constants"
+LET ME TELL YOU SOMETHING MOUSE_LEFT 0x01
+LET ME TELL YOU SOMETHING MOUSE_RIGHT 0x02
+LET ME TELL YOU SOMETHING MOUSE_MIDDLE 0x04
+
+TALK TO YOURSELF "Screen bounds"
+LET ME TELL YOU SOMETHING SCREEN_WIDTH 1024
+LET ME TELL YOU SOMETHING SCREEN_HEIGHT 768
+
+TALK TO YOURSELF "Cursor size"
+LET ME TELL YOU SOMETHING CURSOR_WIDTH 12
+LET ME TELL YOU SOMETHING CURSOR_HEIGHT 19
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  External assembly functions (from multiboot.asm)"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "get_mouse_x() - Get mouse X position"
+TALK TO YOURSELF "get_mouse_y() - Get mouse Y position"  
+TALK TO YOURSELF "get_mouse_buttons() - Get mouse button state"
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  Previous mouse state for click detection"
+TALK TO YOURSELF "============================================================================"
+
+HEY CHRISTMAS TREE prevMouseButtons
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE mouseClicked
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE mouseClickX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE mouseClickY
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  Mouse Cursor Bitmap (12x19 arrow cursor)"
+TALK TO YOURSELF "============================================================================"
+
+HEY CHRISTMAS TREE cursorBitmap
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 228
+PUT THEM IN LINE
+TALK TO YOURSELF "Row 0"
+0xFF 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+TALK TO YOURSELF "Row 1"
+0xFF 0xFF 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+TALK TO YOURSELF "Row 2"
+0xFF 0xBB 0xFF 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+TALK TO YOURSELF "Row 3"
+0xFF 0xBB 0xBB 0xFF 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+TALK TO YOURSELF "Row 4"
+0xFF 0xBB 0xBB 0xBB 0xFF 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+TALK TO YOURSELF "Row 5"
+0xFF 0xBB 0xBB 0xBB 0xBB 0xFF 0x00 0x00 0x00 0x00 0x00 0x00
+TALK TO YOURSELF "Row 6"
+0xFF 0xBB 0xBB 0xBB 0xBB 0xBB 0xFF 0x00 0x00 0x00 0x00 0x00
+TALK TO YOURSELF "Row 7"
+0xFF 0xBB 0xBB 0xBB 0xBB 0xBB 0xBB 0xFF 0x00 0x00 0x00 0x00
+TALK TO YOURSELF "Row 8"
+0xFF 0xBB 0xBB 0xBB 0xBB 0xBB 0xBB 0xBB 0xFF 0x00 0x00 0x00
+TALK TO YOURSELF "Row 9"
+0xFF 0xBB 0xBB 0xBB 0xBB 0xBB 0xBB 0xBB 0xBB 0xFF 0x00 0x00
+TALK TO YOURSELF "Row 10"
+0xFF 0xBB 0xBB 0xBB 0xBB 0xBB 0xBB 0xBB 0xBB 0xBB 0xFF 0x00
+TALK TO YOURSELF "Row 11"
+0xFF 0xBB 0xBB 0xBB 0xBB 0xBB 0xBB 0xFF 0xFF 0xFF 0xFF 0xFF
+TALK TO YOURSELF "Row 12"
+0xFF 0xBB 0xBB 0xBB 0xFF 0xBB 0xBB 0xFF 0x00 0x00 0x00 0x00
+TALK TO YOURSELF "Row 13"
+0xFF 0xBB 0xBB 0xFF 0x00 0xFF 0xBB 0xBB 0xFF 0x00 0x00 0x00
+TALK TO YOURSELF "Row 14"
+0xFF 0xBB 0xFF 0x00 0x00 0xFF 0xBB 0xBB 0xFF 0x00 0x00 0x00
+TALK TO YOURSELF "Row 15"
+0xFF 0xFF 0x00 0x00 0x00 0x00 0xFF 0xBB 0xBB 0xFF 0x00 0x00
+TALK TO YOURSELF "Row 16"
+0xFF 0x00 0x00 0x00 0x00 0x00 0xFF 0xBB 0xBB 0xFF 0x00 0x00
+TALK TO YOURSELF "Row 17"
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0xFF 0xBB 0xBB 0xFF 0x00
+TALK TO YOURSELF "Row 18"
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0xFF 0xFF 0xFF 0xFF 0x00
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: getMouseX - Get current mouse X position"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY getMouseX
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE x
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS x
+DO IT NOW get_mouse_x
+
+I'LL BE BACK x
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: getMouseY - Get current mouse Y position"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY getMouseY
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE y
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS y
+DO IT NOW get_mouse_y
+
+I'LL BE BACK y
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: getMouseButtons - Get current mouse button state"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY getMouseButtons
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE buttons
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS buttons
+DO IT NOW get_mouse_buttons
+
+I'LL BE BACK buttons
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: isLeftButtonDown - Check if left button is pressed"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY isLeftButtonDown
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE buttons
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS buttons
+DO IT NOW get_mouse_buttons
+
+GET TO THE CHOPPER result
+HERE IS MY INVITATION buttons
+CRUSH THEM TOGETHER MOUSE_LEFT
+ENOUGH TALK
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: isRightButtonDown - Check if right button is pressed"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY isRightButtonDown
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE buttons
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS buttons
+DO IT NOW get_mouse_buttons
+
+GET TO THE CHOPPER result
+HERE IS MY INVITATION buttons
+CRUSH THEM TOGETHER MOUSE_RIGHT
+ENOUGH TALK
+
+HEY CHRISTMAS TREE isPressed
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET TO THE CHOPPER isPressed
+HERE IS MY INVITATION result
+LET OFF SOME STEAM BENNET 0
+ENOUGH TALK
+
+I'LL BE BACK isPressed
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: updateMouseState - Update click detection state"
+TALK TO YOURSELF "  Call this once per frame"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY updateMouseState
+
+HEY CHRISTMAS TREE currentButtons
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS currentButtons
+DO IT NOW get_mouse_buttons
+
+TALK TO YOURSELF "Detect left click (button just pressed)"
+HEY CHRISTMAS TREE wasNotPressed
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET TO THE CHOPPER wasNotPressed
+HERE IS MY INVITATION prevMouseButtons
+CRUSH THEM TOGETHER MOUSE_LEFT
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+
+HEY CHRISTMAS TREE isNowPressed
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET TO THE CHOPPER isNowPressed
+HERE IS MY INVITATION currentButtons
+CRUSH THEM TOGETHER MOUSE_LEFT
+LET OFF SOME STEAM BENNET 0
+ENOUGH TALK
+
+TALK TO YOURSELF "Click detected if was not pressed and now is pressed"
+GET TO THE CHOPPER mouseClicked
+HERE IS MY INVITATION wasNotPressed
+KNOCK KNOCK isNowPressed
+ENOUGH TALK
+
+TALK TO YOURSELF "Record click position"
+BECAUSE I'M GOING TO SAY PLEASE mouseClicked
+    GET YOUR ASS TO MARS mouseClickX
+    DO IT NOW get_mouse_x
+    
+    GET YOUR ASS TO MARS mouseClickY
+    DO IT NOW get_mouse_y
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "Save current state as previous"
+GET TO THE CHOPPER prevMouseButtons
+HERE IS MY INVITATION currentButtons
+ENOUGH TALK
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: wasClicked - Check if a click occurred this frame"
+TALK TO YOURSELF "  Returns 1 if click detected, 0 otherwise"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY wasClicked
+GIVE THESE PEOPLE AIR
+
+I'LL BE BACK mouseClicked
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: getClickX - Get X position of last click"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY getClickX
+GIVE THESE PEOPLE AIR
+
+I'LL BE BACK mouseClickX
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: getClickY - Get Y position of last click"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY getClickY
+GIVE THESE PEOPLE AIR
+
+I'LL BE BACK mouseClickY
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: isPointInRect - Check if point is inside rectangle"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY isPointInRect
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE px
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE py
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rx
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ry
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rw
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rh
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE rx2
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE ry2
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Calculate right and bottom edges"
+GET TO THE CHOPPER rx2
+HERE IS MY INVITATION rx
+GET UP rw
+ENOUGH TALK
+
+GET TO THE CHOPPER ry2
+HERE IS MY INVITATION ry
+GET UP rh
+ENOUGH TALK
+
+TALK TO YOURSELF "Check if point is inside"
+HEY CHRISTMAS TREE inX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE inY
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "px >= rx && px < rx2"
+HEY CHRISTMAS TREE xGe
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER xGe
+HERE IS MY INVITATION px
+YOU'RE AT LEAST AS BIG AS rx
+ENOUGH TALK
+
+HEY CHRISTMAS TREE xLt
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER xLt
+HERE IS MY INVITATION px
+YOU'RE NOT BIG ENOUGH rx2
+ENOUGH TALK
+
+GET TO THE CHOPPER inX
+HERE IS MY INVITATION xGe
+KNOCK KNOCK xLt
+ENOUGH TALK
+
+TALK TO YOURSELF "py >= ry && py < ry2"
+HEY CHRISTMAS TREE yGe
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER yGe
+HERE IS MY INVITATION py
+YOU'RE AT LEAST AS BIG AS ry
+ENOUGH TALK
+
+HEY CHRISTMAS TREE yLt
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER yLt
+HERE IS MY INVITATION py
+YOU'RE NOT BIG ENOUGH ry2
+ENOUGH TALK
+
+GET TO THE CHOPPER inY
+HERE IS MY INVITATION yGe
+KNOCK KNOCK yLt
+ENOUGH TALK
+
+TALK TO YOURSELF "Result = inX && inY"
+GET TO THE CHOPPER result
+HERE IS MY INVITATION inX
+KNOCK KNOCK inY
+ENOUGH TALK
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: isClickInRect - Check if click was in rectangle"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY isClickInRect
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rx
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ry
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rw
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rh
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "First check if click occurred"
+BECAUSE I'M GOING TO SAY PLEASE mouseClicked
+    GET YOUR ASS TO MARS result
+    DO IT NOW isPointInRect mouseClickX mouseClickY rx ry rw rh
+YOU HAVE NO RESPECT FOR LOGIC
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: isHoveringRect - Check if mouse is over rectangle"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY isHoveringRect
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rx
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ry
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rw
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE rh
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE mx
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE my
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS mx
+DO IT NOW get_mouse_x
+
+GET YOUR ASS TO MARS my
+DO IT NOW get_mouse_y
+
+GET YOUR ASS TO MARS result
+DO IT NOW isPointInRect mx my rx ry rw rh
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawCursor - Draw mouse cursor at current position"
+TALK TO YOURSELF "  Note: This should be called last in the render loop"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawCursor
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+HEY CHRISTMAS TREE mx
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE my
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE row
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE col
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE bitmapIndex
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE pixel
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE px
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE py
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE color
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueRow
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE continueCol
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+GET YOUR ASS TO MARS mx
+DO IT NOW get_mouse_x
+
+GET YOUR ASS TO MARS my
+DO IT NOW get_mouse_y
+
+TALK TO YOURSELF "Draw cursor row by row"
+GET TO THE CHOPPER row
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+GET TO THE CHOPPER continueRow
+HERE IS MY INVITATION 1
+ENOUGH TALK
+
+STICK AROUND continueRow
+    GET TO THE CHOPPER col
+    HERE IS MY INVITATION 0
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueCol
+    HERE IS MY INVITATION 1
+    ENOUGH TALK
+    
+    STICK AROUND continueCol
+        TALK TO YOURSELF "Get bitmap pixel"
+        GET TO THE CHOPPER bitmapIndex
+        HERE IS MY INVITATION row
+        YOU'RE FIRED CURSOR_WIDTH
+        GET UP col
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER pixel
+        HERE IS MY INVITATION WHICH ONE cursorBitmap bitmapIndex
+        ENOUGH TALK
+        
+        TALK TO YOURSELF "Only draw non-transparent pixels"
+        BECAUSE I'M GOING TO SAY PLEASE pixel
+            GET TO THE CHOPPER px
+            HERE IS MY INVITATION mx
+            GET UP col
+            ENOUGH TALK
+            
+            GET TO THE CHOPPER py
+            HERE IS MY INVITATION my
+            GET UP row
+            ENOUGH TALK
+            
+            TALK TO YOURSELF "Check screen bounds"
+            HEY CHRISTMAS TREE inBounds
+            THIS IS A WARRIOR
+            YOU SET US UP 1
+            
+            HEY CHRISTMAS TREE xOk
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER xOk
+            HERE IS MY INVITATION px
+            YOU'RE NOT BIG ENOUGH SCREEN_WIDTH
+            ENOUGH TALK
+            
+            HEY CHRISTMAS TREE yOk
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER yOk
+            HERE IS MY INVITATION py
+            YOU'RE NOT BIG ENOUGH SCREEN_HEIGHT
+            ENOUGH TALK
+            
+            GET TO THE CHOPPER inBounds
+            HERE IS MY INVITATION xOk
+            KNOCK KNOCK yOk
+            ENOUGH TALK
+            
+            BECAUSE I'M GOING TO SAY PLEASE inBounds
+                TALK TO YOURSELF "Convert pixel value to color"
+                HEY CHRISTMAS TREE isBlack
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER isBlack
+                HERE IS MY INVITATION pixel
+                YOU ARE NOT YOU YOU ARE ME 0xFF
+                ENOUGH TALK
+                
+                BECAUSE I'M GOING TO SAY PLEASE isBlack
+                    GET TO THE CHOPPER color
+                    HERE IS MY INVITATION 0x00000000
+                    ENOUGH TALK
+                BULLSHIT
+                    GET TO THE CHOPPER color
+                    HERE IS MY INVITATION 0x00FFFFFF
+                    ENOUGH TALK
+                YOU HAVE NO RESPECT FOR LOGIC
+                
+                DO IT NOW putPixel fbAddr fbPitch px py color
+            YOU HAVE NO RESPECT FOR LOGIC
+        YOU HAVE NO RESPECT FOR LOGIC
+        
+        GET TO THE CHOPPER col
+        HERE IS MY INVITATION col
+        GET UP 1
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER continueCol
+        HERE IS MY INVITATION col
+        YOU'RE NOT BIG ENOUGH CURSOR_WIDTH
+        ENOUGH TALK
+    CHILL
+    
+    GET TO THE CHOPPER row
+    HERE IS MY INVITATION row
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueRow
+    HERE IS MY INVITATION row
+    YOU'RE NOT BIG ENOUGH CURSOR_HEIGHT
+    ENOUGH TALK
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  End of Mouse Module"
+TALK TO YOURSELF "============================================================================"

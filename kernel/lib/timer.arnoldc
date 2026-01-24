@@ -1,0 +1,226 @@
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  TIMER MODULE - 'TIME WAITS FOR NO ONE'"
+TALK TO YOURSELF "  PIT-based timer system running at 100Hz"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Timer tick rate - 100 ticks per second"
+LET ME TELL YOU SOMETHING TIMER_TICKS_PER_SECOND 100
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  External assembly functions"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "get_timer_ticks() - returns current tick count"
+TALK TO YOURSELF "sleep_ticks(ticks) - sleeps for specified ticks"
+TALK TO YOURSELF "These are implemented in multiboot.asm"
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: getTimerTicks - Get current timer ticks"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY getTimerTicks
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE ticks
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS ticks
+DO IT NOW get_timer_ticks
+
+I'LL BE BACK ticks
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: sleepTicks - Sleep for specified timer ticks"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY sleepTicks
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ticks
+
+DO IT NOW sleep_ticks ticks
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: sleepMs - Sleep for specified milliseconds"
+TALK TO YOURSELF "  Converts ms to ticks: ticks = ms * 100 / 1000 = ms / 10"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY sleepMs
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE milliseconds
+
+HEY CHRISTMAS TREE ticks
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Convert ms to ticks (100 ticks/sec, so ms/10)"
+GET TO THE CHOPPER ticks
+HERE IS MY INVITATION milliseconds
+HE HAD TO SPLIT 10
+ENOUGH TALK
+
+TALK TO YOURSELF "Ensure at least 1 tick"
+BECAUSE I'M GOING TO SAY PLEASE ticks
+    HEY CHRISTMAS TREE isZero
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isZero
+    HERE IS MY INVITATION ticks
+    YOU ARE NOT YOU YOU ARE ME 0
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isZero
+        GET TO THE CHOPPER ticks
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+DO IT NOW sleep_ticks ticks
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: getUptime - Get uptime in seconds"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY getUptime
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE ticks
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE seconds
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS ticks
+DO IT NOW get_timer_ticks
+
+GET TO THE CHOPPER seconds
+HERE IS MY INVITATION ticks
+HE HAD TO SPLIT TIMER_TICKS_PER_SECOND
+ENOUGH TALK
+
+I'LL BE BACK seconds
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: getUptimeMs - Get uptime in milliseconds"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY getUptimeMs
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE ticks
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE ms
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS ticks
+DO IT NOW get_timer_ticks
+
+TALK TO YOURSELF "ms = ticks * 10 (since 100 ticks/sec)"
+GET TO THE CHOPPER ms
+HERE IS MY INVITATION ticks
+YOU'RE FIRED 10
+ENOUGH TALK
+
+I'LL BE BACK ms
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: timerElapsed - Check if time has elapsed since start"
+TALK TO YOURSELF "  Returns 1 if elapsed, 0 if not"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY timerElapsed
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE startTicks
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE durationTicks
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE currentTicks
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE elapsed
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+GET YOUR ASS TO MARS currentTicks
+DO IT NOW get_timer_ticks
+
+GET TO THE CHOPPER elapsed
+HERE IS MY INVITATION currentTicks
+GET DOWN startTicks
+ENOUGH TALK
+
+TALK TO YOURSELF "Check if elapsed >= duration"
+GET TO THE CHOPPER result
+HERE IS MY INVITATION elapsed
+YOU'RE AT LEAST AS BIG AS durationTicks
+ENOUGH TALK
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: timerElapsedMs - Check if milliseconds have elapsed"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY timerElapsedMs
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE startTicks
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE durationMs
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE durationTicks
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE result
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Convert ms to ticks"
+GET TO THE CHOPPER durationTicks
+HERE IS MY INVITATION durationMs
+HE HAD TO SPLIT 10
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE durationTicks
+    HEY CHRISTMAS TREE isZero
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isZero
+    HERE IS MY INVITATION durationTicks
+    YOU ARE NOT YOU YOU ARE ME 0
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isZero
+        GET TO THE CHOPPER durationTicks
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+GET YOUR ASS TO MARS result
+DO IT NOW timerElapsed startTicks durationTicks
+
+I'LL BE BACK result
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  End of Timer Module"
+TALK TO YOURSELF "============================================================================"
