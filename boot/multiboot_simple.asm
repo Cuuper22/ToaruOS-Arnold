@@ -464,6 +464,61 @@ speaker_off:
     out SPEAKER_PORT, al
     ret
 
+
+; ============================================================================
+; RTC (Real-Time Clock) FUNCTIONS
+; ============================================================================
+global read_rtc_hours
+global read_rtc_minutes
+global read_rtc_seconds
+global halt_system
+
+; Read RTC hours (BCD) from CMOS register 0x04
+read_rtc_hours:
+    mov al, 0x04
+    out 0x70, al
+    in al, 0x71
+    ; Convert BCD to binary: high_nibble*10 + low_nibble
+    movzx eax, al
+    mov edx, eax
+    shr edx, 4          ; high nibble
+    and eax, 0x0F       ; low nibble
+    imul edx, 10
+    add eax, edx
+    ret
+
+; Read RTC minutes (BCD) from CMOS register 0x02
+read_rtc_minutes:
+    mov al, 0x02
+    out 0x70, al
+    in al, 0x71
+    movzx eax, al
+    mov edx, eax
+    shr edx, 4
+    and eax, 0x0F
+    imul edx, 10
+    add eax, edx
+    ret
+
+; Read RTC seconds (BCD) from CMOS register 0x00
+read_rtc_seconds:
+    mov al, 0x00
+    out 0x70, al
+    in al, 0x71
+    movzx eax, al
+    mov edx, eax
+    shr edx, 4
+    and eax, 0x0F
+    imul edx, 10
+    add eax, edx
+    ret
+
+; Halt the system (cli + hlt loop)
+halt_system:
+    cli
+.halt_loop:
+    hlt
+    jmp .halt_loop
 ; ============================================================================
 ; "HASTA LA VISTA, BABY"
 ; ============================================================================
