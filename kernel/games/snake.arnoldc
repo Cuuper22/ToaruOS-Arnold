@@ -364,11 +364,20 @@ BECAUSE I'M GOING TO SAY PLEASE ateFood
     GET UP 10
     ENOUGH TALK
     
-    GET TO THE CHOPPER snakeLen
+    HEY CHRISTMAS TREE canGrow
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER canGrow
     HERE IS MY INVITATION snakeLen
-    GET UP 1
+    YOU'RE NOT BIG ENOUGH 399
     ENOUGH TALK
-    
+    BECAUSE I'M GOING TO SAY PLEASE canGrow
+        GET TO THE CHOPPER snakeLen
+        HERE IS MY INVITATION snakeLen
+        GET UP 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+
     DO IT NOW playSfxEat
     DO IT NOW spawnFood
     
@@ -741,7 +750,7 @@ BECAUSE I'M GOING TO SAY PLEASE shouldUpdate
     ENOUGH TALK
     
     TALK TO YOURSELF "Redraw game"
-    DO IT NOW clearScreen fbAddr fbPitch 0x00000020
+    DO IT NOW clearScreen fbAddr fbPitch 1024 768 0x00000020
     DO IT NOW drawSnakeGame fbAddr fbPitch
 YOU HAVE NO RESPECT FOR LOGIC
 
