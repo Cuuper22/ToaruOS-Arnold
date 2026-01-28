@@ -56,6 +56,8 @@ LET ME TELL YOU SOMETHING MODE_MEMORY 9
 LET ME TELL YOU SOMETHING MODE_TICTACTOE 10
 LET ME TELL YOU SOMETHING MODE_CHOPPER 11
 LET ME TELL YOU SOMETHING MODE_SKYNET_TD 12
+LET ME TELL YOU SOMETHING MODE_SETTINGS 13
+LET ME TELL YOU SOMETHING MODE_CALC 14
 
 TALK TO YOURSELF "Timer tick rate"
 LET ME TELL YOU SOMETHING TIMER_TICKS_PER_SECOND 100
@@ -468,6 +470,27 @@ HOW MANY 24
 PUT THEM IN LINE
 0x5B 0x38 0x5D 0x20 0x54 0x45 0x52 0x4D 0x49 0x4E 0x41 0x54 0x4F 0x52 0x20 0x56
 0x49 0x53 0x49 0x4F 0x4E 0x00 0x00 0x00
+
+HEY CHRISTMAS TREE menuOpt9
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x5B 0x39 0x5D 0x20 0x53 0x45 0x54 0x54 0x49 0x4E 0x47 0x53 0x00 0x00 0x00 0x00
+
+HEY CHRISTMAS TREE menuOpt10
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x5B 0x41 0x5D 0x20 0x50 0x41 0x49 0x4E 0x54 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+
+HEY CHRISTMAS TREE menuOpt11
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x5B 0x42 0x5D 0x20 0x43 0x41 0x4C 0x43 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
 
 HEY CHRISTMAS TREE menuEsc
 LINE THEM UP
@@ -1722,7 +1745,7 @@ DO IT NOW fillRect fbAddr fbPitch 150 494 500 2 COLOR_WIN95_SHADOW
 DO IT NOW fillRect fbAddr fbPitch 648 46 2 450 COLOR_WIN95_SHADOW
 DO IT NOW fillRect fbAddr fbPitch 154 50 492 20 COLOR_WIN95_BLUE
 DO IT NOW drawStringAt fbAddr fbPitch 170 54 menuTitle 19 COLOR_WHITE COLOR_WIN95_BLUE
-DO IT NOW fillRect fbAddr fbPitch 162 78 476 404 COLOR_WIN95_GRAY
+DO IT NOW fillRect fbAddr fbPitch 162 78 476 490 COLOR_WIN95_GRAY
 DO IT NOW drawStringAt fbAddr fbPitch 330 85 menuSubtitle 11 COLOR_WIN95_BLUE COLOR_WIN95_GRAY
 DO IT NOW fillRect fbAddr fbPitch 200 115 250 26 COLOR_WIN95_GRAY
 DO IT NOW fillRect fbAddr fbPitch 200 115 250 2 COLOR_WHITE
@@ -1744,7 +1767,13 @@ DO IT NOW fillRect fbAddr fbPitch 200 295 250 26 COLOR_WIN95_GRAY
 DO IT NOW drawStringAt fbAddr fbPitch 240 303 menuOpt7 10 COLOR_BLACK COLOR_WIN95_GRAY
 DO IT NOW fillRect fbAddr fbPitch 200 325 250 26 COLOR_WIN95_GRAY
 DO IT NOW drawStringAt fbAddr fbPitch 240 333 menuOpt8 21 COLOR_ARNOLD_RED COLOR_WIN95_GRAY
-DO IT NOW drawStringAt fbAddr fbPitch 250 365 menuEsc 22 COLOR_WIN95_DARK COLOR_WIN95_GRAY
+DO IT NOW fillRect fbAddr fbPitch 200 355 250 26 COLOR_WIN95_GRAY
+DO IT NOW drawStringAt fbAddr fbPitch 240 363 menuOpt9 12 COLOR_BLACK COLOR_WIN95_GRAY
+DO IT NOW fillRect fbAddr fbPitch 200 385 250 26 COLOR_WIN95_GRAY
+DO IT NOW drawStringAt fbAddr fbPitch 240 393 menuOpt10 9 COLOR_BLACK COLOR_WIN95_GRAY
+DO IT NOW fillRect fbAddr fbPitch 200 415 250 26 COLOR_WIN95_GRAY
+DO IT NOW drawStringAt fbAddr fbPitch 240 423 menuOpt11 8 COLOR_BLACK COLOR_WIN95_GRAY
+DO IT NOW drawStringAt fbAddr fbPitch 250 455 menuEsc 22 COLOR_WIN95_DARK COLOR_WIN95_GRAY
 DO IT NOW fillRect fbAddr fbPitch 0 740 1024 28 COLOR_WIN95_GRAY
 DO IT NOW fillRect fbAddr fbPitch 4 744 60 20 COLOR_WIN95_GRAY
 DO IT NOW drawStringAt fbAddr fbPitch 12 750 menuTitle 5 COLOR_BLACK COLOR_WIN95_GRAY
@@ -2134,6 +2163,30 @@ HEY CHRISTMAS TREE paintColorIndex
 THIS IS A WARRIOR
 YOU SET US UP 0
 
+HEY CHRISTMAS TREE pendingRedraw
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE settingsSelected
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE soundEnabled
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE gameSpeedSetting
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE calcDisplay
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE calcOperand
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE calcOperator
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE calcNewInput
+YOU SET US UP 1
+
 HEY CHRISTMAS TREE paintBrushSize
 THIS IS A WARRIOR
 YOU SET US UP 4
@@ -2202,7 +2255,7 @@ DO IT NOW drawChar fbAddress fbPitch 630 54 0x58 COLOR_BLACK COLOR_WIN95_GRAY
 TALK TO YOURSELF "=== MENU CONTENT AREA ==="
 TALK TO YOURSELF "Content area (slightly recessed)"
 DO IT NOW fillRect fbAddress fbPitch 160 76 480 408 COLOR_WIN95_DARK
-DO IT NOW fillRect fbAddress fbPitch 162 78 476 404 COLOR_WIN95_GRAY
+DO IT NOW fillRect fbAddress fbPitch 162 78 476 490 COLOR_WIN95_GRAY
 
 TALK TO YOURSELF "Subtitle - centered"
 DO IT NOW drawStringAt fbAddress fbPitch 330 85 menuSubtitle 11 COLOR_WIN95_BLUE COLOR_WIN95_GRAY
@@ -2308,8 +2361,42 @@ DO IT NOW fillRect fbAddress fbPitch 222 335 4 4 COLOR_BLACK
 DO IT NOW fillRect fbAddress fbPitch 216 341 8 2 COLOR_BLACK
 DO IT NOW drawStringAt fbAddress fbPitch 240 333 menuOpt8 21 COLOR_ARNOLD_RED COLOR_WIN95_GRAY
 
+TALK TO YOURSELF "Option 9: SETTINGS - gear icon"
+DO IT NOW fillRect fbAddress fbPitch 200 355 250 26 COLOR_WIN95_GRAY
+DO IT NOW fillRect fbAddress fbPitch 200 355 250 2 COLOR_WHITE
+DO IT NOW fillRect fbAddress fbPitch 200 355 2 26 COLOR_WHITE
+DO IT NOW fillRect fbAddress fbPitch 200 379 250 2 COLOR_WIN95_SHADOW
+DO IT NOW fillRect fbAddress fbPitch 448 355 2 26 COLOR_WIN95_SHADOW
+DO IT NOW fillRect fbAddress fbPitch 212 361 14 14 COLOR_WIN95_DARK
+DO IT NOW fillRect fbAddress fbPitch 216 365 6 6 COLOR_WIN95_GRAY
+DO IT NOW drawStringAt fbAddress fbPitch 240 363 menuOpt9 12 COLOR_BLACK COLOR_WIN95_GRAY
+
+TALK TO YOURSELF "Option A: PAINT - palette icon"
+DO IT NOW fillRect fbAddress fbPitch 200 385 250 26 COLOR_WIN95_GRAY
+DO IT NOW fillRect fbAddress fbPitch 200 385 250 2 COLOR_WHITE
+DO IT NOW fillRect fbAddress fbPitch 200 385 2 26 COLOR_WHITE
+DO IT NOW fillRect fbAddress fbPitch 200 409 250 2 COLOR_WIN95_SHADOW
+DO IT NOW fillRect fbAddress fbPitch 448 385 2 26 COLOR_WIN95_SHADOW
+DO IT NOW fillRect fbAddress fbPitch 210 391 6 6 COLOR_RED
+DO IT NOW fillRect fbAddress fbPitch 218 391 6 6 COLOR_GREEN
+DO IT NOW fillRect fbAddress fbPitch 214 399 6 6 COLOR_BLUE
+DO IT NOW drawStringAt fbAddress fbPitch 240 393 menuOpt10 9 COLOR_BLACK COLOR_WIN95_GRAY
+
+TALK TO YOURSELF "Option B: CALC - calculator icon"
+DO IT NOW fillRect fbAddress fbPitch 200 415 250 26 COLOR_WIN95_GRAY
+DO IT NOW fillRect fbAddress fbPitch 200 415 250 2 COLOR_WHITE
+DO IT NOW fillRect fbAddress fbPitch 200 415 2 26 COLOR_WHITE
+DO IT NOW fillRect fbAddress fbPitch 200 439 250 2 COLOR_WIN95_SHADOW
+DO IT NOW fillRect fbAddress fbPitch 448 415 2 26 COLOR_WIN95_SHADOW
+DO IT NOW fillRect fbAddress fbPitch 210 421 16 14 COLOR_WIN95_DARK
+DO IT NOW fillRect fbAddress fbPitch 212 423 12 4 COLOR_GREEN
+DO IT NOW fillRect fbAddress fbPitch 212 429 3 3 COLOR_WHITE
+DO IT NOW fillRect fbAddress fbPitch 217 429 3 3 COLOR_WHITE
+DO IT NOW fillRect fbAddress fbPitch 222 429 3 3 COLOR_WHITE
+DO IT NOW drawStringAt fbAddress fbPitch 240 423 menuOpt11 8 COLOR_BLACK COLOR_WIN95_GRAY
+
 TALK TO YOURSELF "=== ESC INSTRUCTION AT BOTTOM ==="
-DO IT NOW drawStringAt fbAddress fbPitch 250 365 menuEsc 22 COLOR_WIN95_DARK COLOR_WIN95_GRAY
+DO IT NOW drawStringAt fbAddress fbPitch 250 455 menuEsc 22 COLOR_WIN95_DARK COLOR_WIN95_GRAY
 
 TALK TO YOURSELF "=== TASKBAR AT BOTTOM - CLASSIC WINDOWS 95 STYLE! ==="
 DO IT NOW fillRect fbAddress fbPitch 0 740 1024 28 COLOR_WIN95_GRAY
@@ -2358,6 +2445,22 @@ STICK AROUND @NO PROBLEMO
     GET TO THE CHOPPER modeAtFrameStart
     HERE IS MY INVITATION currentMode
     ENOUGH TALK
+
+    HEY CHRISTMAS TREE needsRedraw
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER needsRedraw
+    HERE IS MY INVITATION pendingRedraw
+    YOU ARE NOT YOU YOU ARE ME 1
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE needsRedraw
+        GET TO THE CHOPPER scancode
+        HERE IS MY INVITATION 99
+        ENOUGH TALK
+        GET TO THE CHOPPER pendingRedraw
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
 
     BECAUSE I'M GOING TO SAY PLEASE scancode
         HEY CHRISTMAS TREE isRelease
@@ -3062,7 +3165,771 @@ STICK AROUND @NO PROBLEMO
                     YOU HAVE NO RESPECT FOR LOGIC
                 YOU HAVE NO RESPECT FOR LOGIC
 
+
+
                 TALK TO YOURSELF "Check if we are in menu mode (use modeAtFrameStart to prevent fall-through)"
+
+                TALK TO YOURSELF "=== SETTINGS MODE INPUT ==="
+                HEY CHRISTMAS TREE isSettingsMode
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER isSettingsMode
+                HERE IS MY INVITATION currentMode
+                YOU ARE NOT YOU YOU ARE ME MODE_SETTINGS
+                ENOUGH TALK
+                BECAUSE I'M GOING TO SAY PLEASE isSettingsMode
+                    TALK TO YOURSELF "Settings: Up/Down, Enter toggle, ESC"
+                    HEY CHRISTMAS TREE isSettUp
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isSettUp
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 72
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isSettUp
+                        HEY CHRISTMAS TREE canisSettUp
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER canisSettUp
+                        HERE IS MY INVITATION settingsSelected
+                        LET OFF SOME STEAM BENNET 0
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE canisSettUp
+                            GET TO THE CHOPPER settingsSelected
+                            HERE IS MY INVITATION settingsSelected
+                            GET DOWN 1
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isSettDn
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isSettDn
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 80
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isSettDn
+                        HEY CHRISTMAS TREE canisSettDn
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER canisSettDn
+                        HERE IS MY INVITATION settingsSelected
+                        YOU'RE NOT BIG ENOUGH 2
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE canisSettDn
+                            GET TO THE CHOPPER settingsSelected
+                            HERE IS MY INVITATION settingsSelected
+                            GET UP 1
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isSettEnt
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isSettEnt
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 28
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isSettEnt
+                        HEY CHRISTMAS TREE isSSnd
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isSSnd
+                        HERE IS MY INVITATION settingsSelected
+                        YOU ARE NOT YOU YOU ARE ME 0
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isSSnd
+                            HEY CHRISTMAS TREE sndNow
+                            THIS IS A WARRIOR
+                            YOU SET US UP 0
+                            GET TO THE CHOPPER sndNow
+                            HERE IS MY INVITATION soundEnabled
+                            YOU ARE NOT YOU YOU ARE ME 1
+                            ENOUGH TALK
+                            BECAUSE I'M GOING TO SAY PLEASE sndNow
+                                GET TO THE CHOPPER soundEnabled
+                                HERE IS MY INVITATION 0
+                                ENOUGH TALK
+                            BULLSHIT
+                                GET TO THE CHOPPER soundEnabled
+                                HERE IS MY INVITATION 1
+                                ENOUGH TALK
+                            YOU HAVE NO RESPECT FOR LOGIC
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        HEY CHRISTMAS TREE isSSpd
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isSSpd
+                        HERE IS MY INVITATION settingsSelected
+                        YOU ARE NOT YOU YOU ARE ME 1
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isSSpd
+                            GET TO THE CHOPPER gameSpeedSetting
+                            HERE IS MY INVITATION gameSpeedSetting
+                            GET UP 1
+                            ENOUGH TALK
+                            HEY CHRISTMAS TREE sWrap
+                            THIS IS A WARRIOR
+                            YOU SET US UP 0
+                            GET TO THE CHOPPER sWrap
+                            HERE IS MY INVITATION gameSpeedSetting
+                            LET OFF SOME STEAM BENNET 2
+                            ENOUGH TALK
+                            BECAUSE I'M GOING TO SAY PLEASE sWrap
+                                GET TO THE CHOPPER gameSpeedSetting
+                                HERE IS MY INVITATION 0
+                                ENOUGH TALK
+                            YOU HAVE NO RESPECT FOR LOGIC
+                        YOU HAVE NO RESPECT FOR LOGIC
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isEscSet
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isEscSet
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 1
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isEscSet
+                        GET TO THE CHOPPER currentMode
+                        HERE IS MY INVITATION MODE_MENU
+                        ENOUGH TALK
+                        DO IT NOW redrawMenu fbAddress fbPitch
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE stillSettings
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER stillSettings
+                    HERE IS MY INVITATION currentMode
+                    YOU ARE NOT YOU YOU ARE ME MODE_SETTINGS
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE stillSettings
+                    DO IT NOW clearScreen fbAddress fbPitch fbWidth fbHeight COLOR_DARK_BLUE
+                    DO IT NOW drawStringAt fbAddress fbPitch 400 40 menuOpt9 12 COLOR_WHITE COLOR_DARK_BLUE
+                    HEY CHRISTMAS TREE sC0
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER sC0
+                    HERE IS MY INVITATION COLOR_WHITE
+                    ENOUGH TALK
+                    HEY CHRISTMAS TREE isHL0
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isHL0
+                    HERE IS MY INVITATION settingsSelected
+                    YOU ARE NOT YOU YOU ARE ME 0
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isHL0
+                        GET TO THE CHOPPER sC0
+                        HERE IS MY INVITATION COLOR_YELLOW
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE sC1
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER sC1
+                    HERE IS MY INVITATION COLOR_WHITE
+                    ENOUGH TALK
+                    HEY CHRISTMAS TREE isHL1
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isHL1
+                    HERE IS MY INVITATION settingsSelected
+                    YOU ARE NOT YOU YOU ARE ME 1
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isHL1
+                        GET TO THE CHOPPER sC1
+                        HERE IS MY INVITATION COLOR_YELLOW
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE sC2
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER sC2
+                    HERE IS MY INVITATION COLOR_WHITE
+                    ENOUGH TALK
+                    HEY CHRISTMAS TREE isHL2
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isHL2
+                    HERE IS MY INVITATION settingsSelected
+                    YOU ARE NOT YOU YOU ARE ME 2
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isHL2
+                        GET TO THE CHOPPER sC2
+                        HERE IS MY INVITATION COLOR_YELLOW
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    DO IT NOW fillRect fbAddress fbPitch 300 100 400 30 COLOR_DARK_BLUE
+                    HEY CHRISTMAS TREE sSndD
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER sSndD
+                    HERE IS MY INVITATION soundEnabled
+                    YOU ARE NOT YOU YOU ARE ME 1
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE sSndD
+                        DO IT NOW drawChar fbAddress fbPitch 330 107 0x3e sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 340 107 0x20 sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 350 107 0x53 sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 360 107 0x4f sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 370 107 0x55 sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 380 107 0x4e sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 390 107 0x44 sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 400 107 0x3a sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 410 107 0x20 sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 420 107 0x4f sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 430 107 0x4e sC0 COLOR_DARK_BLUE
+                    BULLSHIT
+                        DO IT NOW drawChar fbAddress fbPitch 330 107 0x3e sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 340 107 0x20 sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 350 107 0x53 sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 360 107 0x4f sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 370 107 0x55 sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 380 107 0x4e sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 390 107 0x44 sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 400 107 0x3a sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 410 107 0x20 sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 420 107 0x4f sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 430 107 0x46 sC0 COLOR_DARK_BLUE
+                        DO IT NOW drawChar fbAddress fbPitch 440 107 0x46 sC0 COLOR_DARK_BLUE
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    DO IT NOW fillRect fbAddress fbPitch 300 140 400 30 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 330 147 0x3e sC1 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 340 147 0x20 sC1 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 350 147 0x53 sC1 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 360 147 0x50 sC1 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 370 147 0x45 sC1 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 380 147 0x45 sC1 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 390 147 0x44 sC1 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 400 147 0x3a sC1 COLOR_DARK_BLUE
+                    HEY CHRISTMAS TREE spdChar
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER spdChar
+                    HERE IS MY INVITATION gameSpeedSetting
+                    GET UP 48
+                    ENOUGH TALK
+                    DO IT NOW drawChar fbAddress fbPitch 420 147 spdChar sC1 COLOR_DARK_BLUE
+                    DO IT NOW fillRect fbAddress fbPitch 300 180 400 30 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 330 187 0x3e sC2 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 340 187 0x20 sC2 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 350 187 0x41 sC2 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 360 187 0x42 sC2 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 370 187 0x4f sC2 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 380 187 0x55 sC2 COLOR_DARK_BLUE
+                    DO IT NOW drawChar fbAddress fbPitch 390 187 0x54 sC2 COLOR_DARK_BLUE
+                    YOU HAVE NO RESPECT FOR LOGIC
+                YOU HAVE NO RESPECT FOR LOGIC
+
+                TALK TO YOURSELF "=== CALCULATOR MODE INPUT ==="
+                HEY CHRISTMAS TREE isCalcMode
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER isCalcMode
+                HERE IS MY INVITATION currentMode
+                YOU ARE NOT YOU YOU ARE ME MODE_CALC
+                ENOUGH TALK
+                BECAUSE I'M GOING TO SAY PLEASE isCalcMode
+                    HEY CHRISTMAS TREE isCEsc
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isCEsc
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 1
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isCEsc
+                        GET TO THE CHOPPER currentMode
+                        HERE IS MY INVITATION MODE_MENU
+                        ENOUGH TALK
+                        DO IT NOW redrawMenu fbAddress fbPitch
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isK0
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isK0
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 11
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isK0
+                        HEY CHRISTMAS TREE isNI0
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isNI0
+                        HERE IS MY INVITATION calcNewInput
+                        YOU ARE NOT YOU YOU ARE ME 1
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isNI0
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcNewInput
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        GET TO THE CHOPPER calcDisplay
+                        HERE IS MY INVITATION calcDisplay
+                        HE HAD TO SPLIT 10
+                        GET UP 0
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isK1
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isK1
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 2
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isK1
+                        HEY CHRISTMAS TREE isNI1
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isNI1
+                        HERE IS MY INVITATION calcNewInput
+                        YOU ARE NOT YOU YOU ARE ME 1
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isNI1
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcNewInput
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        GET TO THE CHOPPER calcDisplay
+                        HERE IS MY INVITATION calcDisplay
+                        HE HAD TO SPLIT 10
+                        GET UP 1
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isK2
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isK2
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 3
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isK2
+                        HEY CHRISTMAS TREE isNI2
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isNI2
+                        HERE IS MY INVITATION calcNewInput
+                        YOU ARE NOT YOU YOU ARE ME 1
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isNI2
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcNewInput
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        GET TO THE CHOPPER calcDisplay
+                        HERE IS MY INVITATION calcDisplay
+                        HE HAD TO SPLIT 10
+                        GET UP 2
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isK3
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isK3
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 4
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isK3
+                        HEY CHRISTMAS TREE isNI3
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isNI3
+                        HERE IS MY INVITATION calcNewInput
+                        YOU ARE NOT YOU YOU ARE ME 1
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isNI3
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcNewInput
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        GET TO THE CHOPPER calcDisplay
+                        HERE IS MY INVITATION calcDisplay
+                        HE HAD TO SPLIT 10
+                        GET UP 3
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isK4
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isK4
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 5
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isK4
+                        HEY CHRISTMAS TREE isNI4
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isNI4
+                        HERE IS MY INVITATION calcNewInput
+                        YOU ARE NOT YOU YOU ARE ME 1
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isNI4
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcNewInput
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        GET TO THE CHOPPER calcDisplay
+                        HERE IS MY INVITATION calcDisplay
+                        HE HAD TO SPLIT 10
+                        GET UP 4
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isK5
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isK5
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 6
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isK5
+                        HEY CHRISTMAS TREE isNI5
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isNI5
+                        HERE IS MY INVITATION calcNewInput
+                        YOU ARE NOT YOU YOU ARE ME 1
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isNI5
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcNewInput
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        GET TO THE CHOPPER calcDisplay
+                        HERE IS MY INVITATION calcDisplay
+                        HE HAD TO SPLIT 10
+                        GET UP 5
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isK6
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isK6
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 7
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isK6
+                        HEY CHRISTMAS TREE isNI6
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isNI6
+                        HERE IS MY INVITATION calcNewInput
+                        YOU ARE NOT YOU YOU ARE ME 1
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isNI6
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcNewInput
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        GET TO THE CHOPPER calcDisplay
+                        HERE IS MY INVITATION calcDisplay
+                        HE HAD TO SPLIT 10
+                        GET UP 6
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isK7
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isK7
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 8
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isK7
+                        HEY CHRISTMAS TREE isNI7
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isNI7
+                        HERE IS MY INVITATION calcNewInput
+                        YOU ARE NOT YOU YOU ARE ME 1
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isNI7
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcNewInput
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        GET TO THE CHOPPER calcDisplay
+                        HERE IS MY INVITATION calcDisplay
+                        HE HAD TO SPLIT 10
+                        GET UP 7
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isK8
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isK8
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 9
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isK8
+                        HEY CHRISTMAS TREE isNI8
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isNI8
+                        HERE IS MY INVITATION calcNewInput
+                        YOU ARE NOT YOU YOU ARE ME 1
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isNI8
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcNewInput
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        GET TO THE CHOPPER calcDisplay
+                        HERE IS MY INVITATION calcDisplay
+                        HE HAD TO SPLIT 10
+                        GET UP 8
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isK9
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isK9
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 10
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isK9
+                        HEY CHRISTMAS TREE isNI9
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isNI9
+                        HERE IS MY INVITATION calcNewInput
+                        YOU ARE NOT YOU YOU ARE ME 1
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isNI9
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcNewInput
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        GET TO THE CHOPPER calcDisplay
+                        HERE IS MY INVITATION calcDisplay
+                        HE HAD TO SPLIT 10
+                        GET UP 9
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isCPlus
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isCPlus
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 78
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isCPlus
+                        GET TO THE CHOPPER calcOperand
+                        HERE IS MY INVITATION calcDisplay
+                        ENOUGH TALK
+                        GET TO THE CHOPPER calcOperator
+                        HERE IS MY INVITATION 1
+                        ENOUGH TALK
+                        GET TO THE CHOPPER calcNewInput
+                        HERE IS MY INVITATION 1
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isCMinus
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isCMinus
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 74
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isCMinus
+                        GET TO THE CHOPPER calcOperand
+                        HERE IS MY INVITATION calcDisplay
+                        ENOUGH TALK
+                        GET TO THE CHOPPER calcOperator
+                        HERE IS MY INVITATION 2
+                        ENOUGH TALK
+                        GET TO THE CHOPPER calcNewInput
+                        HERE IS MY INVITATION 1
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isCMul
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isCMul
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 55
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isCMul
+                        GET TO THE CHOPPER calcOperand
+                        HERE IS MY INVITATION calcDisplay
+                        ENOUGH TALK
+                        GET TO THE CHOPPER calcOperator
+                        HERE IS MY INVITATION 3
+                        ENOUGH TALK
+                        GET TO THE CHOPPER calcNewInput
+                        HERE IS MY INVITATION 1
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE isCEq
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isCEq
+                    HERE IS MY INVITATION scancode
+                    YOU ARE NOT YOU YOU ARE ME 28
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isCEq
+                        HEY CHRISTMAS TREE isCAdd
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isCAdd
+                        HERE IS MY INVITATION calcOperator
+                        YOU ARE NOT YOU YOU ARE ME 1
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isCAdd
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION calcOperand
+                            GET UP calcDisplay
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        HEY CHRISTMAS TREE isCSub
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isCSub
+                        HERE IS MY INVITATION calcOperator
+                        YOU ARE NOT YOU YOU ARE ME 2
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isCSub
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION calcOperand
+                            GET DOWN calcDisplay
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        HEY CHRISTMAS TREE isCMl2
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isCMl2
+                        HERE IS MY INVITATION calcOperator
+                        YOU ARE NOT YOU YOU ARE ME 3
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isCMl2
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION calcOperand
+                            YOU'RE FIRED calcDisplay
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+                        GET TO THE CHOPPER calcOperator
+                        HERE IS MY INVITATION 0
+                        ENOUGH TALK
+                        GET TO THE CHOPPER calcNewInput
+                        HERE IS MY INVITATION 1
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    HEY CHRISTMAS TREE stillCalc
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER stillCalc
+                    HERE IS MY INVITATION currentMode
+                    YOU ARE NOT YOU YOU ARE ME MODE_CALC
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE stillCalc
+                    DO IT NOW clearScreen fbAddress fbPitch fbWidth fbHeight COLOR_DARK_BLUE
+                    DO IT NOW fillRect fbAddress fbPitch 312 100 400 350 COLOR_WIN95_GRAY
+                    DO IT NOW fillRect fbAddress fbPitch 312 100 400 2 COLOR_WHITE
+                    DO IT NOW fillRect fbAddress fbPitch 312 100 2 350 COLOR_WHITE
+                    DO IT NOW fillRect fbAddress fbPitch 312 448 400 2 COLOR_WIN95_SHADOW
+                    DO IT NOW fillRect fbAddress fbPitch 710 100 2 350 COLOR_WIN95_SHADOW
+                    DO IT NOW drawStringAt fbAddress fbPitch 450 110 menuOpt11 8 COLOR_BLACK COLOR_WIN95_GRAY
+                    DO IT NOW fillRect fbAddress fbPitch 332 140 360 50 COLOR_BLACK
+                    TALK TO YOURSELF "Render calcDisplay digits"
+                    HEY CHRISTMAS TREE calcTmp
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER calcTmp
+                    HERE IS MY INVITATION calcDisplay
+                    ENOUGH TALK
+                    HEY CHRISTMAS TREE calcDigPos
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER calcDigPos
+                    HERE IS MY INVITATION 660
+                    ENOUGH TALK
+                    HEY CHRISTMAS TREE isCalcZero
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isCalcZero
+                    HERE IS MY INVITATION calcTmp
+                    YOU ARE NOT YOU YOU ARE ME 0
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isCalcZero
+                        DO IT NOW drawChar fbAddress fbPitch 660 155 0x30 COLOR_GREEN COLOR_BLACK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                    STICK AROUND calcTmp
+                        HEY CHRISTMAS TREE calcDig
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER calcDig
+                        HERE IS MY INVITATION calcTmp
+                        I LET HIM GO 10
+                        GET UP 48
+                        ENOUGH TALK
+                        DO IT NOW drawChar fbAddress fbPitch calcDigPos 155 calcDig COLOR_GREEN COLOR_BLACK
+                        GET TO THE CHOPPER calcTmp
+                        HERE IS MY INVITATION calcTmp
+                        HE HAD TO SPLIT 10
+                        ENOUGH TALK
+                        GET TO THE CHOPPER calcDigPos
+                        HERE IS MY INVITATION calcDigPos
+                        GET DOWN 15
+                        ENOUGH TALK
+                    CHILL
+                    DO IT NOW fillRect fbAddress fbPitch 332 210 80 50 COLOR_WIN95_GRAY
+                    DO IT NOW drawChar fbAddress fbPitch 362 225 0x37 COLOR_BLACK COLOR_WIN95_GRAY
+                    DO IT NOW fillRect fbAddress fbPitch 422 210 80 50 COLOR_WIN95_GRAY
+                    DO IT NOW drawChar fbAddress fbPitch 452 225 0x38 COLOR_BLACK COLOR_WIN95_GRAY
+                    DO IT NOW fillRect fbAddress fbPitch 512 210 80 50 COLOR_WIN95_GRAY
+                    DO IT NOW drawChar fbAddress fbPitch 542 225 0x39 COLOR_BLACK COLOR_WIN95_GRAY
+                    DO IT NOW fillRect fbAddress fbPitch 332 270 80 50 COLOR_WIN95_GRAY
+                    DO IT NOW drawChar fbAddress fbPitch 362 285 0x34 COLOR_BLACK COLOR_WIN95_GRAY
+                    DO IT NOW fillRect fbAddress fbPitch 422 270 80 50 COLOR_WIN95_GRAY
+                    DO IT NOW drawChar fbAddress fbPitch 452 285 0x35 COLOR_BLACK COLOR_WIN95_GRAY
+                    DO IT NOW fillRect fbAddress fbPitch 512 270 80 50 COLOR_WIN95_GRAY
+                    DO IT NOW drawChar fbAddress fbPitch 542 285 0x36 COLOR_BLACK COLOR_WIN95_GRAY
+                    DO IT NOW fillRect fbAddress fbPitch 332 330 80 50 COLOR_WIN95_GRAY
+                    DO IT NOW drawChar fbAddress fbPitch 362 345 0x31 COLOR_BLACK COLOR_WIN95_GRAY
+                    DO IT NOW fillRect fbAddress fbPitch 422 330 80 50 COLOR_WIN95_GRAY
+                    DO IT NOW drawChar fbAddress fbPitch 452 345 0x32 COLOR_BLACK COLOR_WIN95_GRAY
+                    DO IT NOW fillRect fbAddress fbPitch 512 330 80 50 COLOR_WIN95_GRAY
+                    DO IT NOW drawChar fbAddress fbPitch 542 345 0x33 COLOR_BLACK COLOR_WIN95_GRAY
+                    DO IT NOW fillRect fbAddress fbPitch 332 390 80 50 COLOR_WIN95_GRAY
+                    DO IT NOW drawChar fbAddress fbPitch 362 405 0x30 COLOR_BLACK COLOR_WIN95_GRAY
+                    DO IT NOW fillRect fbAddress fbPitch 602 210 80 50 COLOR_ARNOLD_RED
+                    DO IT NOW drawChar fbAddress fbPitch 632 225 0x2b COLOR_WHITE COLOR_ARNOLD_RED
+                    DO IT NOW fillRect fbAddress fbPitch 602 270 80 50 COLOR_ARNOLD_RED
+                    DO IT NOW drawChar fbAddress fbPitch 632 285 0x2d COLOR_WHITE COLOR_ARNOLD_RED
+                    DO IT NOW fillRect fbAddress fbPitch 602 330 80 50 COLOR_ARNOLD_RED
+                    DO IT NOW drawChar fbAddress fbPitch 632 345 0x2a COLOR_WHITE COLOR_ARNOLD_RED
+                    DO IT NOW fillRect fbAddress fbPitch 602 390 80 50 COLOR_GREEN
+                    DO IT NOW drawChar fbAddress fbPitch 632 405 0x3d COLOR_WHITE COLOR_GREEN
+                    YOU HAVE NO RESPECT FOR LOGIC
+                YOU HAVE NO RESPECT FOR LOGIC
+
                 HEY CHRISTMAS TREE isMenuMode
                 THIS IS A WARRIOR
                 YOU SET US UP 0
@@ -3128,7 +3995,7 @@ STICK AROUND @NO PROBLEMO
                         YOU SET US UP 0
                         GET TO THE CHOPPER canMoveDown
                         HERE IS MY INVITATION selectedOption
-                        YOU'RE NOT BIG ENOUGH 7
+                        YOU'RE NOT BIG ENOUGH 10
                         ENOUGH TALK
                         BECAUSE I'M GOING TO SAY PLEASE canMoveDown
                             GET TO THE CHOPPER selectedOption
@@ -3359,6 +4226,84 @@ STICK AROUND @NO PROBLEMO
                             HERE IS MY INVITATION 0
                             ENOUGH TALK
                             DO IT NOW clearScreen fbAddress fbPitch fbWidth fbHeight COLOR_BLACK
+                        YOU HAVE NO RESPECT FOR LOGIC
+
+                        HEY CHRISTMAS TREE isOpt8
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isOpt8
+                        HERE IS MY INVITATION selectedOption
+                        YOU ARE NOT YOU YOU ARE ME 8
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isOpt8
+                            TALK TO YOURSELF "Settings selected"
+                            GET TO THE CHOPPER currentMode
+                            HERE IS MY INVITATION MODE_SETTINGS
+                            ENOUGH TALK
+                            GET TO THE CHOPPER settingsSelected
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            DO IT NOW clearScreen fbAddress fbPitch fbWidth fbHeight COLOR_DARK_BLUE
+                            GET TO THE CHOPPER pendingRedraw
+                            HERE IS MY INVITATION 1
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+
+                        HEY CHRISTMAS TREE isOpt9
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isOpt9
+                        HERE IS MY INVITATION selectedOption
+                        YOU ARE NOT YOU YOU ARE ME 9
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isOpt9
+                            TALK TO YOURSELF "Paint selected"
+                            GET TO THE CHOPPER currentMode
+                            HERE IS MY INVITATION MODE_PAINT
+                            ENOUGH TALK
+                            GET TO THE CHOPPER paintCursorX
+                            HERE IS MY INVITATION 512
+                            ENOUGH TALK
+                            GET TO THE CHOPPER paintCursorY
+                            HERE IS MY INVITATION 384
+                            ENOUGH TALK
+                            GET TO THE CHOPPER paintColorIndex
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            DO IT NOW clearScreen fbAddress fbPitch fbWidth fbHeight COLOR_BLACK
+                            GET TO THE CHOPPER pendingRedraw
+                            HERE IS MY INVITATION 1
+                            ENOUGH TALK
+                        YOU HAVE NO RESPECT FOR LOGIC
+
+                        HEY CHRISTMAS TREE isOpt10
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER isOpt10
+                        HERE IS MY INVITATION selectedOption
+                        YOU ARE NOT YOU YOU ARE ME 10
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE isOpt10
+                            TALK TO YOURSELF "Calculator selected"
+                            GET TO THE CHOPPER currentMode
+                            HERE IS MY INVITATION MODE_CALC
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcDisplay
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcOperand
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcOperator
+                            HERE IS MY INVITATION 0
+                            ENOUGH TALK
+                            GET TO THE CHOPPER calcNewInput
+                            HERE IS MY INVITATION 1
+                            ENOUGH TALK
+                            DO IT NOW clearScreen fbAddress fbPitch fbWidth fbHeight COLOR_DARK_BLUE
+                            GET TO THE CHOPPER pendingRedraw
+                            HERE IS MY INVITATION 1
+                            ENOUGH TALK
                         YOU HAVE NO RESPECT FOR LOGIC
                     YOU HAVE NO RESPECT FOR LOGIC
                 BULLSHIT
@@ -3655,6 +4600,9 @@ STICK AROUND @NO PROBLEMO
         YOU HAVE NO RESPECT FOR LOGIC
     YOU HAVE NO RESPECT FOR LOGIC
     YOU HAVE NO RESPECT FOR LOGIC
+
+    
+
 
     TALK TO YOURSELF "=== GAME TICK DISPATCH (runs every frame, outside scancode check) ==="
     HEY CHRISTMAS TREE tickSnake
