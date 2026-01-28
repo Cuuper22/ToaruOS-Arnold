@@ -323,6 +323,15 @@ HOW MANY 9
 PUT THEM IN LINE
 0x54 0x45 0x52 0x4D 0x49 0x4E 0x41 0x54 0x45
 
+
+TALK TO YOURSELF "Command: EXIT"
+HEY CHRISTMAS TREE cmdExit
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 4
+PUT THEM IN LINE
+0x45 0x58 0x49 0x54
+
 TALK TO YOURSELF "Help text lines"
 HEY CHRISTMAS TREE helpLine1
 LINE THEM UP
@@ -375,6 +384,14 @@ PUT THEM IN LINE
 0x20 0x54 0x45 0x52 0x4D 0x49 0x4E 0x41 0x54 0x45 0x2D 0x20 0x48 0x41 0x53 0x54
 0x41 0x20 0x4C 0x41 0x20 0x56 0x49 0x53 0x54 0x41 0x2C 0x20 0x42 0x41 0x42 0x59
 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+
+HEY CHRISTMAS TREE helpLine7
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 32
+PUT THEM IN LINE
+0x20 0x45 0x58 0x49 0x54 0x20 0x20 0x20 0x20 0x20 0x2D 0x20 0x49 0x4C 0x4C 0x20
+0x42 0x45 0x20 0x42 0x41 0x43 0x4B 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
 
 HEY CHRISTMAS TREE aboutLine1
 LINE THEM UP
@@ -1475,6 +1492,30 @@ TALK TO YOURSELF "==============================================================
 TALK TO YOURSELF "  TIMER FUNCTIONS"
 TALK TO YOURSELF "============================================================================"
 
+LISTEN TO ME VERY CAREFULLY readRtcHours
+GIVE THESE PEOPLE AIR
+HEY CHRISTMAS TREE hrs
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET YOUR ASS TO MARS hrs
+DO IT NOW read_rtc_hours
+I'LL BE BACK hrs
+HASTA LA VISTA, BABY
+
+LISTEN TO ME VERY CAREFULLY readRtcMinutes
+GIVE THESE PEOPLE AIR
+HEY CHRISTMAS TREE mins
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET YOUR ASS TO MARS mins
+DO IT NOW read_rtc_minutes
+I'LL BE BACK mins
+HASTA LA VISTA, BABY
+
+LISTEN TO ME VERY CAREFULLY haltSystem
+DO IT NOW halt_system
+HASTA LA VISTA, BABY
+
 LISTEN TO ME VERY CAREFULLY getTimerTicks
 GIVE THESE PEOPLE AIR
 HEY CHRISTMAS TREE ticks
@@ -2166,6 +2207,33 @@ YOU SET US UP 0
 HEY CHRISTMAS TREE pendingRedraw
 YOU SET US UP 0
 
+
+TALK TO YOURSELF "=== CURSOR BLINK STATE ==="
+HEY CHRISTMAS TREE cursorBlinkTimer
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE cursorVisible
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE lastTickCount
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "=== CLOCK STATE ==="
+HEY CHRISTMAS TREE clockHours
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE clockMinutes
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE clockUpdateTimer
+THIS IS A WARRIOR
+YOU SET US UP 0
+
 HEY CHRISTMAS TREE settingsSelected
 YOU SET US UP 0
 
@@ -2433,6 +2501,13 @@ ENOUGH TALK
 
 DO IT NOW playBootJingle
 DO IT NOW randomSeedFromTimer
+
+TALK TO YOURSELF "Flush any stale scancode from boot"
+HEY CHRISTMAS TREE bootFlush
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET YOUR ASS TO MARS bootFlush
+DO IT NOW get_last_scancode
 
 TALK TO YOURSELF "Main loop"
 STICK AROUND @NO PROBLEMO
@@ -4334,6 +4409,12 @@ STICK AROUND @NO PROBLEMO
                         GET UP 8
                         ENOUGH TALK
                         
+                        GET TO THE CHOPPER cursorVisible
+                        HERE IS MY INVITATION 1
+                        ENOUGH TALK
+                        GET TO THE CHOPPER cursorBlinkTimer
+                        HERE IS MY INVITATION 0
+                        ENOUGH TALK
                         TALK TO YOURSELF "Track command length"
                         HEY CHRISTMAS TREE canStore
                         THIS IS A WARRIOR
@@ -4411,6 +4492,11 @@ STICK AROUND @NO PROBLEMO
                         GET UP 10
                         ENOUGH TALK
                         DO IT NOW drawStringAt fbAddress fbPitch cursorX cursorY helpLine6 32 COLOR_WHITE COLOR_DARK_BLUE
+                        GET TO THE CHOPPER cursorY
+                        HERE IS MY INVITATION cursorY
+                        GET UP 10
+                        ENOUGH TALK
+                        DO IT NOW drawStringAt fbAddress fbPitch cursorX cursorY helpLine7 23 COLOR_WHITE COLOR_DARK_BLUE
                         GET TO THE CHOPPER cursorY
                         HERE IS MY INVITATION cursorY
                         GET UP 10
@@ -4526,17 +4612,76 @@ STICK AROUND @NO PROBLEMO
                                         TALK TO YOURSELF "Terminator Vision"
                                         DO IT NOW drawStringAt fbAddress fbPitch 300 370 menuOpt8 20 COLOR_RED COLOR_DARK_BLUE
                                     BULLSHIT
-                                        TALK TO YOURSELF "Unknown command - default response"
-                                        DO IT NOW drawStringAt fbAddress fbPitch cursorX cursorY responseStr RESPONSE_LEN COLOR_YELLOW COLOR_DARK_BLUE
-                                        GET TO THE CHOPPER cursorY
-                                        HERE IS MY INVITATION cursorY
-                                        GET UP 10
-                                        ENOUGH TALK
-                                    YOU HAVE NO RESPECT FOR LOGIC
+                                        TALK TO YOURSELF "Check for TERMINATE command"
+                                        HEY CHRISTMAS TREE isTermCmd
+                                        THIS IS A WARRIOR
+                                        YOU SET US UP 0
+                                        GET YOUR ASS TO MARS isTermCmd
+                                        DO IT NOW stringEquals cmdBuffer cmdLen cmdTerminate 9
+
+                                        BECAUSE I'M GOING TO SAY PLEASE isTermCmd
+                                            TALK TO YOURSELF "HASTA LA VISTA, BABY!"
+                                            DO IT NOW clearScreen fbAddress fbPitch fbWidth fbHeight COLOR_BLACK
+                                            DO IT NOW drawStringAt fbAddress fbPitch 300 300 helpLine4 31 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 412 340 0x48 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 422 340 0x41 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 432 340 0x53 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 442 340 0x54 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 452 340 0x41 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 462 340 0x20 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 472 340 0x4C COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 482 340 0x41 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 492 340 0x20 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 502 340 0x56 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 512 340 0x49 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 522 340 0x53 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 532 340 0x54 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 542 340 0x41 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 552 340 0x2C COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 562 340 0x20 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 572 340 0x42 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 582 340 0x41 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 592 340 0x42 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 602 340 0x59 COLOR_RED COLOR_BLACK
+                                            DO IT NOW drawChar fbAddress fbPitch 612 340 0x21 COLOR_RED COLOR_BLACK
+                                            DO IT NOW sleepTicks 36
+                                            DO IT NOW haltSystem
+                                        BULLSHIT
+                                            TALK TO YOURSELF "Check for EXIT command"
+                                            HEY CHRISTMAS TREE isExitCmd
+                                            THIS IS A WARRIOR
+                                            YOU SET US UP 0
+                                            GET YOUR ASS TO MARS isExitCmd
+                                            DO IT NOW stringEquals cmdBuffer cmdLen cmdExit 4
+
+                                            BECAUSE I'M GOING TO SAY PLEASE isExitCmd
+                                                TALK TO YOURSELF "EXIT - Return to menu"
+                                                GET TO THE CHOPPER currentMode
+                                                HERE IS MY INVITATION MODE_MENU
+                                                ENOUGH TALK
+                                                DO IT NOW clearScreen fbAddress fbPitch fbWidth fbHeight COLOR_DARK_BLUE
+                                                DO IT NOW fillRect fbAddress fbPitch 0 0 1024 40 COLOR_PREDATOR_GREEN
+                                                DO IT NOW drawStringAt fbAddress fbPitch 16 16 menuTitle 19 COLOR_BLACK COLOR_PREDATOR_GREEN
+                                                DO IT NOW drawStringAt fbAddress fbPitch 350 100 menuSubtitle 11 COLOR_YELLOW COLOR_DARK_BLUE
+                                                DO IT NOW redrawMenu fbAddress fbPitch
+                                                TALK TO YOURSELF "Set pendingRedraw to consume stale scancode"
+                                                GET TO THE CHOPPER pendingRedraw
+                                                HERE IS MY INVITATION 1
+                                                ENOUGH TALK
+                                            BULLSHIT
+                                                TALK TO YOURSELF "Unknown command - default response"
+                                                DO IT NOW drawStringAt fbAddress fbPitch cursorX cursorY responseStr RESPONSE_LEN COLOR_YELLOW COLOR_DARK_BLUE
+                                                GET TO THE CHOPPER cursorY
+                                                HERE IS MY INVITATION cursorY
+                                                GET UP 10
+                                                ENOUGH TALK
+                                            YOU HAVE NO RESPECT FOR LOGIC
                                 YOU HAVE NO RESPECT FOR LOGIC
                             YOU HAVE NO RESPECT FOR LOGIC
                         YOU HAVE NO RESPECT FOR LOGIC
                     YOU HAVE NO RESPECT FOR LOGIC
+                YOU HAVE NO RESPECT FOR LOGIC
+            YOU HAVE NO RESPECT FOR LOGIC
 
                     TALK TO YOURSELF "Only draw prompt if in terminal mode"
                     HEY CHRISTMAS TREE isTerminalMode
@@ -4559,6 +4704,12 @@ STICK AROUND @NO PROBLEMO
 
                     TALK TO YOURSELF "Clear command buffer"
                     GET TO THE CHOPPER cmdLen
+                    HERE IS MY INVITATION 0
+                    ENOUGH TALK
+                    GET TO THE CHOPPER cursorVisible
+                    HERE IS MY INVITATION 1
+                    ENOUGH TALK
+                    GET TO THE CHOPPER cursorBlinkTimer
                     HERE IS MY INVITATION 0
                     ENOUGH TALK
                 YOU HAVE NO RESPECT FOR LOGIC
@@ -4603,6 +4754,113 @@ STICK AROUND @NO PROBLEMO
 
     
 
+
+
+    TALK TO YOURSELF "=== TERMINAL CURSOR BLINK (runs every frame) ==="
+    HEY CHRISTMAS TREE tickTerm
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER tickTerm
+    HERE IS MY INVITATION currentMode
+    YOU ARE NOT YOU YOU ARE ME MODE_TERMINAL
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE tickTerm
+        GET TO THE CHOPPER cursorBlinkTimer
+        HERE IS MY INVITATION cursorBlinkTimer
+        GET UP 1
+        ENOUGH TALK
+        HEY CHRISTMAS TREE blinkNow
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER blinkNow
+        HERE IS MY INVITATION cursorBlinkTimer
+        LET OFF SOME STEAM BENNET 8
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE blinkNow
+            GET TO THE CHOPPER cursorBlinkTimer
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+            HEY CHRISTMAS TREE wasVisible
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER wasVisible
+            HERE IS MY INVITATION cursorVisible
+            YOU ARE NOT YOU YOU ARE ME 1
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE wasVisible
+                GET TO THE CHOPPER cursorVisible
+                HERE IS MY INVITATION 0
+                ENOUGH TALK
+                DO IT NOW drawChar fbAddress fbPitch cursorX cursorY 0x20 COLOR_WHITE COLOR_DARK_BLUE
+            BULLSHIT
+                GET TO THE CHOPPER cursorVisible
+                HERE IS MY INVITATION 1
+                ENOUGH TALK
+                DO IT NOW drawChar fbAddress fbPitch cursorX cursorY 0x5F COLOR_WHITE COLOR_DARK_BLUE
+            YOU HAVE NO RESPECT FOR LOGIC
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    TALK TO YOURSELF "=== TASKBAR CLOCK UPDATE ==="
+    GET TO THE CHOPPER clockUpdateTimer
+    HERE IS MY INVITATION clockUpdateTimer
+    GET UP 1
+    ENOUGH TALK
+    HEY CHRISTMAS TREE clockNow
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER clockNow
+    HERE IS MY INVITATION clockUpdateTimer
+    LET OFF SOME STEAM BENNET 17
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE clockNow
+        GET TO THE CHOPPER clockUpdateTimer
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        GET YOUR ASS TO MARS clockHours
+        DO IT NOW readRtcHours
+        GET YOUR ASS TO MARS clockMinutes
+        DO IT NOW readRtcMinutes
+        TALK TO YOURSELF "Draw clock in top-right corner"
+        DO IT NOW fillRect fbAddress fbPitch 970 2 54 12 COLOR_BLACK
+        HEY CHRISTMAS TREE h10
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER h10
+        HERE IS MY INVITATION clockHours
+        HE HAD TO SPLIT 10
+        GET UP 48
+        ENOUGH TALK
+        HEY CHRISTMAS TREE h1
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER h1
+        HERE IS MY INVITATION clockHours
+        I LET HIM GO 10
+        GET UP 48
+        ENOUGH TALK
+        HEY CHRISTMAS TREE m10
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER m10
+        HERE IS MY INVITATION clockMinutes
+        HE HAD TO SPLIT 10
+        GET UP 48
+        ENOUGH TALK
+        HEY CHRISTMAS TREE m1
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER m1
+        HERE IS MY INVITATION clockMinutes
+        I LET HIM GO 10
+        GET UP 48
+        ENOUGH TALK
+        DO IT NOW drawChar fbAddress fbPitch 970 3 h10 COLOR_WHITE COLOR_BLACK
+        DO IT NOW drawChar fbAddress fbPitch 980 3 h1 COLOR_WHITE COLOR_BLACK
+        DO IT NOW drawChar fbAddress fbPitch 990 3 0x3A COLOR_WHITE COLOR_BLACK
+        DO IT NOW drawChar fbAddress fbPitch 1000 3 m10 COLOR_WHITE COLOR_BLACK
+        DO IT NOW drawChar fbAddress fbPitch 1010 3 m1 COLOR_WHITE COLOR_BLACK
+    YOU HAVE NO RESPECT FOR LOGIC
 
     TALK TO YOURSELF "=== GAME TICK DISPATCH (runs every frame, outside scancode check) ==="
     HEY CHRISTMAS TREE tickSnake

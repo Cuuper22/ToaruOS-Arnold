@@ -141,6 +141,10 @@ extern speaker_set_frequency
 extern get_last_scancode
 extern inb
 extern outb
+extern read_rtc_hours
+extern read_rtc_minutes
+extern read_rtc_seconds
+extern halt_system
 "@
 $asmContent = $asmContent -replace "(section \.text)", "`$1`n$externs"
 Set-Content "$GEN_DIR\kernel.asm" $asmContent -NoNewline
