@@ -5,7 +5,14 @@ param(
 $client = New-Object System.Net.Sockets.TcpClient('127.0.0.1', 55555)
 $stream = $client.GetStream()
 $writer = New-Object System.IO.StreamWriter($stream)
-$fullPath = "C:/Users/Acer/Desktop/ToaruOS-Arnold/$OutputFile"
+
+# Handle absolute vs relative paths
+if ([System.IO.Path]::IsPathRooted($OutputFile)) {
+    $fullPath = $OutputFile.Replace('\', '/')
+} else {
+    $fullPath = "C:/Users/Acer/Desktop/ToaruOS-Arnold/$OutputFile"
+}
+
 $writer.WriteLine("screendump $fullPath")
 $writer.Flush()
 Start-Sleep -Milliseconds 500

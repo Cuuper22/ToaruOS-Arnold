@@ -277,6 +277,15 @@ PUT THEM IN LINE
 0x63 0x6F 0x6E 0x2E 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
 LET ME TELL YOU SOMETHING WELCOME_LEN 36
 
+TALK TO YOURSELF "ESC instruction message: Press ESC to return"
+HEY CHRISTMAS TREE escMsg
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 24
+PUT THEM IN LINE
+0x50 0x72 0x65 0x73 0x73 0x20 0x45 0x53 0x43 0x20 0x74 0x6F 0x20 0x72 0x65 0x74 0x75 0x72 0x6E 0x00 0x00 0x00 0x00 0x00
+LET ME TELL YOU SOMETHING ESC_MSG_LEN 19
+
 TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  Global State Variables"
 TALK TO YOURSELF "============================================================================"
@@ -296,6 +305,16 @@ YOU SET US UP 0
 HEY CHRISTMAS TREE needsRedraw
 THIS IS A WARRIOR
 YOU SET US UP 1
+
+HEY CHRISTMAS TREE lastMouseBtn
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Icon positions (matching drawDesktop)"
+LET ME TELL YOU SOMETHING ICON1_X 20
+LET ME TELL YOU SOMETHING ICON1_Y 44
+LET ME TELL YOU SOMETHING ICON2_Y 124
+LET ME TELL YOU SOMETHING ICON3_Y 204
 
 TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  GRAPHICS FUNCTIONS"
@@ -952,6 +971,225 @@ DO IT NOW drawStringAt fbAddr fbPitch 350 400 welcomeMsg WELCOME_LEN COLOR_WHITE
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: checkIconClick - Returns icon number if clicked (0=none)"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY checkIconClick
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE mx
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE my
+GIVE THESE PEOPLE AIR
+
+TALK TO YOURSELF "Check if click is in icon column (x: 20 to 20+48)"
+HEY CHRISTMAS TREE inIconX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE xCheck1
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER xCheck1
+HERE IS MY INVITATION mx
+YOU'RE AT LEAST AS BIG AS ICON1_X
+ENOUGH TALK
+
+HEY CHRISTMAS TREE iconRight
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER iconRight
+HERE IS MY INVITATION ICON1_X
+GET UP ICON_SIZE
+ENOUGH TALK
+
+HEY CHRISTMAS TREE xCheck2
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER xCheck2
+HERE IS MY INVITATION mx
+YOU'RE NOT BIG ENOUGH iconRight
+ENOUGH TALK
+
+GET TO THE CHOPPER inIconX
+HERE IS MY INVITATION xCheck1
+KNOCK KNOCK xCheck2
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE inIconX
+    TALK TO YOURSELF "Check Terminal icon (y: 44 to 44+48)"
+    HEY CHRISTMAS TREE icon1Bottom
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER icon1Bottom
+    HERE IS MY INVITATION ICON1_Y
+    GET UP ICON_SIZE
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE inIcon1Y1
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER inIcon1Y1
+    HERE IS MY INVITATION my
+    YOU'RE AT LEAST AS BIG AS ICON1_Y
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE inIcon1Y2
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER inIcon1Y2
+    HERE IS MY INVITATION my
+    YOU'RE NOT BIG ENOUGH icon1Bottom
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE inIcon1
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER inIcon1
+    HERE IS MY INVITATION inIcon1Y1
+    KNOCK KNOCK inIcon1Y2
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE inIcon1
+        I'LL BE BACK 1
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    TALK TO YOURSELF "Check Snake icon (y: 124 to 124+48)"
+    HEY CHRISTMAS TREE icon2Bottom
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER icon2Bottom
+    HERE IS MY INVITATION ICON2_Y
+    GET UP ICON_SIZE
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE inIcon2Y1
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER inIcon2Y1
+    HERE IS MY INVITATION my
+    YOU'RE AT LEAST AS BIG AS ICON2_Y
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE inIcon2Y2
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER inIcon2Y2
+    HERE IS MY INVITATION my
+    YOU'RE NOT BIG ENOUGH icon2Bottom
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE inIcon2
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER inIcon2
+    HERE IS MY INVITATION inIcon2Y1
+    KNOCK KNOCK inIcon2Y2
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE inIcon2
+        I'LL BE BACK 2
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    TALK TO YOURSELF "Check Pong icon (y: 204 to 204+48)"
+    HEY CHRISTMAS TREE icon3Bottom
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER icon3Bottom
+    HERE IS MY INVITATION ICON3_Y
+    GET UP ICON_SIZE
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE inIcon3Y1
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER inIcon3Y1
+    HERE IS MY INVITATION my
+    YOU'RE AT LEAST AS BIG AS ICON3_Y
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE inIcon3Y2
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER inIcon3Y2
+    HERE IS MY INVITATION my
+    YOU'RE NOT BIG ENOUGH icon3Bottom
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE inIcon3
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER inIcon3
+    HERE IS MY INVITATION inIcon3Y1
+    KNOCK KNOCK inIcon3Y2
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE inIcon3
+        I'LL BE BACK 3
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+I'LL BE BACK 0
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawGamePlaceholder - Placeholder for game screens"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawGamePlaceholder
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE gameNum
+
+HEY CHRISTMAS TREE bgColor
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE isGame1
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isGame1
+HERE IS MY INVITATION gameNum
+YOU ARE NOT YOU YOU ARE ME 1
+ENOUGH TALK
+
+HEY CHRISTMAS TREE isGame2
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isGame2
+HERE IS MY INVITATION gameNum
+YOU ARE NOT YOU YOU ARE ME 2
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE isGame1
+    GET TO THE CHOPPER bgColor
+    HERE IS MY INVITATION 0x00202020
+    ENOUGH TALK
+    DO IT NOW clearScreen fbAddr fbPitch bgColor
+    DO IT NOW drawStringAt fbAddr fbPitch 400 350 iconTerminal ICON_TERMINAL_LEN COLOR_WHITE bgColor
+    DO IT NOW drawStringAt fbAddr fbPitch 350 400 welcomeMsg 18 COLOR_GREEN bgColor
+BULLSHIT
+    BECAUSE I'M GOING TO SAY PLEASE isGame2
+        GET TO THE CHOPPER bgColor
+        HERE IS MY INVITATION 0x00002000
+        ENOUGH TALK
+        DO IT NOW clearScreen fbAddr fbPitch bgColor
+        DO IT NOW drawStringAt fbAddr fbPitch 450 350 iconSnake ICON_SNAKE_LEN COLOR_PREDATOR_GREEN bgColor
+        DO IT NOW drawStringAt fbAddr fbPitch 350 400 welcomeMsg 22 COLOR_WHITE bgColor
+    BULLSHIT
+        GET TO THE CHOPPER bgColor
+        HERE IS MY INVITATION 0x00200000
+        ENOUGH TALK
+        DO IT NOW clearScreen fbAddr fbPitch bgColor
+        DO IT NOW drawStringAt fbAddr fbPitch 480 350 iconPong ICON_PONG_LEN COLOR_WHITE bgColor
+        DO IT NOW drawStringAt fbAddr fbPitch 350 400 welcomeMsg 20 COLOR_YELLOW bgColor
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "Draw ESC instruction"
+DO IT NOW drawStringAt fbAddr fbPitch 380 500 escMsg ESC_MSG_LEN COLOR_WHITE bgColor
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  STUB: randomSeedFromTimer - Initialize RNG from timer"
 TALK TO YOURSELF "============================================================================"
 
@@ -1151,12 +1389,79 @@ STICK AROUND @NO PROBLEMO
         ENOUGH TALK
     YOU HAVE NO RESPECT FOR LOGIC
     
+    TALK TO YOURSELF "Check for mouse click on desktop icons"
+    HEY CHRISTMAS TREE isDesktop
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isDesktop
+    HERE IS MY INVITATION currentMode
+    YOU ARE NOT YOU YOU ARE ME 0
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE isDesktop
+        TALK TO YOURSELF "Check for new click (button just pressed)"
+        HEY CHRISTMAS TREE isClicked
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        
+        HEY CHRISTMAS TREE btnNow
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER btnNow
+        HERE IS MY INVITATION mouseButtons
+        KNOCK KNOCK 1
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE btnWas
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER btnWas
+        HERE IS MY INVITATION lastMouseBtn
+        KNOCK KNOCK 1
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE btnWasNot
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER btnWasNot
+        HERE IS MY INVITATION btnWas
+        YOU ARE NOT YOU YOU ARE ME 0
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER isClicked
+        HERE IS MY INVITATION btnNow
+        KNOCK KNOCK btnWasNot
+        ENOUGH TALK
+        
+        BECAUSE I'M GOING TO SAY PLEASE isClicked
+            TALK TO YOURSELF "Check which icon was clicked"
+            HEY CHRISTMAS TREE clickedIcon
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET YOUR ASS TO MARS clickedIcon
+            DO IT NOW checkIconClick mouseX mouseY
+            
+            BECAUSE I'M GOING TO SAY PLEASE clickedIcon
+                TALK TO YOURSELF "Switch to game mode"
+                GET TO THE CHOPPER currentMode
+                HERE IS MY INVITATION clickedIcon
+                ENOUGH TALK
+                
+                DO IT NOW drawGamePlaceholder fbAddress fbPitch currentMode
+            YOU HAVE NO RESPECT FOR LOGIC
+        YOU HAVE NO RESPECT FOR LOGIC
+        
+        GET TO THE CHOPPER lastMouseBtn
+        HERE IS MY INVITATION mouseButtons
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    
     TALK TO YOURSELF "Check for keyboard input"
     GET YOUR ASS TO MARS scancode
     DO IT NOW pollKeyboard
     
     BECAUSE I'M GOING TO SAY PLEASE scancode
-        TALK TO YOURSELF "Handle ESC key to redraw desktop"
+        TALK TO YOURSELF "Handle ESC key to return to desktop"
         HEY CHRISTMAS TREE isEsc
         THIS IS A WARRIOR
         YOU SET US UP 0
@@ -1165,6 +1470,9 @@ STICK AROUND @NO PROBLEMO
         YOU ARE NOT YOU YOU ARE ME 0x01
         ENOUGH TALK
         BECAUSE I'M GOING TO SAY PLEASE isEsc
+            GET TO THE CHOPPER currentMode
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
             DO IT NOW drawDesktop fbAddress fbPitch
         YOU HAVE NO RESPECT FOR LOGIC
     YOU HAVE NO RESPECT FOR LOGIC
