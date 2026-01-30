@@ -1,18 +1,46 @@
-# Build artifacts
+# Build outputs
 build/*.o
 build/*.bin
+build/*.elf
+build/*.asm
+build/*.log
+build/toaruos-arnold*
 build/gen/
 
-# Temporary files
+# Temporary/test files
+tmpclaude-*-cwd
+test_*.png
+test_*.ppm
+
+# Demo & screenshot frames
 frames/
+demo_frames/
 *.ppm
-*.log
-frame60.png
+demo.gif
+demo.mp4
 
-# Screenshots (keep demo.mp4 and screenshot.png)
-screenshot.ppm
+# Screenshots
+screenshot_*.png
+screenshot_*.ppm
 
-# Editor files
+# Editor/IDE
 *.swp
 *~
 .vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Misc
+hs_err_pid*.log
+
+# ISO / disk image
+*.iso
+isodir/
+
+# Kernel ASM & binary products
+boot/*.asm
+boot/*.bin
+
+# Remove default exclusions if necessary
