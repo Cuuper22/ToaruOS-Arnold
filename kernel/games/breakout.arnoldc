@@ -54,6 +54,18 @@ HEY CHRISTMAS TREE boLastTick
 THIS IS A WARRIOR
 YOU SET US UP 0
 
+HEY CHRISTMAS TREE boOldBallX
+THIS IS A WARRIOR
+YOU SET US UP 506
+
+HEY CHRISTMAS TREE boOldBallY
+THIS IS A WARRIOR
+YOU SET US UP 600
+
+HEY CHRISTMAS TREE boOldPaddleX
+THIS IS A WARRIOR
+YOU SET US UP 462
+
 HEY CHRISTMAS TREE boBricksLeft
 THIS IS A WARRIOR
 YOU SET US UP 84
@@ -262,13 +274,12 @@ STICK AROUND continueRow
         ENOUGH TALK
         
         BECAUSE I'M GOING TO SAY PLEASE brickExists
-            TALK TO YOURSELF "Calculate brick position"
+            TALK TO YOURSELF "Calculate brick position: (WIDTH+GAP)*col + START"
             HEY CHRISTMAS TREE brickX
             THIS IS A WARRIOR
             YOU SET US UP 0
             GET TO THE CHOPPER brickX
-            HERE IS MY INVITATION col
-            YOU'RE FIRED BRICK_WIDTH
+            HERE IS MY INVITATION BRICK_WIDTH
             GET UP BRICK_GAP
             YOU'RE FIRED col
             GET UP BRICK_START_X
@@ -278,8 +289,7 @@ STICK AROUND continueRow
             THIS IS A WARRIOR
             YOU SET US UP 0
             GET TO THE CHOPPER brickY
-            HERE IS MY INVITATION row
-            YOU'RE FIRED BRICK_HEIGHT
+            HERE IS MY INVITATION BRICK_HEIGHT
             GET UP BRICK_GAP
             YOU'RE FIRED row
             GET UP BRICK_START_Y
@@ -464,6 +474,19 @@ TALK TO YOURSELF "  FUNCTION: updateBreakout - Update game state"
 TALK TO YOURSELF "============================================================================"
 
 LISTEN TO ME VERY CAREFULLY updateBreakout
+
+TALK TO YOURSELF "Save old positions for erase"
+GET TO THE CHOPPER boOldBallX
+HERE IS MY INVITATION boBallX
+ENOUGH TALK
+
+GET TO THE CHOPPER boOldBallY
+HERE IS MY INVITATION boBallY
+ENOUGH TALK
+
+GET TO THE CHOPPER boOldPaddleX
+HERE IS MY INVITATION boPaddleX
+ENOUGH TALK
 
 TALK TO YOURSELF "Move ball"
 GET TO THE CHOPPER boBallX
@@ -769,17 +792,14 @@ YOU HAVE NO RESPECT FOR LOGIC
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
-TALK TO YOURSELF "  FUNCTION: drawBreakoutGame - Render breakout game"
+TALK TO YOURSELF "  FUNCTION: drawBreakoutInit - Initial full draw (slow, called once)"
 TALK TO YOURSELF "============================================================================"
 
-LISTEN TO ME VERY CAREFULLY drawBreakoutGame
+LISTEN TO ME VERY CAREFULLY drawBreakoutInit
 I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
 I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
 
-TALK TO YOURSELF "Clear screen"
-DO IT NOW clearScreen fbAddr fbPitch 0x00000020
-
-TALK TO YOURSELF "Draw bricks"
+TALK TO YOURSELF "Draw all bricks"
 HEY CHRISTMAS TREE row
 THIS IS A WARRIOR
 YOU SET US UP 0
@@ -804,45 +824,34 @@ STICK AROUND continueRow
         GET YOUR ASS TO MARS idx
         DO IT NOW getBrickIndex row col
         
-        HEY CHRISTMAS TREE exists
-        THIS IS A TINY WARRIOR
+        HEY CHRISTMAS TREE brickX
+        THIS IS A WARRIOR
         YOU SET US UP 0
-        GET TO THE CHOPPER exists
-        HERE IS MY INVITATION WHICH ONE bricks idx
+        GET TO THE CHOPPER brickX
+        HERE IS MY INVITATION BRICK_WIDTH
+        GET UP BRICK_GAP
+        YOU'RE FIRED col
+        GET UP BRICK_START_X
         ENOUGH TALK
         
-        BECAUSE I'M GOING TO SAY PLEASE exists
-            HEY CHRISTMAS TREE brickX
-            THIS IS A WARRIOR
-            YOU SET US UP 0
-            GET TO THE CHOPPER brickX
-            HERE IS MY INVITATION col
-            YOU'RE FIRED BRICK_WIDTH
-            GET UP BRICK_GAP
-            YOU'RE FIRED col
-            GET UP BRICK_START_X
-            ENOUGH TALK
-            
-            HEY CHRISTMAS TREE brickY
-            THIS IS A WARRIOR
-            YOU SET US UP 0
-            GET TO THE CHOPPER brickY
-            HERE IS MY INVITATION row
-            YOU'RE FIRED BRICK_HEIGHT
-            GET UP BRICK_GAP
-            YOU'RE FIRED row
-            GET UP BRICK_START_Y
-            ENOUGH TALK
-            
-            HEY CHRISTMAS TREE brickColor
-            THIS IS A WARRIOR
-            YOU SET US UP 0
-            GET TO THE CHOPPER brickColor
-            HERE IS MY INVITATION WHICH ONE brickColors row
-            ENOUGH TALK
-            
-            DO IT NOW fillRect fbAddr fbPitch brickX brickY BRICK_WIDTH BRICK_HEIGHT brickColor
-        YOU HAVE NO RESPECT FOR LOGIC
+        HEY CHRISTMAS TREE brickY
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER brickY
+        HERE IS MY INVITATION BRICK_HEIGHT
+        GET UP BRICK_GAP
+        YOU'RE FIRED row
+        GET UP BRICK_START_Y
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE brickColor
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER brickColor
+        HERE IS MY INVITATION WHICH ONE brickColors row
+        ENOUGH TALK
+        
+        DO IT NOW fillRect fbAddr fbPitch brickX brickY BRICK_WIDTH BRICK_HEIGHT brickColor
         
         GET TO THE CHOPPER col
         HERE IS MY INVITATION col
@@ -870,6 +879,28 @@ TALK TO YOURSELF "Draw paddle"
 DO IT NOW fillRect fbAddr fbPitch boPaddleX BO_PADDLE_Y BO_PADDLE_WIDTH BO_PADDLE_HEIGHT 0x00FFFFFF
 
 TALK TO YOURSELF "Draw ball"
+DO IT NOW fillRect fbAddr fbPitch boBallX boBallY BO_BALL_SIZE BO_BALL_SIZE 0x00FFFFFF
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawBreakoutGame - Per-frame update (fast, only changed pixels)"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawBreakoutGame
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+TALK TO YOURSELF "Erase old ball position (draw background color over it)"
+DO IT NOW fillRect fbAddr fbPitch boOldBallX boOldBallY BO_BALL_SIZE BO_BALL_SIZE 0x00000020
+
+TALK TO YOURSELF "Erase old paddle position"
+DO IT NOW fillRect fbAddr fbPitch boOldPaddleX BO_PADDLE_Y BO_PADDLE_WIDTH BO_PADDLE_HEIGHT 0x00000020
+
+TALK TO YOURSELF "Draw paddle at new position"
+DO IT NOW fillRect fbAddr fbPitch boPaddleX BO_PADDLE_Y BO_PADDLE_WIDTH BO_PADDLE_HEIGHT 0x00FFFFFF
+
+TALK TO YOURSELF "Draw ball at new position"
 DO IT NOW fillRect fbAddr fbPitch boBallX boBallY BO_BALL_SIZE BO_BALL_SIZE 0x00FFFFFF
 
 HASTA LA VISTA, BABY

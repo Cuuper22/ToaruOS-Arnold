@@ -1268,7 +1268,7 @@ BECAUSE I'M GOING TO SAY PLEASE checkBreakout
     BECAUSE I'M GOING TO SAY PLEASE isBreakout
         DO IT NOW initBreakout
         DO IT NOW clearScreen fbAddr fbPitch 0x00000020
-        DO IT NOW drawBreakoutGame fbAddr fbPitch
+        DO IT NOW drawBreakoutInit fbAddr fbPitch
         GET TO THE CHOPPER launched
         HERE IS MY INVITATION 1
         ENOUGH TALK
@@ -1393,7 +1393,6 @@ BECAUSE I'M GOING TO SAY PLEASE tickBreakout
         DO IT NOW handleBreakoutInput currentScancode
     YOU HAVE NO RESPECT FOR LOGIC
     DO IT NOW updateBreakout
-    DO IT NOW clearScreen fbAddr fbPitch 0x00000020
     DO IT NOW drawBreakoutGame fbAddr fbPitch
     I'LL BE BACK 0
 YOU HAVE NO RESPECT FOR LOGIC
@@ -1418,7 +1417,6 @@ BECAUSE I'M GOING TO SAY PLEASE tickChopper
         DO IT NOW chopperJump
     YOU HAVE NO RESPECT FOR LOGIC
     DO IT NOW updateChopperGame
-    DO IT NOW clearScreen fbAddr fbPitch 0x00000000
     DO IT NOW drawChopperGame fbAddr fbPitch
     I'LL BE BACK 0
 YOU HAVE NO RESPECT FOR LOGIC
@@ -1466,7 +1464,6 @@ BECAUSE I'M GOING TO SAY PLEASE tickSkynet
     YOU HAVE NO RESPECT FOR LOGIC
     
     DO IT NOW updateSkynetGame
-    DO IT NOW clearScreen fbAddr fbPitch 0x00000000
     DO IT NOW drawSkynetGame fbAddr fbPitch
     I'LL BE BACK 0
 YOU HAVE NO RESPECT FOR LOGIC
