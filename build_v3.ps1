@@ -41,9 +41,28 @@ Write-Host "[INIT] Creating directories - I NEED YOUR MEMORY"
 New-Item -ItemType Directory -Path $BUILD_DIR -Force | Out-Null
 New-Item -ItemType Directory -Path $GEN_DIR -Force | Out-Null
 
-# Copy kernel source
-Write-Host "[ARN ] Copying kernel source - I'LL BE BACK"
-Copy-Item $KERNEL_SRC "$GEN_DIR\kernel.arnoldc" -Force
+# Build modular kernel using merge_modules.ps1
+Write-Host "[ARN ] Building modular kernel - I'LL BE BACK"
+
+# Source files in merge order (kernel core + libraries + games)
+# kernel_v3 must be LAST since it has the main function
+$sourceFiles = @(
+    "$ProjectRoot\kernel\lib\random.arnoldc",
+    "$ProjectRoot\kernel\lib\speaker.arnoldc",
+    "$ProjectRoot\kernel\games\snake.arnoldc",
+    "$ProjectRoot\kernel\games\pong.arnoldc",
+    "$ProjectRoot\kernel\games\breakout.arnoldc",
+    "$ProjectRoot\kernel\games\chopper.arnoldc",
+    "$ProjectRoot\kernel\games\memory.arnoldc",
+    "$ProjectRoot\kernel\games\skynet.arnoldc",
+    "$ProjectRoot\kernel\games\tictactoe.arnoldc",
+    $KERNEL_SRC
+)
+
+& powershell -ExecutionPolicy Bypass -File "$ProjectRoot\tools\merge_modules.ps1" `
+    -SourceFiles $sourceFiles `
+    -OutputFile "$GEN_DIR\kernel.arnoldc"
+if ($LASTEXITCODE -ne 0) { throw "Module merge failed!" }
 
 # Compile ArnoldC to ASM
 Write-Host "[ARN ] Compiling ArnoldC - IT'S SHOWTIME"

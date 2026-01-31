@@ -602,7 +602,7 @@ BECAUSE I'M GOING TO SAY PLEASE shouldUpdate
     HERE IS MY INVITATION currentTick
     ENOUGH TALK
     
-    DO IT NOW clearScreen fbAddr fbPitch 1024 768 0x00000000
+    DO IT NOW clearScreen fbAddr fbPitch 0x00000000
     DO IT NOW drawPongGame fbAddr fbPitch
 YOU HAVE NO RESPECT FOR LOGIC
 

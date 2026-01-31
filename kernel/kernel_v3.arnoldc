@@ -756,26 +756,13 @@ TALK TO YOURSELF "==============================================================
 LISTEN TO ME VERY CAREFULLY pollKeyboard
 GIVE THESE PEOPLE AIR
 
-HEY CHRISTMAS TREE status
-THIS IS A TINY WARRIOR
-YOU SET US UP 0
-
 HEY CHRISTMAS TREE scancode
-THIS IS A TINY WARRIOR
+THIS IS A WARRIOR
 YOU SET US UP 0
 
-GET YOUR ASS TO MARS status
-LISTEN TO THE PORT KBD_STATUS_PORT
-
-GET TO THE CHOPPER status
-HERE IS MY INVITATION status
-CRUSH THEM TOGETHER KBD_STATUS_OUTPUT
-ENOUGH TALK
-
-BECAUSE I'M GOING TO SAY PLEASE status
-    GET YOUR ASS TO MARS scancode
-    LISTEN TO THE PORT KBD_DATA_PORT
-YOU HAVE NO RESPECT FOR LOGIC
+TALK TO YOURSELF "Use ISR-stored scancode instead of direct port polling"
+GET YOUR ASS TO MARS scancode
+DO IT NOW get_last_scancode
 
 I'LL BE BACK scancode
 
@@ -1447,7 +1434,21 @@ STICK AROUND @NO PROBLEMO
                 HERE IS MY INVITATION clickedIcon
                 ENOUGH TALK
                 
-                DO IT NOW drawGamePlaceholder fbAddress fbPitch currentMode
+                TALK TO YOURSELF "Initialize the selected game"
+                HEY CHRISTMAS TREE isSnakeMode
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER isSnakeMode
+                HERE IS MY INVITATION currentMode
+                YOU ARE NOT YOU YOU ARE ME MODE_SNAKE
+                ENOUGH TALK
+                BECAUSE I'M GOING TO SAY PLEASE isSnakeMode
+                    DO IT NOW initSnake
+                    DO IT NOW clearScreen fbAddress fbPitch 0x00000020
+                    DO IT NOW drawSnakeGame fbAddress fbPitch
+                BULLSHIT
+                    DO IT NOW drawGamePlaceholder fbAddress fbPitch currentMode
+                YOU HAVE NO RESPECT FOR LOGIC
             YOU HAVE NO RESPECT FOR LOGIC
         YOU HAVE NO RESPECT FOR LOGIC
         
@@ -1456,11 +1457,45 @@ STICK AROUND @NO PROBLEMO
         ENOUGH TALK
     YOU HAVE NO RESPECT FOR LOGIC
     
-    TALK TO YOURSELF "Check for keyboard input"
+    TALK TO YOURSELF "Check for keyboard input (needed by games too)"
     GET YOUR ASS TO MARS scancode
     DO IT NOW pollKeyboard
     
+    TALK TO YOURSELF "Run game tick if in a game mode"
+    HEY CHRISTMAS TREE inSnake
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER inSnake
+    HERE IS MY INVITATION currentMode
+    YOU ARE NOT YOU YOU ARE ME MODE_SNAKE
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE inSnake
+        BECAUSE I'M GOING TO SAY PLEASE scancode
+            DO IT NOW handleSnakeInput scancode
+        YOU HAVE NO RESPECT FOR LOGIC
+        DO IT NOW snakeGameTick fbAddress fbPitch
+    YOU HAVE NO RESPECT FOR LOGIC
+    
     BECAUSE I'M GOING TO SAY PLEASE scancode
+        TALK TO YOURSELF "Keyboard shortcuts on desktop: 2=Snake"
+        BECAUSE I'M GOING TO SAY PLEASE isDesktop
+            HEY CHRISTMAS TREE is2Key
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER is2Key
+            HERE IS MY INVITATION scancode
+            YOU ARE NOT YOU YOU ARE ME 0x03
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE is2Key
+                GET TO THE CHOPPER currentMode
+                HERE IS MY INVITATION MODE_SNAKE
+                ENOUGH TALK
+                DO IT NOW initSnake
+                DO IT NOW clearScreen fbAddress fbPitch 0x00000020
+                DO IT NOW drawSnakeGame fbAddress fbPitch
+            YOU HAVE NO RESPECT FOR LOGIC
+        YOU HAVE NO RESPECT FOR LOGIC
+    
         TALK TO YOURSELF "Handle ESC key to return to desktop"
         HEY CHRISTMAS TREE isEsc
         THIS IS A WARRIOR
