@@ -47,7 +47,9 @@ Write-Host "[ARN ] Building modular kernel - I'LL BE BACK"
 # Source files in merge order (kernel core + libraries + games)
 # kernel_v3 must be LAST since it has the main function
 $sourceFiles = @(
+    "$ProjectRoot\kernel\kernel_v3.arnoldc",
     "$ProjectRoot\kernel\lib\random.arnoldc",
+    "$ProjectRoot\kernel\lib\timer.arnoldc",
     "$ProjectRoot\kernel\lib\speaker.arnoldc",
     "$ProjectRoot\kernel\games\snake.arnoldc",
     "$ProjectRoot\kernel\games\pong.arnoldc",
@@ -56,7 +58,12 @@ $sourceFiles = @(
     "$ProjectRoot\kernel\games\memory.arnoldc",
     "$ProjectRoot\kernel\games\skynet.arnoldc",
     "$ProjectRoot\kernel\games\tictactoe.arnoldc",
-    $KERNEL_SRC
+    "$ProjectRoot\kernel\window_manager.arnoldc",
+    "$ProjectRoot\kernel\terminal.arnoldc",
+    "$ProjectRoot\kernel\terminal_commands.arnoldc",
+    "$ProjectRoot\kernel\apps\calculator.arnoldc",
+    "$ProjectRoot\kernel\apps\about.arnoldc",
+    "$ProjectRoot\kernel\apps\settings.arnoldc"
 )
 
 & powershell -ExecutionPolicy Bypass -File "$ProjectRoot\tools\merge_modules.ps1" `
