@@ -1555,6 +1555,19 @@ BECAUSE I'M GOING TO SAY PLEASE tickTerm
         DO IT NOW termHandleKey currentScancode
     YOU HAVE NO RESPECT FOR LOGIC
     DO IT NOW drawTerminal fbAddr fbPitch
+    
+    TALK TO YOURSELF "Check if command wants to launch an app"
+    HEY CHRISTMAS TREE wantsLaunch
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER wantsLaunch
+    HERE IS MY INVITATION cmdResult
+    YOU ARE NOT ME 0
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE wantsLaunch
+        I'LL BE BACK cmdResult
+    YOU HAVE NO RESPECT FOR LOGIC
+    
     I'LL BE BACK 0
 YOU HAVE NO RESPECT FOR LOGIC
 
@@ -1740,15 +1753,25 @@ STICK AROUND @NO PROBLEMO
     CONSIDER THAT A DIVORCE yChanged
     ENOUGH TALK
     
-    TALK TO YOURSELF "Redraw mouse cursor if moved"
+    TALK TO YOURSELF "Redraw mouse cursor if moved (only on desktop)"
     BECAUSE I'M GOING TO SAY PLEASE mouseChanged
-        TALK TO YOURSELF "Erase old cursor position"
-        DO IT NOW fillRect fbAddress fbPitch lastMouseX lastMouseY 12 19 COLOR_DESKTOP_BG
+        HEY CHRISTMAS TREE isDesktopCursor
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isDesktopCursor
+        HERE IS MY INVITATION currentMode
+        YOU ARE NOT YOU YOU ARE ME 0
+        ENOUGH TALK
         
-        TALK TO YOURSELF "Draw new cursor"
-        DO IT NOW drawCursor fbAddress fbPitch
+        BECAUSE I'M GOING TO SAY PLEASE isDesktopCursor
+            TALK TO YOURSELF "Erase old cursor position"
+            DO IT NOW fillRect fbAddress fbPitch lastMouseX lastMouseY 12 19 COLOR_DESKTOP_BG
+            
+            TALK TO YOURSELF "Draw new cursor"
+            DO IT NOW drawCursor fbAddress fbPitch
+        YOU HAVE NO RESPECT FOR LOGIC
         
-        TALK TO YOURSELF "Update last position"
+        TALK TO YOURSELF "Always update last position"
         GET TO THE CHOPPER lastMouseX
         HERE IS MY INVITATION mouseX
         ENOUGH TALK
@@ -1917,7 +1940,29 @@ STICK AROUND @NO PROBLEMO
     DO IT NOW pollKeyboard
     
     TALK TO YOURSELF "Run game tick if in a game mode"
+    HEY CHRISTMAS TREE tickResult
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET YOUR ASS TO MARS tickResult
     DO IT NOW gameTickRouter fbAddress fbPitch currentMode scancode
+    
+    TALK TO YOURSELF "If tick returned a mode, switch to it"
+    HEY CHRISTMAS TREE wantSwitch
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER wantSwitch
+    HERE IS MY INVITATION tickResult
+    YOU ARE NOT ME 0
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE wantSwitch
+        GET TO THE CHOPPER currentMode
+        HERE IS MY INVITATION tickResult
+        ENOUGH TALK
+        DO IT NOW launchGame fbAddress fbPitch currentMode
+        GET TO THE CHOPPER cmdResult
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
     
     BECAUSE I'M GOING TO SAY PLEASE scancode
         TALK TO YOURSELF "Keyboard shortcuts on desktop: 1-6 launch games"

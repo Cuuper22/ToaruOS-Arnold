@@ -1,0 +1,897 @@
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  TERMINAL COMMANDS - Real command execution for the terminal"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Command buffer - stores typed characters between prompts"
+HEY CHRISTMAS TREE cmdBuf
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 64
+PUT THEM IN LINE
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+HEY CHRISTMAS TREE cmdLen
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE cmdHandled
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Return value from command execution: 0=stay, 1=terminal, 2-8=launch mode"
+HEY CHRISTMAS TREE cmdResult
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  cmdReset - Clear command buffer"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY cmdReset
+
+GET TO THE CHOPPER cmdLen
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+HEY CHRISTMAS TREE ri
+THIS IS A WARRIOR
+YOU SET US UP 0
+HEY CHRISTMAS TREE riCont
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+STICK AROUND riCont
+    GET TO THE CHOPPER WHICH ONE cmdBuf ri
+    HERE IS MY INVITATION 0
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER ri
+    HERE IS MY INVITATION ri
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER riCont
+    HERE IS MY INVITATION ri
+    YOU'RE NOT BIG ENOUGH 64
+    ENOUGH TALK
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  cmdAppendChar(ch) - Add character to command buffer"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY cmdAppendChar
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ch
+
+HEY CHRISTMAS TREE canAppend
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER canAppend
+HERE IS MY INVITATION cmdLen
+YOU'RE NOT BIG ENOUGH 63
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE canAppend
+    GET TO THE CHOPPER WHICH ONE cmdBuf cmdLen
+    HERE IS MY INVITATION ch
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER cmdLen
+    HERE IS MY INVITATION cmdLen
+    GET UP 1
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  cmdBackspace - Remove last character from command buffer"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY cmdBackspace
+
+HEY CHRISTMAS TREE canBack
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER canBack
+HERE IS MY INVITATION cmdLen
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE canBack
+    TALK TO YOURSELF "Nothing to delete"
+BULLSHIT
+    GET TO THE CHOPPER cmdLen
+    HERE IS MY INVITATION cmdLen
+    GET DOWN 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER WHICH ONE cmdBuf cmdLen
+    HERE IS MY INVITATION 0
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintLine(text...) helpers - Print predefined text lines"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY termPrintNewline
+DO IT NOW termPutChar 10
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Print: ARNOLD-OS v4.0"
+LISTEN TO ME VERY CAREFULLY termPrintVersion
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 118
+DO IT NOW termPutChar 52
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 48
+DO IT NOW termPrintNewline
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Print: 106KB ELF, 130 functions"
+LISTEN TO ME VERY CAREFULLY termPrintStats
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 54
+DO IT NOW termPutChar 75
+DO IT NOW termPutChar 66
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 70
+DO IT NOW termPutChar 44
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 51
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 102
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 115
+DO IT NOW termPrintNewline
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Print: Written in ArnoldC"
+LISTEN TO ME VERY CAREFULLY termPrintLang
+DO IT NOW termPutChar 87
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 67
+DO IT NOW termPrintNewline
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Print help text"
+LISTEN TO ME VERY CAREFULLY termPrintHelp
+TALK TO YOURSELF "Commands:"
+DO IT NOW termPutChar 67
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 58
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  help    - show this"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 104
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 104
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 119
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 104
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 115
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  clear   - clear screen"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 110
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  ver     - version info"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 118
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 118
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 110
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  time    - show clock"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 104
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 119
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 107
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  echo    - print text"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 104
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 120
+DO IT NOW termPutChar 116
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  snake/pong/breakout/chopper/skynet"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 107
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 47
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 47
+DO IT NOW termPutChar 98
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 107
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 47
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 104
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 47
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 107
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 116
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  calc    - calculator"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 114
+DO IT NOW termPrintNewline
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Print: Unknown command"
+LISTEN TO ME VERY CAREFULLY termPrintUnknown
+DO IT NOW termPutChar 85
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 107
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 119
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 100
+DO IT NOW termPrintNewline
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "Print: I'll be back."
+LISTEN TO ME VERY CAREFULLY termPrintQuote
+DO IT NOW termPutChar 73
+DO IT NOW termPutChar 39
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 98
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 98
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 107
+DO IT NOW termPutChar 46
+DO IT NOW termPrintNewline
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termExecCommand - Parse and execute the command in cmdBuf"
+TALK TO YOURSELF "  Returns: 0=stay in terminal, 2-8=switch to that mode"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY termExecCommand
+GIVE THESE PEOPLE AIR
+
+GET TO THE CHOPPER cmdResult
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+GET TO THE CHOPPER cmdHandled
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+TALK TO YOURSELF "Empty command - just show new prompt"
+HEY CHRISTMAS TREE isEmpty
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isEmpty
+HERE IS MY INVITATION cmdLen
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isEmpty
+    I'LL BE BACK 0
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "Read first character to dispatch"
+HEY CHRISTMAS TREE c0
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER c0
+HERE IS MY INVITATION WHICH ONE cmdBuf 0
+ENOUGH TALK
+
+HEY CHRISTMAS TREE c1
+THIS IS A WARRIOR
+YOU SET US UP 0
+BECAUSE I'M GOING TO SAY PLEASE cmdLen
+    GET TO THE CHOPPER c1
+    HERE IS MY INVITATION WHICH ONE cmdBuf 1
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE c2
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE hasC2
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER hasC2
+HERE IS MY INVITATION cmdLen
+YOU'RE AT LEAST AS BIG AS 3
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE hasC2
+    GET TO THE CHOPPER c2
+    HERE IS MY INVITATION WHICH ONE cmdBuf 2
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE c3
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE hasC3
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER hasC3
+HERE IS MY INVITATION cmdLen
+YOU'RE AT LEAST AS BIG AS 4
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE hasC3
+    GET TO THE CHOPPER c3
+    HERE IS MY INVITATION WHICH ONE cmdBuf 3
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: help (h=104, e=101, l=108, p=112) ==="
+HEY CHRISTMAS TREE isH
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isH
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 104
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isH
+    HEY CHRISTMAS TREE isHE
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isHE
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 101
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isHE
+        DO IT NOW termPrintHelp
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: clear (c=99, l=108) ==="
+HEY CHRISTMAS TREE isCL
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isCL
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 99
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isCL
+    HEY CHRISTMAS TREE isCLL
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isCLL
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 108
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isCLL
+        TALK TO YOURSELF "Clear: reinit terminal"
+        DO IT NOW initTerminal
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    TALK TO YOURSELF "Check: calc (c=99, a=97)"
+    HEY CHRISTMAS TREE isCA
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isCA
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 97
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isCA
+        DO IT NOW termPrintQuote
+        GET TO THE CHOPPER cmdResult
+        HERE IS MY INVITATION 7
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: ver (v=118, e=101) ==="
+HEY CHRISTMAS TREE isV
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isV
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 118
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isV
+    DO IT NOW termPrintVersion
+    DO IT NOW termPrintStats
+    DO IT NOW termPrintLang
+    GET TO THE CHOPPER cmdHandled
+    HERE IS MY INVITATION 1
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: time (t=116, i=105) ==="
+HEY CHRISTMAS TREE isT
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isT
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 116
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isT
+    HEY CHRISTMAS TREE isTI
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isTI
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 105
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isTI
+        TALK TO YOURSELF "Read RTC time"
+        HEY CHRISTMAS TREE hours
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET YOUR ASS TO MARS hours
+        DO IT NOW read_rtc_hours
+        
+        HEY CHRISTMAS TREE mins
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET YOUR ASS TO MARS mins
+        DO IT NOW read_rtc_minutes
+        
+        HEY CHRISTMAS TREE secs
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET YOUR ASS TO MARS secs
+        DO IT NOW read_rtc_seconds
+        
+        TALK TO YOURSELF "Print hours"
+        HEY CHRISTMAS TREE h10
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER h10
+        HERE IS MY INVITATION hours
+        HE HAD TO SPLIT 10
+        GET UP 48
+        ENOUGH TALK
+        DO IT NOW termPutChar h10
+        
+        HEY CHRISTMAS TREE h1
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER h1
+        HERE IS MY INVITATION hours
+        I LET HIM GO 10
+        GET UP 48
+        ENOUGH TALK
+        DO IT NOW termPutChar h1
+        
+        DO IT NOW termPutChar 58
+        
+        TALK TO YOURSELF "Print minutes"
+        HEY CHRISTMAS TREE m10
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER m10
+        HERE IS MY INVITATION mins
+        HE HAD TO SPLIT 10
+        GET UP 48
+        ENOUGH TALK
+        DO IT NOW termPutChar m10
+        
+        HEY CHRISTMAS TREE m1
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER m1
+        HERE IS MY INVITATION mins
+        I LET HIM GO 10
+        GET UP 48
+        ENOUGH TALK
+        DO IT NOW termPutChar m1
+        
+        DO IT NOW termPutChar 58
+        
+        TALK TO YOURSELF "Print seconds"
+        HEY CHRISTMAS TREE s10
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER s10
+        HERE IS MY INVITATION secs
+        HE HAD TO SPLIT 10
+        GET UP 48
+        ENOUGH TALK
+        DO IT NOW termPutChar s10
+        
+        HEY CHRISTMAS TREE s1
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER s1
+        HERE IS MY INVITATION secs
+        I LET HIM GO 10
+        GET UP 48
+        ENOUGH TALK
+        DO IT NOW termPutChar s1
+        
+        DO IT NOW termPrintNewline
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: echo (e=101, c=99) ==="
+HEY CHRISTMAS TREE isE
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isE
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 101
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isE
+    HEY CHRISTMAS TREE isEC
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isEC
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 99
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isEC
+        TALK TO YOURSELF "Print everything after echo (pos 5+)"
+        HEY CHRISTMAS TREE ei
+        THIS IS A WARRIOR
+        YOU SET US UP 5
+        
+        STICK AROUND ei
+            HEY CHRISTMAS TREE ech
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER ech
+            HERE IS MY INVITATION WHICH ONE cmdBuf ei
+            ENOUGH TALK
+            
+            DO IT NOW termPutChar ech
+            
+            GET TO THE CHOPPER ei
+            HERE IS MY INVITATION ei
+            GET UP 1
+            ENOUGH TALK
+            
+            HEY CHRISTMAS TREE eiDone
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER eiDone
+            HERE IS MY INVITATION ei
+            YOU'RE AT LEAST AS BIG AS cmdLen
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE eiDone
+                GET TO THE CHOPPER ei
+                HERE IS MY INVITATION cmdLen
+                ENOUGH TALK
+            YOU HAVE NO RESPECT FOR LOGIC
+        CHILL
+        
+        DO IT NOW termPrintNewline
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: snake (s=115, n=110) ==="
+HEY CHRISTMAS TREE isS
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isS
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 115
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isS
+    HEY CHRISTMAS TREE isSN
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isSN
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 110
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isSN
+        DO IT NOW termPrintQuote
+        GET TO THE CHOPPER cmdResult
+        HERE IS MY INVITATION 2
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    TALK TO YOURSELF "Check: skynet (s=115, k=107)"
+    HEY CHRISTMAS TREE isSK
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isSK
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 107
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isSK
+        DO IT NOW termPrintQuote
+        GET TO THE CHOPPER cmdResult
+        HERE IS MY INVITATION 6
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: pong (p=112, o=111) ==="
+HEY CHRISTMAS TREE isP
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isP
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 112
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isP
+    DO IT NOW termPrintQuote
+    GET TO THE CHOPPER cmdResult
+    HERE IS MY INVITATION 3
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: breakout (b=98, r=114) ==="
+HEY CHRISTMAS TREE isB
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isB
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 98
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isB
+    DO IT NOW termPrintQuote
+    GET TO THE CHOPPER cmdResult
+    HERE IS MY INVITATION 4
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: chopper (c=99, h=104) - already handled c=99 above ==="
+TALK TO YOURSELF "Need to re-check: if c0==99 and c1==104 -> chopper"
+HEY CHRISTMAS TREE isCH
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isCH
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 99
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isCH
+    HEY CHRISTMAS TREE isCHH
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isCHH
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 104
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isCHH
+        DO IT NOW termPrintQuote
+        GET TO THE CHOPPER cmdResult
+        HERE IS MY INVITATION 5
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: about (a=97, b=98) ==="
+HEY CHRISTMAS TREE isA
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isA
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 97
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isA
+    DO IT NOW termPrintQuote
+    GET TO THE CHOPPER cmdResult
+    HERE IS MY INVITATION 8
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "If no command matched, print unknown"
+HEY CHRISTMAS TREE noMatch
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER noMatch
+HERE IS MY INVITATION cmdResult
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE noMatch
+    HEY CHRISTMAS TREE notHandled
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER notHandled
+    HERE IS MY INVITATION cmdHandled
+    YOU ARE NOT YOU YOU ARE ME 0
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE notHandled
+        DO IT NOW termPrintUnknown
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+I'LL BE BACK cmdResult
+
+HASTA LA VISTA, BABY
