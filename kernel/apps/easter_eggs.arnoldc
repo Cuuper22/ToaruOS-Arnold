@@ -387,6 +387,96 @@ DO IT NOW termPrintNewline
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintMatrix - Fake matrix effect (prints random chars)"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintMatrix
+
+TALK TO YOURSELF "Print several lines of random green-looking characters"
+HEY CHRISTMAS TREE mxRow
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+STICK AROUND mxRow
+    HEY CHRISTMAS TREE mxCol
+    THIS IS A WARRIOR
+    YOU SET US UP 1
+    
+    STICK AROUND mxCol
+        HEY CHRISTMAS TREE mxRnd
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET YOUR ASS TO MARS mxRnd
+        DO IT NOW random
+        
+        TALK TO YOURSELF "Map to printable ASCII 33-126"
+        HEY CHRISTMAS TREE mxMul
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER mxMul
+        HERE IS MY INVITATION mxRnd
+        HE HAD TO SPLIT 94
+        ENOUGH TALK
+        HEY CHRISTMAS TREE mxMul2
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER mxMul2
+        HERE IS MY INVITATION mxMul
+        YOU'RE FIRED 94
+        ENOUGH TALK
+        HEY CHRISTMAS TREE mxChar
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER mxChar
+        HERE IS MY INVITATION mxRnd
+        GET DOWN mxMul2
+        GET UP 33
+        ENOUGH TALK
+        
+        DO IT NOW termPutChar mxChar
+        
+        HEY CHRISTMAS TREE mxColDone
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER mxColDone
+        HERE IS MY INVITATION mxCol
+        YOU ARE NOT YOU YOU ARE ME 60
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE mxColDone
+            GET TO THE CHOPPER mxCol
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+        BULLSHIT
+            GET TO THE CHOPPER mxCol
+            HERE IS MY INVITATION mxCol
+            GET UP 1
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+    CHILL
+
+    DO IT NOW termPrintNewline
+    
+    HEY CHRISTMAS TREE mxRowDone
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER mxRowDone
+    HERE IS MY INVITATION mxRow
+    YOU ARE NOT YOU YOU ARE ME 20
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE mxRowDone
+        GET TO THE CHOPPER mxRow
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    BULLSHIT
+        GET TO THE CHOPPER mxRow
+        HERE IS MY INVITATION mxRow
+        GET UP 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  termPrintNeofetch - ASCII art + system info"
 TALK TO YOURSELF "============================================================================"
 LISTEN TO ME VERY CAREFULLY termPrintNeofetch
