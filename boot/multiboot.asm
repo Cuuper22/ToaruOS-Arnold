@@ -914,6 +914,46 @@ read_rtc_seconds:
     add eax, edx
     ret
 
+global read_rtc_day
+global read_rtc_month
+global read_rtc_year
+
+read_rtc_day:
+    mov al, 0x07
+    out 0x70, al
+    in al, 0x71
+    movzx eax, al
+    mov edx, eax
+    shr edx, 4
+    and eax, 0x0F
+    imul edx, 10
+    add eax, edx
+    ret
+
+read_rtc_month:
+    mov al, 0x08
+    out 0x70, al
+    in al, 0x71
+    movzx eax, al
+    mov edx, eax
+    shr edx, 4
+    and eax, 0x0F
+    imul edx, 10
+    add eax, edx
+    ret
+
+read_rtc_year:
+    mov al, 0x09
+    out 0x70, al
+    in al, 0x71
+    movzx eax, al
+    mov edx, eax
+    shr edx, 4
+    and eax, 0x0F
+    imul edx, 10
+    add eax, edx
+    ret
+
 halt_system:
     cli
 .halt_loop:

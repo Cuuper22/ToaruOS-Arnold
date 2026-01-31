@@ -108,6 +108,9 @@ extern get_last_scancode
 extern read_rtc_hours
 extern read_rtc_minutes
 extern read_rtc_seconds
+extern read_rtc_day
+extern read_rtc_month
+extern read_rtc_year
 extern halt_system
 extern outb
 extern inb
