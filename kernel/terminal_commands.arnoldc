@@ -2166,6 +2166,128 @@ BECAUSE I'M GOING TO SAY PLEASE isSy
     YOU HAVE NO RESPECT FOR LOGIC
 YOU HAVE NO RESPECT FOR LOGIC
 
+TALK TO YOURSELF "=== Check: whoami (w=119, h=104) ==="
+HEY CHRISTMAS TREE isWh
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isWh
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 119
+ENOUGH TALK
+HEY CHRISTMAS TREE isWh2
+THIS IS A WARRIOR
+YOU SET US UP 0
+BECAUSE I'M GOING TO SAY PLEASE isWh
+    GET TO THE CHOPPER isWh2
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 104
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isWh2
+        TALK TO YOURSELF "Print: arnold"
+        DO IT NOW termPutChar 97
+        DO IT NOW termPutChar 114
+        DO IT NOW termPutChar 110
+        DO IT NOW termPutChar 111
+        DO IT NOW termPutChar 108
+        DO IT NOW termPutChar 100
+        DO IT NOW termPrintNewline
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: uname (u=117, n=110) ==="
+HEY CHRISTMAS TREE isUn
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isUn
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 117
+ENOUGH TALK
+HEY CHRISTMAS TREE isUn2
+THIS IS A WARRIOR
+YOU SET US UP 0
+BECAUSE I'M GOING TO SAY PLEASE isUn
+    GET TO THE CHOPPER isUn2
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 110
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isUn2
+        TALK TO YOURSELF "Print: ToaruOS-Arnold 4.0 i686"
+        DO IT NOW termPutChar 84
+        DO IT NOW termPutChar 111
+        DO IT NOW termPutChar 97
+        DO IT NOW termPutChar 114
+        DO IT NOW termPutChar 117
+        DO IT NOW termPutChar 79
+        DO IT NOW termPutChar 83
+        DO IT NOW termPutChar 45
+        DO IT NOW termPutChar 65
+        DO IT NOW termPutChar 114
+        DO IT NOW termPutChar 110
+        DO IT NOW termPutChar 111
+        DO IT NOW termPutChar 108
+        DO IT NOW termPutChar 100
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 52
+        DO IT NOW termPutChar 46
+        DO IT NOW termPutChar 48
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 105
+        DO IT NOW termPutChar 54
+        DO IT NOW termPutChar 56
+        DO IT NOW termPutChar 54
+        DO IT NOW termPrintNewline
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: uptime (u=117, p=112) ==="
+HEY CHRISTMAS TREE isUp
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isUp
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 117
+ENOUGH TALK
+HEY CHRISTMAS TREE isUp2
+THIS IS A WARRIOR
+YOU SET US UP 0
+BECAUSE I'M GOING TO SAY PLEASE isUp
+    GET TO THE CHOPPER isUp2
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 112
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isUp2
+        TALK TO YOURSELF "Print uptime in seconds"
+        DO IT NOW termPutChar 117
+        DO IT NOW termPutChar 112
+        DO IT NOW termPutChar 58
+        DO IT NOW termPutChar 32
+        HEY CHRISTMAS TREE upTicks
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET YOUR ASS TO MARS upTicks
+        DO IT NOW get_timer_ticks
+        HEY CHRISTMAS TREE upSecs
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER upSecs
+        HERE IS MY INVITATION upTicks
+        HE HAD TO SPLIT 18
+        ENOUGH TALK
+        DO IT NOW termPrintDecimal upSecs
+        DO IT NOW termPutChar 115
+        DO IT NOW termPrintNewline
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
 TALK TO YOURSELF "=== Check: top (t=116, o=111) ==="
 HEY CHRISTMAS TREE isTo
 THIS IS A WARRIOR
