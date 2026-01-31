@@ -2190,6 +2190,154 @@ BECAUSE I'M GOING TO SAY PLEASE isSy
     YOU HAVE NO RESPECT FOR LOGIC
 YOU HAVE NO RESPECT FOR LOGIC
 
+TALK TO YOURSELF "=== Check: free (f=102, r=114) ==="
+HEY CHRISTMAS TREE isFr
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isFr
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 102
+ENOUGH TALK
+HEY CHRISTMAS TREE isFr2
+THIS IS A WARRIOR
+YOU SET US UP 0
+BECAUSE I'M GOING TO SAY PLEASE isFr
+    GET TO THE CHOPPER isFr2
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 114
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isFr2
+        TALK TO YOURSELF "Print memory info"
+        TALK TO YOURSELF "total: 128M  used: 184K  free: 127M"
+        DO IT NOW termPutChar 116
+        DO IT NOW termPutChar 111
+        DO IT NOW termPutChar 116
+        DO IT NOW termPutChar 97
+        DO IT NOW termPutChar 108
+        DO IT NOW termPutChar 58
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 49
+        DO IT NOW termPutChar 50
+        DO IT NOW termPutChar 56
+        DO IT NOW termPutChar 77
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 117
+        DO IT NOW termPutChar 115
+        DO IT NOW termPutChar 101
+        DO IT NOW termPutChar 100
+        DO IT NOW termPutChar 58
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 49
+        DO IT NOW termPutChar 56
+        DO IT NOW termPutChar 52
+        DO IT NOW termPutChar 75
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 102
+        DO IT NOW termPutChar 114
+        DO IT NOW termPutChar 101
+        DO IT NOW termPutChar 101
+        DO IT NOW termPutChar 58
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 49
+        DO IT NOW termPutChar 50
+        DO IT NOW termPutChar 55
+        DO IT NOW termPutChar 77
+        DO IT NOW termPrintNewline
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: lscpu (l=108, s=115) ==="
+HEY CHRISTMAS TREE isLs
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isLs
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 108
+ENOUGH TALK
+HEY CHRISTMAS TREE isLs2
+THIS IS A WARRIOR
+YOU SET US UP 0
+BECAUSE I'M GOING TO SAY PLEASE isLs
+    GET TO THE CHOPPER isLs2
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 115
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isLs2
+        TALK TO YOURSELF "CPU: i686 @ QEMU"
+        DO IT NOW termPutChar 67
+        DO IT NOW termPutChar 80
+        DO IT NOW termPutChar 85
+        DO IT NOW termPutChar 58
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 105
+        DO IT NOW termPutChar 54
+        DO IT NOW termPutChar 56
+        DO IT NOW termPutChar 54
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 64
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 81
+        DO IT NOW termPutChar 69
+        DO IT NOW termPutChar 77
+        DO IT NOW termPutChar 85
+        DO IT NOW termPrintNewline
+        TALK TO YOURSELF "Cores: 1  Cache: N/A"
+        DO IT NOW termPutChar 67
+        DO IT NOW termPutChar 111
+        DO IT NOW termPutChar 114
+        DO IT NOW termPutChar 101
+        DO IT NOW termPutChar 115
+        DO IT NOW termPutChar 58
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 49
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 67
+        DO IT NOW termPutChar 97
+        DO IT NOW termPutChar 99
+        DO IT NOW termPutChar 104
+        DO IT NOW termPutChar 101
+        DO IT NOW termPutChar 58
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 78
+        DO IT NOW termPutChar 47
+        DO IT NOW termPutChar 65
+        DO IT NOW termPrintNewline
+        TALK TO YOURSELF "ISA: x86-32  FPU: none"
+        DO IT NOW termPutChar 73
+        DO IT NOW termPutChar 83
+        DO IT NOW termPutChar 65
+        DO IT NOW termPutChar 58
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 120
+        DO IT NOW termPutChar 56
+        DO IT NOW termPutChar 54
+        DO IT NOW termPutChar 45
+        DO IT NOW termPutChar 51
+        DO IT NOW termPutChar 50
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 70
+        DO IT NOW termPutChar 80
+        DO IT NOW termPutChar 85
+        DO IT NOW termPutChar 58
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 110
+        DO IT NOW termPutChar 111
+        DO IT NOW termPutChar 110
+        DO IT NOW termPutChar 101
+        DO IT NOW termPrintNewline
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
 TALK TO YOURSELF "=== Check: date (d=100, a=97) ==="
 HEY CHRISTMAS TREE isDa
 THIS IS A WARRIOR

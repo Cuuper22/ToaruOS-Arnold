@@ -658,6 +658,33 @@ GET UP 8
 ENOUGH TALK
 DO IT NOW drawChar fbAddr fbPitch gfTx2 gfTextY 93 0x00FFFFFF 0x003060A0
 
+TALK TO YOURSELF "Draw game title characters after [ESC]"
+GET TO THE CHOPPER gfTx2
+HERE IS MY INVITATION gfTx2
+GET UP 16
+ENOUGH TALK
+DO IT NOW drawChar fbAddr fbPitch gfTx2 gfTextY gfTC1 0x00FFFFFF 0x003060A0
+GET TO THE CHOPPER gfTx2
+HERE IS MY INVITATION gfTx2
+GET UP 8
+ENOUGH TALK
+DO IT NOW drawChar fbAddr fbPitch gfTx2 gfTextY gfTC2 0x00FFFFFF 0x003060A0
+GET TO THE CHOPPER gfTx2
+HERE IS MY INVITATION gfTx2
+GET UP 8
+ENOUGH TALK
+DO IT NOW drawChar fbAddr fbPitch gfTx2 gfTextY gfTC3 0x00FFFFFF 0x003060A0
+GET TO THE CHOPPER gfTx2
+HERE IS MY INVITATION gfTx2
+GET UP 8
+ENOUGH TALK
+DO IT NOW drawChar fbAddr fbPitch gfTx2 gfTextY gfTC4 0x00FFFFFF 0x003060A0
+GET TO THE CHOPPER gfTx2
+HERE IS MY INVITATION gfTx2
+GET UP 8
+ENOUGH TALK
+DO IT NOW drawChar fbAddr fbPitch gfTx2 gfTextY gfTC5 0x00FFFFFF 0x003060A0
+
 TALK TO YOURSELF "Draw red close button on right side"
 HEY CHRISTMAS TREE gfCloseX
 THIS IS A WARRIOR
@@ -1139,7 +1166,7 @@ LISTEN TO ME VERY CAREFULLY drawStartMenu
 I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
 I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
 
-TALK TO YOURSELF "Menu dimensions: 160 wide, 8 items x 24px = 192 tall"
+TALK TO YOURSELF "Menu dimensions: 160 wide, 10 items x 24px = 240+26 tall"
 HEY CHRISTMAS TREE smX
 THIS IS A WARRIOR
 YOU SET US UP 4
@@ -1148,7 +1175,7 @@ THIS IS A WARRIOR
 YOU SET US UP 160
 HEY CHRISTMAS TREE smH
 THIS IS A WARRIOR
-YOU SET US UP 218
+YOU SET US UP 266
 HEY CHRISTMAS TREE smY
 THIS IS A WARRIOR
 YOU SET US UP 0
@@ -1296,6 +1323,37 @@ DO IT NOW drawChar fbAddr fbPitch 48 smItemY 101 0x00FF8000 0x00303030
 DO IT NOW drawChar fbAddr fbPitch 56 smItemY 97 0x00FF8000 0x00303030
 DO IT NOW drawChar fbAddr fbPitch 64 smItemY 107 0x00FF8000 0x00303030
 
+GET TO THE CHOPPER smItemY
+HERE IS MY INVITATION smItemY
+GET UP 24
+ENOUGH TALK
+
+TALK TO YOURSELF "Item 9: Chopper"
+DO IT NOW drawChar fbAddr fbPitch 12 smItemY 53 0x00FFFF00 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 24 smItemY 32 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 32 smItemY 67 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 40 smItemY 104 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 48 smItemY 111 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 56 smItemY 112 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 64 smItemY 112 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 72 smItemY 101 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 80 smItemY 114 0x00FF8000 0x00303030
+
+GET TO THE CHOPPER smItemY
+HERE IS MY INVITATION smItemY
+GET UP 24
+ENOUGH TALK
+
+TALK TO YOURSELF "Item 10: Skynet"
+DO IT NOW drawChar fbAddr fbPitch 12 smItemY 54 0x00FFFF00 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 24 smItemY 32 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 32 smItemY 83 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 40 smItemY 107 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 48 smItemY 121 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 56 smItemY 110 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 64 smItemY 101 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 72 smItemY 116 0x00FF8000 0x00303030
+
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
@@ -1350,6 +1408,189 @@ BECAUSE I'M GOING TO SAY PLEASE smDo
         HERE IS MY INVITATION 1
         ENOUGH TALK
         DO IT NOW drawStartMenu smFb smPitch
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "Handle number keys when start menu is open"
+BECAUSE I'M GOING TO SAY PLEASE startMenuOpen
+    TALK TO YOURSELF "1=Terminal (scancode 0x02)"
+    HEY CHRISTMAS TREE smK1
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER smK1
+    HERE IS MY INVITATION smScan
+    YOU ARE NOT YOU YOU ARE ME 0x02
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE smK1
+        GET TO THE CHOPPER startMenuOpen
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        GET TO THE CHOPPER currentMode
+        HERE IS MY INVITATION MODE_TERMINAL
+        ENOUGH TALK
+        DO IT NOW drawDesktop smFb smPitch
+        DO IT NOW drawTaskBar smFb smPitch
+        DO IT NOW launchGame smFb smPitch currentMode
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    TALK TO YOURSELF "2=Snake (scancode 0x03)"
+    HEY CHRISTMAS TREE smK2
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER smK2
+    HERE IS MY INVITATION smScan
+    YOU ARE NOT YOU YOU ARE ME 0x03
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE smK2
+        GET TO THE CHOPPER startMenuOpen
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        GET TO THE CHOPPER currentMode
+        HERE IS MY INVITATION MODE_SNAKE
+        ENOUGH TALK
+        DO IT NOW drawDesktop smFb smPitch
+        DO IT NOW drawTaskBar smFb smPitch
+        DO IT NOW launchGame smFb smPitch currentMode
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    TALK TO YOURSELF "3=Pong (scancode 0x04)"
+    HEY CHRISTMAS TREE smK3
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER smK3
+    HERE IS MY INVITATION smScan
+    YOU ARE NOT YOU YOU ARE ME 0x04
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE smK3
+        GET TO THE CHOPPER startMenuOpen
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        GET TO THE CHOPPER currentMode
+        HERE IS MY INVITATION MODE_PONG
+        ENOUGH TALK
+        DO IT NOW drawDesktop smFb smPitch
+        DO IT NOW drawTaskBar smFb smPitch
+        DO IT NOW launchGame smFb smPitch currentMode
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    TALK TO YOURSELF "4=Breakout (scancode 0x05)"
+    HEY CHRISTMAS TREE smK4
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER smK4
+    HERE IS MY INVITATION smScan
+    YOU ARE NOT YOU YOU ARE ME 0x05
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE smK4
+        GET TO THE CHOPPER startMenuOpen
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        GET TO THE CHOPPER currentMode
+        HERE IS MY INVITATION MODE_BREAKOUT
+        ENOUGH TALK
+        DO IT NOW drawDesktop smFb smPitch
+        DO IT NOW drawTaskBar smFb smPitch
+        DO IT NOW launchGame smFb smPitch currentMode
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    TALK TO YOURSELF "5=Chopper (scancode 0x06)"
+    HEY CHRISTMAS TREE smK5
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER smK5
+    HERE IS MY INVITATION smScan
+    YOU ARE NOT YOU YOU ARE ME 0x06
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE smK5
+        GET TO THE CHOPPER startMenuOpen
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        GET TO THE CHOPPER currentMode
+        HERE IS MY INVITATION MODE_CHOPPER
+        ENOUGH TALK
+        DO IT NOW drawDesktop smFb smPitch
+        DO IT NOW drawTaskBar smFb smPitch
+        DO IT NOW launchGame smFb smPitch currentMode
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    TALK TO YOURSELF "6=Skynet (scancode 0x07)"
+    HEY CHRISTMAS TREE smK6
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER smK6
+    HERE IS MY INVITATION smScan
+    YOU ARE NOT YOU YOU ARE ME 0x07
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE smK6
+        GET TO THE CHOPPER startMenuOpen
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        GET TO THE CHOPPER currentMode
+        HERE IS MY INVITATION MODE_SKYNET
+        ENOUGH TALK
+        DO IT NOW drawDesktop smFb smPitch
+        DO IT NOW drawTaskBar smFb smPitch
+        DO IT NOW launchGame smFb smPitch currentMode
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    TALK TO YOURSELF "7=Calculator (scancode 0x08)"
+    HEY CHRISTMAS TREE smK7
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER smK7
+    HERE IS MY INVITATION smScan
+    YOU ARE NOT YOU YOU ARE ME 0x08
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE smK7
+        GET TO THE CHOPPER startMenuOpen
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        GET TO THE CHOPPER currentMode
+        HERE IS MY INVITATION MODE_CALCULATOR
+        ENOUGH TALK
+        DO IT NOW drawDesktop smFb smPitch
+        DO IT NOW drawTaskBar smFb smPitch
+        DO IT NOW launchGame smFb smPitch currentMode
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    TALK TO YOURSELF "9=Settings (scancode 0x0A)"
+    HEY CHRISTMAS TREE smK9
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER smK9
+    HERE IS MY INVITATION smScan
+    YOU ARE NOT YOU YOU ARE ME 0x0A
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE smK9
+        GET TO THE CHOPPER startMenuOpen
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        GET TO THE CHOPPER currentMode
+        HERE IS MY INVITATION MODE_SETTINGS
+        ENOUGH TALK
+        DO IT NOW drawDesktop smFb smPitch
+        DO IT NOW drawTaskBar smFb smPitch
+        DO IT NOW launchGame smFb smPitch currentMode
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    TALK TO YOURSELF "0=Editor (scancode 0x0B)"
+    HEY CHRISTMAS TREE smK0
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER smK0
+    HERE IS MY INVITATION smScan
+    YOU ARE NOT YOU YOU ARE ME 0x0B
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE smK0
+        GET TO THE CHOPPER startMenuOpen
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        GET TO THE CHOPPER currentMode
+        HERE IS MY INVITATION MODE_EDITOR
+        ENOUGH TALK
+        DO IT NOW drawDesktop smFb smPitch
+        DO IT NOW drawTaskBar smFb smPitch
+        DO IT NOW launchGame smFb smPitch currentMode
     YOU HAVE NO RESPECT FOR LOGIC
 YOU HAVE NO RESPECT FOR LOGIC
 
@@ -1913,7 +2154,7 @@ ENOUGH TALK
 BECAUSE I'M GOING TO SAY PLEASE isSnake
     DO IT NOW initSnake
     DO IT NOW clearScreen fbAddr fbPitch 0x00000020
-    DO IT NOW drawGameFrame fbAddr fbPitch 112 84 800 600
+    DO IT NOW drawGameFrame fbAddr fbPitch 112 84 800 600 83 110 97 107 101
     DO IT NOW drawSnakeGame fbAddr fbPitch
     GET TO THE CHOPPER launched
     HERE IS MY INVITATION 1
@@ -1938,7 +2179,7 @@ BECAUSE I'M GOING TO SAY PLEASE checkPong
     BECAUSE I'M GOING TO SAY PLEASE isPong
         DO IT NOW initPong
         DO IT NOW clearScreen fbAddr fbPitch 0x00000000
-        DO IT NOW drawGameFrame fbAddr fbPitch 50 100 924 550
+        DO IT NOW drawGameFrame fbAddr fbPitch 50 100 924 550 80 111 110 103 32
         DO IT NOW drawPongGame fbAddr fbPitch
         GET TO THE CHOPPER launched
         HERE IS MY INVITATION 1
@@ -1964,7 +2205,7 @@ BECAUSE I'M GOING TO SAY PLEASE checkBreakout
     BECAUSE I'M GOING TO SAY PLEASE isBreakout
         DO IT NOW initBreakout
         DO IT NOW clearScreen fbAddr fbPitch 0x00000020
-        DO IT NOW drawGameFrame fbAddr fbPitch 52 72 920 660
+        DO IT NOW drawGameFrame fbAddr fbPitch 52 72 920 660 66 114 101 97 107
         DO IT NOW drawBreakoutInit fbAddr fbPitch
         GET TO THE CHOPPER launched
         HERE IS MY INVITATION 1
@@ -1990,7 +2231,7 @@ BECAUSE I'M GOING TO SAY PLEASE checkChopper
     BECAUSE I'M GOING TO SAY PLEASE isChopper
         DO IT NOW initChopperGame
         DO IT NOW clearScreen fbAddr fbPitch 0x00000000
-        DO IT NOW drawGameFrame fbAddr fbPitch 12 38 1000 692
+        DO IT NOW drawGameFrame fbAddr fbPitch 12 38 1000 692 67 104 111 112 32
         DO IT NOW drawChopperGame fbAddr fbPitch
         GET TO THE CHOPPER launched
         HERE IS MY INVITATION 1
@@ -2016,7 +2257,7 @@ BECAUSE I'M GOING TO SAY PLEASE checkSkynet
     BECAUSE I'M GOING TO SAY PLEASE isSkynet
         DO IT NOW initSkynetGame
         DO IT NOW clearScreen fbAddr fbPitch 0x00000000
-        DO IT NOW drawGameFrame fbAddr fbPitch 12 38 1000 692
+        DO IT NOW drawGameFrame fbAddr fbPitch 12 38 1000 692 83 107 121 110 116
         DO IT NOW drawSkynetGame fbAddr fbPitch
         GET TO THE CHOPPER launched
         HERE IS MY INVITATION 1
