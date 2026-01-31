@@ -218,10 +218,11 @@ tools/
 - **Input:** PS/2 keyboard (IRQ1 + scancode ISR), PS/2 mouse (IRQ12)
 - **Networking:** E1000 NIC (PCI MMIO), ARP, IPv4, ICMP, TCP, HTTP/1.0 client
 - **Font:** Custom 8×8 bitmap, full ASCII 32-126
-- **ELF Size:** ~179 KB
-- **Functions:** 190+ across all source modules
-- **Modules:** 21 ArnoldC source files + 1 assembly (4000+ lines)
-- **Commits:** 51+
+- **ELF Size:** ~201 KB
+- **Functions:** 200+ across all source modules
+- **Modules:** 21 ArnoldC source files + 1 assembly (6000+ lines)
+- **Terminal Commands:** 32
+- **Commits:** 59+
 - **Boot time:** ~4 second splash screen, then desktop
 
 ### ArnoldC Challenges
