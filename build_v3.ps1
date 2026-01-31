@@ -65,13 +65,14 @@ $sourceFiles = @(
     "$ProjectRoot\kernel\apps\about.arnoldc",
     "$ProjectRoot\kernel\apps\settings.arnoldc",
     "$ProjectRoot\kernel\apps\text_editor.arnoldc",
-    "$ProjectRoot\kernel\apps\file_manager.arnoldc"
+    "$ProjectRoot\kernel\apps\file_manager.arnoldc",
+    "$ProjectRoot\kernel\apps\easter_eggs.arnoldc"
 )
 
-& powershell -ExecutionPolicy Bypass -File "$ProjectRoot\tools\merge_modules.ps1" `
+& "$ProjectRoot\tools\merge_modules.ps1" `
     -SourceFiles $sourceFiles `
     -OutputFile "$GEN_DIR\kernel.arnoldc"
-if ($LASTEXITCODE -ne 0) { throw "Module merge failed!" }
+if (-not (Test-Path "$GEN_DIR\kernel.arnoldc")) { throw "Module merge failed!" }
 
 # Compile ArnoldC to ASM (delete stale ASM first to prevent using cached build on failure)
 Write-Host "[ARN ] Compiling ArnoldC - IT'S SHOWTIME"

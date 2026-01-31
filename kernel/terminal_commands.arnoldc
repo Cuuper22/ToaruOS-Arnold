@@ -701,6 +701,50 @@ DO IT NOW termPutChar 119
 DO IT NOW termPutChar 110
 DO IT NOW termPrintNewline
 
+TALK TO YOURSELF "  fortune cowsay banner logo colors about"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 102
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 119
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 98
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 98
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 116
+DO IT NOW termPrintNewline
+
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
@@ -2234,7 +2278,40 @@ BECAUSE I'M GOING TO SAY PLEASE isFo
     YOU HAVE NO RESPECT FOR LOGIC
 YOU HAVE NO RESPECT FOR LOGIC
 
-TALK TO YOURSELF "=== Check: cowsay (c=99, o=111) ==="
+TALK TO YOURSELF "=== Check: colors (c=99, o=111, l=108) ==="
+HEY CHRISTMAS TREE isCol
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isCol
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 99
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isCol
+    HEY CHRISTMAS TREE isCol2
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isCol2
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 111
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isCol2
+        HEY CHRISTMAS TREE isCol3
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isCol3
+        HERE IS MY INVITATION c2
+        YOU ARE NOT YOU YOU ARE ME 108
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE isCol3
+            DO IT NOW termPrintColors
+            GET TO THE CHOPPER cmdHandled
+            HERE IS MY INVITATION 1
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: cowsay (c=99, o=111, w=119) ==="
 HEY CHRISTMAS TREE isCo
 THIS IS A WARRIOR
 YOU SET US UP 0
@@ -2251,10 +2328,19 @@ BECAUSE I'M GOING TO SAY PLEASE isCo
     YOU ARE NOT YOU YOU ARE ME 111
     ENOUGH TALK
     BECAUSE I'M GOING TO SAY PLEASE isCo2
-        DO IT NOW termPrintCowsay
-        GET TO THE CHOPPER cmdHandled
-        HERE IS MY INVITATION 1
+        HEY CHRISTMAS TREE isCo3
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isCo3
+        HERE IS MY INVITATION c2
+        YOU ARE NOT YOU YOU ARE ME 119
         ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE isCo3
+            DO IT NOW termPrintCowsay
+            GET TO THE CHOPPER cmdHandled
+            HERE IS MY INVITATION 1
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
     YOU HAVE NO RESPECT FOR LOGIC
 YOU HAVE NO RESPECT FOR LOGIC
 
