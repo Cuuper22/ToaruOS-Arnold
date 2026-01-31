@@ -5,6 +5,7 @@ build/*.elf
 build/*.asm
 build/*.log
 build/*.ppm
+build/*.png
 build/serial.log
 build/toaruos-arnold*
 build/gen/
