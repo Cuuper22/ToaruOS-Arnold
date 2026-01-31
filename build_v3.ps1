@@ -106,6 +106,8 @@ extern outw
 extern inw
 extern outl
 extern inl
+extern fast_fill_rect
+extern fast_memcpy32
 
 "@
 # Insert externs after "section .text"

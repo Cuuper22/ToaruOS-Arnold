@@ -921,5 +921,76 @@ halt_system:
     jmp .halt_loop
 
 ; ============================================================================
+; FAST GRAPHICS FUNCTIONS - "CRUSH THEM ALL"
+; Native x86 implementations for performance-critical rendering
+; ============================================================================
+global fast_fill_rect
+global fast_memcpy32
+
+; fast_fill_rect(fbAddr, fbPitch, x, y, width, height, color)
+; Uses rep stosd for ~100x speedup over putPixel loops
+; Args: [esp+4]=fbAddr, [esp+8]=pitch, [esp+12]=x, [esp+16]=y,
+;       [esp+20]=width, [esp+24]=height, [esp+28]=color
+fast_fill_rect:
+    push ebp
+    mov ebp, esp
+    push edi
+    push ebx
+    push esi
+
+    ; Args: fbAddr=[ebp+8], pitch=[ebp+12], x=[ebp+16], y=[ebp+20],
+    ;       width=[ebp+24], height=[ebp+28], color=[ebp+32]
+    mov edi, [ebp+8]     ; fbAddr
+    mov eax, [ebp+12]    ; pitch (bytes per row)
+    mov ebx, [ebp+20]    ; y
+    imul eax, ebx        ; y * pitch
+    mov ebx, [ebp+16]    ; x
+    shl ebx, 2           ; x * 4 (32bpp)
+    add edi, eax         ; fbAddr + y*pitch
+    add edi, ebx         ; + x*4 = start address
+
+    mov ecx, [ebp+24]    ; width
+    mov edx, [ebp+28]    ; height
+    mov eax, [ebp+32]    ; color
+    mov esi, [ebp+12]    ; pitch
+
+    ; Calculate stride = pitch - width*4 (bytes to skip to next row)
+    mov ebx, ecx
+    shl ebx, 2           ; width * 4
+    sub esi, ebx         ; stride = pitch - width*4
+
+.fill_row:
+    test edx, edx
+    jz .fill_done
+    push ecx             ; save width for next row
+    rep stosd             ; fill ECX dwords with EAX at [EDI]
+    add edi, esi          ; skip to next row start
+    pop ecx               ; restore width
+    dec edx
+    jmp .fill_row
+.fill_done:
+    pop esi
+    pop ebx
+    pop edi
+    pop ebp
+    ret
+
+; fast_memcpy32(dst, src, count)
+; Fast 32-bit word copy using rep movsd
+; Args: [esp+4]=dst, [esp+8]=src, [esp+12]=count (in dwords)
+fast_memcpy32:
+    push edi
+    push esi
+    push ecx
+    mov edi, [esp+16]     ; dst
+    mov esi, [esp+20]     ; src
+    mov ecx, [esp+24]     ; count
+    rep movsd
+    pop ecx
+    pop esi
+    pop edi
+    ret
+
+; ============================================================================
 ; "HASTA LA VISTA, BABY" - End of bootloader
 ; ============================================================================
