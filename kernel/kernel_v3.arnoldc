@@ -548,6 +548,144 @@ DO IT NOW fillRect fbAddr fbPitch x2 y 1 h color
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawGameFrame - Draw window frame around game area"
+TALK TO YOURSELF "  Parameters: fb, pitch, gameX, gameY, gameW, gameH, titleChar1-5"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawGameFrame
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE gfX
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE gfY
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE gfW
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE gfH
+
+TALK TO YOURSELF "Window frame starts 2px left/above game area"
+TALK TO YOURSELF "Title bar is 24px tall above game area"
+
+HEY CHRISTMAS TREE gfFrameX
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER gfFrameX
+HERE IS MY INVITATION gfX
+GET DOWN 2
+ENOUGH TALK
+
+HEY CHRISTMAS TREE gfFrameY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER gfFrameY
+HERE IS MY INVITATION gfY
+GET DOWN 26
+ENOUGH TALK
+
+HEY CHRISTMAS TREE gfFrameW
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER gfFrameW
+HERE IS MY INVITATION gfW
+GET UP 4
+ENOUGH TALK
+
+HEY CHRISTMAS TREE gfFrameH
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER gfFrameH
+HERE IS MY INVITATION gfH
+GET UP 28
+ENOUGH TALK
+
+TALK TO YOURSELF "Draw title bar (blue)"
+HEY CHRISTMAS TREE gfTitleY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER gfTitleY
+HERE IS MY INVITATION gfY
+GET DOWN 24
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddr fbPitch gfFrameX gfTitleY gfFrameW 24 0x003060A0
+
+TALK TO YOURSELF "Draw title text - ESC to close"
+HEY CHRISTMAS TREE gfTextX
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER gfTextX
+HERE IS MY INVITATION gfX
+GET UP 4
+ENOUGH TALK
+
+HEY CHRISTMAS TREE gfTextY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER gfTextY
+HERE IS MY INVITATION gfY
+GET DOWN 20
+ENOUGH TALK
+
+TALK TO YOURSELF "Draw [ESC] text"
+DO IT NOW drawChar fbAddr fbPitch gfTextX gfTextY 91 0x00FFFFFF 0x003060A0
+HEY CHRISTMAS TREE gfTx2
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER gfTx2
+HERE IS MY INVITATION gfTextX
+GET UP 8
+ENOUGH TALK
+DO IT NOW drawChar fbAddr fbPitch gfTx2 gfTextY 69 0x00FFFFFF 0x003060A0
+GET TO THE CHOPPER gfTx2
+HERE IS MY INVITATION gfTx2
+GET UP 8
+ENOUGH TALK
+DO IT NOW drawChar fbAddr fbPitch gfTx2 gfTextY 83 0x00FFFFFF 0x003060A0
+GET TO THE CHOPPER gfTx2
+HERE IS MY INVITATION gfTx2
+GET UP 8
+ENOUGH TALK
+DO IT NOW drawChar fbAddr fbPitch gfTx2 gfTextY 67 0x00FFFFFF 0x003060A0
+GET TO THE CHOPPER gfTx2
+HERE IS MY INVITATION gfTx2
+GET UP 8
+ENOUGH TALK
+DO IT NOW drawChar fbAddr fbPitch gfTx2 gfTextY 93 0x00FFFFFF 0x003060A0
+
+TALK TO YOURSELF "Draw red close button on right side"
+HEY CHRISTMAS TREE gfCloseX
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER gfCloseX
+HERE IS MY INVITATION gfFrameX
+GET UP gfFrameW
+GET DOWN 20
+ENOUGH TALK
+
+HEY CHRISTMAS TREE gfCloseY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER gfCloseY
+HERE IS MY INVITATION gfTitleY
+GET UP 4
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddr fbPitch gfCloseX gfCloseY 16 16 0x00CC0000
+DO IT NOW drawChar fbAddr fbPitch gfCloseX gfCloseY 88 0x00FFFFFF 0x00CC0000
+
+TALK TO YOURSELF "Draw border around entire frame"
+DO IT NOW drawRect fbAddr fbPitch gfFrameX gfFrameY gfFrameW gfFrameH 0x00808080
+
+TALK TO YOURSELF "Draw separator between title and content"
+HEY CHRISTMAS TREE gfSepY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER gfSepY
+HERE IS MY INVITATION gfY
+GET DOWN 2
+ENOUGH TALK
+DO IT NOW fillRect fbAddr fbPitch gfFrameX gfSepY gfFrameW 2 0x00808080
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  FUNCTION: drawChar - Draw single character"
 TALK TO YOURSELF "============================================================================"
 
@@ -1543,6 +1681,7 @@ ENOUGH TALK
 BECAUSE I'M GOING TO SAY PLEASE isSnake
     DO IT NOW initSnake
     DO IT NOW clearScreen fbAddr fbPitch 0x00000020
+    DO IT NOW drawGameFrame fbAddr fbPitch 112 84 800 600
     DO IT NOW drawSnakeGame fbAddr fbPitch
     GET TO THE CHOPPER launched
     HERE IS MY INVITATION 1
@@ -1567,6 +1706,7 @@ BECAUSE I'M GOING TO SAY PLEASE checkPong
     BECAUSE I'M GOING TO SAY PLEASE isPong
         DO IT NOW initPong
         DO IT NOW clearScreen fbAddr fbPitch 0x00000000
+        DO IT NOW drawGameFrame fbAddr fbPitch 50 100 924 550
         DO IT NOW drawPongGame fbAddr fbPitch
         GET TO THE CHOPPER launched
         HERE IS MY INVITATION 1
@@ -1592,6 +1732,7 @@ BECAUSE I'M GOING TO SAY PLEASE checkBreakout
     BECAUSE I'M GOING TO SAY PLEASE isBreakout
         DO IT NOW initBreakout
         DO IT NOW clearScreen fbAddr fbPitch 0x00000020
+        DO IT NOW drawGameFrame fbAddr fbPitch 52 72 920 660
         DO IT NOW drawBreakoutInit fbAddr fbPitch
         GET TO THE CHOPPER launched
         HERE IS MY INVITATION 1
@@ -1617,6 +1758,7 @@ BECAUSE I'M GOING TO SAY PLEASE checkChopper
     BECAUSE I'M GOING TO SAY PLEASE isChopper
         DO IT NOW initChopperGame
         DO IT NOW clearScreen fbAddr fbPitch 0x00000000
+        DO IT NOW drawGameFrame fbAddr fbPitch 12 38 1000 692
         DO IT NOW drawChopperGame fbAddr fbPitch
         GET TO THE CHOPPER launched
         HERE IS MY INVITATION 1
@@ -1642,6 +1784,7 @@ BECAUSE I'M GOING TO SAY PLEASE checkSkynet
     BECAUSE I'M GOING TO SAY PLEASE isSkynet
         DO IT NOW initSkynetGame
         DO IT NOW clearScreen fbAddr fbPitch 0x00000000
+        DO IT NOW drawGameFrame fbAddr fbPitch 12 38 1000 692
         DO IT NOW drawSkynetGame fbAddr fbPitch
         GET TO THE CHOPPER launched
         HERE IS MY INVITATION 1
