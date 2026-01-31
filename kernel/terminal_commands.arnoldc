@@ -395,6 +395,28 @@ DO IT NOW termPutChar 111
 DO IT NOW termPutChar 114
 DO IT NOW termPrintNewline
 
+TALK TO YOURSELF "  settings - themes"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 104
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 115
+DO IT NOW termPrintNewline
+
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "Print: Unknown command"
@@ -798,6 +820,21 @@ BECAUSE I'M GOING TO SAY PLEASE isS
         DO IT NOW termPrintQuote
         GET TO THE CHOPPER cmdResult
         HERE IS MY INVITATION 6
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    TALK TO YOURSELF "Check: settings (s=115, e=101)"
+    HEY CHRISTMAS TREE isSE
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isSE
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 101
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isSE
+        DO IT NOW termPrintQuote
+        GET TO THE CHOPPER cmdResult
+        HERE IS MY INVITATION 9
         ENOUGH TALK
     YOU HAVE NO RESPECT FOR LOGIC
 YOU HAVE NO RESPECT FOR LOGIC

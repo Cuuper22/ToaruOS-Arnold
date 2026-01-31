@@ -62,6 +62,7 @@ LET ME TELL YOU SOMETHING MODE_CHOPPER 5
 LET ME TELL YOU SOMETHING MODE_SKYNET 6
 LET ME TELL YOU SOMETHING MODE_CALCULATOR 7
 LET ME TELL YOU SOMETHING MODE_ABOUT 8
+LET ME TELL YOU SOMETHING MODE_SETTINGS 9
 
 TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  8x8 BITMAP FONT - Full ASCII 32-126"
@@ -291,6 +292,23 @@ LET ME TELL YOU SOMETHING ESC_MSG_LEN 19
 TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  Global State Variables"
 TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Runtime theme colors (mutable - changed by Settings app)"
+HEY CHRISTMAS TREE themeDesktopBg
+THIS IS A WARRIOR
+YOU SET US UP 0x00008080
+
+HEY CHRISTMAS TREE themeTaskbarBg
+THIS IS A WARRIOR
+YOU SET US UP 0x00404040
+
+HEY CHRISTMAS TREE themeAccent
+THIS IS A WARRIOR
+YOU SET US UP 0x0000AAAA
+
+HEY CHRISTMAS TREE settingsSelection
+THIS IS A WARRIOR
+YOU SET US UP 0
 
 HEY CHRISTMAS TREE currentMode
 THIS IS A WARRIOR
@@ -749,7 +767,7 @@ GET DOWN TASKBAR_HEIGHT
 ENOUGH TALK
 
 TALK TO YOURSELF "Draw task bar background"
-DO IT NOW fillRect fbAddr fbPitch 0 taskbarY SCREEN_WIDTH TASKBAR_HEIGHT COLOR_TASKBAR_BG
+DO IT NOW fillRect fbAddr fbPitch 0 taskbarY SCREEN_WIDTH TASKBAR_HEIGHT themeTaskbarBg
 
 TALK TO YOURSELF "Draw top border"
 DO IT NOW fillRect fbAddr fbPitch 0 taskbarY SCREEN_WIDTH 1 COLOR_BLACK
@@ -827,7 +845,7 @@ I LET HIM GO 10
 GET UP 48
 ENOUGH TALK
 
-DO IT NOW drawChar fbAddr fbPitch clockX startY h10 COLOR_WHITE COLOR_TASKBAR_BG
+DO IT NOW drawChar fbAddr fbPitch clockX startY h10 COLOR_WHITE themeTaskbarBg
 
 HEY CHRISTMAS TREE cx2
 THIS IS A WARRIOR
@@ -836,7 +854,7 @@ GET TO THE CHOPPER cx2
 HERE IS MY INVITATION clockX
 GET UP 8
 ENOUGH TALK
-DO IT NOW drawChar fbAddr fbPitch cx2 startY h1 COLOR_WHITE COLOR_TASKBAR_BG
+DO IT NOW drawChar fbAddr fbPitch cx2 startY h1 COLOR_WHITE themeTaskbarBg
 
 HEY CHRISTMAS TREE cx3
 THIS IS A WARRIOR
@@ -845,7 +863,7 @@ GET TO THE CHOPPER cx3
 HERE IS MY INVITATION clockX
 GET UP 16
 ENOUGH TALK
-DO IT NOW drawChar fbAddr fbPitch cx3 startY 58 COLOR_WHITE COLOR_TASKBAR_BG
+DO IT NOW drawChar fbAddr fbPitch cx3 startY 58 COLOR_WHITE themeTaskbarBg
 
 HEY CHRISTMAS TREE cx4
 THIS IS A WARRIOR
@@ -854,7 +872,7 @@ GET TO THE CHOPPER cx4
 HERE IS MY INVITATION clockX
 GET UP 24
 ENOUGH TALK
-DO IT NOW drawChar fbAddr fbPitch cx4 startY m10 COLOR_WHITE COLOR_TASKBAR_BG
+DO IT NOW drawChar fbAddr fbPitch cx4 startY m10 COLOR_WHITE themeTaskbarBg
 
 HEY CHRISTMAS TREE cx5
 THIS IS A WARRIOR
@@ -863,7 +881,7 @@ GET TO THE CHOPPER cx5
 HERE IS MY INVITATION clockX
 GET UP 32
 ENOUGH TALK
-DO IT NOW drawChar fbAddr fbPitch cx5 startY m1 COLOR_WHITE COLOR_TASKBAR_BG
+DO IT NOW drawChar fbAddr fbPitch cx5 startY m1 COLOR_WHITE themeTaskbarBg
 
 HASTA LA VISTA, BABY
 
@@ -923,7 +941,7 @@ GET DOWN labelWidth
 HE HAD TO SPLIT 2
 ENOUGH TALK
 
-DO IT NOW drawStringAt fbAddr fbPitch labelX labelY labelPtr labelLen COLOR_WHITE COLOR_DESKTOP_BG
+DO IT NOW drawStringAt fbAddr fbPitch labelX labelY labelPtr labelLen COLOR_WHITE themeDesktopBg
 
 HASTA LA VISTA, BABY
 
@@ -935,8 +953,8 @@ LISTEN TO ME VERY CAREFULLY drawDesktop
 I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
 I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
 
-TALK TO YOURSELF "Clear to desktop background"
-DO IT NOW clearScreen fbAddr fbPitch COLOR_DESKTOP_BG
+TALK TO YOURSELF "Clear to desktop background (uses theme color)"
+DO IT NOW clearScreen fbAddr fbPitch themeDesktopBg
 
 TALK TO YOURSELF "Draw menu bar"
 DO IT NOW drawMenuBar fbAddr fbPitch
@@ -978,7 +996,7 @@ ENOUGH TALK
 DO IT NOW drawIcon fbAddr fbPitch 20 icon3Y COLOR_TERMINATOR_RED iconPong ICON_PONG_LEN
 
 TALK TO YOURSELF "Draw welcome message in center"
-DO IT NOW drawStringAt fbAddr fbPitch 350 400 welcomeMsg WELCOME_LEN COLOR_WHITE COLOR_DESKTOP_BG
+DO IT NOW drawStringAt fbAddr fbPitch 350 400 welcomeMsg WELCOME_LEN COLOR_WHITE themeDesktopBg
 
 HASTA LA VISTA, BABY
 
@@ -1423,6 +1441,30 @@ BECAUSE I'M GOING TO SAY PLEASE checkAbout
     YOU HAVE NO RESPECT FOR LOGIC
 YOU HAVE NO RESPECT FOR LOGIC
 
+HEY CHRISTMAS TREE checkSettings
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER checkSettings
+HERE IS MY INVITATION launched
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE checkSettings
+    HEY CHRISTMAS TREE isSettings
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isSettings
+    HERE IS MY INVITATION gameMode
+    YOU ARE NOT YOU YOU ARE ME MODE_SETTINGS
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isSettings
+        DO IT NOW initSettings 0
+        DO IT NOW drawSettings fbAddr fbPitch
+        GET TO THE CHOPPER launched
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
 TALK TO YOURSELF "Fallback: unknown game mode"
 HEY CHRISTMAS TREE notLaunched
 THIS IS A WARRIOR
@@ -1609,6 +1651,21 @@ BECAUSE I'M GOING TO SAY PLEASE tickCalc
     I'LL BE BACK 0
 YOU HAVE NO RESPECT FOR LOGIC
 
+HEY CHRISTMAS TREE tickSettings
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER tickSettings
+HERE IS MY INVITATION gameMode
+YOU ARE NOT YOU YOU ARE ME MODE_SETTINGS
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE tickSettings
+    BECAUSE I'M GOING TO SAY PLEASE currentScancode
+        DO IT NOW handleSettingsKey currentScancode
+        DO IT NOW drawSettings fbAddr fbPitch
+    YOU HAVE NO RESPECT FOR LOGIC
+    I'LL BE BACK 0
+YOU HAVE NO RESPECT FOR LOGIC
+
 TALK TO YOURSELF "Not in a game mode - do nothing"
 I'LL BE BACK 0
 
@@ -1788,7 +1845,7 @@ STICK AROUND @NO PROBLEMO
         
         BECAUSE I'M GOING TO SAY PLEASE isDesktopCursor
             TALK TO YOURSELF "Erase old cursor position"
-            DO IT NOW fillRect fbAddress fbPitch lastMouseX lastMouseY 12 19 COLOR_DESKTOP_BG
+            DO IT NOW fillRect fbAddress fbPitch lastMouseX lastMouseY 12 19 themeDesktopBg
             
             TALK TO YOURSELF "Draw new cursor"
             DO IT NOW drawCursor fbAddress fbPitch
@@ -2106,6 +2163,21 @@ STICK AROUND @NO PROBLEMO
             BECAUSE I'M GOING TO SAY PLEASE is8Key
                 GET TO THE CHOPPER currentMode
                 HERE IS MY INVITATION MODE_ABOUT
+                ENOUGH TALK
+                DO IT NOW launchGame fbAddress fbPitch currentMode
+            YOU HAVE NO RESPECT FOR LOGIC
+            
+            TALK TO YOURSELF "9=Settings (scancode 0x0A)"
+            HEY CHRISTMAS TREE is9Key
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER is9Key
+            HERE IS MY INVITATION scancode
+            YOU ARE NOT YOU YOU ARE ME 0x0A
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE is9Key
+                GET TO THE CHOPPER currentMode
+                HERE IS MY INVITATION MODE_SETTINGS
                 ENOUGH TALK
                 DO IT NOW launchGame fbAddress fbPitch currentMode
             YOU HAVE NO RESPECT FOR LOGIC
