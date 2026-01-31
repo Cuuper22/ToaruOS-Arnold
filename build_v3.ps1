@@ -125,6 +125,11 @@ extern e1000_send_packet
 extern e1000_receive_packet
 extern e1000_get_mac
 extern e1000_is_link_up
+extern net_ping_gateway
+extern net_get_ip_byte
+extern net_get_gateway_byte
+extern net_get_mac_byte
+extern net_is_available
 
 "@
 # Insert externs after "section .text"
