@@ -11,10 +11,10 @@ $ProjectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 # Tool paths
 $NASM = "nasm"
-$LD = "ld"
-$OBJCOPY = "objcopy"
+$LD = "C:\Users\Acer\i686-elf-tools\bin\i686-elf-ld.exe"
+$OBJCOPY = "C:\Users\Acer\i686-elf-tools\bin\i686-elf-objcopy.exe"
 $JAVA = "java"
-$ARNOLDC_JAR = "$ProjectRoot\..\ArnoldC-Native\target\scala-2.13\ArnoldC-Native.jar"
+$ARNOLDC_JAR = "C:\Users\Acer\Desktop\ArnoldC-Native\target\scala-2.13\ArnoldC-Native.jar"
 $QEMU = "C:\Program Files\qemu\qemu-system-i386.exe"
 
 # Directories
@@ -75,6 +75,17 @@ extern get_mouse_buttons
 extern speaker_on
 extern speaker_off
 extern speaker_set_frequency
+extern get_last_scancode
+extern read_rtc_hours
+extern read_rtc_minutes
+extern read_rtc_seconds
+extern halt_system
+extern outb
+extern inb
+extern outw
+extern inw
+extern outl
+extern inl
 
 "@
 # Insert externs after "section .text"
