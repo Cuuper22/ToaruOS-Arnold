@@ -21,7 +21,8 @@ $files = @(
     "$root\kernel\window_manager.arnoldc",
     "$root\kernel\terminal.arnoldc", "$root\kernel\terminal_commands.arnoldc",
     "$root\kernel\apps\calculator.arnoldc", "$root\kernel\apps\about.arnoldc",
-    "$root\kernel\apps\settings.arnoldc"
+    "$root\kernel\apps\settings.arnoldc",
+    "$root\kernel\apps\text_editor.arnoldc"
 )
 & "$root\tools\merge_modules.ps1" -SourceFiles $files -OutputFile "$GEN\kernel.arnoldc"
 

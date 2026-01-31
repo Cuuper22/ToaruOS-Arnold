@@ -63,6 +63,7 @@ LET ME TELL YOU SOMETHING MODE_SKYNET 6
 LET ME TELL YOU SOMETHING MODE_CALCULATOR 7
 LET ME TELL YOU SOMETHING MODE_ABOUT 8
 LET ME TELL YOU SOMETHING MODE_SETTINGS 9
+LET ME TELL YOU SOMETHING MODE_EDITOR 10
 
 TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  8x8 BITMAP FONT - Full ASCII 32-126"
@@ -1465,6 +1466,34 @@ BECAUSE I'M GOING TO SAY PLEASE checkSettings
     YOU HAVE NO RESPECT FOR LOGIC
 YOU HAVE NO RESPECT FOR LOGIC
 
+HEY CHRISTMAS TREE checkEditor
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER checkEditor
+HERE IS MY INVITATION launched
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE checkEditor
+    HEY CHRISTMAS TREE isEditor
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isEditor
+    HERE IS MY INVITATION gameMode
+    YOU ARE NOT YOU YOU ARE ME MODE_EDITOR
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isEditor
+        DO IT NOW initEditor
+        DO IT NOW clearScreen fbAddr fbPitch ED_BG
+        GET TO THE CHOPPER edDirtyLine
+        HERE IS MY INVITATION -2
+        ENOUGH TALK
+        DO IT NOW drawEditor fbAddr fbPitch
+        GET TO THE CHOPPER launched
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
 TALK TO YOURSELF "Fallback: unknown game mode"
 HEY CHRISTMAS TREE notLaunched
 THIS IS A WARRIOR
@@ -1663,6 +1692,21 @@ BECAUSE I'M GOING TO SAY PLEASE tickSettings
         DO IT NOW handleSettingsKey currentScancode
         DO IT NOW drawSettings fbAddr fbPitch
     YOU HAVE NO RESPECT FOR LOGIC
+    I'LL BE BACK 0
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE tickEditor
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER tickEditor
+HERE IS MY INVITATION gameMode
+YOU ARE NOT YOU YOU ARE ME MODE_EDITOR
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE tickEditor
+    BECAUSE I'M GOING TO SAY PLEASE currentScancode
+        DO IT NOW handleEditorKey currentScancode
+    YOU HAVE NO RESPECT FOR LOGIC
+    DO IT NOW drawEditor fbAddr fbPitch
     I'LL BE BACK 0
 YOU HAVE NO RESPECT FOR LOGIC
 
@@ -2178,6 +2222,21 @@ STICK AROUND @NO PROBLEMO
             BECAUSE I'M GOING TO SAY PLEASE is9Key
                 GET TO THE CHOPPER currentMode
                 HERE IS MY INVITATION MODE_SETTINGS
+                ENOUGH TALK
+                DO IT NOW launchGame fbAddress fbPitch currentMode
+            YOU HAVE NO RESPECT FOR LOGIC
+            
+            TALK TO YOURSELF "0=Editor (scancode 0x0B)"
+            HEY CHRISTMAS TREE is0Key
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER is0Key
+            HERE IS MY INVITATION scancode
+            YOU ARE NOT YOU YOU ARE ME 0x0B
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE is0Key
+                GET TO THE CHOPPER currentMode
+                HERE IS MY INVITATION MODE_EDITOR
                 ENOUGH TALK
                 DO IT NOW launchGame fbAddress fbPitch currentMode
             YOU HAVE NO RESPECT FOR LOGIC
