@@ -499,6 +499,35 @@ DO IT NOW termPutChar 97
 DO IT NOW termPutChar 121
 DO IT NOW termPrintNewline
 
+TALK TO YOURSELF "  wget     - fetch webpage"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 119
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 102
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 104
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 119
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 98
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 101
+DO IT NOW termPrintNewline
+
 TALK TO YOURSELF "  ifconfig - network info"
 DO IT NOW termPutChar 32
 DO IT NOW termPutChar 32
@@ -526,6 +555,173 @@ DO IT NOW termPutChar 110
 DO IT NOW termPutChar 102
 DO IT NOW termPutChar 111
 DO IT NOW termPrintNewline
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintWget - Fetch http://10.0.2.2:8080/ and print response"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintWget
+
+HEY CHRISTMAS TREE wNetOK
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET YOUR ASS TO MARS wNetOK
+DO IT NOW net_is_available
+
+BECAUSE I'M GOING TO SAY PLEASE wNetOK
+    TALK TO YOURSELF "Fetching..."
+    DO IT NOW termPutChar 70
+    DO IT NOW termPutChar 101
+    DO IT NOW termPutChar 116
+    DO IT NOW termPutChar 99
+    DO IT NOW termPutChar 104
+    DO IT NOW termPutChar 105
+    DO IT NOW termPutChar 110
+    DO IT NOW termPutChar 103
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 49
+    DO IT NOW termPutChar 48
+    DO IT NOW termPutChar 46
+    DO IT NOW termPutChar 48
+    DO IT NOW termPutChar 46
+    DO IT NOW termPutChar 50
+    DO IT NOW termPutChar 46
+    DO IT NOW termPutChar 50
+    DO IT NOW termPutChar 58
+    DO IT NOW termPutChar 56
+    DO IT NOW termPutChar 48
+    DO IT NOW termPutChar 56
+    DO IT NOW termPutChar 48
+    DO IT NOW termPutChar 46
+    DO IT NOW termPutChar 46
+    DO IT NOW termPutChar 46
+    DO IT NOW termPrintNewline
+
+    HEY CHRISTMAS TREE wLen
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET YOUR ASS TO MARS wLen
+    DO IT NOW net_wget
+
+    HEY CHRISTMAS TREE wGotData
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER wGotData
+    HERE IS MY INVITATION wLen
+    LET OFF SOME STEAM BENNET 0
+    ENOUGH TALK
+
+    BECAUSE I'M GOING TO SAY PLEASE wGotData
+        TALK TO YOURSELF "Print response (cap at 1500 chars for terminal)"
+        HEY CHRISTMAS TREE wMax
+        THIS IS A WARRIOR
+        YOU SET US UP 1500
+        HEY CHRISTMAS TREE wUseLen
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER wUseLen
+        HERE IS MY INVITATION wLen
+        LET OFF SOME STEAM BENNET wMax
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE wUseLen
+            GET TO THE CHOPPER wLen
+            HERE IS MY INVITATION wMax
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+
+        HEY CHRISTMAS TREE wIdx
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+
+        HEY CHRISTMAS TREE wCont
+        THIS IS A WARRIOR
+        YOU SET US UP 1
+
+        STICK AROUND wCont
+            HEY CHRISTMAS TREE wCh
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET YOUR ASS TO MARS wCh
+            DO IT NOW net_wget_get_byte wIdx
+
+            TALK TO YOURSELF "Handle CR (13) and LF (10) for newlines"
+            HEY CHRISTMAS TREE wIsCR
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER wIsCR
+            HERE IS MY INVITATION wCh
+            YOU ARE NOT YOU YOU ARE ME 13
+            ENOUGH TALK
+
+            HEY CHRISTMAS TREE wIsLF
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER wIsLF
+            HERE IS MY INVITATION wCh
+            YOU ARE NOT YOU YOU ARE ME 10
+            ENOUGH TALK
+
+            BECAUSE I'M GOING TO SAY PLEASE wIsLF
+                DO IT NOW termPrintNewline
+            BULLSHIT
+                BECAUSE I'M GOING TO SAY PLEASE wIsCR
+                    TALK TO YOURSELF "Skip CR, LF handles newline"
+                BULLSHIT
+                    DO IT NOW termPutChar wCh
+                YOU HAVE NO RESPECT FOR LOGIC
+            YOU HAVE NO RESPECT FOR LOGIC
+
+            GET TO THE CHOPPER wIdx
+            HERE IS MY INVITATION wIdx
+            GET UP 1
+            ENOUGH TALK
+
+            GET TO THE CHOPPER wCont
+            HERE IS MY INVITATION wLen
+            LET OFF SOME STEAM BENNET wIdx
+            ENOUGH TALK
+        CHILL
+
+        DO IT NOW termPrintNewline
+    BULLSHIT
+        TALK TO YOURSELF "Failed - no response"
+        DO IT NOW termPutChar 70
+        DO IT NOW termPutChar 97
+        DO IT NOW termPutChar 105
+        DO IT NOW termPutChar 108
+        DO IT NOW termPutChar 101
+        DO IT NOW termPutChar 100
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 45
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 110
+        DO IT NOW termPutChar 111
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 114
+        DO IT NOW termPutChar 101
+        DO IT NOW termPutChar 115
+        DO IT NOW termPutChar 112
+        DO IT NOW termPutChar 111
+        DO IT NOW termPutChar 110
+        DO IT NOW termPutChar 115
+        DO IT NOW termPutChar 101
+        DO IT NOW termPrintNewline
+    YOU HAVE NO RESPECT FOR LOGIC
+BULLSHIT
+    TALK TO YOURSELF "No network"
+    DO IT NOW termPutChar 78
+    DO IT NOW termPutChar 111
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 110
+    DO IT NOW termPutChar 101
+    DO IT NOW termPutChar 116
+    DO IT NOW termPutChar 119
+    DO IT NOW termPutChar 111
+    DO IT NOW termPutChar 114
+    DO IT NOW termPutChar 107
+    DO IT NOW termPrintNewline
+YOU HAVE NO RESPECT FOR LOGIC
 
 HASTA LA VISTA, BABY
 
@@ -1513,6 +1709,30 @@ BECAUSE I'M GOING TO SAY PLEASE isFI
         DO IT NOW termPrintQuote
         GET TO THE CHOPPER cmdResult
         HERE IS MY INVITATION 11
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: wget (w=119, g=103) ==="
+HEY CHRISTMAS TREE isW
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isW
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 119
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isW
+    HEY CHRISTMAS TREE isWG
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isWG
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 103
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isWG
+        DO IT NOW termPrintWget
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
         ENOUGH TALK
     YOU HAVE NO RESPECT FOR LOGIC
 YOU HAVE NO RESPECT FOR LOGIC
