@@ -8,17 +8,20 @@ A complete desktop operating system written entirely in ArnoldC — the programm
 
 This is a real, bootable operating system kernel that provides:
 
-- 🖥️ **Full desktop GUI** with menu bar, taskbar, and desktop icons
+- 🚀 **Animated boot splash** with 3x scaled title, loading bar, and Arnold quotes
+- 🖥️ **Full desktop GUI** with menu bar, taskbar with RTC clock, and 8 clickable icons
 - 🪟 **Window manager** with overlapping windows, drag, z-ordering, and focus
 - 🎮 **5 playable games** (Snake, Pong, Breakout, Chopper, Skynet Defense)
-- 📟 **Terminal emulator** with keyboard input and command prompt
+- 📟 **Terminal emulator** with keyboard input, command prompt, and 10+ commands
 - 🧮 **Calculator app** with button grid UI
-- 📝 **Text editor** with typing, enter, backspace, cursor blink
-- 🎨 **Settings app** with 5 Arnold movie color themes
+- 📝 **Text editor** with full keyboard input, enter, backspace, cursor blink
+- 🎨 **Settings app** with 5 Arnold movie color themes (runtime theming)
 - 📁 **File manager** with virtual filesystem navigation
-- ℹ️ **About dialog** with T-800 skull icon
+- ℹ️ **About dialog** with T-800 skull pixel art
+- 🎬 **DVD bouncing screensaver** — "I'LL BE BACK" bounces around after 30s idle, cycling through 5 Arnold movie colors on each wall hit
+- ⚡ **Native fast rendering** — `rep stosd` assembly for ~100x fillRect speedup
 
-All written in ~3000 lines of ArnoldC, compiled to x86 assembly, running directly on hardware (or QEMU).
+All written in ~4500 lines of ArnoldC across 19 modules, compiled to x86 assembly, running directly on hardware (or QEMU).
 
 ## Screenshots
 
@@ -100,6 +103,9 @@ Bootable ELF kernel (toaruos-arnold.elf)
 | 6 | Launch Skynet Defense |
 | 7 | Launch Calculator |
 | 8 | About Dialog |
+| 9 | Settings (Themes) |
+| 0 | Text Editor |
+| F | File Manager |
 | W | Open new window |
 | ESC | Return to desktop |
 
@@ -112,6 +118,7 @@ kernel/
   kernel_v3.arnoldc      — Main kernel: desktop, input loop, rendering, font
   window_manager.arnoldc — Window system: create/close/drag/z-order/taskbar
   terminal.arnoldc       — Terminal emulator: 80×25 buffer, scancode mapping
+  terminal_commands.arnoldc — Command handler (help, ver, time, echo, game launchers)
   lib/
     random.arnoldc       — PRNG (timer-seeded)
     timer.arnoldc        — PIT timer access
@@ -126,7 +133,10 @@ kernel/
     tictactoe.arnoldc    — Tic-tac-toe (WIP)
   apps/
     calculator.arnoldc   — Calculator with 4×4 button grid
-    about.arnoldc        — About dialog with T-800 icon
+    about.arnoldc        — About dialog with T-800 pixel art
+    settings.arnoldc     — 5 Arnold movie themes with runtime color switching
+    text_editor.arnoldc  — 80×32 text editor with full keyboard input
+    file_manager.arnoldc — Virtual filesystem browser with directory navigation
 linker.ld                — Kernel memory layout
 tools/
   merge_modules.ps1      — Module merger with dedup
@@ -139,9 +149,10 @@ tools/
 - **Graphics:** Bochs VBE, 1024×768, 32-bit color, linear framebuffer
 - **Input:** PS/2 keyboard (IRQ1 + scancode ISR), PS/2 mouse (IRQ12)
 - **Font:** Custom 8×8 bitmap, full ASCII 32-126
-- **ELF Size:** ~106 KB
-- **Functions:** 130
-- **Boot time:** < 1 second to desktop
+- **ELF Size:** ~143 KB
+- **Functions:** 170+ (259 across all source modules)
+- **Modules:** 19 ArnoldC source files
+- **Boot time:** ~4 second splash screen, then desktop
 
 ### ArnoldC Challenges
 
@@ -150,7 +161,10 @@ Writing an OS in ArnoldC required creative solutions:
 - **No early return** — `I'LL BE BACK` sets a value but doesn't exit. Used flag-based patterns instead.
 - **Calculator arithmetic** — ArnoldC evaluates left-to-right like a calculator: `a * b + c * d` becomes `((a*b)+c)*d`. Must restructure expressions.
 - **No string operations** — Every text string is drawn character-by-character with ASCII codes.
-- **Performance** — `fillRect` calls `putPixel` per pixel. Full-screen redraws at 1024×768 = 786K calls. Used dirty-rect rendering (init once, update diffs).
+- **Performance** — Original `fillRect` called `putPixel` per pixel (786K calls for full-screen). Solved with native `rep stosd` assembly (~100x speedup) and dirty-rect rendering.
+- **No negative numbers** — Unsigned 32-bit only. Bouncing animations use clamp-before-subtract and direction flags.
+- **No function-local arrays** — Compiler silently ignores array declarations inside functions. All data arrays must be at module scope.
+- **Comparison operator confusion** — `LET OFF SOME STEAM BENNET` means `>` (not `<`!). `YOU ARE NOT ME` means `!=` (not `>`). Many hours lost to this.
 
 ## ArnoldC Syntax Quick Reference
 
