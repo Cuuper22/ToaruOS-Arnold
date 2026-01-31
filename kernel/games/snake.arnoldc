@@ -750,7 +750,7 @@ BECAUSE I'M GOING TO SAY PLEASE shouldUpdate
     ENOUGH TALK
     
     TALK TO YOURSELF "Redraw game"
-    DO IT NOW clearScreen fbAddr fbPitch 1024 768 0x00000020
+    DO IT NOW clearScreen fbAddr fbPitch 0x00000020
     DO IT NOW drawSnakeGame fbAddr fbPitch
 YOU HAVE NO RESPECT FOR LOGIC
 

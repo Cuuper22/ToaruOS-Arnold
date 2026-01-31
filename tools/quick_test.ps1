@@ -10,8 +10,17 @@ Get-Process -Name "qemu-system-i386" -ErrorAction SilentlyContinue | Stop-Proces
 Start-Sleep -Milliseconds 500
 Remove-Item $SERIAL_LOG -ErrorAction SilentlyContinue
 
-# Step 1: ArnoldC
-Copy-Item "$ProjectRoot\kernel\kernel_v3.arnoldc" "$GEN_DIR\kernel.arnoldc" -Force
+# Step 1: Merge modules
+$sourceFiles = @(
+    "$ProjectRoot\kernel\lib\random.arnoldc",
+    "$ProjectRoot\kernel\lib\timer.arnoldc",
+    "$ProjectRoot\kernel\lib\speaker.arnoldc",
+    "$ProjectRoot\kernel\games\snake.arnoldc",
+    "$ProjectRoot\kernel\kernel_v3.arnoldc"
+)
+& "$ProjectRoot\tools\merge_modules.ps1" -SourceFiles $sourceFiles -OutputFile "$GEN_DIR\kernel.arnoldc"
+
+# Step 1b: Compile ArnoldC
 Push-Location $GEN_DIR
 java -jar "C:\Users\Acer\Desktop\ArnoldC-Native\target\scala-2.13\ArnoldC-Native.jar" -asm "kernel.arnoldc" 2>$null
 Pop-Location
