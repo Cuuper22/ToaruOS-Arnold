@@ -14,7 +14,9 @@ MULTIBOOT_MAGIC         equ 0x1BADB002
 MULTIBOOT_PAGE_ALIGN    equ 1 << 0
 MULTIBOOT_MEMORY_INFO   equ 1 << 1
 MULTIBOOT_VIDEO_MODE    equ 1 << 2
-MULTIBOOT_FLAGS         equ MULTIBOOT_PAGE_ALIGN | MULTIBOOT_MEMORY_INFO | MULTIBOOT_VIDEO_MODE
+; NOTE: MULTIBOOT_VIDEO_MODE removed — QEMU multiboot loader doesn't support VBE
+; The bootloader sets up Bochs VBE directly via DISPI interface as fallback
+MULTIBOOT_FLAGS         equ MULTIBOOT_PAGE_ALIGN | MULTIBOOT_MEMORY_INFO
 MULTIBOOT_CHECKSUM      equ -(MULTIBOOT_MAGIC + MULTIBOOT_FLAGS)
 
 ; Video mode request - "I NEED YOUR FRAMEBUFFER"
@@ -176,6 +178,43 @@ _start:
     ; "EVERYBODY CHILL" - Disable interrupts
     cli
 
+    ; === EARLY SERIAL DEBUG (COM1 @ 0x3F8) ===
+    ; Initialize COM1: 9600 baud, 8N1
+    mov dx, 0x3F9    ; Interrupt Enable Register
+    mov al, 0x00
+    out dx, al
+    mov dx, 0x3FB    ; Line Control Register - DLAB on
+    mov al, 0x80
+    out dx, al
+    mov dx, 0x3F8    ; Divisor low byte (9600 = 12)
+    mov al, 0x0C
+    out dx, al
+    mov dx, 0x3F9    ; Divisor high byte
+    mov al, 0x00
+    out dx, al
+    mov dx, 0x3FB    ; 8 bits, no parity, 1 stop bit
+    mov al, 0x03
+    out dx, al
+    mov dx, 0x3FA    ; FIFO control
+    mov al, 0xC7
+    out dx, al
+    ; Print "BOOT" to serial
+    mov dx, 0x3F8
+    mov al, 'B'
+    out dx, al
+    mov al, 'O'
+    out dx, al
+    mov al, 'O'
+    out dx, al
+    mov al, 'T'
+    out dx, al
+    mov al, 10       ; newline
+    out dx, al
+    ; Also write "BOOT" to VGA text buffer at 0xB8000
+    mov dword [0xB8000], 0x0F420F42   ; "BB" white on black
+    mov dword [0xB8004], 0x0F4F0F4F   ; "OO"
+    mov dword [0xB8008], 0x0F540F54   ; "TT" (close enough)
+
     ; Save multiboot info - "REMEMBER THESE"
     mov [multiboot_magic_value], eax    ; Magic number
     mov [multiboot_info_ptr], ebx       ; Multiboot info pointer
@@ -248,8 +287,26 @@ _start:
     mov dword [fb_width], VIDEO_WIDTH
     mov dword [fb_height], VIDEO_HEIGHT
     mov dword [fb_bpp], VIDEO_DEPTH
+    ; Serial: report Bochs VBE set up
+    mov dx, 0x3F8
+    mov al, 'V'
+    out dx, al
+    mov al, 'B'
+    out dx, al
+    mov al, 'E'
+    out dx, al
+    mov al, 10
+    out dx, al
     
 .fb_ok:
+    ; Serial: report fb_ok
+    mov dx, 0x3F8
+    mov al, 'F'
+    out dx, al
+    mov al, 'B'
+    out dx, al
+    mov al, 10
+    out dx, al
 
     ; Initialize timer ticks
     mov dword [timer_ticks], 0
@@ -260,27 +317,71 @@ _start:
     mov dword [mouse_buttons], 0
     mov dword [mouse_packet_index], 0
 
+    ; Serial: '1' = about to remap PIC
+    mov dx, 0x3F8
+    mov al, '1'
+    out dx, al
+
     ; "REPROGRAM THE PIC" - Remap IRQs to avoid conflicts
     call remap_pic
     
+    ; Serial: '2' = PIC done, about to setup IDT
+    mov dx, 0x3F8
+    mov al, '2'
+    out dx, al
+
     ; "SET UP THE IDT" - Install interrupt handlers
     call setup_idt
     
+    ; Serial: '3' = IDT done, about to setup PIT
+    mov dx, 0x3F8
+    mov al, '3'
+    out dx, al
+
     ; "START THE TIMER" - Configure PIT for 100Hz
     call setup_pit
     
+    ; Serial: '4' = PIT done, about to setup mouse
+    mov dx, 0x3F8
+    mov al, '4'
+    out dx, al
+
     ; "ENABLE THE MOUSE" - Initialize PS/2 mouse
     call setup_mouse
     
+    ; Serial: '5' = mouse done, loading IDT
+    mov dx, 0x3F8
+    mov al, '5'
+    out dx, al
+
     ; Load the IDT
     lidt [idt_descriptor]
     
+    ; Serial: '6' = IDT loaded, enabling interrupts
+    mov dx, 0x3F8
+    mov al, '6'
+    out dx, al
+
     ; "LET'S PARTY" - Enable interrupts
     sti
 
+    ; Serial: '7' = interrupts enabled
+    mov dx, 0x3F8
+    mov al, '7'
+    out dx, al
+
     ; Push multiboot info for arnold_main
-    push ebx                            ; multiboot_info_t*
+    push dword [multiboot_info_ptr]     ; multiboot_info_t*
     push dword [multiboot_magic_value]  ; magic number
+
+    ; Serial: 'GO' = about to call ArnoldC kernel
+    mov dx, 0x3F8
+    mov al, 'G'
+    out dx, al
+    mov al, 'O'
+    out dx, al
+    mov al, 10
+    out dx, al
 
     ; "DO IT NOW" - Call the ArnoldC kernel
     call arnold_main
@@ -296,12 +397,6 @@ _start:
 ; Remaps IRQ 0-7 to INT 32-39, IRQ 8-15 to INT 40-47
 ; ============================================================================
 remap_pic:
-    ; Save masks
-    in al, PIC1_DATA
-    push eax
-    in al, PIC2_DATA
-    push eax
-    
     ; Start initialization sequence (ICW1)
     mov al, 0x11                        ; ICW1: init + ICW4 needed
     out PIC1_COMMAND, al
@@ -485,12 +580,19 @@ isr_timer:
     popad
     iret
 
-; Keyboard ISR (IRQ1 -> INT 33) - Just acknowledge, kernel handles it
+; Keyboard ISR (IRQ1 -> INT 33) - Store scancode for kernel polling
 isr_keyboard:
     pushad
     
-    ; Read scancode to clear the keyboard buffer
+    ; Read scancode from keyboard
     in al, PS2_DATA
+    
+    ; Only store press scancodes (not release)
+    test al, 0x80
+    jnz .kb_release
+    movzx eax, al
+    mov [last_scancode], eax
+.kb_release:
     
     ; Send EOI to PIC
     mov al, PIC_EOI
@@ -748,6 +850,75 @@ speaker_off:
     out SPEAKER_PORT, al
     mov dword [speaker_enabled], 0
     ret
+
+; ============================================================================
+; KEYBOARD - "GET LAST SCANCODE" (atomic read-and-clear)
+; ============================================================================
+; The v2 keyboard ISR just reads and discards the scancode.
+; We need to store it so the kernel can poll it.
+; For now, we add a get_last_scancode stub that polls port 0x60 directly.
+; ============================================================================
+global get_last_scancode
+
+section .bss
+last_scancode: resd 1
+
+section .text
+
+get_last_scancode:
+    xor eax, eax
+    xchg eax, [last_scancode]
+    ret
+
+; ============================================================================
+; RTC (Real-Time Clock) FUNCTIONS
+; ============================================================================
+global read_rtc_hours
+global read_rtc_minutes
+global read_rtc_seconds
+global halt_system
+
+read_rtc_hours:
+    mov al, 0x04
+    out 0x70, al
+    in al, 0x71
+    movzx eax, al
+    mov edx, eax
+    shr edx, 4
+    and eax, 0x0F
+    imul edx, 10
+    add eax, edx
+    ret
+
+read_rtc_minutes:
+    mov al, 0x02
+    out 0x70, al
+    in al, 0x71
+    movzx eax, al
+    mov edx, eax
+    shr edx, 4
+    and eax, 0x0F
+    imul edx, 10
+    add eax, edx
+    ret
+
+read_rtc_seconds:
+    mov al, 0x00
+    out 0x70, al
+    in al, 0x71
+    movzx eax, al
+    mov edx, eax
+    shr edx, 4
+    and eax, 0x0F
+    imul edx, 10
+    add eax, edx
+    ret
+
+halt_system:
+    cli
+.halt_loop:
+    hlt
+    jmp .halt_loop
 
 ; ============================================================================
 ; "HASTA LA VISTA, BABY" - End of bootloader
