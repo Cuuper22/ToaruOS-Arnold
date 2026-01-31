@@ -64,13 +64,14 @@ $sourceFiles = @(
     -OutputFile "$GEN_DIR\kernel.arnoldc"
 if ($LASTEXITCODE -ne 0) { throw "Module merge failed!" }
 
-# Compile ArnoldC to ASM
+# Compile ArnoldC to ASM (delete stale ASM first to prevent using cached build on failure)
 Write-Host "[ARN ] Compiling ArnoldC - IT'S SHOWTIME"
+Remove-Item "$GEN_DIR\kernel.asm" -ErrorAction SilentlyContinue
 Push-Location $GEN_DIR
 try {
     & $JAVA -jar $ARNOLDC_JAR -asm "kernel.arnoldc"
-    if ($LASTEXITCODE -ne 0) {
-        throw "ArnoldC compilation failed!"
+    if (-not (Test-Path "kernel.asm")) {
+        throw "ArnoldC compilation failed - no kernel.asm generated!"
     }
 } finally {
     Pop-Location
