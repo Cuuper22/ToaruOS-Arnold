@@ -12,7 +12,7 @@ This is a real, bootable operating system kernel that provides:
 - 🖥️ **Full desktop GUI** with menu bar, taskbar with RTC clock, and 8 clickable icons
 - 🪟 **Window manager** with overlapping windows, drag, z-ordering, and focus
 - 🎮 **5 playable games** (Snake, Pong, Breakout, Chopper, Skynet Defense)
-- 📟 **Terminal emulator** with keyboard input, command prompt, and 10+ commands
+- 📟 **Terminal emulator** with keyboard input, command prompt, and 35 commands
 - 🧮 **Calculator app** with button grid UI
 - 📝 **Text editor** with full keyboard input, enter, backspace, cursor blink
 - 🎨 **Settings app** with 5 Arnold movie color themes (runtime theming)
@@ -44,7 +44,7 @@ Multiple overlapping windows with blue (active) and gray (inactive) title bars, 
 - **Skynet Defense** — Turret defense with projectiles (key: 6)
 
 ### Terminal
-Green-on-black terminal with `ARNOLD-OS>` prompt, 25+ commands (key: 1)
+Green-on-black terminal with `ARNOLD-OS>` prompt, 35 commands (key: 1)
 
 ### Start Menu
 Tab key opens a dark popup above the ARNOLD taskbar button, listing all apps and games with keyboard shortcuts.
@@ -178,9 +178,11 @@ kernel/
   kernel_v3.arnoldc      — Main kernel: desktop, input loop, rendering, font
   window_manager.arnoldc — Window system: create/close/drag/z-order/taskbar
   terminal.arnoldc       — Terminal emulator: 80×25 buffer, scancode mapping
-  terminal_commands.arnoldc — 25+ commands: help, ver, time, echo, clear, sysinfo,
+  terminal_commands.arnoldc — 35 commands: help, ver, time, echo, clear, sysinfo,
                              neofetch, matrix, fortune, cowsay, shutdown, wget,
-                             ifconfig, ping, + game/app launchers
+                             ifconfig, ping, banner, logo, colors, about,
+                             top, date, free, lscpu, whoami, uname, uptime,
+                             hostname, + game/app launchers
   lib/
     random.arnoldc       — PRNG (timer-seeded)
     timer.arnoldc        — PIT timer access
@@ -221,7 +223,7 @@ tools/
 - **ELF Size:** ~201 KB
 - **Functions:** 200+ across all source modules
 - **Modules:** 21 ArnoldC source files + 1 assembly (6000+ lines)
-- **Terminal Commands:** 32
+- **Terminal Commands:** 35
 - **Commits:** 59+
 - **Boot time:** ~4 second splash screen, then desktop
 
