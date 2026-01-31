@@ -19,9 +19,11 @@ This is a real, bootable operating system kernel that provides:
 - 📁 **File manager** with virtual filesystem navigation
 - ℹ️ **About dialog** with T-800 skull pixel art
 - 🎬 **DVD bouncing screensaver** — "I'LL BE BACK" bounces around after 30s idle, cycling through 5 Arnold movie colors on each wall hit
+- 🌐 **Full network stack** — E1000 NIC driver, ARP, ICMP ping, TCP, HTTP client
+- 🔗 **wget command** — Fetches real webpages over TCP/HTTP and displays them in the terminal
 - ⚡ **Native fast rendering** — `rep stosd` assembly for ~100x fillRect speedup
 
-All written in ~4500 lines of ArnoldC across 19 modules, compiled to x86 assembly, running directly on hardware (or QEMU).
+All written in ~5500 lines of ArnoldC + x86 assembly across 19+ modules, compiled and running directly on hardware (or QEMU).
 
 ## Screenshots
 
@@ -56,6 +58,29 @@ Virtual filesystem with directory navigation, [D]/[F] indicators, selection high
 ### About
 Dialog with T-800 pixel art skull, version info, "I'll be back." quote (key: 8)
 
+### Networking
+```
+ARNOLD-OS> ifconfig
+IP:  10.0.2.15
+GW:  10.0.2.2
+MAC: 52:54:00:12:34:56
+Link: Up
+
+ARNOLD-OS> ping
+Pinging gateway 10.0.2.2...
+Reply: 1 ticks (10ms)
+
+ARNOLD-OS> wget
+Fetching 10.0.2.2:8080...
+HTTP/1.0 200 OK
+Server: SimpleHTTP/0.6 Python/3.10.11
+Content-type: text/html
+Content-Length: 137
+
+<html><body><h1>HASTA LA VISTA, BABY!</h1>
+<p>This page was fetched by ToaruOS-Arnold v4.0</p></body></html>
+```
+
 ## Building
 
 ### Requirements
@@ -73,8 +98,12 @@ Dialog with T-800 pixel art skull, version info, "I'll be back." quote (key: 8)
 # Build everything (merge modules → compile → assemble → link)
 .\build_v3.ps1
 
-# Run in QEMU
+# Run in QEMU (basic)
 & "C:\Program Files\qemu\qemu-system-i386.exe" -m 128M -vga std -kernel build\toaruos-arnold.elf
+
+# Run with networking (for wget/ping)
+& "C:\Program Files\qemu\qemu-system-i386.exe" -m 128M -vga std -kernel build\toaruos-arnold.elf `
+  -netdev user,id=n1 -device e1000,netdev=n1
 ```
 
 ### Build Pipeline
@@ -113,12 +142,14 @@ Bootable ELF kernel (toaruos-arnold.elf)
 
 ```
 boot/
-  multiboot.asm          — Multiboot bootloader, VBE 1024×768×32, IRQs, mouse, PIT
+  multiboot.asm          — Multiboot bootloader, VBE 1024×768×32, IRQs, mouse, PIT,
+                           E1000 NIC driver, ARP/IP/ICMP/TCP/HTTP network stack
 kernel/
   kernel_v3.arnoldc      — Main kernel: desktop, input loop, rendering, font
   window_manager.arnoldc — Window system: create/close/drag/z-order/taskbar
   terminal.arnoldc       — Terminal emulator: 80×25 buffer, scancode mapping
-  terminal_commands.arnoldc — Command handler (help, ver, time, echo, game launchers)
+  terminal_commands.arnoldc — Command handler (help, ver, time, echo, game launchers,
+                             ifconfig, ping, wget)
   lib/
     random.arnoldc       — PRNG (timer-seeded)
     timer.arnoldc        — PIT timer access
@@ -137,21 +168,27 @@ kernel/
     settings.arnoldc     — 5 Arnold movie themes with runtime color switching
     text_editor.arnoldc  — 80×32 text editor with full keyboard input
     file_manager.arnoldc — Virtual filesystem browser with directory navigation
+test_www/
+  index.html             — Test page for wget ("HASTA LA VISTA, BABY!")
 linker.ld                — Kernel memory layout
 tools/
   merge_modules.ps1      — Module merger with dedup
-  test_*.ps1             — Automated QEMU test scripts
+  test_*.ps1             — Automated QEMU test scripts (30+ test scripts)
+  parse_pcap.py          — Network packet capture analyzer
+  verify_cksum.py        — TCP/IP checksum verifier
 ```
 
 ## Technical Details
 
-- **Language:** 100% ArnoldC (compiled to x86 assembly)
+- **Language:** ArnoldC (compiled to x86 assembly) + hand-written x86 assembly for networking
 - **Graphics:** Bochs VBE, 1024×768, 32-bit color, linear framebuffer
 - **Input:** PS/2 keyboard (IRQ1 + scancode ISR), PS/2 mouse (IRQ12)
+- **Networking:** E1000 NIC (PCI MMIO), ARP, IPv4, ICMP, TCP, HTTP/1.0 client
 - **Font:** Custom 8×8 bitmap, full ASCII 32-126
-- **ELF Size:** ~143 KB
-- **Functions:** 170+ (259 across all source modules)
-- **Modules:** 19 ArnoldC source files
+- **ELF Size:** ~159 KB
+- **Functions:** 180+ across all source modules
+- **Modules:** 19+ ArnoldC source files + 1 assembly (3000+ lines)
+- **Commits:** 44+
 - **Boot time:** ~4 second splash screen, then desktop
 
 ### ArnoldC Challenges
@@ -165,6 +202,9 @@ Writing an OS in ArnoldC required creative solutions:
 - **No negative numbers** — Unsigned 32-bit only. Bouncing animations use clamp-before-subtract and direction flags.
 - **No function-local arrays** — Compiler silently ignores array declarations inside functions. All data arrays must be at module scope.
 - **Comparison operator confusion** — `LET OFF SOME STEAM BENNET` means `>` (not `<`!). `YOU ARE NOT ME` means `!=` (not `>`). Many hours lost to this.
+- **Network byte order** — x86 is little-endian, network is big-endian. Every protocol field needs manual byte swapping. ArnoldC only has 32-bit integers, so byte-level packet construction lives in assembly.
+- **TCP from scratch** — Full 3-way handshake, sequence tracking, checksum with pseudo-header, FIN teardown. Debugging with PCAP captures and hex serial output.
+- **`mov dx` corrupts `edx`** — x86 partial register writes! Serial debug (`mov dx, 0x3F8`) was silently destroying the TCP header size stored in `edx`. The most insidious bug in the project.
 
 ## ArnoldC Syntax Quick Reference
 
