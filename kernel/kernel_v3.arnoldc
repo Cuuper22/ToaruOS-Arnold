@@ -384,6 +384,42 @@ LET ME TELL YOU SOMETHING ICON2_Y 124
 LET ME TELL YOU SOMETHING ICON3_Y 204
 
 TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  BOOT SPLASH STRING DATA (must be module-level, not inside functions)"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "ToaruOS-Arnold (14 chars)"
+HEY CHRISTMAS TREE splTitle
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 14
+PUT THEM IN LINE
+84 111 97 114 117 79 83 45 65 114 110 111 108 100
+
+TALK TO YOURSELF "COME WITH ME IF YOU WANT TO BOOT (32 chars)"
+HEY CHRISTMAS TREE splQuote
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 32
+PUT THEM IN LINE
+67 79 77 69 32 87 73 84 72 32 77 69 32 73 70 32 89 79 85 32 87 65 78 84 32 84 79 32 66 79 79 84
+
+TALK TO YOURSELF "v4.0 (4 chars)"
+HEY CHRISTMAS TREE splVer
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 4
+PUT THEM IN LINE
+118 52 46 48
+
+TALK TO YOURSELF "I'LL BE BACK (12 chars)"
+HEY CHRISTMAS TREE splBack
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 12
+PUT THEM IN LINE
+73 39 76 76 32 66 69 32 66 65 67 75
+
+TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  GRAPHICS FUNCTIONS"
 TALK TO YOURSELF "============================================================================"
 
@@ -2049,6 +2085,355 @@ DO IT NOW putPixel fbAddr fbPitch mx my2 COLOR_WHITE
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawCharBig - Draw a character at scale (2x, 3x, etc)"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawCharBig
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE cx
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE cy
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ascii
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE scale
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fgColor
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE bgColor
+
+HEY CHRISTMAS TREE glyphIdx
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE glyphOff
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE brow
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE bcol
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE rowByte
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE bmask
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE bpixelOn
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE bpxX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE bpxY
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE browCont
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE bcolCont
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE bdrawColor
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Calculate glyph index"
+GET TO THE CHOPPER glyphIdx
+HERE IS MY INVITATION ascii
+GET DOWN 32
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE glyphIdx
+    HEY CHRISTMAS TREE btooSmall
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER btooSmall
+    HERE IS MY INVITATION glyphIdx
+    YOU'RE NOT BIG ENOUGH 0
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE btooSmall
+        GET TO THE CHOPPER glyphIdx
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE btooLarge
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER btooLarge
+HERE IS MY INVITATION glyphIdx
+LET OFF SOME STEAM BENNET 94
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE btooLarge
+    GET TO THE CHOPPER glyphIdx
+    HERE IS MY INVITATION 0
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+GET TO THE CHOPPER glyphOff
+HERE IS MY INVITATION glyphIdx
+YOU'RE FIRED 8
+ENOUGH TALK
+
+GET TO THE CHOPPER brow
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+GET TO THE CHOPPER browCont
+HERE IS MY INVITATION 1
+ENOUGH TALK
+
+STICK AROUND browCont
+    HEY CHRISTMAS TREE bfontIdx
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER bfontIdx
+    HERE IS MY INVITATION glyphOff
+    GET UP brow
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER rowByte
+    HERE IS MY INVITATION WHICH ONE fontData bfontIdx
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER bmask
+    HERE IS MY INVITATION 0x80
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER bcol
+    HERE IS MY INVITATION 0
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER bcolCont
+    HERE IS MY INVITATION 1
+    ENOUGH TALK
+    
+    STICK AROUND bcolCont
+        GET TO THE CHOPPER bpixelOn
+        HERE IS MY INVITATION rowByte
+        CRUSH THEM TOGETHER bmask
+        ENOUGH TALK
+        
+        TALK TO YOURSELF "Calculate scaled position: cx + bcol * scale"
+        HEY CHRISTMAS TREE colScaled
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER colScaled
+        HERE IS MY INVITATION bcol
+        YOU'RE FIRED scale
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER bpxX
+        HERE IS MY INVITATION cx
+        GET UP colScaled
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE rowScaled
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER rowScaled
+        HERE IS MY INVITATION brow
+        YOU'RE FIRED scale
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER bpxY
+        HERE IS MY INVITATION cy
+        GET UP rowScaled
+        ENOUGH TALK
+        
+        BECAUSE I'M GOING TO SAY PLEASE bpixelOn
+            GET TO THE CHOPPER bdrawColor
+            HERE IS MY INVITATION fgColor
+            ENOUGH TALK
+        BULLSHIT
+            GET TO THE CHOPPER bdrawColor
+            HERE IS MY INVITATION bgColor
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+        
+        DO IT NOW fillRect fbAddr fbPitch bpxX bpxY scale scale bdrawColor
+        
+        GET TO THE CHOPPER bmask
+        HERE IS MY INVITATION bmask
+        PUSH IT RIGHT 1
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER bcol
+        HERE IS MY INVITATION bcol
+        GET UP 1
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER bcolCont
+        HERE IS MY INVITATION bcol
+        YOU'RE NOT BIG ENOUGH 8
+        ENOUGH TALK
+    CHILL
+    
+    GET TO THE CHOPPER brow
+    HERE IS MY INVITATION brow
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER browCont
+    HERE IS MY INVITATION brow
+    YOU'RE NOT BIG ENOUGH 8
+    ENOUGH TALK
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawStringBig - Draw a scaled string"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawStringBig
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE sx
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE sy
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE sPtr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE sLen
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE scale
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fgColor
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE bgColor
+
+HEY CHRISTMAS TREE si
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE scharX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE scharCode
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE scontinue
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE charSpacing
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER charSpacing
+HERE IS MY INVITATION 8
+YOU'RE FIRED scale
+ENOUGH TALK
+
+GET TO THE CHOPPER scharX
+HERE IS MY INVITATION sx
+ENOUGH TALK
+
+STICK AROUND scontinue
+    GET TO THE CHOPPER scharCode
+    HERE IS MY INVITATION WHICH ONE sPtr si
+    ENOUGH TALK
+    
+    DO IT NOW drawCharBig fbAddr fbPitch scharX sy scharCode scale fgColor bgColor
+    
+    GET TO THE CHOPPER scharX
+    HERE IS MY INVITATION scharX
+    GET UP charSpacing
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER si
+    HERE IS MY INVITATION si
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER scontinue
+    HERE IS MY INVITATION si
+    YOU'RE NOT BIG ENOUGH sLen
+    ENOUGH TALK
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawBootSplash - Animated boot splash screen"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawBootSplash
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+TALK TO YOURSELF "--- Phase 1: Black screen ---"
+DO IT NOW fillRect fbAddr fbPitch 0 0 1024 768 COLOR_BLACK
+
+TALK TO YOURSELF "--- Phase 2: Title at 3x scale ---"
+TALK TO YOURSELF "14 chars * 8px * 3 = 336px wide, centered: (1024-336)/2 = 344"
+DO IT NOW drawStringBig fbAddr fbPitch 344 240 splTitle 14 3 COLOR_WHITE COLOR_BLACK
+
+TALK TO YOURSELF "--- Phase 3: Red accent line ---"
+DO IT NOW fillRect fbAddr fbPitch 300 275 424 3 COLOR_TERMINATOR_RED
+
+TALK TO YOURSELF "--- Phase 4: Quote at 1x ---"
+TALK TO YOURSELF "32 chars * 8px = 256px wide, centered: (1024-256)/2 = 384"
+DO IT NOW drawStringAt fbAddr fbPitch 384 300 splQuote 32 COLOR_TERMINATOR_RED COLOR_BLACK
+
+TALK TO YOURSELF "--- Phase 5: Version at 2x ---"
+TALK TO YOURSELF "4 chars * 8px * 2 = 64px wide, centered: (1024-64)/2 = 480"
+DO IT NOW drawStringBig fbAddr fbPitch 480 340 splVer 4 2 COLOR_TERMINATOR_SILVER COLOR_BLACK
+
+TALK TO YOURSELF "--- Phase 6: Loading bar ---"
+DO IT NOW fillRect fbAddr fbPitch 262 460 500 16 0x00222222
+DO IT NOW drawRect fbAddr fbPitch 261 459 502 18 0x00444444
+
+HEY CHRISTMAS TREE barW
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE barContinue
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+STICK AROUND barContinue
+    DO IT NOW fillRect fbAddr fbPitch 262 460 barW 16 COLOR_TERMINATOR_RED
+    
+    TALK TO YOURSELF "Delay ~55ms per step (1 PIT tick = ~55ms)"
+    DO IT NOW sleep_ticks 1
+    
+    GET TO THE CHOPPER barW
+    HERE IS MY INVITATION barW
+    GET UP 10
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE barDone
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER barDone
+    HERE IS MY INVITATION barW
+    YOU'RE AT LEAST AS BIG AS 500
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE barDone
+        GET TO THE CHOPPER barContinue
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+CHILL
+
+TALK TO YOURSELF "--- Phase 7: Show I'LL BE BACK ---"
+TALK TO YOURSELF "12 chars * 8px = 96px, centered: (1024-96)/2 = 464"
+DO IT NOW drawStringAt fbAddr fbPitch 464 510 splBack 12 COLOR_TERMINATOR_RED COLOR_BLACK
+
+TALK TO YOURSELF "--- Phase 8: Final pause before desktop (1 second) ---"
+DO IT NOW sleep_ticks 18
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  MAIN FUNCTION - IT'S SHOWTIME"
 TALK TO YOURSELF "============================================================================"
 
@@ -2104,6 +2489,9 @@ DO IT NOW randomSeedFromTimer
 
 TALK TO YOURSELF "Play boot jingle"
 DO IT NOW playBootJingle
+
+TALK TO YOURSELF "Show boot splash screen"
+DO IT NOW drawBootSplash fbAddress fbPitch
 
 TALK TO YOURSELF "Draw initial desktop"
 DO IT NOW drawDesktop fbAddress fbPitch
