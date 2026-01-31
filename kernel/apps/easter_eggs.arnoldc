@@ -387,6 +387,165 @@ DO IT NOW termPrintNewline
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintShutdown - Dramatic shutdown sequence"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintShutdown
+
+TALK TO YOURSELF "Stopping services..."
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 118
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 46
+DO IT NOW termPrintNewline
+DO IT NOW sleep_ticks 10
+
+TALK TO YOURSELF "[OK] Terminated: skynet_defense_grid"
+DO IT NOW termPutChar 91
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 75
+DO IT NOW termPutChar 93
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 107
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 116
+DO IT NOW termPrintNewline
+DO IT NOW sleep_ticks 8
+
+TALK TO YOURSELF "[OK] Terminated: t800_firmware"
+DO IT NOW termPutChar 91
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 75
+DO IT NOW termPutChar 93
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 56
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 102
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 119
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 101
+DO IT NOW termPrintNewline
+DO IT NOW sleep_ticks 6
+
+TALK TO YOURSELF "[OK] Unmounted: /dev/muscles"
+DO IT NOW termPutChar 91
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 75
+DO IT NOW termPutChar 93
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 85
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 47
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 118
+DO IT NOW termPutChar 47
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 115
+DO IT NOW termPrintNewline
+DO IT NOW sleep_ticks 10
+
+TALK TO YOURSELF "HASTA LA VISTA, BABY"
+DO IT NOW termPrintNewline
+DO IT NOW termPutChar 72
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 86
+DO IT NOW termPutChar 73
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 44
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 66
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 66
+DO IT NOW termPutChar 89
+DO IT NOW termPrintNewline
+DO IT NOW sleep_ticks 18
+
+TALK TO YOURSELF "System halted."
+DO IT NOW termPrintNewline
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 104
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 46
+DO IT NOW termPrintNewline
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  termPrintMatrix - Fake matrix effect (prints random chars)"
 TALK TO YOURSELF "============================================================================"
 LISTEN TO ME VERY CAREFULLY termPrintMatrix
