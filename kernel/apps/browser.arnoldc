@@ -1,0 +1,197 @@
+TALK TO YOURSELF "Arnold Browser - simple text-mode browser"
+
+TALK TO YOURSELF "Title string"
+HEY CHRISTMAS TREE browserTitle
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 15
+PUT THEM IN LINE
+65 82 78 79 76 68 32 66 82 79 87 83 69 82 0
+
+TALK TO YOURSELF "URL string"
+HEY CHRISTMAS TREE browserUrl
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 22
+PUT THEM IN LINE
+104 116 116 112 58 47 47 49 48 46 48 46 50 46 50 58 56 48 56 48 47 0
+
+LISTEN TO ME VERY CAREFULLY drawBrowserUI
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fb
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE pitch
+
+TALK TO YOURSELF "Draw white background window 800x500 centered on 1024x768"
+HEY CHRISTMAS TREE winX
+YOU SET US UP 112
+HEY CHRISTMAS TREE winY
+YOU SET US UP 134
+HEY CHRISTMAS TREE winW
+YOU SET US UP 800
+HEY CHRISTMAS TREE winH
+YOU SET US UP 500
+
+TALK TO YOURSELF "Background"
+DO IT NOW fillRect fb pitch winX winY winW winH 16777215
+
+TALK TO YOURSELF "Title bar"
+DO IT NOW fillRect fb pitch winX winY winW 24 255
+DO IT NOW drawString fb pitch 120 140 browserTitle 14 16777215 255
+
+TALK TO YOURSELF "URL bar"
+DO IT NOW fillRect fb pitch winX 158 winW 22 14540253
+DO IT NOW drawString fb pitch 120 164 browserUrl 22 0 14540253
+
+HASTA LA VISTA, BABY
+
+LISTEN TO ME VERY CAREFULLY browserFetch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fb
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE pitch
+
+HEY CHRISTMAS TREE len
+YOU SET US UP 0
+GET YOUR ASS TO MARS len
+DO IT NOW net_wget
+
+HEY CHRISTMAS TREE idx
+YOU SET US UP 0
+HEY CHRISTMAS TREE inTag
+YOU SET US UP 0
+HEY CHRISTMAS TREE skip
+YOU SET US UP 0
+HEY CHRISTMAS TREE cx
+YOU SET US UP 0
+HEY CHRISTMAS TREE cy
+YOU SET US UP 0
+HEY CHRISTMAS TREE ch
+YOU SET US UP 0
+HEY CHRISTMAS TREE tmp
+YOU SET US UP 0
+HEY CHRISTMAS TREE drawX
+YOU SET US UP 0
+HEY CHRISTMAS TREE drawY
+YOU SET US UP 0
+
+TALK TO YOURSELF "Text start position inside window"
+HEY CHRISTMAS TREE startX
+YOU SET US UP 120
+HEY CHRISTMAS TREE startY
+YOU SET US UP 190
+
+STICK AROUND idx LET OFF SOME STEAM BENNET len
+    GET YOUR ASS TO MARS ch
+    DO IT NOW net_wget_get_byte idx
+
+    GET TO THE CHOPPER skip
+        HERE IS MY INVITATION 0
+    ENOUGH TALK
+
+    TALK TO YOURSELF "Check for <"
+    GET TO THE CHOPPER tmp
+        HERE IS MY INVITATION ch
+        GET DOWN 60
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE tmp YOU ARE NOT YOU YOU ARE ME 0
+        GET TO THE CHOPPER inTag
+            HERE IS MY INVITATION 1
+        ENOUGH TALK
+        GET TO THE CHOPPER skip
+            HERE IS MY INVITATION 1
+        ENOUGH TALK
+    BULLSHIT
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    TALK TO YOURSELF "Check for >"
+    GET TO THE CHOPPER tmp
+        HERE IS MY INVITATION ch
+        GET DOWN 62
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE tmp YOU ARE NOT YOU YOU ARE ME 0
+        GET TO THE CHOPPER inTag
+            HERE IS MY INVITATION 0
+        ENOUGH TALK
+        GET TO THE CHOPPER skip
+            HERE IS MY INVITATION 1
+        ENOUGH TALK
+    BULLSHIT
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    TALK TO YOURSELF "If not in tag and not skip, render"
+    BECAUSE I'M GOING TO SAY PLEASE inTag YOU ARE NOT YOU YOU ARE ME 0
+        BECAUSE I'M GOING TO SAY PLEASE skip YOU ARE NOT YOU YOU ARE ME 0
+            TALK TO YOURSELF "Newline handling (\n)"
+            GET TO THE CHOPPER tmp
+                HERE IS MY INVITATION ch
+                GET DOWN 10
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE tmp YOU ARE NOT YOU YOU ARE ME 0
+                GET TO THE CHOPPER cx
+                    HERE IS MY INVITATION 0
+                ENOUGH TALK
+                GET TO THE CHOPPER cy
+                    HERE IS MY INVITATION cy
+                    GET UP 1
+                ENOUGH TALK
+            BULLSHIT
+                TALK TO YOURSELF "Compute draw position"
+                GET TO THE CHOPPER drawX
+                    HERE IS MY INVITATION cx
+                    YOU'RE FIRED 8
+                    GET UP startX
+                ENOUGH TALK
+                GET TO THE CHOPPER drawY
+                    HERE IS MY INVITATION cy
+                    YOU'RE FIRED 12
+                    GET UP startY
+                ENOUGH TALK
+
+                TALK TO YOURSELF "Printable char"
+                DO IT NOW drawChar fb pitch drawX drawY ch 0 16777215
+                GET TO THE CHOPPER cx
+                    HERE IS MY INVITATION cx
+                    GET UP 1
+                ENOUGH TALK
+                TALK TO YOURSELF "Wrap at 90 chars"
+                GET TO THE CHOPPER tmp
+                    HERE IS MY INVITATION cx
+                    GET DOWN 90
+                ENOUGH TALK
+                BECAUSE I'M GOING TO SAY PLEASE tmp YOU ARE NOT YOU YOU ARE ME 0
+                    GET TO THE CHOPPER cx
+                        HERE IS MY INVITATION 0
+                    ENOUGH TALK
+                    GET TO THE CHOPPER cy
+                        HERE IS MY INVITATION cy
+                        GET UP 1
+                    ENOUGH TALK
+                BULLSHIT
+                YOU HAVE NO RESPECT FOR LOGIC
+            YOU HAVE NO RESPECT FOR LOGIC
+        BULLSHIT
+        YOU HAVE NO RESPECT FOR LOGIC
+    BULLSHIT
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    GET TO THE CHOPPER idx
+        HERE IS MY INVITATION idx
+        GET UP 1
+    ENOUGH TALK
+CHILL
+
+HASTA LA VISTA, BABY
+
+LISTEN TO ME VERY CAREFULLY runBrowser
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fb
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE pitch
+
+DO IT NOW drawBrowserUI fb pitch
+DO IT NOW browserFetch fb pitch
+
+HEY CHRISTMAS TREE sc
+YOU SET US UP 0
+
+STICK AROUND sc YOU ARE NOT YOU YOU ARE ME 1
+    GET YOUR ASS TO MARS sc
+    DO IT NOW get_last_scancode
+CHILL
+
+HASTA LA VISTA, BABY
