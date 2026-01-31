@@ -65,6 +65,15 @@ LET ME TELL YOU SOMETHING MODE_ABOUT 8
 LET ME TELL YOU SOMETHING MODE_SETTINGS 9
 LET ME TELL YOU SOMETHING MODE_EDITOR 10
 LET ME TELL YOU SOMETHING MODE_FILEMGR 11
+LET ME TELL YOU SOMETHING MODE_SCREENSAVER 12
+
+TALK TO YOURSELF "Screensaver constants"
+LET ME TELL YOU SOMETHING SS_SPEED 3
+LET ME TELL YOU SOMETHING SS_TEXT_W 192
+LET ME TELL YOU SOMETHING SS_TEXT_H 16
+LET ME TELL YOU SOMETHING SS_MAX_X 832
+LET ME TELL YOU SOMETHING SS_MAX_Y 752
+LET ME TELL YOU SOMETHING IDLE_TICKS 545
 
 TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  8x8 BITMAP FONT - Full ASCII 32-126"
@@ -418,6 +427,14 @@ THIS IS A TINY WARRIOR
 HOW MANY 12
 PUT THEM IN LINE
 73 39 76 76 32 66 69 32 66 65 67 75
+
+TALK TO YOURSELF "Press any key (13 chars)"
+HEY CHRISTMAS TREE splPressKey
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 13
+PUT THEM IN LINE
+80 114 101 115 115 32 97 110 121 32 107 101 121
 
 TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  GRAPHICS FUNCTIONS"
@@ -2434,6 +2451,302 @@ DO IT NOW sleep_ticks 18
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: runScreensaver - DVD bouncing 'I'LL BE BACK' screensaver"
+TALK TO YOURSELF "  Changes color on each wall bounce (Arnold movie theme colors)"
+TALK TO YOURSELF "  Exits on any keypress"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY runScreensaver
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+TALK TO YOURSELF "Screensaver state"
+HEY CHRISTMAS TREE ssX
+THIS IS A WARRIOR
+YOU SET US UP 200
+
+HEY CHRISTMAS TREE ssY
+THIS IS A WARRIOR
+YOU SET US UP 300
+
+HEY CHRISTMAS TREE ssDX
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE ssDY
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE ssColorIdx
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE ssColor
+THIS IS A WARRIOR
+YOU SET US UP 0x00CC0000
+
+HEY CHRISTMAS TREE ssOldX
+THIS IS A WARRIOR
+YOU SET US UP 200
+
+HEY CHRISTMAS TREE ssOldY
+THIS IS A WARRIOR
+YOU SET US UP 300
+
+HEY CHRISTMAS TREE ssContinue
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+HEY CHRISTMAS TREE ssKey
+THIS IS A TINY WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE bounced
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Clear screen to black"
+DO IT NOW fillRect fbAddr fbPitch 0 0 1024 768 COLOR_BLACK
+
+TALK TO YOURSELF "Draw static Press any key text at bottom center"
+TALK TO YOURSELF "13 chars * 8px = 104px, centered: (1024-104)/2 = 460"
+DO IT NOW drawStringAt fbAddr fbPitch 460 740 splPressKey 13 0x00444444 COLOR_BLACK
+
+TALK TO YOURSELF "Draw initial text"
+DO IT NOW drawStringBig fbAddr fbPitch ssX ssY splBack 12 2 ssColor COLOR_BLACK
+
+TALK TO YOURSELF "--- Animation loop ---"
+STICK AROUND ssContinue
+    TALK TO YOURSELF "Check for keypress"
+    GET YOUR ASS TO MARS ssKey
+    DO IT NOW pollKeyboard
+    
+    BECAUSE I'M GOING TO SAY PLEASE ssKey
+        GET TO THE CHOPPER ssContinue
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    TALK TO YOURSELF "Save old position for erasure"
+    GET TO THE CHOPPER ssOldX
+    HERE IS MY INVITATION ssX
+    ENOUGH TALK
+    GET TO THE CHOPPER ssOldY
+    HERE IS MY INVITATION ssY
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER bounced
+    HERE IS MY INVITATION 0
+    ENOUGH TALK
+    
+    TALK TO YOURSELF "--- Move X ---"
+    BECAUSE I'M GOING TO SAY PLEASE ssDX
+        TALK TO YOURSELF "Moving right: ssX += SS_SPEED"
+        GET TO THE CHOPPER ssX
+        HERE IS MY INVITATION ssX
+        GET UP SS_SPEED
+        ENOUGH TALK
+        
+        TALK TO YOURSELF "Bounce off right wall"
+        HEY CHRISTMAS TREE hitRight
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER hitRight
+        HERE IS MY INVITATION ssX
+        LET OFF SOME STEAM BENNET SS_MAX_X
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE hitRight
+            GET TO THE CHOPPER ssX
+            HERE IS MY INVITATION SS_MAX_X
+            ENOUGH TALK
+            GET TO THE CHOPPER ssDX
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+            GET TO THE CHOPPER bounced
+            HERE IS MY INVITATION 1
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+    BULLSHIT
+        TALK TO YOURSELF "Moving left: ssX -= SS_SPEED (with underflow protection)"
+        HEY CHRISTMAS TREE canLeft
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER canLeft
+        HERE IS MY INVITATION ssX
+        LET OFF SOME STEAM BENNET SS_SPEED
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE canLeft
+            GET TO THE CHOPPER ssX
+            HERE IS MY INVITATION ssX
+            GET DOWN SS_SPEED
+            ENOUGH TALK
+        BULLSHIT
+            TALK TO YOURSELF "At left edge - bounce"
+            GET TO THE CHOPPER ssX
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+            GET TO THE CHOPPER ssDX
+            HERE IS MY INVITATION 1
+            ENOUGH TALK
+            GET TO THE CHOPPER bounced
+            HERE IS MY INVITATION 1
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    TALK TO YOURSELF "--- Move Y ---"
+    BECAUSE I'M GOING TO SAY PLEASE ssDY
+        TALK TO YOURSELF "Moving down: ssY += SS_SPEED"
+        GET TO THE CHOPPER ssY
+        HERE IS MY INVITATION ssY
+        GET UP SS_SPEED
+        ENOUGH TALK
+        
+        TALK TO YOURSELF "Bounce off bottom wall"
+        HEY CHRISTMAS TREE hitBottom
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER hitBottom
+        HERE IS MY INVITATION ssY
+        LET OFF SOME STEAM BENNET SS_MAX_Y
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE hitBottom
+            GET TO THE CHOPPER ssY
+            HERE IS MY INVITATION SS_MAX_Y
+            ENOUGH TALK
+            GET TO THE CHOPPER ssDY
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+            GET TO THE CHOPPER bounced
+            HERE IS MY INVITATION 1
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+    BULLSHIT
+        TALK TO YOURSELF "Moving up: ssY -= SS_SPEED (with underflow protection)"
+        HEY CHRISTMAS TREE canUp
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER canUp
+        HERE IS MY INVITATION ssY
+        LET OFF SOME STEAM BENNET SS_SPEED
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE canUp
+            GET TO THE CHOPPER ssY
+            HERE IS MY INVITATION ssY
+            GET DOWN SS_SPEED
+            ENOUGH TALK
+        BULLSHIT
+            TALK TO YOURSELF "At top edge - bounce"
+            GET TO THE CHOPPER ssY
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+            GET TO THE CHOPPER ssDY
+            HERE IS MY INVITATION 1
+            ENOUGH TALK
+            GET TO THE CHOPPER bounced
+            HERE IS MY INVITATION 1
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    TALK TO YOURSELF "--- Color change on bounce ---"
+    BECAUSE I'M GOING TO SAY PLEASE bounced
+        GET TO THE CHOPPER ssColorIdx
+        HERE IS MY INVITATION ssColorIdx
+        GET UP 1
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE wrapColor
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER wrapColor
+        HERE IS MY INVITATION ssColorIdx
+        LET OFF SOME STEAM BENNET 4
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE wrapColor
+            GET TO THE CHOPPER ssColorIdx
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+        
+        TALK TO YOURSELF "Select color from index"
+        HEY CHRISTMAS TREE isC0
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isC0
+        HERE IS MY INVITATION ssColorIdx
+        YOU ARE NOT YOU YOU ARE ME 0
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE isC0
+            GET TO THE CHOPPER ssColor
+            HERE IS MY INVITATION COLOR_TERMINATOR_RED
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+        
+        HEY CHRISTMAS TREE isC1
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isC1
+        HERE IS MY INVITATION ssColorIdx
+        YOU ARE NOT YOU YOU ARE ME 1
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE isC1
+            GET TO THE CHOPPER ssColor
+            HERE IS MY INVITATION COLOR_PREDATOR_GREEN
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+        
+        HEY CHRISTMAS TREE isC2
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isC2
+        HERE IS MY INVITATION ssColorIdx
+        YOU ARE NOT YOU YOU ARE ME 2
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE isC2
+            GET TO THE CHOPPER ssColor
+            HERE IS MY INVITATION COLOR_TOTAL_RECALL_MARS
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+        
+        HEY CHRISTMAS TREE isC3
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isC3
+        HERE IS MY INVITATION ssColorIdx
+        YOU ARE NOT YOU YOU ARE ME 3
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE isC3
+            GET TO THE CHOPPER ssColor
+            HERE IS MY INVITATION COLOR_CONAN_GOLD
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+        
+        HEY CHRISTMAS TREE isC4
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isC4
+        HERE IS MY INVITATION ssColorIdx
+        YOU ARE NOT YOU YOU ARE ME 4
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE isC4
+            GET TO THE CHOPPER ssColor
+            HERE IS MY INVITATION COLOR_WHITE
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    TALK TO YOURSELF "--- Erase old text and draw new ---"
+    DO IT NOW fillRect fbAddr fbPitch ssOldX ssOldY SS_TEXT_W SS_TEXT_H COLOR_BLACK
+    DO IT NOW drawStringBig fbAddr fbPitch ssX ssY splBack 12 2 ssColor COLOR_BLACK
+    
+    TALK TO YOURSELF "Frame delay (~55ms = ~18fps)"
+    DO IT NOW sleep_ticks 1
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  MAIN FUNCTION - IT'S SHOWTIME"
 TALK TO YOURSELF "============================================================================"
 
@@ -2471,6 +2784,10 @@ HEY CHRISTMAS TREE scancode
 THIS IS A TINY WARRIOR
 YOU SET US UP 0
 
+HEY CHRISTMAS TREE lastInputTick
+THIS IS A WARRIOR
+YOU SET US UP 0
+
 TALK TO YOURSELF "Get framebuffer info from bootloader"
 GET YOUR ASS TO MARS fbAddress
 DO IT NOW get_fb_addr
@@ -2483,6 +2800,10 @@ DO IT NOW get_fb_width
 
 GET YOUR ASS TO MARS fbHeight
 DO IT NOW get_fb_height
+
+TALK TO YOURSELF "Initialize idle timer for screensaver"
+GET YOUR ASS TO MARS lastInputTick
+DO IT NOW get_timer_ticks
 
 TALK TO YOURSELF "Initialize random from timer"
 DO IT NOW randomSeedFromTimer
@@ -2966,6 +3287,68 @@ STICK AROUND @NO PROBLEMO
             HERE IS MY INVITATION 0
             ENOUGH TALK
             DO IT NOW drawDesktop fbAddress fbPitch
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    TALK TO YOURSELF "--- Idle tracking for screensaver ---"
+    HEY CHRISTMAS TREE hadInput
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    
+    BECAUSE I'M GOING TO SAY PLEASE scancode
+        GET TO THE CHOPPER hadInput
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    BECAUSE I'M GOING TO SAY PLEASE mouseChanged
+        GET TO THE CHOPPER hadInput
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    BECAUSE I'M GOING TO SAY PLEASE hadInput
+        GET YOUR ASS TO MARS lastInputTick
+        DO IT NOW get_timer_ticks
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    TALK TO YOURSELF "Check if idle threshold reached (desktop only)"
+    HEY CHRISTMAS TREE isDesktopForSS
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isDesktopForSS
+    HERE IS MY INVITATION currentMode
+    YOU ARE NOT YOU YOU ARE ME 0
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE isDesktopForSS
+        HEY CHRISTMAS TREE currentTick
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET YOUR ASS TO MARS currentTick
+        DO IT NOW get_timer_ticks
+        
+        HEY CHRISTMAS TREE idleTime
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER idleTime
+        HERE IS MY INVITATION currentTick
+        GET DOWN lastInputTick
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE isIdle
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isIdle
+        HERE IS MY INVITATION idleTime
+        LET OFF SOME STEAM BENNET IDLE_TICKS
+        ENOUGH TALK
+        
+        BECAUSE I'M GOING TO SAY PLEASE isIdle
+            DO IT NOW runScreensaver fbAddress fbPitch
+            DO IT NOW drawDesktop fbAddress fbPitch
+            GET YOUR ASS TO MARS lastInputTick
+            DO IT NOW get_timer_ticks
         YOU HAVE NO RESPECT FOR LOGIC
     YOU HAVE NO RESPECT FOR LOGIC
     
