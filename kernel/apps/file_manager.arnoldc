@@ -1,0 +1,656 @@
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FILE MANAGER - Virtual filesystem browser in ArnoldC"
+TALK TO YOURSELF "  'Consider that a divorce.' - Total Recall"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  Constants"
+TALK TO YOURSELF "============================================================================"
+
+LET ME TELL YOU SOMETHING FM_BG 0x001A1A2E
+LET ME TELL YOU SOMETHING FM_FG 0x00CCCCCC
+LET ME TELL YOU SOMETHING FM_DIR_COLOR 0x005599FF
+LET ME TELL YOU SOMETHING FM_FILE_COLOR 0x00CCCCCC
+LET ME TELL YOU SOMETHING FM_SELECT_BG 0x00334466
+LET ME TELL YOU SOMETHING FM_HEADER_BG 0x00003060
+LET ME TELL YOU SOMETHING FM_HEADER_H 20
+LET ME TELL YOU SOMETHING FM_ENTRY_H 16
+LET ME TELL YOU SOMETHING FM_TEXT_Y 24
+LET ME TELL YOU SOMETHING FM_MAX_ENTRIES 16
+LET ME TELL YOU SOMETHING FM_NAME_LEN 12
+LET ME TELL YOU SOMETHING FM_TYPE_DIR 1
+LET ME TELL YOU SOMETHING FM_TYPE_FILE 2
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  Global State"
+TALK TO YOURSELF "============================================================================"
+
+HEY CHRISTMAS TREE fmSelection
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE fmCurrentDir
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE fmDirty
+THIS IS A WARRIOR
+YOU SET US UP -2
+
+HEY CHRISTMAS TREE fmEntryCount
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Header string"
+HEY CHRISTMAS TREE fmHeaderStr
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 20
+PUT THEM IN LINE
+70 73 76 69 32 77 65 78 65 71 69 82 32 45 32 47 0 0 0 0
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  Virtual Filesystem Data"
+TALK TO YOURSELF "  Layout: 16 entries x 16 bytes each = 256 bytes"
+TALK TO YOURSELF "  Byte 0: type (0=empty, 1=dir, 2=file)"
+TALK TO YOURSELF "  Byte 1: parent dir index (0xFF = root)"
+TALK TO YOURSELF "  Bytes 2-13: name (12 chars, padded with 0)"
+TALK TO YOURSELF "  Byte 14-15: reserved"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "We use parallel arrays instead of struct"
+TALK TO YOURSELF "Type array: 0=empty 1=dir 2=file"
+HEY CHRISTMAS TREE fsType
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+1 1 1 2 2 2 2 2 0 0 0 0 0 0 0 0
+
+TALK TO YOURSELF "Parent directory index (255 = root level)"
+HEY CHRISTMAS TREE fsParent
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+255 255 255 0 0 1 2 2 0 0 0 0 0 0 0 0
+
+TALK TO YOURSELF "Name data: 12 chars per entry (flat array 16*12 = 192 bytes)"
+TALK TO YOURSELF "fsNames: 12 chars per entry, 16 entries = 192 bytes"
+TALK TO YOURSELF "0=docs 1=games 2=system 3=readme.txt 4=arnold.txt 5=snake.sav 6=config.sys 7=kernel.log"
+HEY CHRISTMAS TREE fsNames
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 192
+PUT THEM IN LINE
+100 111 99 115 0 0 0 0 0 0 0 0
+103 97 109 101 115 0 0 0 0 0 0 0
+115 121 115 116 101 109 0 0 0 0 0 0
+114 101 97 100 109 101 46 116 120 116 0 0
+97 114 110 111 108 100 46 116 120 116 0 0
+115 110 97 107 101 46 115 97 118 0 0 0
+99 111 110 102 105 103 46 115 121 115 0 0
+107 101 114 110 101 108 46 108 111 103 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0
+
+TALK TO YOURSELF "Visible entries list (indices of entries in current dir view)"
+HEY CHRISTMAS TREE fmVisible
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  initFileManager - Set up initial state"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY initFileManager
+
+GET TO THE CHOPPER fmSelection
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+GET TO THE CHOPPER fmCurrentDir
+HERE IS MY INVITATION 255
+ENOUGH TALK
+
+GET TO THE CHOPPER fmDirty
+HERE IS MY INVITATION -2
+ENOUGH TALK
+
+TALK TO YOURSELF "Build visible entries for root (parent=255)"
+DO IT NOW fmBuildView
+
+I'LL BE BACK 0
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  fmBuildView - Scan filesystem and populate visible list"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY fmBuildView
+
+HEY CHRISTMAS TREE fmCount
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE fmIdx
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE fmScanLoop
+THIS IS A WARRIOR
+YOU SET US UP 1
+STICK AROUND fmScanLoop
+    TALK TO YOURSELF "Check if this entry belongs to current dir"
+    HEY CHRISTMAS TREE fmEntryType
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fmEntryType
+    HERE IS MY INVITATION WHICH ONE fsType fmIdx
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE fmHasType
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fmHasType
+    HERE IS MY INVITATION fmEntryType
+    YOU ARE NOT ME 0
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE fmHasType
+        HEY CHRISTMAS TREE fmEntryParent
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER fmEntryParent
+        HERE IS MY INVITATION WHICH ONE fsParent fmIdx
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE fmMatch
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER fmMatch
+        HERE IS MY INVITATION fmEntryParent
+        YOU ARE NOT YOU YOU ARE ME fmCurrentDir
+        ENOUGH TALK
+        
+        BECAUSE I'M GOING TO SAY PLEASE fmMatch
+            GET TO THE CHOPPER WHICH ONE fmVisible fmCount
+            HERE IS MY INVITATION fmIdx
+            ENOUGH TALK
+            
+            GET TO THE CHOPPER fmCount
+            HERE IS MY INVITATION fmCount
+            GET UP 1
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    GET TO THE CHOPPER fmIdx
+    HERE IS MY INVITATION fmIdx
+    GET UP 1
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE fmScanEnd
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fmScanEnd
+    HERE IS MY INVITATION fmIdx
+    YOU ARE NOT YOU YOU ARE ME FM_MAX_ENTRIES
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE fmScanEnd
+        GET TO THE CHOPPER fmScanLoop
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+CHILL
+
+GET TO THE CHOPPER fmEntryCount
+HERE IS MY INVITATION fmCount
+ENOUGH TALK
+
+TALK TO YOURSELF "Clamp selection if out of bounds"
+TALK TO YOURSELF "fmEntryCount > fmSelection means valid, so DON'T clamp"
+HEY CHRISTMAS TREE fmSelValid
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER fmSelValid
+HERE IS MY INVITATION fmEntryCount
+LET OFF SOME STEAM BENNET fmSelection
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE fmSelValid
+    TALK TO YOURSELF "Selection is valid, do nothing"
+BULLSHIT
+    HEY CHRISTMAS TREE fmLastIdx
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fmLastIdx
+    HERE IS MY INVITATION fmEntryCount
+    GET DOWN 1
+    ENOUGH TALK
+    GET TO THE CHOPPER fmSelection
+    HERE IS MY INVITATION fmLastIdx
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+I'LL BE BACK 0
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  drawFmEntry - Draw a single file/dir entry"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawFmEntry
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE entryIdx
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE visIdx
+
+TALK TO YOURSELF "Calculate Y position"
+HEY CHRISTMAS TREE fey
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER fey
+HERE IS MY INVITATION visIdx
+YOU'RE FIRED FM_ENTRY_H
+GET UP FM_TEXT_Y
+ENOUGH TALK
+
+TALK TO YOURSELF "Determine if selected"
+HEY CHRISTMAS TREE feIsSelected
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER feIsSelected
+HERE IS MY INVITATION visIdx
+YOU ARE NOT YOU YOU ARE ME fmSelection
+ENOUGH TALK
+
+TALK TO YOURSELF "Choose background"
+HEY CHRISTMAS TREE feBg
+THIS IS A WARRIOR
+YOU SET US UP 0
+BECAUSE I'M GOING TO SAY PLEASE feIsSelected
+    GET TO THE CHOPPER feBg
+    HERE IS MY INVITATION FM_SELECT_BG
+    ENOUGH TALK
+BULLSHIT
+    GET TO THE CHOPPER feBg
+    HERE IS MY INVITATION FM_BG
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "Draw entry background"
+DO IT NOW fillRect fbAddr fbPitch 0 fey 1024 FM_ENTRY_H feBg
+
+TALK TO YOURSELF "Get entry type for color"
+HEY CHRISTMAS TREE feType
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER feType
+HERE IS MY INVITATION WHICH ONE fsType entryIdx
+ENOUGH TALK
+
+HEY CHRISTMAS TREE feColor
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER feColor
+HERE IS MY INVITATION FM_FILE_COLOR
+ENOUGH TALK
+
+HEY CHRISTMAS TREE feIsDir
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER feIsDir
+HERE IS MY INVITATION feType
+YOU ARE NOT YOU YOU ARE ME FM_TYPE_DIR
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE feIsDir
+    GET TO THE CHOPPER feColor
+    HERE IS MY INVITATION FM_DIR_COLOR
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "Draw type indicator: [D] for dir, [F] for file"
+HEY CHRISTMAS TREE feIndicator
+THIS IS A WARRIOR
+YOU SET US UP 0
+BECAUSE I'M GOING TO SAY PLEASE feIsDir
+    GET TO THE CHOPPER feIndicator
+    HERE IS MY INVITATION 68
+    ENOUGH TALK
+BULLSHIT
+    GET TO THE CHOPPER feIndicator
+    HERE IS MY INVITATION 70
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+DO IT NOW drawChar fbAddr fbPitch 8 fey 91 feColor feBg
+DO IT NOW drawChar fbAddr fbPitch 16 fey feIndicator feColor feBg
+DO IT NOW drawChar fbAddr fbPitch 24 fey 93 feColor feBg
+
+TALK TO YOURSELF "Draw entry name starting at x=40"
+HEY CHRISTMAS TREE feNameBase
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER feNameBase
+HERE IS MY INVITATION entryIdx
+YOU'RE FIRED FM_NAME_LEN
+ENOUGH TALK
+
+HEY CHRISTMAS TREE fni
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE fnLoop
+THIS IS A WARRIOR
+YOU SET US UP 1
+STICK AROUND fnLoop
+    HEY CHRISTMAS TREE fnOff
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fnOff
+    HERE IS MY INVITATION feNameBase
+    GET UP fni
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE fnCh
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fnCh
+    HERE IS MY INVITATION WHICH ONE fsNames fnOff
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE fnIsChar
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fnIsChar
+    HERE IS MY INVITATION fnCh
+    YOU ARE NOT ME 0
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE fnIsChar
+        HEY CHRISTMAS TREE fnx
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER fnx
+        HERE IS MY INVITATION fni
+        YOU'RE FIRED 8
+        GET UP 40
+        ENOUGH TALK
+        DO IT NOW drawChar fbAddr fbPitch fnx fey fnCh feColor feBg
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    GET TO THE CHOPPER fni
+    HERE IS MY INVITATION fni
+    GET UP 1
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE fnEnd
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fnEnd
+    HERE IS MY INVITATION fni
+    YOU ARE NOT YOU YOU ARE ME FM_NAME_LEN
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE fnEnd
+        GET TO THE CHOPPER fnLoop
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+CHILL
+
+I'LL BE BACK 0
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  drawFileManager - Render the file manager UI"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawFileManager
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+HEY CHRISTMAS TREE dfmFull
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER dfmFull
+HERE IS MY INVITATION fmDirty
+YOU ARE NOT YOU YOU ARE ME -2
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE dfmFull
+    TALK TO YOURSELF "Full redraw"
+    DO IT NOW fillRect fbAddr fbPitch 0 0 1024 768 FM_BG
+    DO IT NOW fillRect fbAddr fbPitch 0 0 1024 FM_HEADER_H FM_HEADER_BG
+    DO IT NOW drawStringAt fbAddr fbPitch 8 4 fmHeaderStr 16 COLOR_WHITE FM_HEADER_BG
+    
+    TALK TO YOURSELF "Draw all visible entries"
+    HEY CHRISTMAS TREE dfmI
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    
+    HEY CHRISTMAS TREE dfmLoop
+    THIS IS A WARRIOR
+    YOU SET US UP 1
+    STICK AROUND dfmLoop
+        HEY CHRISTMAS TREE dfmEntry
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER dfmEntry
+        HERE IS MY INVITATION WHICH ONE fmVisible dfmI
+        ENOUGH TALK
+        
+        DO IT NOW drawFmEntry fbAddr fbPitch dfmEntry dfmI
+        
+        GET TO THE CHOPPER dfmI
+        HERE IS MY INVITATION dfmI
+        GET UP 1
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE dfmEnd
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER dfmEnd
+        HERE IS MY INVITATION dfmI
+        YOU ARE NOT YOU YOU ARE ME fmEntryCount
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE dfmEnd
+            GET TO THE CHOPPER dfmLoop
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+    CHILL
+    
+    TALK TO YOURSELF "Draw footer instructions"
+    DO IT NOW fillRect fbAddr fbPitch 0 748 1024 20 FM_HEADER_BG
+    
+    GET TO THE CHOPPER fmDirty
+    HERE IS MY INVITATION -1
+    ENOUGH TALK
+BULLSHIT
+    TALK TO YOURSELF "Partial redraw: just redraw dirty entries"
+    HEY CHRISTMAS TREE dfmDirtyOk
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER dfmDirtyOk
+    HERE IS MY INVITATION fmDirty
+    YOU ARE NOT ME -1
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE dfmDirtyOk
+        GET TO THE CHOPPER fmDirty
+        HERE IS MY INVITATION -2
+        ENOUGH TALK
+        DO IT NOW drawFileManager fbAddr fbPitch
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+I'LL BE BACK 0
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  handleFileManagerKey - Process keyboard input"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY handleFileManagerKey
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE scancode
+
+HEY CHRISTMAS TREE fmResult
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "W key (0x11) = up"
+HEY CHRISTMAS TREE fmIsUp
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER fmIsUp
+HERE IS MY INVITATION scancode
+YOU ARE NOT YOU YOU ARE ME 0x11
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE fmIsUp
+    HEY CHRISTMAS TREE fmCanUp
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fmCanUp
+    HERE IS MY INVITATION fmSelection
+    YOU ARE NOT ME 0
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE fmCanUp
+        GET TO THE CHOPPER fmSelection
+        HERE IS MY INVITATION fmSelection
+        GET DOWN 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    GET TO THE CHOPPER fmDirty
+    HERE IS MY INVITATION -2
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "S key (0x1F) = down"
+HEY CHRISTMAS TREE fmIsDown
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER fmIsDown
+HERE IS MY INVITATION scancode
+YOU ARE NOT YOU YOU ARE ME 0x1F
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE fmIsDown
+    HEY CHRISTMAS TREE fmMaxSel
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fmMaxSel
+    HERE IS MY INVITATION fmEntryCount
+    GET DOWN 1
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE fmCanDown
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fmCanDown
+    HERE IS MY INVITATION fmMaxSel
+    LET OFF SOME STEAM BENNET fmSelection
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE fmCanDown
+        GET TO THE CHOPPER fmSelection
+        HERE IS MY INVITATION fmSelection
+        GET UP 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    GET TO THE CHOPPER fmDirty
+    HERE IS MY INVITATION -2
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "Enter (0x1C) = open selected"
+HEY CHRISTMAS TREE fmIsEnter
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER fmIsEnter
+HERE IS MY INVITATION scancode
+YOU ARE NOT YOU YOU ARE ME 0x1C
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE fmIsEnter
+    HEY CHRISTMAS TREE fmSelEntry
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fmSelEntry
+    HERE IS MY INVITATION WHICH ONE fmVisible fmSelection
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE fmSelType
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fmSelType
+    HERE IS MY INVITATION WHICH ONE fsType fmSelEntry
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE fmIsOpenDir
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fmIsOpenDir
+    HERE IS MY INVITATION fmSelType
+    YOU ARE NOT YOU YOU ARE ME FM_TYPE_DIR
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE fmIsOpenDir
+        TALK TO YOURSELF "Enter directory"
+        GET TO THE CHOPPER fmCurrentDir
+        HERE IS MY INVITATION fmSelEntry
+        ENOUGH TALK
+        GET TO THE CHOPPER fmSelection
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        DO IT NOW fmBuildView
+        GET TO THE CHOPPER fmDirty
+        HERE IS MY INVITATION -2
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "Backspace (0x0E) = go to parent dir"
+HEY CHRISTMAS TREE fmIsBs
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER fmIsBs
+HERE IS MY INVITATION scancode
+YOU ARE NOT YOU YOU ARE ME 0x0E
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE fmIsBs
+    HEY CHRISTMAS TREE fmNotRoot
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER fmNotRoot
+    HERE IS MY INVITATION fmCurrentDir
+    YOU ARE NOT ME 255
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE fmNotRoot
+        TALK TO YOURSELF "Go up: find parent of current dir"
+        HEY CHRISTMAS TREE fmParent
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER fmParent
+        HERE IS MY INVITATION WHICH ONE fsParent fmCurrentDir
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER fmCurrentDir
+        HERE IS MY INVITATION fmParent
+        ENOUGH TALK
+        GET TO THE CHOPPER fmSelection
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        DO IT NOW fmBuildView
+        GET TO THE CHOPPER fmDirty
+        HERE IS MY INVITATION -2
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+I'LL BE BACK fmResult
+HASTA LA VISTA, BABY

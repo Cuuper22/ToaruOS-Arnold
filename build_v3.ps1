@@ -64,7 +64,8 @@ $sourceFiles = @(
     "$ProjectRoot\kernel\apps\calculator.arnoldc",
     "$ProjectRoot\kernel\apps\about.arnoldc",
     "$ProjectRoot\kernel\apps\settings.arnoldc",
-    "$ProjectRoot\kernel\apps\text_editor.arnoldc"
+    "$ProjectRoot\kernel\apps\text_editor.arnoldc",
+    "$ProjectRoot\kernel\apps\file_manager.arnoldc"
 )
 
 & powershell -ExecutionPolicy Bypass -File "$ProjectRoot\tools\merge_modules.ps1" `
