@@ -471,6 +471,504 @@ DO IT NOW termPutChar 101
 DO IT NOW termPutChar 114
 DO IT NOW termPrintNewline
 
+TALK TO YOURSELF "  ping     - ping gateway"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 119
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 121
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  ifconfig - network info"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 102
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 102
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 119
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 107
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 102
+DO IT NOW termPutChar 111
+DO IT NOW termPrintNewline
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintDecimal - Print a number 0-999 as decimal"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintDecimal
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE num
+
+HEY CHRISTMAS TREE d100
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER d100
+HERE IS MY INVITATION num
+HE HAD TO SPLIT 100
+ENOUGH TALK
+
+HEY CHRISTMAS TREE ge100
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER ge100
+HERE IS MY INVITATION 99
+YOU'RE NOT BIG ENOUGH num
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE ge100
+    HEY CHRISTMAS TREE hChar
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER hChar
+    HERE IS MY INVITATION d100
+    GET UP 48
+    ENOUGH TALK
+    DO IT NOW termPutChar hChar
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE rem100
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER rem100
+HERE IS MY INVITATION num
+I LET HIM GO 100
+ENOUGH TALK
+
+HEY CHRISTMAS TREE d10
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER d10
+HERE IS MY INVITATION rem100
+HE HAD TO SPLIT 10
+ENOUGH TALK
+
+HEY CHRISTMAS TREE ge10
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER ge10
+HERE IS MY INVITATION 9
+YOU'RE NOT BIG ENOUGH num
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE ge10
+    HEY CHRISTMAS TREE tChar
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER tChar
+    HERE IS MY INVITATION d10
+    GET UP 48
+    ENOUGH TALK
+    DO IT NOW termPutChar tChar
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE onesDigit
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER onesDigit
+HERE IS MY INVITATION rem100
+I LET HIM GO 10
+GET UP 48
+ENOUGH TALK
+DO IT NOW termPutChar onesDigit
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintHexByte - Print a byte as 2 hex characters (e.g. 0xAB -> AB)"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintHexByte
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE bval
+
+HEY CHRISTMAS TREE hiNib
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER hiNib
+HERE IS MY INVITATION bval
+HE HAD TO SPLIT 16
+ENOUGH TALK
+
+HEY CHRISTMAS TREE hiGe10
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER hiGe10
+HERE IS MY INVITATION 9
+YOU'RE NOT BIG ENOUGH hiNib
+ENOUGH TALK
+
+HEY CHRISTMAS TREE hiCh
+THIS IS A WARRIOR
+YOU SET US UP 0
+BECAUSE I'M GOING TO SAY PLEASE hiGe10
+    GET TO THE CHOPPER hiCh
+    HERE IS MY INVITATION hiNib
+    GET UP 55
+    ENOUGH TALK
+BULLSHIT
+    GET TO THE CHOPPER hiCh
+    HERE IS MY INVITATION hiNib
+    GET UP 48
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+DO IT NOW termPutChar hiCh
+
+HEY CHRISTMAS TREE loNib
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER loNib
+HERE IS MY INVITATION bval
+I LET HIM GO 16
+ENOUGH TALK
+
+HEY CHRISTMAS TREE loGe10
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER loGe10
+HERE IS MY INVITATION 9
+YOU'RE NOT BIG ENOUGH loNib
+ENOUGH TALK
+
+HEY CHRISTMAS TREE loCh
+THIS IS A WARRIOR
+YOU SET US UP 0
+BECAUSE I'M GOING TO SAY PLEASE loGe10
+    GET TO THE CHOPPER loCh
+    HERE IS MY INVITATION loNib
+    GET UP 55
+    ENOUGH TALK
+BULLSHIT
+    GET TO THE CHOPPER loCh
+    HERE IS MY INVITATION loNib
+    GET UP 48
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+DO IT NOW termPutChar loCh
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintIfconfig - Print network configuration"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintIfconfig
+
+HEY CHRISTMAS TREE netOK
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET YOUR ASS TO MARS netOK
+DO IT NOW net_is_available
+
+BECAUSE I'M GOING TO SAY PLEASE netOK
+    TALK TO YOURSELF "Network:"
+    DO IT NOW termPutChar 78
+    DO IT NOW termPutChar 101
+    DO IT NOW termPutChar 116
+    DO IT NOW termPutChar 119
+    DO IT NOW termPutChar 111
+    DO IT NOW termPutChar 114
+    DO IT NOW termPutChar 107
+    DO IT NOW termPutChar 58
+    DO IT NOW termPrintNewline
+
+    TALK TO YOURSELF "  IP: "
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 73
+    DO IT NOW termPutChar 80
+    DO IT NOW termPutChar 58
+    DO IT NOW termPutChar 32
+
+    HEY CHRISTMAS TREE ipB
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+
+    GET YOUR ASS TO MARS ipB
+    DO IT NOW net_get_ip_byte 0
+    DO IT NOW termPrintDecimal ipB
+    DO IT NOW termPutChar 46
+
+    GET YOUR ASS TO MARS ipB
+    DO IT NOW net_get_ip_byte 1
+    DO IT NOW termPrintDecimal ipB
+    DO IT NOW termPutChar 46
+
+    GET YOUR ASS TO MARS ipB
+    DO IT NOW net_get_ip_byte 2
+    DO IT NOW termPrintDecimal ipB
+    DO IT NOW termPutChar 46
+
+    GET YOUR ASS TO MARS ipB
+    DO IT NOW net_get_ip_byte 3
+    DO IT NOW termPrintDecimal ipB
+    DO IT NOW termPrintNewline
+
+    TALK TO YOURSELF "  GW: "
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 71
+    DO IT NOW termPutChar 87
+    DO IT NOW termPutChar 58
+    DO IT NOW termPutChar 32
+
+    GET YOUR ASS TO MARS ipB
+    DO IT NOW net_get_gateway_byte 0
+    DO IT NOW termPrintDecimal ipB
+    DO IT NOW termPutChar 46
+
+    GET YOUR ASS TO MARS ipB
+    DO IT NOW net_get_gateway_byte 1
+    DO IT NOW termPrintDecimal ipB
+    DO IT NOW termPutChar 46
+
+    GET YOUR ASS TO MARS ipB
+    DO IT NOW net_get_gateway_byte 2
+    DO IT NOW termPrintDecimal ipB
+    DO IT NOW termPutChar 46
+
+    GET YOUR ASS TO MARS ipB
+    DO IT NOW net_get_gateway_byte 3
+    DO IT NOW termPrintDecimal ipB
+    DO IT NOW termPrintNewline
+
+    TALK TO YOURSELF "  MAC: "
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 77
+    DO IT NOW termPutChar 65
+    DO IT NOW termPutChar 67
+    DO IT NOW termPutChar 58
+
+    HEY CHRISTMAS TREE macB
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+
+    GET YOUR ASS TO MARS macB
+    DO IT NOW net_get_mac_byte 0
+    DO IT NOW termPrintHexByte macB
+    DO IT NOW termPutChar 58
+
+    GET YOUR ASS TO MARS macB
+    DO IT NOW net_get_mac_byte 1
+    DO IT NOW termPrintHexByte macB
+    DO IT NOW termPutChar 58
+
+    GET YOUR ASS TO MARS macB
+    DO IT NOW net_get_mac_byte 2
+    DO IT NOW termPrintHexByte macB
+    DO IT NOW termPutChar 58
+
+    GET YOUR ASS TO MARS macB
+    DO IT NOW net_get_mac_byte 3
+    DO IT NOW termPrintHexByte macB
+    DO IT NOW termPutChar 58
+
+    GET YOUR ASS TO MARS macB
+    DO IT NOW net_get_mac_byte 4
+    DO IT NOW termPrintHexByte macB
+    DO IT NOW termPutChar 58
+
+    GET YOUR ASS TO MARS macB
+    DO IT NOW net_get_mac_byte 5
+    DO IT NOW termPrintHexByte macB
+    DO IT NOW termPrintNewline
+
+    TALK TO YOURSELF "  Link: "
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 76
+    DO IT NOW termPutChar 105
+    DO IT NOW termPutChar 110
+    DO IT NOW termPutChar 107
+    DO IT NOW termPutChar 58
+    DO IT NOW termPutChar 32
+
+    HEY CHRISTMAS TREE linkUp
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET YOUR ASS TO MARS linkUp
+    DO IT NOW e1000_is_link_up
+    BECAUSE I'M GOING TO SAY PLEASE linkUp
+        TALK TO YOURSELF "Up"
+        DO IT NOW termPutChar 85
+        DO IT NOW termPutChar 112
+    BULLSHIT
+        TALK TO YOURSELF "Down"
+        DO IT NOW termPutChar 68
+        DO IT NOW termPutChar 111
+        DO IT NOW termPutChar 119
+        DO IT NOW termPutChar 110
+    YOU HAVE NO RESPECT FOR LOGIC
+    DO IT NOW termPrintNewline
+BULLSHIT
+    TALK TO YOURSELF "No network"
+    DO IT NOW termPutChar 78
+    DO IT NOW termPutChar 111
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 110
+    DO IT NOW termPutChar 101
+    DO IT NOW termPutChar 116
+    DO IT NOW termPutChar 119
+    DO IT NOW termPutChar 111
+    DO IT NOW termPutChar 114
+    DO IT NOW termPutChar 107
+    DO IT NOW termPrintNewline
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintPing - Ping gateway and print result"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintPing
+
+HEY CHRISTMAS TREE netOK2
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET YOUR ASS TO MARS netOK2
+DO IT NOW net_is_available
+
+BECAUSE I'M GOING TO SAY PLEASE netOK2
+    TALK TO YOURSELF "Pinging 10.0.2.2..."
+    DO IT NOW termPutChar 80
+    DO IT NOW termPutChar 105
+    DO IT NOW termPutChar 110
+    DO IT NOW termPutChar 103
+    DO IT NOW termPutChar 105
+    DO IT NOW termPutChar 110
+    DO IT NOW termPutChar 103
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 49
+    DO IT NOW termPutChar 48
+    DO IT NOW termPutChar 46
+    DO IT NOW termPutChar 48
+    DO IT NOW termPutChar 46
+    DO IT NOW termPutChar 50
+    DO IT NOW termPutChar 46
+    DO IT NOW termPutChar 50
+    DO IT NOW termPutChar 46
+    DO IT NOW termPutChar 46
+    DO IT NOW termPutChar 46
+    DO IT NOW termPrintNewline
+
+    HEY CHRISTMAS TREE rtt
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET YOUR ASS TO MARS rtt
+    DO IT NOW net_ping_gateway
+
+    HEY CHRISTMAS TREE pingOK
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER pingOK
+    HERE IS MY INVITATION rtt
+    LET OFF SOME STEAM BENNET 0
+    ENOUGH TALK
+
+    BECAUSE I'M GOING TO SAY PLEASE pingOK
+        TALK TO YOURSELF "Reply: "
+        DO IT NOW termPutChar 82
+        DO IT NOW termPutChar 101
+        DO IT NOW termPutChar 112
+        DO IT NOW termPutChar 108
+        DO IT NOW termPutChar 121
+        DO IT NOW termPutChar 58
+        DO IT NOW termPutChar 32
+        DO IT NOW termPrintDecimal rtt
+
+        TALK TO YOURSELF " ticks ("
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 116
+        DO IT NOW termPutChar 105
+        DO IT NOW termPutChar 99
+        DO IT NOW termPutChar 107
+        DO IT NOW termPutChar 115
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 40
+
+        TALK TO YOURSELF "ticks * 10 = ms at 100Hz PIT"
+        HEY CHRISTMAS TREE msVal
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER msVal
+        HERE IS MY INVITATION rtt
+        YOU'RE FIRED 10
+        ENOUGH TALK
+        DO IT NOW termPrintDecimal msVal
+
+        TALK TO YOURSELF "ms)"
+        DO IT NOW termPutChar 109
+        DO IT NOW termPutChar 115
+        DO IT NOW termPutChar 41
+        DO IT NOW termPrintNewline
+    BULLSHIT
+        TALK TO YOURSELF "Timeout - no reply"
+        DO IT NOW termPutChar 84
+        DO IT NOW termPutChar 105
+        DO IT NOW termPutChar 109
+        DO IT NOW termPutChar 101
+        DO IT NOW termPutChar 111
+        DO IT NOW termPutChar 117
+        DO IT NOW termPutChar 116
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 45
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 110
+        DO IT NOW termPutChar 111
+        DO IT NOW termPutChar 32
+        DO IT NOW termPutChar 114
+        DO IT NOW termPutChar 101
+        DO IT NOW termPutChar 112
+        DO IT NOW termPutChar 108
+        DO IT NOW termPutChar 121
+        DO IT NOW termPrintNewline
+    YOU HAVE NO RESPECT FOR LOGIC
+BULLSHIT
+    TALK TO YOURSELF "No network"
+    DO IT NOW termPutChar 78
+    DO IT NOW termPutChar 111
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 110
+    DO IT NOW termPutChar 101
+    DO IT NOW termPutChar 116
+    DO IT NOW termPutChar 119
+    DO IT NOW termPutChar 111
+    DO IT NOW termPutChar 114
+    DO IT NOW termPutChar 107
+    DO IT NOW termPrintNewline
+YOU HAVE NO RESPECT FOR LOGIC
+
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "Print: Unknown command"
@@ -893,7 +1391,7 @@ BECAUSE I'M GOING TO SAY PLEASE isS
     YOU HAVE NO RESPECT FOR LOGIC
 YOU HAVE NO RESPECT FOR LOGIC
 
-TALK TO YOURSELF "=== Check: pong (p=112, o=111) ==="
+TALK TO YOURSELF "=== Check: p commands (p=112): pong (o=111), ping (i=105) ==="
 HEY CHRISTMAS TREE isP
 THIS IS A WARRIOR
 YOU SET US UP 0
@@ -902,10 +1400,33 @@ HERE IS MY INVITATION c0
 YOU ARE NOT YOU YOU ARE ME 112
 ENOUGH TALK
 BECAUSE I'M GOING TO SAY PLEASE isP
-    DO IT NOW termPrintQuote
-    GET TO THE CHOPPER cmdResult
-    HERE IS MY INVITATION 3
+    HEY CHRISTMAS TREE isPO
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isPO
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 111
     ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isPO
+        DO IT NOW termPrintQuote
+        GET TO THE CHOPPER cmdResult
+        HERE IS MY INVITATION 3
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    HEY CHRISTMAS TREE isPI
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isPI
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 105
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isPI
+        DO IT NOW termPrintPing
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
 YOU HAVE NO RESPECT FOR LOGIC
 
 TALK TO YOURSELF "=== Check: breakout (b=98, r=114) ==="
@@ -992,6 +1513,30 @@ BECAUSE I'M GOING TO SAY PLEASE isFI
         DO IT NOW termPrintQuote
         GET TO THE CHOPPER cmdResult
         HERE IS MY INVITATION 11
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: ifconfig (i=105, f=102) ==="
+HEY CHRISTMAS TREE isI
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isI
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 105
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isI
+    HEY CHRISTMAS TREE isIF
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isIF
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 102
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isIF
+        DO IT NOW termPrintIfconfig
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
         ENOUGH TALK
     YOU HAVE NO RESPECT FOR LOGIC
 YOU HAVE NO RESPECT FOR LOGIC

@@ -1593,5 +1593,364 @@ e1000_is_link_up:
     ret
 
 ; ============================================================================
+; NETWORK PROTOCOL STACK - "THE NETWORK IS MY DOMAIN"
+; Ethernet frames, ARP resolution, IP, ICMP Echo (ping)
+; ============================================================================
+
+global net_ping_gateway
+global net_get_ip_byte
+global net_get_gateway_byte
+global net_get_mac_byte
+global net_is_available
+
+; --- Network configuration (QEMU user-mode defaults) ---
+section .data
+net_our_ip:       dd 0x0F02000A    ; 10.0.2.15 (network byte order)
+net_gateway_ip:   dd 0x0202000A    ; 10.0.2.2
+net_netmask:      dd 0x00FFFFFF    ; 255.255.255.0
+net_broadcast_mac: db 0xFF,0xFF,0xFF,0xFF,0xFF,0xFF, 0,0
+
+section .bss
+net_tx_buf:       resb 2048        ; Packet assembly scratch
+net_rx_buf:       resb 2048        ; Packet receive scratch
+net_resolved_mac: resb 8           ; ARP-resolved MAC (6 bytes + 2 pad)
+net_ping_seq:     resd 1           ; ICMP sequence counter
+
+section .text
+
+; --- Simple getters for ArnoldC ---
+
+; net_is_available() -> 1 if E1000 found, 0 if not
+net_is_available:
+    mov eax, [e1000_found]
+    ret
+
+; net_get_ip_byte(index) -> byte 0-3 of our IP (10, 0, 2, 15)
+net_get_ip_byte:
+    mov ecx, [esp+4]
+    movzx eax, byte [net_our_ip + ecx]
+    ret
+
+; net_get_gateway_byte(index) -> byte 0-3 of gateway IP
+net_get_gateway_byte:
+    mov ecx, [esp+4]
+    movzx eax, byte [net_gateway_ip + ecx]
+    ret
+
+; net_get_mac_byte(index) -> byte 0-5 of our MAC
+net_get_mac_byte:
+    mov ecx, [esp+4]
+    movzx eax, byte [e1000_mac + ecx]
+    ret
+
+; --- IP header checksum ---
+; ip_checksum(buf_ptr, length_bytes) -> 16-bit checksum
+ip_checksum:
+    push ebx
+    push esi
+    mov esi, [esp+12]      ; buffer
+    mov ecx, [esp+16]      ; length in bytes
+    shr ecx, 1             ; convert to 16-bit words
+    xor eax, eax           ; sum = 0
+.cksum_loop:
+    test ecx, ecx
+    jz .cksum_fold
+    movzx ebx, word [esi]
+    add eax, ebx
+    add esi, 2
+    dec ecx
+    jmp .cksum_loop
+.cksum_fold:
+    mov ebx, eax
+    shr ebx, 16
+    and eax, 0xFFFF
+    add eax, ebx
+    mov ebx, eax
+    shr ebx, 16
+    add eax, ebx
+    and eax, 0xFFFF
+    not eax
+    and eax, 0xFFFF
+    pop esi
+    pop ebx
+    ret
+
+; --- Ethernet + ARP ---
+
+; net_send_arp_request(target_ip)
+; Sends an ARP "Who has <target_ip>? Tell <our_ip>"
+net_send_arp_request:
+    push ebx
+    push esi
+    push edi
+
+    mov ebx, [esp+16]     ; target_ip
+    lea edi, [net_tx_buf]
+
+    ; === Ethernet header (14 bytes) ===
+    ; Dest MAC: broadcast FF:FF:FF:FF:FF:FF
+    mov dword [edi+0], 0xFFFFFFFF
+    mov word  [edi+4], 0xFFFF
+    ; Src MAC: our MAC
+    mov eax, [e1000_mac]
+    mov [edi+6], eax
+    mov ax, [e1000_mac+4]
+    mov [edi+10], ax
+    ; EtherType: ARP (0x0806 in network order = 0x0608 in memory)
+    mov word [edi+12], 0x0608
+
+    ; === ARP header (28 bytes at offset 14) ===
+    mov word [edi+14], 0x0100     ; Hardware type: Ethernet
+    mov word [edi+16], 0x0008     ; Protocol type: IPv4
+    mov byte [edi+18], 6          ; HW addr length
+    mov byte [edi+19], 4          ; Proto addr length
+    mov word [edi+20], 0x0100     ; Operation: Request
+
+    ; Sender HW addr (our MAC)
+    mov eax, [e1000_mac]
+    mov [edi+22], eax
+    mov ax, [e1000_mac+4]
+    mov [edi+26], ax
+
+    ; Sender proto addr (our IP)
+    mov eax, [net_our_ip]
+    mov [edi+28], eax
+
+    ; Target HW addr (zeros — we're asking)
+    mov dword [edi+32], 0
+    mov word  [edi+36], 0
+
+    ; Target proto addr
+    mov [edi+38], ebx
+
+    ; Send: 14 + 28 = 42 bytes
+    push dword 42
+    push edi
+    call e1000_send_packet
+    add esp, 8
+
+    pop edi
+    pop esi
+    pop ebx
+    ret
+
+; net_wait_arp_reply(target_ip, timeout_ticks) -> 0=success (MAC in net_resolved_mac), -1=timeout
+net_wait_arp_reply:
+    push ebx
+    push esi
+    push edi
+
+    mov ebx, [esp+16]     ; target_ip
+    call get_timer_ticks
+    mov esi, eax
+    add esi, [esp+20]     ; deadline = now + timeout
+
+.arp_poll:
+    call get_timer_ticks
+    cmp eax, esi
+    jge .arp_timeout
+
+    push dword 2048
+    lea eax, [net_rx_buf]
+    push eax
+    call e1000_receive_packet
+    add esp, 8
+
+    test eax, eax
+    jz .arp_poll           ; No packet
+
+    ; Check EtherType = ARP (0x0608 in memory)
+    lea edi, [net_rx_buf]
+    cmp word [edi+12], 0x0608
+    jne .arp_poll
+
+    ; Check ARP Operation = Reply (0x0200 in memory)
+    cmp word [edi+20], 0x0200
+    jne .arp_poll
+
+    ; Check sender protocol addr matches our target
+    mov eax, [edi+28]
+    cmp eax, ebx
+    jne .arp_poll
+
+    ; Extract sender hardware addr → net_resolved_mac
+    mov eax, [edi+22]
+    mov [net_resolved_mac], eax
+    mov ax, [edi+26]
+    mov [net_resolved_mac+4], ax
+
+    xor eax, eax          ; success
+    jmp .arp_done
+
+.arp_timeout:
+    mov eax, -1
+
+.arp_done:
+    pop edi
+    pop esi
+    pop ebx
+    ret
+
+; --- ICMP Echo ---
+
+; net_send_icmp_echo(dest_ip, dest_mac_ptr, seq_num)
+; Builds and sends an ICMP Echo Request inside IP inside Ethernet
+net_send_icmp_echo:
+    push ebp
+    mov ebp, esp
+    push ebx
+    push esi
+    push edi
+
+    lea edi, [net_tx_buf]
+    mov esi, [ebp+12]     ; dest_mac_ptr
+
+    ; === Ethernet header (14 bytes) ===
+    mov eax, [esi]
+    mov [edi+0], eax
+    mov ax, [esi+4]
+    mov [edi+4], ax
+    mov eax, [e1000_mac]
+    mov [edi+6], eax
+    mov ax, [e1000_mac+4]
+    mov [edi+10], ax
+    mov word [edi+12], 0x0008    ; EtherType: IPv4
+
+    ; === IP header (20 bytes at offset 14) ===
+    mov byte  [edi+14], 0x45     ; Version 4, IHL 5
+    mov byte  [edi+15], 0        ; TOS
+    mov word  [edi+16], 0x1C00   ; Total length: 28 (20 IP + 8 ICMP) big-endian
+    mov word  [edi+18], 0x3412   ; Identification (arbitrary)
+    mov word  [edi+20], 0x0040   ; Flags: Don't Fragment
+    mov byte  [edi+22], 64       ; TTL
+    mov byte  [edi+23], 1        ; Protocol: ICMP
+    mov word  [edi+24], 0        ; Checksum placeholder
+    mov eax, [net_our_ip]
+    mov [edi+26], eax            ; Source IP
+    mov eax, [ebp+8]             ; dest_ip
+    mov [edi+30], eax            ; Destination IP
+
+    ; IP checksum
+    lea eax, [edi+14]
+    push dword 20
+    push eax
+    call ip_checksum
+    add esp, 8
+    mov [edi+24], ax
+
+    ; === ICMP Echo Request (8 bytes at offset 34) ===
+    mov byte  [edi+34], 8        ; Type: Echo Request
+    mov byte  [edi+35], 0        ; Code: 0
+    mov word  [edi+36], 0        ; Checksum placeholder
+    mov word  [edi+38], 0x0100   ; Identifier
+    mov eax, [ebp+16]            ; seq_num
+    xchg al, ah                  ; to network byte order
+    mov [edi+40], ax             ; Sequence
+
+    ; ICMP checksum
+    lea eax, [edi+34]
+    push dword 8
+    push eax
+    call ip_checksum
+    add esp, 8
+    mov [edi+36], ax
+
+    ; Send: 14 + 20 + 8 = 42 bytes
+    push dword 42
+    lea eax, [net_tx_buf]
+    push eax
+    call e1000_send_packet
+    add esp, 8
+
+    pop edi
+    pop esi
+    pop ebx
+    pop ebp
+    ret
+
+; --- High-level ping ---
+
+; net_ping_gateway() -> RTT in ticks (1 tick = 10ms at 100Hz), or -1 if timeout/fail
+net_ping_gateway:
+    push ebx
+    push esi
+
+    cmp dword [e1000_found], 0
+    je .pg_fail
+
+    ; Step 1: ARP resolve gateway MAC
+    push dword [net_gateway_ip]
+    call net_send_arp_request
+    add esp, 4
+
+    push dword 200                ; 2 second timeout
+    push dword [net_gateway_ip]
+    call net_wait_arp_reply
+    add esp, 8
+
+    cmp eax, -1
+    je .pg_fail
+
+    ; Step 2: Send ICMP echo
+    call get_timer_ticks
+    mov ebx, eax                  ; start_tick
+
+    inc dword [net_ping_seq]
+    push dword [net_ping_seq]     ; seq
+    lea eax, [net_resolved_mac]
+    push eax                      ; dest_mac
+    push dword [net_gateway_ip]   ; dest_ip
+    call net_send_icmp_echo
+    add esp, 12
+
+    ; Step 3: Wait for ICMP echo reply
+    call get_timer_ticks
+    mov esi, eax
+    add esi, 200                  ; 2 second deadline
+
+.pg_poll:
+    call get_timer_ticks
+    cmp eax, esi
+    jge .pg_fail
+
+    push dword 2048
+    lea eax, [net_rx_buf]
+    push eax
+    call e1000_receive_packet
+    add esp, 8
+
+    test eax, eax
+    jz .pg_poll
+
+    ; Validate: EtherType IPv4?
+    lea edi, [net_rx_buf]
+    cmp word [edi+12], 0x0008
+    jne .pg_poll
+
+    ; Protocol ICMP?
+    cmp byte [edi+23], 1
+    jne .pg_poll
+
+    ; ICMP Type = 0 (Echo Reply)?
+    cmp byte [edi+34], 0
+    jne .pg_poll
+
+    ; Got reply! RTT = now - start (minimum 1 tick)
+    call get_timer_ticks
+    sub eax, ebx
+    test eax, eax
+    jnz .pg_done
+    inc eax              ; ensure minimum RTT = 1
+    jmp .pg_done
+
+.pg_fail:
+    xor eax, eax        ; return 0 = failure/timeout
+
+.pg_done:
+    pop esi
+    pop ebx
+    ret
+
+; ============================================================================
 ; "HASTA LA VISTA, BABY" - End of bootloader
 ; ============================================================================
