@@ -1952,5 +1952,889 @@ net_ping_gateway:
     ret
 
 ; ============================================================================
+; TCP/HTTP STACK - "I'LL BE BACK... WITH DATA"
+; Minimal TCP state machine + HTTP/1.0 GET client
+; ============================================================================
+
+global net_tcp_connect
+global net_tcp_send
+global net_tcp_recv
+global net_tcp_close
+global net_http_get
+global net_wget
+global net_wget_get_byte
+global net_wget_get_len
+
+; TCP flag constants
+TCP_FIN equ 0x01
+TCP_SYN equ 0x02
+TCP_RST equ 0x04
+TCP_PSH equ 0x08
+TCP_ACK equ 0x10
+
+section .data
+; HTTP GET request template (for 10.0.2.2:8080)
+http_get_req: db "GET / HTTP/1.0", 13, 10
+              db "Host: 10.0.2.2", 13, 10
+              db "Connection: close", 13, 10
+              db 13, 10
+http_get_req_len equ $ - http_get_req
+
+section .bss
+; TCP connection state (single connection at a time)
+tcp_state:        resd 1        ; 0=CLOSED, 1=SYN_SENT, 2=ESTABLISHED
+tcp_local_port:   resd 1
+tcp_remote_ip:    resd 1
+tcp_remote_port:  resd 1
+tcp_send_seq:     resd 1
+tcp_send_ack:     resd 1        ; what we ACK (remote's next expected seq)
+tcp_remote_mac:   resb 8        ; resolved dest MAC
+tcp_port_ctr:     resd 1        ; ephemeral port counter
+
+; Gateway MAC cache
+net_gw_mac:       resb 8
+net_gw_resolved:  resd 1
+
+; Protocol scratch buffers
+net_pkt_buf:      resb 2048     ; packet assembly
+net_rcv_buf:      resb 2048     ; receive scratch
+
+; wget response
+wget_response:    resb 4096
+wget_resp_len:    resd 1
+
+section .text
+
+; --- Gateway MAC resolver (cached) ---
+net_resolve_gw:
+    cmp dword [net_gw_resolved], 1
+    je .gw_cached
+
+    ; Serial: resolving gateway
+    mov dx, 0x3F8
+    mov al, 'g'
+    out dx, al
+
+    push dword [net_gateway_ip]
+    call net_send_arp_request
+    add esp, 4
+
+    push dword 200
+    push dword [net_gateway_ip]
+    call net_wait_arp_reply
+    add esp, 8
+
+    cmp eax, -1
+    je .gw_fail
+
+    mov eax, [net_resolved_mac]
+    mov [net_gw_mac], eax
+    mov ax, [net_resolved_mac+4]
+    mov [net_gw_mac+4], ax
+    mov dword [net_gw_resolved], 1
+
+.gw_cached:
+    ; Serial: gateway resolved
+    mov dx, 0x3F8
+    mov al, 'G'
+    out dx, al
+    xor eax, eax
+    ret
+.gw_fail:
+    mov eax, -1
+    ret
+
+; --- TCP checksum (pseudo-header + segment) ---
+; tcp_calc_cksum(src_ip, dst_ip, tcp_ptr, tcp_len) -> 16-bit checksum
+tcp_calc_cksum:
+    push ebp
+    mov ebp, esp
+    push ebx
+    push esi
+
+    xor eax, eax           ; sum = 0
+
+    ; Pseudo-header: src IP (2 words)
+    movzx ebx, word [ebp+8]
+    add eax, ebx
+    movzx ebx, word [ebp+10]
+    add eax, ebx
+
+    ; dst IP (2 words)
+    movzx ebx, word [ebp+12]
+    add eax, ebx
+    movzx ebx, word [ebp+14]
+    add eax, ebx
+
+    ; Zero + Protocol(6) = 0x0006
+    add eax, 0x0600         ; protocol 6 in network order word
+
+    ; TCP length (host order → network order word)
+    mov ebx, [ebp+20]
+    xchg bl, bh
+    movzx ebx, bx
+    add eax, ebx
+
+    ; Sum TCP segment
+    mov esi, [ebp+16]
+    mov ecx, [ebp+20]
+    shr ecx, 1
+.tcp_ck_loop:
+    test ecx, ecx
+    jz .tcp_ck_odd
+    movzx ebx, word [esi]
+    add eax, ebx
+    add esi, 2
+    dec ecx
+    jmp .tcp_ck_loop
+.tcp_ck_odd:
+    test dword [ebp+20], 1
+    jz .tcp_ck_fold
+    movzx ebx, byte [esi]
+    ; No shift — we read all words as LE, so odd byte is low byte of padded LE word
+    add eax, ebx
+.tcp_ck_fold:
+    mov ebx, eax
+    shr ebx, 16
+    and eax, 0xFFFF
+    add eax, ebx
+    mov ebx, eax
+    shr ebx, 16
+    add eax, ebx
+    and eax, 0xFFFF
+    not eax
+    and eax, 0xFFFF
+
+    pop esi
+    pop ebx
+    pop ebp
+    ret
+
+; --- Build and send TCP segment ---
+; tcp_send_seg(flags, data_ptr, data_len)
+; Uses global tcp_* state for connection info
+tcp_send_seg:
+    push ebp
+    mov ebp, esp
+    push ebx
+    push esi
+    push edi
+
+    mov ebx, [ebp+16]      ; data_len
+    lea edi, [net_pkt_buf]
+
+    ; === Ethernet header (14 bytes) ===
+    mov eax, [tcp_remote_mac]
+    mov [edi], eax
+    mov ax, [tcp_remote_mac+4]
+    mov [edi+4], ax
+    mov eax, [e1000_mac]
+    mov [edi+6], eax
+    mov ax, [e1000_mac+4]
+    mov [edi+10], ax
+    mov word [edi+12], 0x0008  ; IPv4
+
+    ; === IP header (20 bytes at offset 14) ===
+    mov byte  [edi+14], 0x45
+    mov byte  [edi+15], 0
+    ; Total length = 20(IP) + 20(TCP) + data_len
+    mov eax, 40
+    add eax, ebx
+    xchg al, ah
+    mov [edi+16], ax
+    call get_timer_ticks
+    mov [edi+18], ax           ; ID
+    mov word  [edi+20], 0x0040 ; Don't Fragment
+    mov byte  [edi+22], 64     ; TTL
+    mov byte  [edi+23], 6      ; Protocol: TCP
+    mov word  [edi+24], 0      ; Checksum placeholder
+    mov eax, [net_our_ip]
+    mov [edi+26], eax
+    mov eax, [tcp_remote_ip]
+    mov [edi+30], eax
+    ; IP checksum
+    lea eax, [edi+14]
+    push dword 20
+    push eax
+    call ip_checksum
+    add esp, 8
+    mov [edi+24], ax
+
+    ; === TCP header (20 bytes at offset 34) ===
+    mov ax, [tcp_local_port]
+    xchg al, ah
+    mov [edi+34], ax           ; src port
+    mov ax, [tcp_remote_port]
+    xchg al, ah
+    mov [edi+36], ax           ; dst port
+    mov eax, [tcp_send_seq]
+    bswap eax
+    mov [edi+38], eax          ; seq
+    mov eax, [tcp_send_ack]
+    bswap eax
+    mov [edi+42], eax          ; ack
+    mov byte  [edi+46], 0x50   ; data offset = 5 (20 bytes)
+    mov al, [ebp+8]
+    mov [edi+47], al           ; flags
+    mov word  [edi+48], 0x0020 ; window = 8192 (NBO)
+    mov word  [edi+50], 0      ; checksum placeholder
+    mov word  [edi+52], 0      ; urgent ptr
+
+    ; Copy data if any
+    test ebx, ebx
+    jz .tss_no_data
+    push edi
+    lea edi, [edi+54]          ; data area
+    mov esi, [ebp+12]          ; data_ptr
+    mov ecx, ebx
+    rep movsb
+    pop edi
+.tss_no_data:
+
+    ; TCP checksum - precompute pseudo-header sum, then add TCP segment
+    ; First, build pseudo-header in a temp area and compute checksum properly
+    ; Store pseudo-header right before TCP header at [edi+22] (using IP header space)
+    ; Actually, compute incrementally to avoid buffer issues
+
+    ; TCP checksum: use the tcp_calc_cksum function
+    mov eax, 20
+    add eax, ebx               ; tcp_len = 20 + data_len
+    push eax                   ; arg4: tcp_len
+    lea eax, [edi+34]
+    push eax                   ; arg3: tcp_ptr
+    push dword [tcp_remote_ip] ; arg2: dst_ip
+    push dword [net_our_ip]    ; arg1: src_ip
+    call tcp_calc_cksum
+    add esp, 16
+    mov [edi+50], ax
+
+    ; Debug: dump TCP header bytes 0-7 and checksum at 16-17 to serial
+    push eax
+    push ecx
+    push esi
+    mov dx, 0x3F8
+    mov al, '{'
+    out dx, al
+    lea esi, [edi+34]       ; TCP header
+    mov ecx, 8              ; dump first 8 bytes
+.tss_dump_loop:
+    test ecx, ecx
+    jz .tss_dump_done
+    movzx eax, byte [esi]
+    ; High nibble
+    push eax
+    shr eax, 4
+    cmp al, 10
+    jl .tss_dh
+    add al, 55
+    jmp .tss_dho
+.tss_dh: add al, 48
+.tss_dho: out dx, al
+    pop eax
+    ; Low nibble
+    and al, 0x0F
+    cmp al, 10
+    jl .tss_dl
+    add al, 55
+    jmp .tss_dlo
+.tss_dl: add al, 48
+.tss_dlo: out dx, al
+    inc esi
+    dec ecx
+    jmp .tss_dump_loop
+.tss_dump_done:
+    ; Also dump bytes 12-13 (flags) and 16-17 (checksum)
+    lea esi, [edi+34+12]    ; TCP flags area
+    mov al, '|'
+    out dx, al
+    ; Byte 12 (data offset)
+    movzx eax, byte [esi]
+    push eax
+    shr eax, 4
+    cmp al, 10
+    jl .tss_df1
+    add al, 55
+    jmp .tss_df1o
+.tss_df1: add al, 48
+.tss_df1o: out dx, al
+    pop eax
+    and al, 0x0F
+    cmp al, 10
+    jl .tss_df2
+    add al, 55
+    jmp .tss_df2o
+.tss_df2: add al, 48
+.tss_df2o: out dx, al
+    ; Byte 13 (flags)
+    movzx eax, byte [esi+1]
+    push eax
+    shr eax, 4
+    cmp al, 10
+    jl .tss_ff1
+    add al, 55
+    jmp .tss_ff1o
+.tss_ff1: add al, 48
+.tss_ff1o: out dx, al
+    pop eax
+    and al, 0x0F
+    cmp al, 10
+    jl .tss_ff2
+    add al, 55
+    jmp .tss_ff2o
+.tss_ff2: add al, 48
+.tss_ff2o: out dx, al
+    ; Bytes 16-17 (checksum)
+    mov al, '='
+    out dx, al
+    movzx eax, byte [esi+4]   ; checksum byte 0
+    push eax
+    shr eax, 4
+    cmp al, 10
+    jl .tss_ck1
+    add al, 55
+    jmp .tss_ck1o
+.tss_ck1: add al, 48
+.tss_ck1o: out dx, al
+    pop eax
+    and al, 0x0F
+    cmp al, 10
+    jl .tss_ck2
+    add al, 55
+    jmp .tss_ck2o
+.tss_ck2: add al, 48
+.tss_ck2o: out dx, al
+    movzx eax, byte [esi+5]   ; checksum byte 1
+    push eax
+    shr eax, 4
+    cmp al, 10
+    jl .tss_ck3
+    add al, 55
+    jmp .tss_ck3o
+.tss_ck3: add al, 48
+.tss_ck3o: out dx, al
+    pop eax
+    and al, 0x0F
+    cmp al, 10
+    jl .tss_ck4
+    add al, 55
+    jmp .tss_ck4o
+.tss_ck4: add al, 48
+.tss_ck4o: out dx, al
+    mov al, '}'
+    out dx, al
+    pop esi
+    pop ecx
+    pop eax
+
+    ; Send: 14 + 20 + 20 + data_len = 54 + data_len
+    mov eax, 54
+    add eax, ebx
+
+    ; Debug: print total packet length to serial
+    push eax
+    mov dx, 0x3F8
+    mov al, 'L'
+    out dx, al
+    pop eax
+    push eax
+    ; Print low byte as 2 hex digits
+    push eax
+    shr al, 4
+    and al, 0x0F
+    cmp al, 10
+    jl .tss_lh
+    add al, 55
+    jmp .tss_lho
+.tss_lh: add al, 48
+.tss_lho: out dx, al
+    pop eax
+    and al, 0x0F
+    cmp al, 10
+    jl .tss_ll
+    add al, 55
+    jmp .tss_llo
+.tss_ll: add al, 48
+.tss_llo: out dx, al
+    pop eax
+
+    push eax
+    push edi
+    call e1000_send_packet
+    add esp, 8
+
+    pop edi
+    pop esi
+    pop ebx
+    pop ebp
+    ret
+
+; --- TCP Connect ---
+; net_tcp_connect(dest_ip, dest_port) -> 0=success, -1=fail
+net_tcp_connect:
+    push ebp
+    mov ebp, esp
+    push ebx
+    push esi
+
+    cmp dword [e1000_found], 0
+    je .tc_fail
+
+    ; Store remote info
+    mov eax, [ebp+8]
+    mov [tcp_remote_ip], eax
+    mov eax, [ebp+12]
+    mov [tcp_remote_port], eax
+
+    ; Resolve gateway MAC
+    call net_resolve_gw
+    cmp eax, -1
+    je .tc_fail
+
+    mov eax, [net_gw_mac]
+    mov [tcp_remote_mac], eax
+    mov ax, [net_gw_mac+4]
+    mov [tcp_remote_mac+4], ax
+
+    ; Ephemeral port
+    inc dword [tcp_port_ctr]
+    mov eax, [tcp_port_ctr]
+    add eax, 49152
+    mov [tcp_local_port], eax
+
+    ; Initial sequence number
+    call get_timer_ticks
+    imul eax, 1103515245
+    add eax, 12345
+    mov [tcp_send_seq], eax
+    mov dword [tcp_send_ack], 0
+
+    ; Serial debug: TCP connect starting
+    mov dx, 0x3F8
+    mov al, 'T'
+    out dx, al
+
+    ; Send SYN
+    push dword 0               ; data_len
+    push dword 0               ; data_ptr
+    push dword TCP_SYN
+    call tcp_send_seg
+    add esp, 12
+
+    ; Serial debug: SYN sent
+    mov dx, 0x3F8
+    mov al, 'S'
+    out dx, al
+
+    ; Wait for SYN-ACK (2 second timeout)
+    call get_timer_ticks
+    mov esi, eax
+    add esi, 200
+
+.tc_poll:
+    call get_timer_ticks
+    cmp eax, esi
+    jge .tc_fail
+
+    push dword 2048
+    lea eax, [net_rcv_buf]
+    push eax
+    call e1000_receive_packet
+    add esp, 8
+
+    test eax, eax
+    jz .tc_poll
+
+    ; Serial: received a packet during SYN-ACK wait
+    push eax
+    mov dx, 0x3F8
+    mov al, 'R'
+    out dx, al
+    pop eax
+
+    lea ebx, [net_rcv_buf]
+    ; IPv4 + TCP?
+    cmp word [ebx+12], 0x0008
+    jne .tc_poll
+    cmp byte [ebx+23], 6
+    jne .tc_poll
+
+    ; Serial: got IPv4+TCP packet
+    mov dx, 0x3F8
+    mov al, 'I'
+    out dx, al
+    ; Our port?
+    movzx eax, word [ebx+36]
+    xchg al, ah
+    cmp eax, [tcp_local_port]
+    jne .tc_poll
+    ; SYN+ACK?
+    mov al, [ebx+47]
+    and al, (TCP_SYN | TCP_ACK)
+    cmp al, (TCP_SYN | TCP_ACK)
+    jne .tc_poll
+
+    ; Serial: SYN-ACK received!
+    mov dx, 0x3F8
+    mov al, 'A'
+    out dx, al
+
+    ; Got SYN-ACK! Extract remote seq
+    mov eax, [ebx+38]          ; remote seq (NBO)
+    bswap eax
+    inc eax                    ; SYN counts as 1
+    mov [tcp_send_ack], eax
+
+    ; Advance our seq (SYN counts as 1)
+    inc dword [tcp_send_seq]
+
+    ; Send ACK
+    push dword 0
+    push dword 0
+    push dword TCP_ACK
+    call tcp_send_seg
+    add esp, 12
+
+    mov dword [tcp_state], 2   ; ESTABLISHED
+
+    ; Longer delay to let SLiRP fully process the ACK and establish the real connection
+    push dword 20              ; 200ms
+    call sleep_ticks
+    add esp, 4
+
+    xor eax, eax
+    jmp .tc_done
+
+.tc_fail:
+    ; Serial: TCP connect FAILED
+    mov dx, 0x3F8
+    mov al, 'X'
+    out dx, al
+    mov dword [tcp_state], 0
+    mov eax, -1
+.tc_done:
+    pop esi
+    pop ebx
+    pop ebp
+    ret
+
+; --- TCP Send ---
+; net_tcp_send(data_ptr, data_len) -> 0
+net_tcp_send:
+    push ebp
+    mov ebp, esp
+
+    ; Serial: sending data, dump TCP header checksum after send
+    mov dx, 0x3F8
+    mov al, 'D'
+    out dx, al
+
+    push dword [ebp+12]       ; data_len
+    push dword [ebp+8]        ; data_ptr
+    push dword (TCP_PSH | TCP_ACK)
+    call tcp_send_seg
+    add esp, 12
+
+    ; Advance send_seq
+    mov eax, [ebp+12]
+    add [tcp_send_seq], eax
+
+    xor eax, eax
+    pop ebp
+    ret
+
+; --- TCP Receive (accumulate until FIN or timeout) ---
+; net_tcp_recv(buffer, max_len, timeout_ticks) -> total bytes received
+net_tcp_recv:
+    push ebp
+    mov ebp, esp
+    push ebx
+    push esi
+    push edi
+    sub esp, 4                 ; local: total_received
+
+    mov dword [ebp-16], 0     ; total_received = 0
+    mov edi, [ebp+8]          ; buffer
+
+    ; Serial: waiting for data
+    mov dx, 0x3F8
+    mov al, 'W'
+    out dx, al
+
+    ; Debug: dump E1000 RDH, RDT, rx_cur
+    mov dx, 0x3F8
+    mov al, '['
+    out dx, al
+    ; RDH
+    mov eax, E1000_RDH
+    add eax, [e1000_mmio_base]
+    mov eax, [eax]
+    add al, '0'
+    out dx, al
+    ; RDT
+    mov al, ':'
+    out dx, al
+    mov eax, E1000_RDT
+    add eax, [e1000_mmio_base]
+    mov eax, [eax]
+    add al, '0'
+    out dx, al
+    ; rx_cur
+    mov al, ':'
+    out dx, al
+    mov eax, [e1000_rx_cur]
+    add al, '0'
+    out dx, al
+    mov al, ']'
+    out dx, al
+
+    call get_timer_ticks
+    mov esi, eax
+    add esi, [ebp+16]         ; deadline
+
+.tr_poll:
+    call get_timer_ticks
+    cmp eax, esi
+    jge .tr_done
+
+    push dword 2048
+    lea eax, [net_rcv_buf]
+    push eax
+    call e1000_receive_packet
+    add esp, 8
+
+    test eax, eax
+    jz .tr_poll
+
+    ; Serial: got packet in recv loop
+    push eax
+    mov dx, 0x3F8
+    mov al, 'p'
+    out dx, al
+    pop eax
+
+    lea ebx, [net_rcv_buf]
+    ; IPv4?
+    cmp word [ebx+12], 0x0008
+    jne .tr_poll
+    ; TCP?
+    cmp byte [ebx+23], 6
+    jne .tr_poll
+
+    ; Serial: IPv4+TCP in recv
+    push eax
+    mov dx, 0x3F8
+    mov al, 't'
+    out dx, al
+    ; Print dest port
+    movzx eax, word [ebx+36]
+    xchg al, ah
+    ; Print low byte as hex
+    push eax
+    shr eax, 8
+    and al, 0x0F
+    cmp al, 10
+    jl .tr_dbg_ph
+    add al, 55
+    jmp .tr_dbg_pho
+.tr_dbg_ph:
+    add al, 48
+.tr_dbg_pho:
+    out dx, al
+    pop eax
+    and al, 0x0F
+    cmp al, 10
+    jl .tr_dbg_pl
+    add al, 55
+    jmp .tr_dbg_plo
+.tr_dbg_pl:
+    add al, 48
+.tr_dbg_plo:
+    out dx, al
+    pop eax
+
+    movzx eax, word [ebx+36]
+    xchg al, ah
+    cmp eax, [tcp_local_port]
+    jne .tr_poll
+
+    ; Check for RST
+    test byte [ebx+47], TCP_RST
+    jnz .tr_done
+
+    ; Get IP total length
+    movzx ecx, word [ebx+16]
+    xchg cl, ch
+
+    ; TCP data offset
+    movzx edx, byte [ebx+46]
+    shr edx, 4
+    shl edx, 2                ; TCP header size in bytes
+
+    ; Data length = IP_total - 20(IP) - TCP_header
+    sub ecx, 20
+    sub ecx, edx
+    jle .tr_no_data
+
+    ; Note: serial debug here MUST save/restore edx
+    ; because 'mov dx, 0x3F8' corrupts TCP header size in edx
+
+    ; Check buffer space
+    mov eax, [ebp-16]         ; total so far
+    add eax, ecx
+    cmp eax, [ebp+12]         ; max_len
+    jle .tr_copy
+    ; Truncate
+    mov ecx, [ebp+12]
+    sub ecx, [ebp-16]
+    test ecx, ecx
+    jle .tr_no_data
+.tr_copy:
+    ; Copy data: source = ebx + 34 + tcp_hdr_size
+    push ecx
+    push esi
+    lea esi, [ebx+34]
+    add esi, edx              ; skip TCP header
+    push edi
+    add edi, [ebp-16]         ; offset in output buffer
+    rep movsb
+    pop edi
+    pop esi
+    pop ecx
+    add [ebp-16], ecx
+
+.tr_no_data:
+    ; Compute proper ACK value
+    mov eax, [ebx+38]         ; remote seq (NBO)
+    bswap eax
+    add eax, ecx              ; + data_len (may be 0)
+
+    ; If FIN, add 1
+    test byte [ebx+47], TCP_FIN
+    jz .tr_no_fin
+    inc eax
+.tr_no_fin:
+
+    ; Update our ACK and send it
+    cmp eax, [tcp_send_ack]
+    je .tr_no_ack
+    mov [tcp_send_ack], eax
+    push dword 0
+    push dword 0
+    push dword TCP_ACK
+    call tcp_send_seg
+    add esp, 12
+.tr_no_ack:
+
+    ; If FIN received, we're done
+    test byte [ebx+47], TCP_FIN
+    jnz .tr_done
+
+    ; Got data — extend timeout for more
+    call get_timer_ticks
+    mov esi, eax
+    add esi, 100              ; 1s extra wait for next segment
+
+    jmp .tr_poll
+
+.tr_done:
+    ; Serial: recv done, total bytes
+    mov dx, 0x3F8
+    mov al, 'Z'
+    out dx, al
+    mov eax, [ebp-16]         ; return total bytes
+    add esp, 4
+    pop edi
+    pop esi
+    pop ebx
+    pop ebp
+    ret
+
+; --- TCP Close ---
+net_tcp_close:
+    push dword 0
+    push dword 0
+    push dword (TCP_FIN | TCP_ACK)
+    call tcp_send_seg
+    add esp, 12
+    inc dword [tcp_send_seq]   ; FIN counts as 1
+    mov dword [tcp_state], 0   ; CLOSED
+    ret
+
+; --- HTTP GET ---
+; net_http_get(response_buf, max_len) -> response length, or -1 on failure
+net_http_get:
+    push ebp
+    mov ebp, esp
+
+    ; Connect to 10.0.2.2:8080
+    push dword 8080
+    push dword [net_gateway_ip]
+    call net_tcp_connect
+    add esp, 8
+
+    cmp eax, -1
+    je .hg_fail
+
+    ; Send HTTP GET /
+    push dword http_get_req_len
+    lea eax, [http_get_req]
+    push eax
+    call net_tcp_send
+    add esp, 8
+
+    ; Receive response (5 second timeout)
+    push dword 500
+    push dword [ebp+12]
+    push dword [ebp+8]
+    call net_tcp_recv
+    add esp, 12
+    ; eax = bytes received
+    jmp .hg_done
+
+.hg_fail:
+    mov eax, -1
+.hg_done:
+    pop ebp
+    ret
+
+; --- wget helper functions for ArnoldC ---
+
+; net_wget() -> response length (data stored in wget_response buffer)
+net_wget:
+    push ebx
+    push dword 4095
+    lea eax, [wget_response]
+    push eax
+    call net_http_get
+    add esp, 8
+
+    ; Null-terminate
+    cmp eax, -1
+    je .wget_fail
+    cmp eax, 0
+    je .wget_fail
+    mov byte [wget_response + eax], 0
+    mov [wget_resp_len], eax
+
+    pop ebx
+    ret
+.wget_fail:
+    mov dword [wget_resp_len], 0
+    xor eax, eax
+    pop ebx
+    ret
+
+; net_wget_get_byte(index) -> ASCII byte at position
+net_wget_get_byte:
+    mov ecx, [esp+4]
+    movzx eax, byte [wget_response + ecx]
+    ret
+
+; net_wget_get_len() -> response length
+net_wget_get_len:
+    mov eax, [wget_resp_len]
+    ret
+
+; ============================================================================
 ; "HASTA LA VISTA, BABY" - End of bootloader
 ; ============================================================================

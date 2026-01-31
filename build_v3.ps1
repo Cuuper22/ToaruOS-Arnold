@@ -130,6 +130,14 @@ extern net_get_ip_byte
 extern net_get_gateway_byte
 extern net_get_mac_byte
 extern net_is_available
+extern net_tcp_connect
+extern net_tcp_send
+extern net_tcp_recv
+extern net_tcp_close
+extern net_http_get
+extern net_wget
+extern net_wget_get_byte
+extern net_wget_get_len
 
 "@
 # Insert externs after "section .text"
