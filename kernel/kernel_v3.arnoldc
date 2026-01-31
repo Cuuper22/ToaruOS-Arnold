@@ -1730,6 +1730,7 @@ STICK AROUND @NO PROBLEMO
                 TALK TO YOURSELF "Window closed - redraw desktop and remaining windows"
                 DO IT NOW drawDesktop fbAddress fbPitch
                 DO IT NOW drawAllWindows fbAddress fbPitch
+                DO IT NOW drawTaskbarWindows fbAddress fbPitch
             YOU HAVE NO RESPECT FOR LOGIC
             
             TALK TO YOURSELF "If no window hit, check icon click"
@@ -1797,6 +1798,7 @@ STICK AROUND @NO PROBLEMO
                 DO IT NOW updateDrag mouseX mouseY
                 DO IT NOW drawDesktop fbAddress fbPitch
                 DO IT NOW drawAllWindows fbAddress fbPitch
+                DO IT NOW drawTaskbarWindows fbAddress fbPitch
             YOU HAVE NO RESPECT FOR LOGIC
         YOU HAVE NO RESPECT FOR LOGIC
         
@@ -1925,6 +1927,7 @@ STICK AROUND @NO PROBLEMO
                 GET YOUR ASS TO MARS newWin
                 DO IT NOW createWindow winOffX winOffY 320 220
                 DO IT NOW drawAllWindows fbAddress fbPitch
+                DO IT NOW drawTaskbarWindows fbAddress fbPitch
             YOU HAVE NO RESPECT FOR LOGIC
         YOU HAVE NO RESPECT FOR LOGIC
     

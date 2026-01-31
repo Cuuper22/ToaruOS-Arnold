@@ -707,6 +707,100 @@ I'LL BE BACK 0
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  drawTaskbarWindows(fbAddr, fbPitch) - Draw taskbar buttons for open windows"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawTaskbarWindows
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+HEY CHRISTMAS TREE tbI
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE tbX
+THIS IS A WARRIOR
+YOU SET US UP 80
+
+HEY CHRISTMAS TREE continueTb
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+STICK AROUND continueTb
+    HEY CHRISTMAS TREE tbActive
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER tbActive
+    HERE IS MY INVITATION WHICH ONE wmActive tbI
+    YOU ARE NOT YOU YOU ARE ME 1
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE tbActive
+        TALK TO YOURSELF "Draw taskbar button for this window"
+        HEY CHRISTMAS TREE tbColor
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        
+        HEY CHRISTMAS TREE tbFocused
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER tbFocused
+        HERE IS MY INVITATION wmFocused
+        YOU ARE NOT YOU YOU ARE ME tbI
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER tbColor
+        HERE IS MY INVITATION 0x00808080
+        ENOUGH TALK
+        
+        BECAUSE I'M GOING TO SAY PLEASE tbFocused
+            GET TO THE CHOPPER tbColor
+            HERE IS MY INVITATION 0x00A0A0A0
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+        
+        DO IT NOW fillRect fbAddr fbPitch tbX 745 70 18 tbColor
+        DO IT NOW drawRect fbAddr fbPitch tbX 745 70 18 WM_COLOR_BORDER
+        
+        TALK TO YOURSELF "Draw window ID in taskbar button"
+        HEY CHRISTMAS TREE tbCharX
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER tbCharX
+        HERE IS MY INVITATION tbX
+        GET UP 6
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE tbIdChar
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER tbIdChar
+        HERE IS MY INVITATION tbI
+        GET UP 48
+        ENOUGH TALK
+        
+        DO IT NOW drawChar fbAddr fbPitch tbCharX 749 tbIdChar WM_COLOR_WHITE tbColor
+        
+        GET TO THE CHOPPER tbX
+        HERE IS MY INVITATION tbX
+        GET UP 74
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    GET TO THE CHOPPER tbI
+    HERE IS MY INVITATION tbI
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueTb
+    HERE IS MY INVITATION tbI
+    YOU'RE NOT BIG ENOUGH MAX_WINDOWS
+    ENOUGH TALK
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  startDrag(winId, mx, my) - Begin dragging a window"
 TALK TO YOURSELF "============================================================================"
 
