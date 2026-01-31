@@ -680,13 +680,34 @@ STICK AROUND continueCi
                 GET TO THE CHOPPER wmFocused
                 HERE IS MY INVITATION ci
                 ENOUGH TALK
+                
+                TALK TO YOURSELF "Bring to front: set highest z-order"
+                GET TO THE CHOPPER WHICH ONE wmZOrder ci
+                HERE IS MY INVITATION wmNextZ
+                ENOUGH TALK
+                
+                GET TO THE CHOPPER wmNextZ
+                HERE IS MY INVITATION wmNextZ
+                GET UP 1
+                ENOUGH TALK
+                
                 I'LL BE BACK 1
             YOU HAVE NO RESPECT FOR LOGIC
             
-            TALK TO YOURSELF "Click in client area"
+            TALK TO YOURSELF "Click in client area - also focus"
             GET TO THE CHOPPER wmFocused
             HERE IS MY INVITATION ci
             ENOUGH TALK
+            
+            GET TO THE CHOPPER WHICH ONE wmZOrder ci
+            HERE IS MY INVITATION wmNextZ
+            ENOUGH TALK
+            
+            GET TO THE CHOPPER wmNextZ
+            HERE IS MY INVITATION wmNextZ
+            GET UP 1
+            ENOUGH TALK
+            
             I'LL BE BACK 3
         YOU HAVE NO RESPECT FOR LOGIC
     YOU HAVE NO RESPECT FOR LOGIC
