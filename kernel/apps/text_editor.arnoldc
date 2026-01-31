@@ -534,8 +534,8 @@ YOU ARE NOT YOU YOU ARE ME 0
 ENOUGH TALK
 BECAUSE I'M GOING TO SAY PLEASE eChkChar
     TALK TO YOURSELF "Check scancode is in valid range (< 0x58)"
-    TALK TO YOURSELF "NOTE: LET OFF SOME STEAM BENNET compiles inverted in ArnoldC-Native"
-    TALK TO YOURSELF "Swap operands: 0x58 < scancode compiles to 0x58 > scancode = scancode < 0x58"
+    TALK TO YOURSELF "LET OFF SOME STEAM BENNET is > (greater than), not < (less than)"
+    TALK TO YOURSELF "So: 0x58 > scancode means scancode < 0x58"
     HEY CHRISTMAS TREE eInRange
     THIS IS A WARRIOR
     YOU SET US UP 0
