@@ -147,9 +147,10 @@ HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "Print: 106KB ELF, 130 functions"
 LISTEN TO ME VERY CAREFULLY termPrintStats
+TALK TO YOURSELF "Print: 112KB ELF, 141 funcs"
 DO IT NOW termPutChar 49
-DO IT NOW termPutChar 48
-DO IT NOW termPutChar 54
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 50
 DO IT NOW termPutChar 75
 DO IT NOW termPutChar 66
 DO IT NOW termPutChar 32
@@ -159,8 +160,8 @@ DO IT NOW termPutChar 70
 DO IT NOW termPutChar 44
 DO IT NOW termPutChar 32
 DO IT NOW termPutChar 49
-DO IT NOW termPutChar 51
-DO IT NOW termPutChar 48
+DO IT NOW termPutChar 52
+DO IT NOW termPutChar 49
 DO IT NOW termPutChar 32
 DO IT NOW termPutChar 102
 DO IT NOW termPutChar 117
