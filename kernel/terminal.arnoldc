@@ -397,6 +397,58 @@ GET TO THE CHOPPER cursorBlink
 HERE IS MY INVITATION 1
 ENOUGH TALK
 DO IT NOW cmdReset
+
+TALK TO YOURSELF "Welcome: ToaruOS-Arnold v4.0"
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 118
+DO IT NOW termPutChar 52
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 48
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Type 'help' for commands."
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 39
+DO IT NOW termPutChar 104
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 39
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 102
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 46
+DO IT NOW termPrintNewline
+DO IT NOW termPrintNewline
+
 DO IT NOW termWritePrompt
 HASTA LA VISTA, BABY
 
