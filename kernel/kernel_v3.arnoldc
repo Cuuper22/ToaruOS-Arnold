@@ -1197,6 +1197,286 @@ TALK TO YOURSELF "This is a stub - real implementation would play PC speaker not
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: launchGame - Initialize and draw a game"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY launchGame
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE gameMode
+
+HEY CHRISTMAS TREE launched
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE isSnake
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isSnake
+HERE IS MY INVITATION gameMode
+YOU ARE NOT YOU YOU ARE ME MODE_SNAKE
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isSnake
+    DO IT NOW initSnake
+    DO IT NOW clearScreen fbAddr fbPitch 0x00000020
+    DO IT NOW drawSnakeGame fbAddr fbPitch
+    GET TO THE CHOPPER launched
+    HERE IS MY INVITATION 1
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE checkPong
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER checkPong
+HERE IS MY INVITATION launched
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE checkPong
+    HEY CHRISTMAS TREE isPong
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isPong
+    HERE IS MY INVITATION gameMode
+    YOU ARE NOT YOU YOU ARE ME MODE_PONG
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isPong
+        DO IT NOW initPong
+        DO IT NOW clearScreen fbAddr fbPitch 0x00000000
+        DO IT NOW drawPongGame fbAddr fbPitch
+        GET TO THE CHOPPER launched
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE checkBreakout
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER checkBreakout
+HERE IS MY INVITATION launched
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE checkBreakout
+    HEY CHRISTMAS TREE isBreakout
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isBreakout
+    HERE IS MY INVITATION gameMode
+    YOU ARE NOT YOU YOU ARE ME MODE_BREAKOUT
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isBreakout
+        DO IT NOW initBreakout
+        DO IT NOW clearScreen fbAddr fbPitch 0x00000020
+        DO IT NOW drawBreakoutGame fbAddr fbPitch
+        GET TO THE CHOPPER launched
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE checkChopper
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER checkChopper
+HERE IS MY INVITATION launched
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE checkChopper
+    HEY CHRISTMAS TREE isChopper
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isChopper
+    HERE IS MY INVITATION gameMode
+    YOU ARE NOT YOU YOU ARE ME MODE_CHOPPER
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isChopper
+        DO IT NOW initChopperGame
+        DO IT NOW clearScreen fbAddr fbPitch 0x00000000
+        DO IT NOW drawChopperGame fbAddr fbPitch
+        GET TO THE CHOPPER launched
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE checkSkynet
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER checkSkynet
+HERE IS MY INVITATION launched
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE checkSkynet
+    HEY CHRISTMAS TREE isSkynet
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isSkynet
+    HERE IS MY INVITATION gameMode
+    YOU ARE NOT YOU YOU ARE ME MODE_SKYNET
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isSkynet
+        DO IT NOW initSkynetGame
+        DO IT NOW clearScreen fbAddr fbPitch 0x00000000
+        DO IT NOW drawSkynetGame fbAddr fbPitch
+        GET TO THE CHOPPER launched
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "Fallback: unknown game mode"
+HEY CHRISTMAS TREE notLaunched
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER notLaunched
+HERE IS MY INVITATION launched
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE notLaunched
+    DO IT NOW drawGamePlaceholder fbAddr fbPitch gameMode
+YOU HAVE NO RESPECT FOR LOGIC
+
+I'LL BE BACK launched
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: gameTickRouter - Route game tick based on mode"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY gameTickRouter
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE gameMode
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE currentScancode
+
+HEY CHRISTMAS TREE tickSnake
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER tickSnake
+HERE IS MY INVITATION gameMode
+YOU ARE NOT YOU YOU ARE ME MODE_SNAKE
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE tickSnake
+    BECAUSE I'M GOING TO SAY PLEASE currentScancode
+        DO IT NOW handleSnakeInput currentScancode
+    YOU HAVE NO RESPECT FOR LOGIC
+    DO IT NOW snakeGameTick fbAddr fbPitch
+    I'LL BE BACK 0
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE tickPong
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER tickPong
+HERE IS MY INVITATION gameMode
+YOU ARE NOT YOU YOU ARE ME MODE_PONG
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE tickPong
+    BECAUSE I'M GOING TO SAY PLEASE currentScancode
+        DO IT NOW handlePongInput currentScancode
+    YOU HAVE NO RESPECT FOR LOGIC
+    DO IT NOW pongGameTick fbAddr fbPitch
+    I'LL BE BACK 0
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE tickBreakout
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER tickBreakout
+HERE IS MY INVITATION gameMode
+YOU ARE NOT YOU YOU ARE ME MODE_BREAKOUT
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE tickBreakout
+    BECAUSE I'M GOING TO SAY PLEASE currentScancode
+        DO IT NOW handleBreakoutInput currentScancode
+    YOU HAVE NO RESPECT FOR LOGIC
+    DO IT NOW updateBreakout
+    DO IT NOW clearScreen fbAddr fbPitch 0x00000020
+    DO IT NOW drawBreakoutGame fbAddr fbPitch
+    I'LL BE BACK 0
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE tickChopper
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER tickChopper
+HERE IS MY INVITATION gameMode
+YOU ARE NOT YOU YOU ARE ME MODE_CHOPPER
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE tickChopper
+    TALK TO YOURSELF "Space key (scancode 0x39) = jump"
+    HEY CHRISTMAS TREE isSpace
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isSpace
+    HERE IS MY INVITATION currentScancode
+    YOU ARE NOT YOU YOU ARE ME 0x39
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isSpace
+        DO IT NOW chopperJump
+    YOU HAVE NO RESPECT FOR LOGIC
+    DO IT NOW updateChopperGame
+    DO IT NOW clearScreen fbAddr fbPitch 0x00000000
+    DO IT NOW drawChopperGame fbAddr fbPitch
+    I'LL BE BACK 0
+YOU HAVE NO RESPECT FOR LOGIC
+
+HEY CHRISTMAS TREE tickSkynet
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER tickSkynet
+HERE IS MY INVITATION gameMode
+YOU ARE NOT YOU YOU ARE ME MODE_SKYNET
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE tickSkynet
+    TALK TO YOURSELF "W=aim up (0x11), S=aim down (0x1F), Space=fire (0x39)"
+    HEY CHRISTMAS TREE skyUp
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER skyUp
+    HERE IS MY INVITATION currentScancode
+    YOU ARE NOT YOU YOU ARE ME 0x11
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE skyUp
+        DO IT NOW skynetAimUp
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    HEY CHRISTMAS TREE skyDown
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER skyDown
+    HERE IS MY INVITATION currentScancode
+    YOU ARE NOT YOU YOU ARE ME 0x1F
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE skyDown
+        DO IT NOW skynetAimDown
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    HEY CHRISTMAS TREE skyFire
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER skyFire
+    HERE IS MY INVITATION currentScancode
+    YOU ARE NOT YOU YOU ARE ME 0x39
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE skyFire
+        DO IT NOW skynetFire
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    DO IT NOW updateSkynetGame
+    DO IT NOW clearScreen fbAddr fbPitch 0x00000000
+    DO IT NOW drawSkynetGame fbAddr fbPitch
+    I'LL BE BACK 0
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "Not in a game mode - do nothing"
+I'LL BE BACK 0
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  STUB: drawCursor - Draw mouse cursor"
 TALK TO YOURSELF "============================================================================"
 
@@ -1435,20 +1715,7 @@ STICK AROUND @NO PROBLEMO
                 ENOUGH TALK
                 
                 TALK TO YOURSELF "Initialize the selected game"
-                HEY CHRISTMAS TREE isSnakeMode
-                THIS IS A WARRIOR
-                YOU SET US UP 0
-                GET TO THE CHOPPER isSnakeMode
-                HERE IS MY INVITATION currentMode
-                YOU ARE NOT YOU YOU ARE ME MODE_SNAKE
-                ENOUGH TALK
-                BECAUSE I'M GOING TO SAY PLEASE isSnakeMode
-                    DO IT NOW initSnake
-                    DO IT NOW clearScreen fbAddress fbPitch 0x00000020
-                    DO IT NOW drawSnakeGame fbAddress fbPitch
-                BULLSHIT
-                    DO IT NOW drawGamePlaceholder fbAddress fbPitch currentMode
-                YOU HAVE NO RESPECT FOR LOGIC
+                DO IT NOW launchGame fbAddress fbPitch currentMode
             YOU HAVE NO RESPECT FOR LOGIC
         YOU HAVE NO RESPECT FOR LOGIC
         
@@ -1462,23 +1729,12 @@ STICK AROUND @NO PROBLEMO
     DO IT NOW pollKeyboard
     
     TALK TO YOURSELF "Run game tick if in a game mode"
-    HEY CHRISTMAS TREE inSnake
-    THIS IS A WARRIOR
-    YOU SET US UP 0
-    GET TO THE CHOPPER inSnake
-    HERE IS MY INVITATION currentMode
-    YOU ARE NOT YOU YOU ARE ME MODE_SNAKE
-    ENOUGH TALK
-    BECAUSE I'M GOING TO SAY PLEASE inSnake
-        BECAUSE I'M GOING TO SAY PLEASE scancode
-            DO IT NOW handleSnakeInput scancode
-        YOU HAVE NO RESPECT FOR LOGIC
-        DO IT NOW snakeGameTick fbAddress fbPitch
-    YOU HAVE NO RESPECT FOR LOGIC
+    DO IT NOW gameTickRouter fbAddress fbPitch currentMode scancode
     
     BECAUSE I'M GOING TO SAY PLEASE scancode
-        TALK TO YOURSELF "Keyboard shortcuts on desktop: 2=Snake"
+        TALK TO YOURSELF "Keyboard shortcuts on desktop: 1-6 launch games"
         BECAUSE I'M GOING TO SAY PLEASE isDesktop
+            TALK TO YOURSELF "2=Snake (scancode 0x03)"
             HEY CHRISTMAS TREE is2Key
             THIS IS A WARRIOR
             YOU SET US UP 0
@@ -1490,9 +1746,67 @@ STICK AROUND @NO PROBLEMO
                 GET TO THE CHOPPER currentMode
                 HERE IS MY INVITATION MODE_SNAKE
                 ENOUGH TALK
-                DO IT NOW initSnake
-                DO IT NOW clearScreen fbAddress fbPitch 0x00000020
-                DO IT NOW drawSnakeGame fbAddress fbPitch
+                DO IT NOW launchGame fbAddress fbPitch currentMode
+            YOU HAVE NO RESPECT FOR LOGIC
+            
+            TALK TO YOURSELF "3=Pong (scancode 0x04)"
+            HEY CHRISTMAS TREE is3Key
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER is3Key
+            HERE IS MY INVITATION scancode
+            YOU ARE NOT YOU YOU ARE ME 0x04
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE is3Key
+                GET TO THE CHOPPER currentMode
+                HERE IS MY INVITATION MODE_PONG
+                ENOUGH TALK
+                DO IT NOW launchGame fbAddress fbPitch currentMode
+            YOU HAVE NO RESPECT FOR LOGIC
+            
+            TALK TO YOURSELF "4=Breakout (scancode 0x05)"
+            HEY CHRISTMAS TREE is4Key
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER is4Key
+            HERE IS MY INVITATION scancode
+            YOU ARE NOT YOU YOU ARE ME 0x05
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE is4Key
+                GET TO THE CHOPPER currentMode
+                HERE IS MY INVITATION MODE_BREAKOUT
+                ENOUGH TALK
+                DO IT NOW launchGame fbAddress fbPitch currentMode
+            YOU HAVE NO RESPECT FOR LOGIC
+            
+            TALK TO YOURSELF "5=Chopper (scancode 0x06)"
+            HEY CHRISTMAS TREE is5Key
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER is5Key
+            HERE IS MY INVITATION scancode
+            YOU ARE NOT YOU YOU ARE ME 0x06
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE is5Key
+                GET TO THE CHOPPER currentMode
+                HERE IS MY INVITATION MODE_CHOPPER
+                ENOUGH TALK
+                DO IT NOW launchGame fbAddress fbPitch currentMode
+            YOU HAVE NO RESPECT FOR LOGIC
+            
+            TALK TO YOURSELF "6=Skynet (scancode 0x07)"
+            HEY CHRISTMAS TREE is6Key
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER is6Key
+            HERE IS MY INVITATION scancode
+            YOU ARE NOT YOU YOU ARE ME 0x07
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE is6Key
+                GET TO THE CHOPPER currentMode
+                HERE IS MY INVITATION MODE_SKYNET
+                ENOUGH TALK
+                DO IT NOW launchGame fbAddress fbPitch currentMode
             YOU HAVE NO RESPECT FOR LOGIC
         YOU HAVE NO RESPECT FOR LOGIC
     
