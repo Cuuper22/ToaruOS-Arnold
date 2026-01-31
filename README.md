@@ -20,10 +20,13 @@ This is a real, bootable operating system kernel that provides:
 - ℹ️ **About dialog** with T-800 skull pixel art
 - 🎬 **DVD bouncing screensaver** — "I'LL BE BACK" bounces around after 30s idle, cycling through 5 Arnold movie colors on each wall hit
 - 🌐 **Full network stack** — E1000 NIC driver, ARP, ICMP ping, TCP, HTTP client
-- 🔗 **wget command** — Fetches real webpages over TCP/HTTP and displays them in the terminal
+- 🔗 **wget command** — Fetches real webpages over TCP/HTTP with HTML tag stripping
+- 📋 **Start menu** — Tab-activated popup with all apps and games listed
+- 🎮 **Game window frames** — All 5 games render inside windows with title bars and close buttons
+- 🔮 **Easter eggs** — `fortune` (random Arnold quotes), `cowsay` (ASCII art Arnold), `matrix` (Matrix rain effect), `neofetch` (ASCII Terminator + system stats), `shutdown` (dramatic service termination)
 - ⚡ **Native fast rendering** — `rep stosd` assembly for ~100x fillRect speedup
 
-All written in ~5500 lines of ArnoldC + x86 assembly across 19+ modules, compiled and running directly on hardware (or QEMU).
+All written in ~6000+ lines of ArnoldC + x86 assembly across 21 modules, compiled and running directly on hardware (or QEMU).
 
 ## Screenshots
 
@@ -41,7 +44,33 @@ Multiple overlapping windows with blue (active) and gray (inactive) title bars, 
 - **Skynet Defense** — Turret defense with projectiles (key: 6)
 
 ### Terminal
-Green-on-black terminal with `ARNOLD-OS>` prompt, full a-z/0-9 keyboard mapping (key: 1)
+Green-on-black terminal with `ARNOLD-OS>` prompt, 25+ commands (key: 1)
+
+### Start Menu
+Tab key opens a dark popup above the ARNOLD taskbar button, listing all apps and games with keyboard shortcuts.
+
+### Neofetch
+```
+   .---.     OS: ToaruOS-Arnold v4.0
+  |o   o|    Kernel: ArnoldC + x86 ASM
+  | --  |    Display: 1024x768 32bpp
+   '--'      Net: E1000 TCP/IP
+  /|   |\    Apps: 13 (5 games + 8 tools)
+ / |   | \   Quote: I'll be back
+```
+
+### Shutdown
+```
+ARNOLD-OS> shutdown
+Stopping services...
+[OK] Terminated: skynet
+[OK] Term: t800_firmware
+[OK] Unmount: /dev/muscles
+
+HASTA LA VISTA, BABY
+
+System halted.
+```
 
 ### Calculator
 4×4 button grid: gray number buttons, orange operators, blue equals, green LED display (key: 7)
@@ -136,6 +165,7 @@ Bootable ELF kernel (toaruos-arnold.elf)
 | 0 | Text Editor |
 | F | File Manager |
 | W | Open new window |
+| Tab | Toggle start menu |
 | ESC | Return to desktop |
 
 ## Architecture
@@ -148,8 +178,9 @@ kernel/
   kernel_v3.arnoldc      — Main kernel: desktop, input loop, rendering, font
   window_manager.arnoldc — Window system: create/close/drag/z-order/taskbar
   terminal.arnoldc       — Terminal emulator: 80×25 buffer, scancode mapping
-  terminal_commands.arnoldc — Command handler (help, ver, time, echo, game launchers,
-                             ifconfig, ping, wget)
+  terminal_commands.arnoldc — 25+ commands: help, ver, time, echo, clear, sysinfo,
+                             neofetch, matrix, fortune, cowsay, shutdown, wget,
+                             ifconfig, ping, + game/app launchers
   lib/
     random.arnoldc       — PRNG (timer-seeded)
     timer.arnoldc        — PIT timer access
@@ -168,6 +199,8 @@ kernel/
     settings.arnoldc     — 5 Arnold movie themes with runtime color switching
     text_editor.arnoldc  — 80×32 text editor with full keyboard input
     file_manager.arnoldc — Virtual filesystem browser with directory navigation
+    easter_eggs.arnoldc  — fortune, cowsay, neofetch, matrix, shutdown commands
+    browser.arnoldc      — Text-mode web browser (WIP)
 test_www/
   index.html             — Test page for wget ("HASTA LA VISTA, BABY!")
 linker.ld                — Kernel memory layout
@@ -185,10 +218,10 @@ tools/
 - **Input:** PS/2 keyboard (IRQ1 + scancode ISR), PS/2 mouse (IRQ12)
 - **Networking:** E1000 NIC (PCI MMIO), ARP, IPv4, ICMP, TCP, HTTP/1.0 client
 - **Font:** Custom 8×8 bitmap, full ASCII 32-126
-- **ELF Size:** ~159 KB
-- **Functions:** 180+ across all source modules
-- **Modules:** 19+ ArnoldC source files + 1 assembly (3000+ lines)
-- **Commits:** 44+
+- **ELF Size:** ~179 KB
+- **Functions:** 190+ across all source modules
+- **Modules:** 21 ArnoldC source files + 1 assembly (4000+ lines)
+- **Commits:** 51+
 - **Boot time:** ~4 second splash screen, then desktop
 
 ### ArnoldC Challenges
