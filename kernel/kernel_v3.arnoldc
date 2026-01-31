@@ -1698,21 +1698,105 @@ STICK AROUND @NO PROBLEMO
         ENOUGH TALK
         
         BECAUSE I'M GOING TO SAY PLEASE isClicked
-            TALK TO YOURSELF "Check which icon was clicked"
-            HEY CHRISTMAS TREE clickedIcon
+            TALK TO YOURSELF "First check if clicking a window"
+            HEY CHRISTMAS TREE winHit
             THIS IS A WARRIOR
             YOU SET US UP 0
-            GET YOUR ASS TO MARS clickedIcon
-            DO IT NOW checkIconClick mouseX mouseY
+            GET YOUR ASS TO MARS winHit
+            DO IT NOW handleWindowClick mouseX mouseY
             
-            BECAUSE I'M GOING TO SAY PLEASE clickedIcon
-                TALK TO YOURSELF "Switch to game mode"
-                GET TO THE CHOPPER currentMode
-                HERE IS MY INVITATION clickedIcon
-                ENOUGH TALK
+            TALK TO YOURSELF "winHit: 0=miss, 1=title bar, 2=close, 3=client"
+            HEY CHRISTMAS TREE isTitleHit
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER isTitleHit
+            HERE IS MY INVITATION winHit
+            YOU ARE NOT YOU YOU ARE ME 1
+            ENOUGH TALK
+            
+            BECAUSE I'M GOING TO SAY PLEASE isTitleHit
+                DO IT NOW startDrag wmFocused mouseX mouseY
+            YOU HAVE NO RESPECT FOR LOGIC
+            
+            HEY CHRISTMAS TREE isWinClose
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER isWinClose
+            HERE IS MY INVITATION winHit
+            YOU ARE NOT YOU YOU ARE ME 2
+            ENOUGH TALK
+            
+            BECAUSE I'M GOING TO SAY PLEASE isWinClose
+                TALK TO YOURSELF "Window closed - redraw desktop and remaining windows"
+                DO IT NOW drawDesktop fbAddress fbPitch
+                DO IT NOW drawAllWindows fbAddress fbPitch
+            YOU HAVE NO RESPECT FOR LOGIC
+            
+            TALK TO YOURSELF "If no window hit, check icon click"
+            HEY CHRISTMAS TREE noWinHit
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER noWinHit
+            HERE IS MY INVITATION winHit
+            YOU ARE NOT YOU YOU ARE ME 0
+            ENOUGH TALK
+            
+            BECAUSE I'M GOING TO SAY PLEASE noWinHit
+                HEY CHRISTMAS TREE clickedIcon
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET YOUR ASS TO MARS clickedIcon
+                DO IT NOW checkIconClick mouseX mouseY
                 
-                TALK TO YOURSELF "Initialize the selected game"
-                DO IT NOW launchGame fbAddress fbPitch currentMode
+                BECAUSE I'M GOING TO SAY PLEASE clickedIcon
+                    TALK TO YOURSELF "Switch to game mode"
+                    GET TO THE CHOPPER currentMode
+                    HERE IS MY INVITATION clickedIcon
+                    ENOUGH TALK
+                    
+                    TALK TO YOURSELF "Initialize the selected game"
+                    DO IT NOW launchGame fbAddress fbPitch currentMode
+                YOU HAVE NO RESPECT FOR LOGIC
+            YOU HAVE NO RESPECT FOR LOGIC
+        YOU HAVE NO RESPECT FOR LOGIC
+        
+        TALK TO YOURSELF "Handle mouse button release - stop drag"
+        HEY CHRISTMAS TREE btnReleased
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        
+        HEY CHRISTMAS TREE wasDown
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER wasDown
+        HERE IS MY INVITATION lastMouseBtn
+        KNOCK KNOCK 1
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE isUp
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isUp
+        HERE IS MY INVITATION mouseButtons
+        KNOCK KNOCK 1
+        YOU ARE NOT YOU YOU ARE ME 0
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER btnReleased
+        HERE IS MY INVITATION wasDown
+        KNOCK KNOCK isUp
+        ENOUGH TALK
+        
+        BECAUSE I'M GOING TO SAY PLEASE btnReleased
+            DO IT NOW stopDrag
+        YOU HAVE NO RESPECT FOR LOGIC
+        
+        TALK TO YOURSELF "Update drag if mouse moved while dragging"
+        BECAUSE I'M GOING TO SAY PLEASE wmDragging
+            BECAUSE I'M GOING TO SAY PLEASE mouseChanged
+                DO IT NOW updateDrag mouseX mouseY
+                DO IT NOW drawDesktop fbAddress fbPitch
+                DO IT NOW drawAllWindows fbAddress fbPitch
             YOU HAVE NO RESPECT FOR LOGIC
         YOU HAVE NO RESPECT FOR LOGIC
         
@@ -1818,8 +1902,28 @@ STICK AROUND @NO PROBLEMO
                 HEY CHRISTMAS TREE newWin
                 THIS IS A WARRIOR
                 YOU SET US UP 0
+                
+                TALK TO YOURSELF "Offset each new window by 30px from the last"
+                HEY CHRISTMAS TREE winOffX
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER winOffX
+                HERE IS MY INVITATION wmNextZ
+                YOU'RE FIRED 30
+                GET UP 100
+                ENOUGH TALK
+                
+                HEY CHRISTMAS TREE winOffY
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER winOffY
+                HERE IS MY INVITATION wmNextZ
+                YOU'RE FIRED 30
+                GET UP 60
+                ENOUGH TALK
+                
                 GET YOUR ASS TO MARS newWin
-                DO IT NOW createWindow 100 100 300 200
+                DO IT NOW createWindow winOffX winOffY 320 220
                 DO IT NOW drawAllWindows fbAddress fbPitch
             YOU HAVE NO RESPECT FOR LOGIC
         YOU HAVE NO RESPECT FOR LOGIC

@@ -68,6 +68,22 @@ HEY CHRISTMAS TREE wmFocused
 THIS IS A WARRIOR
 YOU SET US UP 0
 
+HEY CHRISTMAS TREE wmDragging
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE wmDragWin
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE wmDragOffX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE wmDragOffY
+THIS IS A WARRIOR
+YOU SET US UP 0
+
 TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  createWindow(x, y, w, h) - Create a new window, return ID"
 TALK TO YOURSELF "============================================================================"
@@ -687,6 +703,97 @@ STICK AROUND continueCi
 CHILL
 
 I'LL BE BACK 0
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  startDrag(winId, mx, my) - Begin dragging a window"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY startDrag
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE dragId
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE dragMx
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE dragMy
+
+GET TO THE CHOPPER wmDragging
+HERE IS MY INVITATION 1
+ENOUGH TALK
+
+GET TO THE CHOPPER wmDragWin
+HERE IS MY INVITATION dragId
+ENOUGH TALK
+
+HEY CHRISTMAS TREE dragWinX
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER dragWinX
+HERE IS MY INVITATION WHICH ONE wmX dragId
+ENOUGH TALK
+
+HEY CHRISTMAS TREE dragWinY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER dragWinY
+HERE IS MY INVITATION WHICH ONE wmY dragId
+ENOUGH TALK
+
+GET TO THE CHOPPER wmDragOffX
+HERE IS MY INVITATION dragMx
+GET DOWN dragWinX
+ENOUGH TALK
+
+GET TO THE CHOPPER wmDragOffY
+HERE IS MY INVITATION dragMy
+GET DOWN dragWinY
+ENOUGH TALK
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  updateDrag(mx, my) - Update window position during drag"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY updateDrag
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE updMx
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE updMy
+
+BECAUSE I'M GOING TO SAY PLEASE wmDragging
+    HEY CHRISTMAS TREE newWinX
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER newWinX
+    HERE IS MY INVITATION updMx
+    GET DOWN wmDragOffX
+    ENOUGH TALK
+    
+    HEY CHRISTMAS TREE newWinY
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER newWinY
+    HERE IS MY INVITATION updMy
+    GET DOWN wmDragOffY
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER WHICH ONE wmX wmDragWin
+    HERE IS MY INVITATION newWinX
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER WHICH ONE wmY wmDragWin
+    HERE IS MY INVITATION newWinY
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  stopDrag() - End window drag"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY stopDrag
+
+GET TO THE CHOPPER wmDragging
+HERE IS MY INVITATION 0
+ENOUGH TALK
 
 HASTA LA VISTA, BABY
 
