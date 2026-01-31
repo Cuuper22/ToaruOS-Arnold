@@ -386,6 +386,10 @@ HEY CHRISTMAS TREE lastMouseBtn
 THIS IS A WARRIOR
 YOU SET US UP 0
 
+HEY CHRISTMAS TREE startMenuOpen
+THIS IS A WARRIOR
+YOU SET US UP 0
+
 TALK TO YOURSELF "Icon positions (matching drawDesktop)"
 LET ME TELL YOU SOMETHING ICON1_X 20
 LET ME TELL YOU SOMETHING ICON1_Y 44
@@ -1120,6 +1124,229 @@ HERE IS MY INVITATION clockX
 GET UP 32
 ENOUGH TALK
 DO IT NOW drawChar fbAddr fbPitch cx5 startY m1 COLOR_WHITE themeTaskbarBg
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawStartMenu - Popup menu above ARNOLD button"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY drawStartMenu
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+TALK TO YOURSELF "Menu dimensions: 160 wide, 8 items x 24px = 192 tall"
+HEY CHRISTMAS TREE smX
+THIS IS A WARRIOR
+YOU SET US UP 4
+HEY CHRISTMAS TREE smW
+THIS IS A WARRIOR
+YOU SET US UP 160
+HEY CHRISTMAS TREE smH
+THIS IS A WARRIOR
+YOU SET US UP 218
+HEY CHRISTMAS TREE smY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER smY
+HERE IS MY INVITATION SCREEN_HEIGHT
+GET DOWN TASKBAR_HEIGHT
+GET DOWN smH
+ENOUGH TALK
+
+TALK TO YOURSELF "Draw menu background (dark gray)"
+DO IT NOW fillRect fbAddr fbPitch smX smY smW smH 0x00303030
+
+TALK TO YOURSELF "Draw border"
+DO IT NOW drawRect fbAddr fbPitch smX smY smW smH 0x00808080
+
+TALK TO YOURSELF "Menu items (each 24px tall)"
+HEY CHRISTMAS TREE smItemY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER smItemY
+HERE IS MY INVITATION smY
+GET UP 4
+ENOUGH TALK
+
+TALK TO YOURSELF "Item 1: Terminal"
+DO IT NOW drawChar fbAddr fbPitch 12 smItemY 49 0x00FFFF00 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 24 smItemY 32 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 32 smItemY 84 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 40 smItemY 101 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 48 smItemY 114 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 56 smItemY 109 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 64 smItemY 105 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 72 smItemY 110 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 80 smItemY 97 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 88 smItemY 108 0x00FFFFFF 0x00303030
+
+GET TO THE CHOPPER smItemY
+HERE IS MY INVITATION smItemY
+GET UP 24
+ENOUGH TALK
+DO IT NOW fillRect fbAddr fbPitch smX smItemY smW 1 0x00505050
+
+TALK TO YOURSELF "Item 2: Calculator"
+DO IT NOW drawChar fbAddr fbPitch 12 smItemY 55 0x00FFFF00 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 24 smItemY 32 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 32 smItemY 67 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 40 smItemY 97 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 48 smItemY 108 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 56 smItemY 99 0x00FFFFFF 0x00303030
+
+GET TO THE CHOPPER smItemY
+HERE IS MY INVITATION smItemY
+GET UP 24
+ENOUGH TALK
+DO IT NOW fillRect fbAddr fbPitch smX smItemY smW 1 0x00505050
+
+TALK TO YOURSELF "Item 3: Text Editor"
+DO IT NOW drawChar fbAddr fbPitch 12 smItemY 48 0x00FFFF00 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 24 smItemY 32 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 32 smItemY 69 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 40 smItemY 100 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 48 smItemY 105 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 56 smItemY 116 0x00FFFFFF 0x00303030
+
+GET TO THE CHOPPER smItemY
+HERE IS MY INVITATION smItemY
+GET UP 24
+ENOUGH TALK
+DO IT NOW fillRect fbAddr fbPitch smX smItemY smW 1 0x00505050
+
+TALK TO YOURSELF "Item 4: Settings"
+DO IT NOW drawChar fbAddr fbPitch 12 smItemY 57 0x00FFFF00 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 24 smItemY 32 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 32 smItemY 83 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 40 smItemY 101 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 48 smItemY 116 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 56 smItemY 116 0x00FFFFFF 0x00303030
+
+GET TO THE CHOPPER smItemY
+HERE IS MY INVITATION smItemY
+GET UP 24
+ENOUGH TALK
+DO IT NOW fillRect fbAddr fbPitch smX smItemY smW 1 0x00505050
+
+TALK TO YOURSELF "Item 5: Files"
+DO IT NOW drawChar fbAddr fbPitch 12 smItemY 70 0x00FFFF00 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 24 smItemY 32 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 32 smItemY 70 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 40 smItemY 105 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 48 smItemY 108 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 56 smItemY 101 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 64 smItemY 115 0x00FFFFFF 0x00303030
+
+GET TO THE CHOPPER smItemY
+HERE IS MY INVITATION smItemY
+GET UP 24
+ENOUGH TALK
+DO IT NOW fillRect fbAddr fbPitch smX smItemY smW 1 0x00505050
+
+TALK TO YOURSELF "Separator before games"
+GET TO THE CHOPPER smItemY
+HERE IS MY INVITATION smItemY
+GET UP 2
+ENOUGH TALK
+DO IT NOW fillRect fbAddr fbPitch smX smItemY smW 2 0x00808080
+
+GET TO THE CHOPPER smItemY
+HERE IS MY INVITATION smItemY
+GET UP 4
+ENOUGH TALK
+
+TALK TO YOURSELF "Item 6: Snake"
+DO IT NOW drawChar fbAddr fbPitch 12 smItemY 50 0x00FFFF00 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 24 smItemY 32 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 32 smItemY 83 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 40 smItemY 110 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 48 smItemY 97 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 56 smItemY 107 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 64 smItemY 101 0x00FF8000 0x00303030
+
+GET TO THE CHOPPER smItemY
+HERE IS MY INVITATION smItemY
+GET UP 24
+ENOUGH TALK
+
+TALK TO YOURSELF "Item 7: Pong"
+DO IT NOW drawChar fbAddr fbPitch 12 smItemY 51 0x00FFFF00 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 24 smItemY 32 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 32 smItemY 80 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 40 smItemY 111 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 48 smItemY 110 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 56 smItemY 103 0x00FF8000 0x00303030
+
+GET TO THE CHOPPER smItemY
+HERE IS MY INVITATION smItemY
+GET UP 24
+ENOUGH TALK
+
+TALK TO YOURSELF "Item 8: Breakout"
+DO IT NOW drawChar fbAddr fbPitch 12 smItemY 52 0x00FFFF00 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 24 smItemY 32 0x00FFFFFF 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 32 smItemY 66 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 40 smItemY 114 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 48 smItemY 101 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 56 smItemY 97 0x00FF8000 0x00303030
+DO IT NOW drawChar fbAddr fbPitch 64 smItemY 107 0x00FF8000 0x00303030
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: handleStartMenu - check Tab key and toggle menu"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY handleStartMenu
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE smFb
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE smPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE smScan
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE smMode
+
+HEY CHRISTMAS TREE smIsTab
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER smIsTab
+HERE IS MY INVITATION smScan
+YOU ARE NOT YOU YOU ARE ME 0x0F
+ENOUGH TALK
+
+HEY CHRISTMAS TREE smIsDesk
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER smIsDesk
+HERE IS MY INVITATION smMode
+YOU ARE NOT YOU YOU ARE ME 0
+ENOUGH TALK
+
+HEY CHRISTMAS TREE smDo
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER smDo
+HERE IS MY INVITATION smIsTab
+KNOCK KNOCK smIsDesk
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE smDo
+    HEY CHRISTMAS TREE smWasOn
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER smWasOn
+    HERE IS MY INVITATION startMenuOpen
+    YOU ARE NOT ME 0
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE smWasOn
+        GET TO THE CHOPPER startMenuOpen
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        DO IT NOW drawDesktop smFb smPitch
+        DO IT NOW drawTaskBar smFb smPitch
+    BULLSHIT
+        GET TO THE CHOPPER startMenuOpen
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+        DO IT NOW drawStartMenu smFb smPitch
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
 
 HASTA LA VISTA, BABY
 
@@ -3124,20 +3351,99 @@ STICK AROUND @NO PROBLEMO
             ENOUGH TALK
             
             BECAUSE I'M GOING TO SAY PLEASE noWinHit
-                HEY CHRISTMAS TREE clickedIcon
+                TALK TO YOURSELF "Check if clicking ARNOLD button (x:4-64, y:736-768)"
+                HEY CHRISTMAS TREE smBtnClk
                 THIS IS A WARRIOR
                 YOU SET US UP 0
-                GET YOUR ASS TO MARS clickedIcon
-                DO IT NOW checkIconClick mouseX mouseY
-                
-                BECAUSE I'M GOING TO SAY PLEASE clickedIcon
-                    TALK TO YOURSELF "Switch to game mode"
-                    GET TO THE CHOPPER currentMode
-                    HERE IS MY INVITATION clickedIcon
+
+                HEY CHRISTMAS TREE smInX
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                HEY CHRISTMAS TREE smX1ok
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER smX1ok
+                HERE IS MY INVITATION mouseX
+                YOU'RE AT LEAST AS BIG AS 4
+                ENOUGH TALK
+                HEY CHRISTMAS TREE smX2ok
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER smX2ok
+                HERE IS MY INVITATION 64
+                LET OFF SOME STEAM BENNET mouseX
+                ENOUGH TALK
+                GET TO THE CHOPPER smInX
+                HERE IS MY INVITATION smX1ok
+                KNOCK KNOCK smX2ok
+                ENOUGH TALK
+
+                HEY CHRISTMAS TREE smInY
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                HEY CHRISTMAS TREE smY1ok
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER smY1ok
+                HERE IS MY INVITATION mouseY
+                YOU'RE AT LEAST AS BIG AS 736
+                ENOUGH TALK
+                GET TO THE CHOPPER smInY
+                HERE IS MY INVITATION smY1ok
+                ENOUGH TALK
+
+                GET TO THE CHOPPER smBtnClk
+                HERE IS MY INVITATION smInX
+                KNOCK KNOCK smInY
+                ENOUGH TALK
+
+                BECAUSE I'M GOING TO SAY PLEASE smBtnClk
+                    TALK TO YOURSELF "Toggle start menu"
+                    HEY CHRISTMAS TREE smWasOpen
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER smWasOpen
+                    HERE IS MY INVITATION startMenuOpen
+                    YOU ARE NOT YOU YOU ARE ME 0
                     ENOUGH TALK
-                    
-                    TALK TO YOURSELF "Initialize the selected game"
-                    DO IT NOW launchGame fbAddress fbPitch currentMode
+                    BECAUSE I'M GOING TO SAY PLEASE smWasOpen
+                        GET TO THE CHOPPER startMenuOpen
+                        HERE IS MY INVITATION 0
+                        ENOUGH TALK
+                        TALK TO YOURSELF "Close menu: redraw desktop"
+                        DO IT NOW drawDesktop fbAddress fbPitch
+                        DO IT NOW drawTaskBar fbAddress fbPitch
+                    BULLSHIT
+                        GET TO THE CHOPPER startMenuOpen
+                        HERE IS MY INVITATION 1
+                        ENOUGH TALK
+                        DO IT NOW drawStartMenu fbAddress fbPitch
+                    YOU HAVE NO RESPECT FOR LOGIC
+                BULLSHIT
+                    TALK TO YOURSELF "Click elsewhere: close menu if open and check icons"
+                    BECAUSE I'M GOING TO SAY PLEASE startMenuOpen
+                        GET TO THE CHOPPER startMenuOpen
+                        HERE IS MY INVITATION 0
+                        ENOUGH TALK
+                        DO IT NOW drawDesktop fbAddress fbPitch
+                        DO IT NOW drawTaskBar fbAddress fbPitch
+                    YOU HAVE NO RESPECT FOR LOGIC
+
+                    HEY CHRISTMAS TREE clickedIcon
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET YOUR ASS TO MARS clickedIcon
+                    DO IT NOW checkIconClick mouseX mouseY
+
+                    BECAUSE I'M GOING TO SAY PLEASE clickedIcon
+                        TALK TO YOURSELF "Switch to game mode"
+                        GET TO THE CHOPPER currentMode
+                        HERE IS MY INVITATION clickedIcon
+                        ENOUGH TALK
+
+                        TALK TO YOURSELF "Initialize the selected game"
+                        DO IT NOW launchGame fbAddress fbPitch currentMode
+                    YOU HAVE NO RESPECT FOR LOGIC
                 YOU HAVE NO RESPECT FOR LOGIC
             YOU HAVE NO RESPECT FOR LOGIC
         YOU HAVE NO RESPECT FOR LOGIC
@@ -3191,6 +3497,9 @@ STICK AROUND @NO PROBLEMO
     TALK TO YOURSELF "Check for keyboard input (needed by games too)"
     GET YOUR ASS TO MARS scancode
     DO IT NOW pollKeyboard
+    
+    TALK TO YOURSELF "Check Tab key for start menu toggle"
+    DO IT NOW handleStartMenu fbAddress fbPitch scancode currentMode
     
     TALK TO YOURSELF "Run game tick if in a game mode"
     HEY CHRISTMAS TREE tickResult
@@ -3438,6 +3747,7 @@ STICK AROUND @NO PROBLEMO
             ENOUGH TALK
             DO IT NOW drawDesktop fbAddress fbPitch
         YOU HAVE NO RESPECT FOR LOGIC
+
     YOU HAVE NO RESPECT FOR LOGIC
     
     TALK TO YOURSELF "--- Idle tracking for screensaver ---"
