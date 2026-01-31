@@ -966,6 +966,64 @@ halt_system:
 ; ============================================================================
 global fast_fill_rect
 global fast_memcpy32
+global draw_wallpaper_dots
+
+; draw_wallpaper_dots(fbAddr, pitch, dotColor, bgY, bgH)
+; Draws a 2x1 pixel dot grid every 32 pixels across desktop area
+; Args: [esp+4]=fbAddr, [esp+8]=pitch, [esp+12]=dotColor, [esp+16]=startY, [esp+20]=height
+draw_wallpaper_dots:
+    push ebp
+    mov ebp, esp
+    push edi
+    push ebx
+    push esi
+
+    mov edi, [ebp+8]      ; fbAddr
+    mov esi, [ebp+12]     ; pitch
+    mov eax, [ebp+16]     ; dotColor
+    mov ecx, [ebp+20]     ; startY
+    mov edx, [ebp+24]     ; height (endY = startY + height)
+    add edx, ecx          ; edx = endY
+
+.wp_yloop:
+    cmp ecx, edx
+    jge .wp_done
+    ; Calculate row address = fbAddr + y * pitch
+    push edx
+    push eax
+    mov eax, ecx
+    imul eax, esi         ; y * pitch
+    mov ebx, edi
+    add ebx, eax          ; rowAddr = fbAddr + y*pitch
+    pop eax
+    pop edx
+
+    ; Draw dots across this row at x = 24, 56, 88, ... (every 32 px)
+    push ecx
+    mov ecx, 24           ; startX
+.wp_xloop:
+    cmp ecx, 1000
+    jge .wp_xdone
+    ; Plot 2 pixels at (x, y): rowAddr + x*4
+    push edx
+    mov edx, ecx
+    shl edx, 2            ; x * 4
+    mov [ebx + edx], eax  ; pixel at (x,y)
+    add edx, 4
+    mov [ebx + edx], eax  ; pixel at (x+1,y)
+    pop edx
+    add ecx, 24           ; next dot
+    jmp .wp_xloop
+.wp_xdone:
+    pop ecx
+    add ecx, 24           ; next row with dots
+    jmp .wp_yloop
+.wp_done:
+    pop esi
+    pop ebx
+    pop edi
+    pop ebp
+    ret
 
 ; fast_fill_rect(fbAddr, fbPitch, x, y, width, height, color)
 ; Uses rep stosd for ~100x speedup over putPixel loops

@@ -1667,6 +1667,16 @@ I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
 TALK TO YOURSELF "Clear to desktop background (uses theme color)"
 DO IT NOW clearScreen fbAddr fbPitch themeDesktopBg
 
+TALK TO YOURSELF "Draw wallpaper dot grid pattern — lighter shade of bg"
+HEY CHRISTMAS TREE wpDotColor
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER wpDotColor
+HERE IS MY INVITATION themeDesktopBg
+GET UP 0x00303030
+ENOUGH TALK
+DO IT NOW draw_wallpaper_dots fbAddr fbPitch wpDotColor 40 680
+
 TALK TO YOURSELF "Draw menu bar"
 DO IT NOW drawMenuBar fbAddr fbPitch
 
