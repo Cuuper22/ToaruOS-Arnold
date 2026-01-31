@@ -73,7 +73,7 @@ LET ME TELL YOU SOMETHING SS_TEXT_W 192
 LET ME TELL YOU SOMETHING SS_TEXT_H 16
 LET ME TELL YOU SOMETHING SS_MAX_X 832
 LET ME TELL YOU SOMETHING SS_MAX_Y 752
-LET ME TELL YOU SOMETHING IDLE_TICKS 545
+LET ME TELL YOU SOMETHING IDLE_TICKS 3000
 
 TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  8x8 BITMAP FONT - Full ASCII 32-126"
@@ -2418,8 +2418,8 @@ YOU SET US UP 1
 STICK AROUND barContinue
     DO IT NOW fillRect fbAddr fbPitch 262 460 barW 16 COLOR_TERMINATOR_RED
     
-    TALK TO YOURSELF "Delay ~55ms per step (1 PIT tick = ~55ms)"
-    DO IT NOW sleep_ticks 1
+    TALK TO YOURSELF "Delay ~50ms per step (5 PIT ticks at 100Hz)"
+    DO IT NOW sleep_ticks 5
     
     GET TO THE CHOPPER barW
     HERE IS MY INVITATION barW
@@ -2446,7 +2446,7 @@ TALK TO YOURSELF "12 chars * 8px = 96px, centered: (1024-96)/2 = 464"
 DO IT NOW drawStringAt fbAddr fbPitch 464 510 splBack 12 COLOR_TERMINATOR_RED COLOR_BLACK
 
 TALK TO YOURSELF "--- Phase 8: Final pause before desktop (1 second) ---"
-DO IT NOW sleep_ticks 18
+DO IT NOW sleep_ticks 100
 
 HASTA LA VISTA, BABY
 
@@ -2740,8 +2740,8 @@ STICK AROUND ssContinue
     DO IT NOW fillRect fbAddr fbPitch ssOldX ssOldY SS_TEXT_W SS_TEXT_H COLOR_BLACK
     DO IT NOW drawStringBig fbAddr fbPitch ssX ssY splBack 12 2 ssColor COLOR_BLACK
     
-    TALK TO YOURSELF "Frame delay (~55ms = ~18fps)"
-    DO IT NOW sleep_ticks 1
+    TALK TO YOURSELF "Frame delay (~50ms = ~20fps at 100Hz PIT)"
+    DO IT NOW sleep_ticks 5
 CHILL
 
 HASTA LA VISTA, BABY
@@ -2800,6 +2800,13 @@ DO IT NOW get_fb_width
 
 GET YOUR ASS TO MARS fbHeight
 DO IT NOW get_fb_height
+
+TALK TO YOURSELF "Initialize network (E1000 NIC)"
+HEY CHRISTMAS TREE netResult
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET YOUR ASS TO MARS netResult
+DO IT NOW e1000_init
 
 TALK TO YOURSELF "Initialize idle timer for screensaver"
 GET YOUR ASS TO MARS lastInputTick

@@ -117,6 +117,14 @@ extern outl
 extern inl
 extern fast_fill_rect
 extern fast_memcpy32
+extern pci_config_read
+extern pci_config_write
+extern pci_find_device
+extern e1000_init
+extern e1000_send_packet
+extern e1000_receive_packet
+extern e1000_get_mac
+extern e1000_is_link_up
 
 "@
 # Insert externs after "section .text"

@@ -992,5 +992,606 @@ fast_memcpy32:
     ret
 
 ; ============================================================================
+; PCI BUS ACCESS - "I NEED YOUR BUS, YOUR DEVICE, AND YOUR FUNCTION"
+; ============================================================================
+; PCI Configuration Space access via I/O ports 0xCF8 (address) and 0xCFC (data)
+; Address format: [31]=enable, [23:16]=bus, [15:11]=device, [10:8]=func, [7:2]=reg, [1:0]=00
+; ============================================================================
+
+global pci_config_read
+global pci_config_write
+global pci_find_device
+
+; PCI ports
+PCI_CONFIG_ADDR equ 0x0CF8
+PCI_CONFIG_DATA equ 0x0CFC
+
+; pci_config_read(bus, slot, func, offset) -> dword value
+; Args: [esp+4]=bus, [esp+8]=slot, [esp+12]=func, [esp+16]=offset
+pci_config_read:
+    push ebx
+    ; Build address: 0x80000000 | (bus<<16) | (slot<<11) | (func<<8) | (offset & 0xFC)
+    mov eax, 0x80000000
+    mov ebx, [esp+8]      ; bus
+    shl ebx, 16
+    or eax, ebx
+    mov ebx, [esp+12]     ; slot
+    shl ebx, 11
+    or eax, ebx
+    mov ebx, [esp+16]     ; func
+    shl ebx, 8
+    or eax, ebx
+    mov ebx, [esp+20]     ; offset
+    and ebx, 0xFC         ; align to dword
+    or eax, ebx
+    ; Write address
+    mov dx, PCI_CONFIG_ADDR
+    out dx, eax
+    ; Read data
+    mov dx, PCI_CONFIG_DATA
+    in eax, dx
+    pop ebx
+    ret
+
+; pci_config_write(bus, slot, func, offset, value)
+; Args: [esp+4]=bus, [esp+8]=slot, [esp+12]=func, [esp+16]=offset, [esp+20]=value
+pci_config_write:
+    push ebx
+    ; Build address (same as read)
+    mov eax, 0x80000000
+    mov ebx, [esp+8]      ; bus
+    shl ebx, 16
+    or eax, ebx
+    mov ebx, [esp+12]     ; slot
+    shl ebx, 11
+    or eax, ebx
+    mov ebx, [esp+16]     ; func
+    shl ebx, 8
+    or eax, ebx
+    mov ebx, [esp+20]     ; offset
+    and ebx, 0xFC
+    or eax, ebx
+    ; Write address
+    mov dx, PCI_CONFIG_ADDR
+    out dx, eax
+    ; Write data
+    mov eax, [esp+24]     ; value
+    mov dx, PCI_CONFIG_DATA
+    out dx, eax
+    pop ebx
+    ret
+
+; pci_find_device(vendor_id, device_id) -> bus<<16|slot<<8|func, or 0xFFFFFFFF if not found
+; Scans bus 0, all 32 slots, function 0 only
+; Args: [esp+4]=vendor_id, [esp+8]=device_id
+pci_find_device:
+    push ebx
+    push esi
+    push edi
+    mov esi, [esp+16]     ; vendor_id
+    mov edi, [esp+20]     ; device_id
+    
+    xor ebx, ebx          ; slot = 0
+.pci_scan_loop:
+    cmp ebx, 32
+    jge .pci_not_found
+    
+    ; pci_config_read(bus=0, slot=ebx, func=0, offset=0) -> vendor|device
+    push dword 0           ; offset 0
+    push dword 0           ; func 0
+    push ebx               ; slot
+    push dword 0           ; bus 0
+    call pci_config_read
+    add esp, 16
+    
+    ; eax = [device_id:16 | vendor_id:16]
+    mov ecx, eax
+    and ecx, 0xFFFF        ; vendor_id
+    cmp ecx, esi
+    jne .pci_next_slot
+    
+    shr eax, 16            ; device_id
+    cmp eax, edi
+    jne .pci_next_slot
+    
+    ; Found! Return bus<<16 | slot<<8 | func
+    mov eax, ebx
+    shl eax, 8             ; slot << 8
+    ; bus=0, func=0, so just slot<<8
+    jmp .pci_scan_done
+    
+.pci_next_slot:
+    inc ebx
+    jmp .pci_scan_loop
+    
+.pci_not_found:
+    mov eax, 0xFFFFFFFF
+    
+.pci_scan_done:
+    pop edi
+    pop esi
+    pop ebx
+    ret
+
+; ============================================================================
+; E1000 NIC DRIVER - "GET TO THE NETWORK!"
+; Intel 82540EM (E1000) driver for QEMU
+; Vendor: 0x8086 (Intel), Device: 0x100E (82540EM)
+; ============================================================================
+
+global e1000_init
+global e1000_send_packet
+global e1000_receive_packet
+global e1000_get_mac
+global e1000_is_link_up
+
+; E1000 register offsets (from MMIO base)
+E1000_CTRL      equ 0x0000    ; Device Control
+E1000_STATUS    equ 0x0008    ; Device Status
+E1000_EERD      equ 0x0014    ; EEPROM Read
+E1000_ICR       equ 0x00C0    ; Interrupt Cause Read
+E1000_IMS       equ 0x00D0    ; Interrupt Mask Set
+E1000_IMC       equ 0x00D8    ; Interrupt Mask Clear
+E1000_RCTL      equ 0x0100    ; Receive Control
+E1000_RDBAL     equ 0x2800    ; RX Descriptor Base Low
+E1000_RDBAH     equ 0x2804    ; RX Descriptor Base High
+E1000_RDLEN     equ 0x2808    ; RX Descriptor Length
+E1000_RDH       equ 0x2810    ; RX Descriptor Head
+E1000_RDT       equ 0x2818    ; RX Descriptor Tail
+E1000_TCTL      equ 0x0400    ; Transmit Control
+E1000_TDBAL     equ 0x3800    ; TX Descriptor Base Low
+E1000_TDBAH     equ 0x3804    ; TX Descriptor Base High
+E1000_TDLEN     equ 0x3808    ; TX Descriptor Length
+E1000_TDH       equ 0x3810    ; TX Descriptor Head
+E1000_TDT       equ 0x3818    ; TX Descriptor Tail
+E1000_RAL       equ 0x5400    ; Receive Address Low
+E1000_RAH       equ 0x5404    ; Receive Address High
+E1000_MTA       equ 0x5200    ; Multicast Table Array (128 entries)
+
+; E1000 control bits
+E1000_CTRL_SLU  equ (1 << 6)  ; Set Link Up
+E1000_CTRL_RST  equ (1 << 26) ; Device Reset
+
+; E1000 receive control bits
+E1000_RCTL_EN   equ (1 << 1)  ; Receiver Enable
+E1000_RCTL_SBP  equ (1 << 2)  ; Store Bad Packets
+E1000_RCTL_UPE  equ (1 << 3)  ; Unicast Promiscuous
+E1000_RCTL_MPE  equ (1 << 4)  ; Multicast Promiscuous
+E1000_RCTL_BAM  equ (1 << 15) ; Broadcast Accept Mode
+E1000_RCTL_BSIZE_2048 equ 0   ; Buffer size 2048 bytes
+E1000_RCTL_SECRC equ (1 << 26) ; Strip Ethernet CRC
+
+; E1000 transmit control bits
+E1000_TCTL_EN   equ (1 << 1)  ; Transmit Enable
+E1000_TCTL_PSP  equ (1 << 3)  ; Pad Short Packets
+E1000_TCTL_CT_SHIFT equ 4     ; Collision Threshold
+E1000_TCTL_COLD_SHIFT equ 12  ; Collision Distance
+
+; TX descriptor command bits
+E1000_TXD_CMD_EOP  equ (1 << 0) ; End of Packet
+E1000_TXD_CMD_IFCS equ (1 << 1) ; Insert FCS/CRC
+E1000_TXD_CMD_RS   equ (1 << 3) ; Report Status
+E1000_TXD_STAT_DD  equ (1 << 0) ; Descriptor Done
+
+; RX descriptor status bits
+E1000_RXD_STAT_DD  equ (1 << 0) ; Descriptor Done
+E1000_RXD_STAT_EOP equ (1 << 1) ; End of Packet
+
+; Descriptor ring sizes
+E1000_NUM_RX_DESC  equ 16
+E1000_NUM_TX_DESC  equ 16
+E1000_RX_BUF_SIZE  equ 2048
+E1000_TX_BUF_SIZE  equ 2048
+
+section .bss
+; E1000 state
+e1000_mmio_base:  resd 1           ; MMIO base address from BAR0
+e1000_mac:        resb 8           ; MAC address (6 bytes + 2 padding)
+e1000_found:      resd 1           ; 1 if E1000 detected
+
+; Descriptor rings (16-byte aligned) — 16 descriptors × 16 bytes each = 256 bytes
+alignb 16
+e1000_rx_descs:   resb (E1000_NUM_RX_DESC * 16)
+e1000_tx_descs:   resb (E1000_NUM_TX_DESC * 16)
+
+; Packet buffers: 16 RX + 16 TX × 2048 bytes = 64KB
+e1000_rx_buffers: resb (E1000_NUM_RX_DESC * E1000_RX_BUF_SIZE)
+e1000_tx_buffers: resb (E1000_NUM_TX_DESC * E1000_TX_BUF_SIZE)
+
+; Current descriptor indices
+e1000_rx_cur:     resd 1
+e1000_tx_cur:     resd 1
+
+section .text
+
+; Helper: read E1000 MMIO register
+; eax = register offset -> eax = value
+e1000_read_reg:
+    add eax, [e1000_mmio_base]
+    mov eax, [eax]
+    ret
+
+; Helper: write E1000 MMIO register
+; eax = register offset, edx = value
+e1000_write_reg:
+    add eax, [e1000_mmio_base]
+    mov [eax], edx
+    ret
+
+; e1000_init() -> 0=success, -1=not found
+; Finds E1000 on PCI bus, configures RX/TX, enables link
+e1000_init:
+    push ebx
+    push esi
+    push edi
+    
+    ; Step 1: Find E1000 on PCI bus (vendor=0x8086, device=0x100E)
+    push dword 0x100E      ; device_id
+    push dword 0x8086      ; vendor_id
+    call pci_find_device
+    add esp, 8
+    
+    cmp eax, 0xFFFFFFFF
+    je .e1000_init_fail
+    
+    ; Save BDF for later use
+    mov ebx, eax           ; ebx = BDF (bus<<16|slot<<8|func)
+    mov dword [e1000_found], 1
+    
+    ; Step 2: Read BAR0 to get MMIO base address
+    ; BAR0 is at PCI config offset 0x10
+    mov ecx, ebx
+    shr ecx, 8
+    and ecx, 0xFF          ; slot
+    push dword 0x10        ; offset (BAR0)
+    push dword 0           ; func
+    push ecx               ; slot
+    push dword 0           ; bus
+    call pci_config_read
+    add esp, 16
+    
+    and eax, 0xFFFFFFF0    ; Mask lower 4 bits (type/prefetch flags)
+    mov [e1000_mmio_base], eax
+    
+    ; Step 3: Enable PCI bus mastering (command register offset 0x04)
+    mov ecx, ebx
+    shr ecx, 8
+    and ecx, 0xFF          ; slot
+    push dword 0x04        ; offset (Command)
+    push dword 0           ; func
+    push ecx               ; slot
+    push dword 0           ; bus
+    call pci_config_read
+    add esp, 16
+    
+    or eax, 0x07           ; Enable I/O, Memory, Bus Master
+    mov ecx, ebx
+    shr ecx, 8
+    and ecx, 0xFF
+    push eax               ; value
+    push dword 0x04        ; offset
+    push dword 0           ; func
+    push ecx               ; slot
+    push dword 0           ; bus
+    call pci_config_write
+    add esp, 20
+    
+    ; Step 4: Reset device
+    mov eax, E1000_CTRL
+    add eax, [e1000_mmio_base]
+    mov edx, [eax]
+    or edx, E1000_CTRL_RST
+    mov [eax], edx
+    
+    ; Wait for reset to complete (~10ms at 100Hz PIT)
+    push dword 2           ; 2 PIT ticks = 20ms at 100Hz
+    call sleep_ticks
+    add esp, 4
+    
+    ; Step 5: Set Link Up, disable interrupts initially
+    mov eax, E1000_IMC
+    add eax, [e1000_mmio_base]
+    mov dword [eax], 0xFFFFFFFF   ; Disable all interrupts
+    
+    mov eax, E1000_CTRL
+    add eax, [e1000_mmio_base]
+    mov edx, [eax]
+    or edx, E1000_CTRL_SLU        ; Set Link Up
+    and edx, ~E1000_CTRL_RST      ; Clear reset bit
+    mov [eax], edx
+    
+    ; Step 6: Read MAC address from RAL/RAH registers
+    mov eax, E1000_RAL
+    add eax, [e1000_mmio_base]
+    mov eax, [eax]
+    mov [e1000_mac], eax           ; Bytes 0-3
+    
+    mov eax, E1000_RAH
+    add eax, [e1000_mmio_base]
+    mov eax, [eax]
+    and eax, 0xFFFF                ; Only lower 16 bits are MAC
+    mov [e1000_mac + 4], ax        ; Bytes 4-5
+    
+    ; Step 7: Initialize RX descriptors
+    xor ecx, ecx                  ; i = 0
+.init_rx_desc:
+    cmp ecx, E1000_NUM_RX_DESC
+    jge .init_rx_done
+    
+    ; Each RX descriptor: [0:7]=buffer_addr, [8:9]=length, [10:11]=checksum, [12]=status, [13]=errors, [14:15]=special
+    mov eax, ecx
+    shl eax, 4                    ; i * 16 (descriptor size)
+    lea edi, [e1000_rx_descs + eax]
+    
+    ; Buffer address = e1000_rx_buffers + i * 2048
+    mov eax, ecx
+    shl eax, 11                   ; i * 2048
+    lea edx, [e1000_rx_buffers + eax]
+    mov [edi], edx                 ; buffer addr low
+    mov dword [edi + 4], 0         ; buffer addr high (32-bit)
+    mov dword [edi + 8], 0         ; length=0, checksum=0
+    mov dword [edi + 12], 0        ; status=0, errors=0, special=0
+    
+    inc ecx
+    jmp .init_rx_desc
+.init_rx_done:
+    
+    ; Configure RX descriptor ring
+    mov eax, E1000_RDBAL
+    add eax, [e1000_mmio_base]
+    lea edx, [e1000_rx_descs]
+    mov [eax], edx
+    
+    mov eax, E1000_RDBAH
+    add eax, [e1000_mmio_base]
+    mov dword [eax], 0             ; High 32 bits = 0
+    
+    mov eax, E1000_RDLEN
+    add eax, [e1000_mmio_base]
+    mov dword [eax], E1000_NUM_RX_DESC * 16
+    
+    mov eax, E1000_RDH
+    add eax, [e1000_mmio_base]
+    mov dword [eax], 0
+    
+    mov eax, E1000_RDT
+    add eax, [e1000_mmio_base]
+    mov dword [eax], E1000_NUM_RX_DESC - 1
+    
+    ; Enable receiver
+    mov eax, E1000_RCTL
+    add eax, [e1000_mmio_base]
+    mov edx, E1000_RCTL_EN | E1000_RCTL_BAM | E1000_RCTL_BSIZE_2048 | E1000_RCTL_SECRC
+    mov [eax], edx
+    
+    ; Step 8: Initialize TX descriptors
+    xor ecx, ecx
+.init_tx_desc:
+    cmp ecx, E1000_NUM_TX_DESC
+    jge .init_tx_done
+    
+    mov eax, ecx
+    shl eax, 4
+    lea edi, [e1000_tx_descs + eax]
+    
+    mov eax, ecx
+    shl eax, 11                   ; i * 2048
+    lea edx, [e1000_tx_buffers + eax]
+    mov [edi], edx
+    mov dword [edi + 4], 0
+    mov dword [edi + 8], 0
+    mov dword [edi + 12], 0
+    
+    inc ecx
+    jmp .init_tx_desc
+.init_tx_done:
+    
+    ; Configure TX descriptor ring
+    mov eax, E1000_TDBAL
+    add eax, [e1000_mmio_base]
+    lea edx, [e1000_tx_descs]
+    mov [eax], edx
+    
+    mov eax, E1000_TDBAH
+    add eax, [e1000_mmio_base]
+    mov dword [eax], 0
+    
+    mov eax, E1000_TDLEN
+    add eax, [e1000_mmio_base]
+    mov dword [eax], E1000_NUM_TX_DESC * 16
+    
+    mov eax, E1000_TDH
+    add eax, [e1000_mmio_base]
+    mov dword [eax], 0
+    
+    mov eax, E1000_TDT
+    add eax, [e1000_mmio_base]
+    mov dword [eax], 0
+    
+    ; Enable transmitter
+    mov eax, E1000_TCTL
+    add eax, [e1000_mmio_base]
+    mov edx, E1000_TCTL_EN | E1000_TCTL_PSP | (15 << E1000_TCTL_CT_SHIFT) | (64 << E1000_TCTL_COLD_SHIFT)
+    mov [eax], edx
+    
+    ; Initialize current indices
+    mov dword [e1000_rx_cur], 0
+    mov dword [e1000_tx_cur], 0
+    
+    ; Success
+    xor eax, eax
+    jmp .e1000_init_done
+
+.e1000_init_fail:
+    mov dword [e1000_found], 0
+    mov eax, -1
+
+.e1000_init_done:
+    pop edi
+    pop esi
+    pop ebx
+    ret
+
+; e1000_send_packet(buffer, length) -> 0=success, -1=fail
+; Copies data to TX buffer and submits descriptor
+; Args: [esp+4]=buffer ptr, [esp+8]=length
+e1000_send_packet:
+    push ebx
+    push esi
+    push edi
+    
+    cmp dword [e1000_found], 0
+    je .send_fail
+    
+    mov esi, [esp+16]      ; source buffer
+    mov ecx, [esp+20]      ; length
+    
+    ; Clamp to max buffer size
+    cmp ecx, E1000_TX_BUF_SIZE
+    jle .send_size_ok
+    mov ecx, E1000_TX_BUF_SIZE
+.send_size_ok:
+    
+    ; Get current TX descriptor index
+    mov ebx, [e1000_tx_cur]
+    
+    ; Copy packet data to TX buffer
+    mov eax, ebx
+    shl eax, 11             ; index * 2048
+    lea edi, [e1000_tx_buffers + eax]
+    push ecx
+    rep movsb                ; copy bytes
+    pop ecx
+    
+    ; Set up TX descriptor
+    mov eax, ebx
+    shl eax, 4              ; index * 16
+    lea edi, [e1000_tx_descs + eax]
+    ; [edi+0:7] = buffer addr (already set in init)
+    mov [edi + 8], cx        ; length (lower 16 bits)
+    mov byte [edi + 10], 0   ; CSO
+    mov byte [edi + 11], (E1000_TXD_CMD_EOP | E1000_TXD_CMD_IFCS | E1000_TXD_CMD_RS) ; cmd
+    mov dword [edi + 12], 0  ; status/reserved
+    
+    ; Advance TX tail
+    inc ebx
+    and ebx, (E1000_NUM_TX_DESC - 1)  ; wrap
+    mov [e1000_tx_cur], ebx
+    
+    ; Write new tail to TDT register
+    mov eax, E1000_TDT
+    add eax, [e1000_mmio_base]
+    mov [eax], ebx
+    
+    xor eax, eax            ; success
+    jmp .send_done
+
+.send_fail:
+    mov eax, -1
+.send_done:
+    pop edi
+    pop esi
+    pop ebx
+    ret
+
+; e1000_receive_packet(buffer, max_length) -> bytes received, or 0 if none
+; Args: [esp+4]=dest buffer, [esp+8]=max_length
+e1000_receive_packet:
+    push ebx
+    push esi
+    push edi
+    
+    cmp dword [e1000_found], 0
+    je .recv_none
+    
+    ; Check current RX descriptor for DD (Descriptor Done)
+    mov ebx, [e1000_rx_cur]
+    mov eax, ebx
+    shl eax, 4
+    lea esi, [e1000_rx_descs + eax]
+    
+    test byte [esi + 12], E1000_RXD_STAT_DD
+    jz .recv_none            ; No packet available
+    
+    ; Packet available! Get length
+    movzx ecx, word [esi + 8]  ; actual length
+    
+    ; Clamp to max_length
+    mov edx, [esp+20]       ; max_length
+    cmp ecx, edx
+    jle .recv_size_ok
+    mov ecx, edx
+.recv_size_ok:
+    
+    ; Copy from RX buffer to caller's buffer
+    push ecx
+    mov edi, [esp+20]       ; dest buffer (esp+16 + 4 for pushed ecx)
+    mov eax, ebx
+    shl eax, 11             ; index * 2048
+    lea esi, [e1000_rx_buffers + eax]
+    rep movsb
+    pop ecx                  ; ecx = bytes copied
+    
+    ; Clear descriptor status for reuse
+    mov eax, ebx
+    shl eax, 4
+    lea edi, [e1000_rx_descs + eax]
+    mov dword [edi + 8], 0   ; clear length/checksum
+    mov dword [edi + 12], 0  ; clear status
+    
+    ; Advance RX tail
+    mov eax, ebx
+    inc ebx
+    and ebx, (E1000_NUM_RX_DESC - 1)
+    mov [e1000_rx_cur], ebx
+    
+    ; Update RDT (old index becomes new tail)
+    push ecx
+    mov edx, eax             ; old index
+    mov eax, E1000_RDT
+    add eax, [e1000_mmio_base]
+    mov [eax], edx
+    pop ecx
+    
+    mov eax, ecx             ; return bytes received
+    jmp .recv_done
+
+.recv_none:
+    xor eax, eax
+.recv_done:
+    pop edi
+    pop esi
+    pop ebx
+    ret
+
+; e1000_get_mac(buffer) -> copies 6 bytes of MAC to buffer
+; Args: [esp+4]=dest buffer (at least 6 bytes)
+e1000_get_mac:
+    push edi
+    push esi
+    mov edi, [esp+12]       ; dest
+    lea esi, [e1000_mac]
+    mov ecx, 6
+    rep movsb
+    pop esi
+    pop edi
+    ret
+
+; e1000_is_link_up() -> 1 if link up, 0 if down
+e1000_is_link_up:
+    cmp dword [e1000_found], 0
+    je .link_down
+    mov eax, E1000_STATUS
+    add eax, [e1000_mmio_base]
+    mov eax, [eax]
+    test eax, (1 << 1)      ; LU (Link Up) bit
+    jz .link_down
+    mov eax, 1
+    ret
+.link_down:
+    xor eax, eax
+    ret
+
+; ============================================================================
 ; "HASTA LA VISTA, BABY" - End of bootloader
 ; ============================================================================
