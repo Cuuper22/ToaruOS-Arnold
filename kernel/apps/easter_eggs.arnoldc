@@ -385,3 +385,234 @@ DO IT NOW termPutChar 92
 DO IT NOW termPrintNewline
 
 HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintNeofetch - ASCII art + system info"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintNeofetch
+
+TALK TO YOURSELF "Line 1:    .--.     OS: ToaruOS-Arnold v4.0"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 118
+DO IT NOW termPutChar 52
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 48
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Line 2:   |o  o|    Kernel: ArnoldC + x86 ASM"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 75
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 67
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 43
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 120
+DO IT NOW termPutChar 56
+DO IT NOW termPutChar 54
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 77
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Line 3:   | -- |    Display: 1024x768 32bpp"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 50
+DO IT NOW termPutChar 52
+DO IT NOW termPutChar 120
+DO IT NOW termPutChar 55
+DO IT NOW termPutChar 54
+DO IT NOW termPutChar 56
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 51
+DO IT NOW termPutChar 50
+DO IT NOW termPutChar 98
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 112
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Line 4:    '--'     Net: E1000 TCP/IP"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 39
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 39
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 67
+DO IT NOW termPutChar 80
+DO IT NOW termPutChar 47
+DO IT NOW termPutChar 73
+DO IT NOW termPutChar 80
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Line 5:   /|  |\    Apps: 13 (5 games + 8 tools)"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 47
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 92
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 51
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 40
+DO IT NOW termPutChar 53
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 43
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 56
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 41
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Line 6:   / |  | \   Quote: I'll be back"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 47
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 92
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 81
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 73
+DO IT NOW termPutChar 39
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 98
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 98
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 107
+DO IT NOW termPrintNewline
+
+HASTA LA VISTA, BABY
