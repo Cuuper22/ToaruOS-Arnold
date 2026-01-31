@@ -1120,3 +1120,747 @@ DO IT NOW termPutChar 107
 DO IT NOW termPrintNewline
 
 HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintBanner - Large ASCII art ARNOLD-OS banner"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintBanner
+
+DO IT NOW termPrintNewline
+TALK TO YOURSELF "Banner line 1"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 83
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Banner line 2"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 83
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Banner line 3"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 83
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Banner line 4"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 83
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Banner line 5"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 83
+DO IT NOW termPrintNewline
+
+DO IT NOW termPrintNewline
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintLogo - Large ASCII Terminator face"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintLogo
+
+DO IT NOW termPrintNewline
+TALK TO YOURSELF "Logo line 1"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Logo line 2"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 47
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 92
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Logo line 3"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 47
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 92
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Logo line 4"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 40
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 41
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 40
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 41
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Logo line 5"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 39
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 39
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 39
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 39
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Logo line 6"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Logo line 7"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 40
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 41
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Logo line 8"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 92
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 47
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Logo line 9"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 92
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 47
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Logo line 10"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 56
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Logo line 11"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 124
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 124
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Logo line 12"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 67
+DO IT NOW termPutChar 89
+DO IT NOW termPutChar 66
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 89
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 89
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 77
+DO IT NOW termPutChar 83
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Logo line 13"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 73
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 56
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 77
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 49
+DO IT NOW termPrintNewline
+
+DO IT NOW termPrintNewline
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintColors - Color test display"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintColors
+
+TALK TO YOURSELF "Color line 1"
+DO IT NOW termPutChar 67
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 58
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Color line 2"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 91
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 93
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 68
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Color line 3"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 91
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 93
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 71
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 78
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Color line 4"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 91
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 93
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 66
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 85
+DO IT NOW termPutChar 69
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Color line 5"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 91
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 93
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 67
+DO IT NOW termPutChar 89
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 78
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Color line 6"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 91
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 93
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 89
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 87
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Color line 7"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 91
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 93
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 77
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 71
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 65
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Color line 8"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 91
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 93
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 87
+DO IT NOW termPutChar 72
+DO IT NOW termPutChar 73
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 69
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Color line 9"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 91
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 61
+DO IT NOW termPutChar 93
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 71
+DO IT NOW termPutChar 82
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 89
+DO IT NOW termPrintNewline
+
+HASTA LA VISTA, BABY
