@@ -13,9 +13,12 @@ This is a real, bootable operating system kernel that provides:
 - 🎮 **5 playable games** (Snake, Pong, Breakout, Chopper, Skynet Defense)
 - 📟 **Terminal emulator** with keyboard input and command prompt
 - 🧮 **Calculator app** with button grid UI
+- 📝 **Text editor** with typing, enter, backspace, cursor blink
+- 🎨 **Settings app** with 5 Arnold movie color themes
+- 📁 **File manager** with virtual filesystem navigation
 - ℹ️ **About dialog** with T-800 skull icon
 
-All written in ~2000 lines of ArnoldC, compiled to x86 assembly, running directly on hardware (or QEMU).
+All written in ~3000 lines of ArnoldC, compiled to x86 assembly, running directly on hardware (or QEMU).
 
 ## Screenshots
 
@@ -37,6 +40,15 @@ Green-on-black terminal with `ARNOLD-OS>` prompt, full a-z/0-9 keyboard mapping 
 
 ### Calculator
 4×4 button grid: gray number buttons, orange operators, blue equals, green LED display (key: 7)
+
+### Settings
+5 Arnold movie color themes: Classic Teal, Terminator Red, Predator Green, Total Recall Mars, Conan Gold (key: 9)
+
+### Text Editor
+80×32 character grid with dark blue theme, full keyboard input, enter/backspace, cursor blink (key: 0)
+
+### File Manager
+Virtual filesystem with directory navigation, [D]/[F] indicators, selection highlighting (key: F)
 
 ### About
 Dialog with T-800 pixel art skull, version info, "I'll be back." quote (key: 8)
