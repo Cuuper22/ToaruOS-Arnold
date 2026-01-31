@@ -387,6 +387,261 @@ DO IT NOW termPrintNewline
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintTop - Fake process list (Arnold-themed)"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintTop
+
+TALK TO YOURSELF "PID  NAME            CPU  MEM"
+DO IT NOW termPutChar 80
+DO IT NOW termPutChar 73
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 77
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 67
+DO IT NOW termPutChar 80
+DO IT NOW termPutChar 85
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 77
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 77
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  1  kernel          42%  64K"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 107
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 52
+DO IT NOW termPutChar 50
+DO IT NOW termPutChar 37
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 54
+DO IT NOW termPutChar 52
+DO IT NOW termPutChar 75
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  2  desktop_gui     28%  32K"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 50
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 107
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 50
+DO IT NOW termPutChar 56
+DO IT NOW termPutChar 37
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 51
+DO IT NOW termPutChar 50
+DO IT NOW termPutChar 75
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  3  terminal        12%  16K"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 51
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 50
+DO IT NOW termPutChar 37
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 54
+DO IT NOW termPutChar 75
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  4  e1000_nic        8%   8K"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 52
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 56
+DO IT NOW termPutChar 37
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 56
+DO IT NOW termPutChar 75
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  5  skynet_ai        5%   4K"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 53
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 107
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 53
+DO IT NOW termPutChar 37
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 52
+DO IT NOW termPutChar 75
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  6  judgement_day    3%   2K"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 54
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 106
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 95
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 51
+DO IT NOW termPutChar 37
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 50
+DO IT NOW termPutChar 75
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "  7  idle             2%   1K"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 55
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 50
+DO IT NOW termPutChar 37
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 75
+DO IT NOW termPrintNewline
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  termPrintShutdown - Dramatic shutdown sequence"
 TALK TO YOURSELF "============================================================================"
 LISTEN TO ME VERY CAREFULLY termPrintShutdown
