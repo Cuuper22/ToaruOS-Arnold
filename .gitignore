@@ -4,11 +4,16 @@ build/*.bin
 build/*.elf
 build/*.asm
 build/*.log
+build/*.ppm
+build/serial.log
 build/toaruos-arnold*
 build/gen/
+build/demo_frames/
+build/frames/
 
 # Temporary/test files
 tmpclaude-*-cwd
+tmpclaude-*
 test_*.png
 test_*.ppm
 
