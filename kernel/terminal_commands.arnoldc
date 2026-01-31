@@ -556,6 +556,244 @@ DO IT NOW termPutChar 102
 DO IT NOW termPutChar 111
 DO IT NOW termPrintNewline
 
+TALK TO YOURSELF "  sysinfo  - system info"
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 102
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 102
+DO IT NOW termPutChar 111
+DO IT NOW termPrintNewline
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  termPrintSysinfo - Show system information"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY termPrintSysinfo
+
+TALK TO YOURSELF "OS name"
+DO IT NOW termPutChar 84
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 79
+DO IT NOW termPutChar 83
+DO IT NOW termPutChar 45
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 118
+DO IT NOW termPutChar 52
+DO IT NOW termPutChar 46
+DO IT NOW termPutChar 48
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Uptime: X ticks"
+DO IT NOW termPutChar 85
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+
+HEY CHRISTMAS TREE sysTicks
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET YOUR ASS TO MARS sysTicks
+DO IT NOW get_timer_ticks
+
+TALK TO YOURSELF "Convert ticks to seconds (18 ticks per second approx)"
+HEY CHRISTMAS TREE sysSecs
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER sysSecs
+HERE IS MY INVITATION sysTicks
+HE HAD TO SPLIT 18
+ENOUGH TALK
+
+DO IT NOW termPrintDecimal sysSecs
+DO IT NOW termPutChar 115
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Kernel: 159KB ELF, 180+ functions"
+DO IT NOW termPutChar 75
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 53
+DO IT NOW termPutChar 57
+DO IT NOW termPutChar 75
+DO IT NOW termPutChar 66
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 69
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 70
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Display: 1024x768 32bpp"
+DO IT NOW termPutChar 68
+DO IT NOW termPutChar 105
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 49
+DO IT NOW termPutChar 48
+DO IT NOW termPutChar 50
+DO IT NOW termPutChar 52
+DO IT NOW termPutChar 120
+DO IT NOW termPutChar 55
+DO IT NOW termPutChar 54
+DO IT NOW termPutChar 56
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 51
+DO IT NOW termPutChar 50
+DO IT NOW termPutChar 98
+DO IT NOW termPutChar 112
+DO IT NOW termPutChar 112
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Network status"
+DO IT NOW termPutChar 78
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+
+HEY CHRISTMAS TREE sysNet
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET YOUR ASS TO MARS sysNet
+DO IT NOW net_is_available
+
+BECAUSE I'M GOING TO SAY PLEASE sysNet
+    TALK TO YOURSELF "E1000 Up"
+    DO IT NOW termPutChar 69
+    DO IT NOW termPutChar 49
+    DO IT NOW termPutChar 48
+    DO IT NOW termPutChar 48
+    DO IT NOW termPutChar 48
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 85
+    DO IT NOW termPutChar 112
+BULLSHIT
+    TALK TO YOURSELF "No NIC"
+    DO IT NOW termPutChar 78
+    DO IT NOW termPutChar 111
+    DO IT NOW termPutChar 32
+    DO IT NOW termPutChar 78
+    DO IT NOW termPutChar 73
+    DO IT NOW termPutChar 67
+YOU HAVE NO RESPECT FOR LOGIC
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Language"
+DO IT NOW termPutChar 76
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 103
+DO IT NOW termPutChar 58
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 65
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 67
+DO IT NOW termPrintNewline
+
+TALK TO YOURSELF "Arnold quote"
+DO IT NOW termPutChar 34
+DO IT NOW termPutChar 73
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 104
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 44
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 98
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 115
+DO IT NOW termPutChar 44
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 97
+DO IT NOW termPutChar 110
+DO IT NOW termPutChar 100
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 117
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 32
+DO IT NOW termPutChar 109
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 116
+DO IT NOW termPutChar 111
+DO IT NOW termPutChar 114
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 121
+DO IT NOW termPutChar 99
+DO IT NOW termPutChar 108
+DO IT NOW termPutChar 101
+DO IT NOW termPutChar 34
+DO IT NOW termPrintNewline
+
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
@@ -645,7 +883,7 @@ BECAUSE I'M GOING TO SAY PLEASE wNetOK
             GET YOUR ASS TO MARS wCh
             DO IT NOW net_wget_get_byte wIdx
 
-            TALK TO YOURSELF "Handle CR (13) and LF (10) for newlines"
+            TALK TO YOURSELF "Handle CR/LF/HTML tags"
             HEY CHRISTMAS TREE wIsCR
             THIS IS A WARRIOR
             YOU SET US UP 0
@@ -662,13 +900,81 @@ BECAUSE I'M GOING TO SAY PLEASE wNetOK
             YOU ARE NOT YOU YOU ARE ME 10
             ENOUGH TALK
 
-            BECAUSE I'M GOING TO SAY PLEASE wIsLF
-                DO IT NOW termPrintNewline
+            TALK TO YOURSELF "Check for HTML tag open <"
+            HEY CHRISTMAS TREE wIsTag
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER wIsTag
+            HERE IS MY INVITATION wCh
+            YOU ARE NOT YOU YOU ARE ME 60
+            ENOUGH TALK
+
+            TALK TO YOURSELF "If < found, skip until > (62)"
+            BECAUSE I'M GOING TO SAY PLEASE wIsTag
+                HEY CHRISTMAS TREE wSkip
+                THIS IS A WARRIOR
+                YOU SET US UP 1
+                STICK AROUND wSkip
+                    GET TO THE CHOPPER wIdx
+                    HERE IS MY INVITATION wIdx
+                    GET UP 1
+                    ENOUGH TALK
+
+                    HEY CHRISTMAS TREE wTagCh
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET YOUR ASS TO MARS wTagCh
+                    DO IT NOW net_wget_get_byte wIdx
+
+                    HEY CHRISTMAS TREE wIsClose
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER wIsClose
+                    HERE IS MY INVITATION wTagCh
+                    YOU ARE NOT YOU YOU ARE ME 62
+                    ENOUGH TALK
+
+                    BECAUSE I'M GOING TO SAY PLEASE wIsClose
+                        GET TO THE CHOPPER wSkip
+                        HERE IS MY INVITATION 0
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+
+                    TALK TO YOURSELF "Also stop if we hit end of data"
+                    HEY CHRISTMAS TREE wPastEnd
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER wPastEnd
+                    HERE IS MY INVITATION wIdx
+                    LET OFF SOME STEAM BENNET wLen
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE wPastEnd
+                        GET TO THE CHOPPER wSkip
+                        HERE IS MY INVITATION 0
+                        ENOUGH TALK
+                    YOU HAVE NO RESPECT FOR LOGIC
+                CHILL
             BULLSHIT
-                BECAUSE I'M GOING TO SAY PLEASE wIsCR
-                    TALK TO YOURSELF "Skip CR, LF handles newline"
+                BECAUSE I'M GOING TO SAY PLEASE wIsLF
+                    DO IT NOW termPrintNewline
                 BULLSHIT
-                    DO IT NOW termPutChar wCh
+                    BECAUSE I'M GOING TO SAY PLEASE wIsCR
+                        TALK TO YOURSELF "Skip CR, LF handles newline"
+                    BULLSHIT
+                        TALK TO YOURSELF "Skip null bytes"
+                        HEY CHRISTMAS TREE wIsNull
+                        THIS IS A WARRIOR
+                        YOU SET US UP 0
+                        GET TO THE CHOPPER wIsNull
+                        HERE IS MY INVITATION wCh
+                        YOU ARE NOT YOU YOU ARE ME 0
+                        ENOUGH TALK
+                        BECAUSE I'M GOING TO SAY PLEASE wIsNull
+                            TALK TO YOURSELF "skip null"
+                        BULLSHIT
+                            DO IT NOW termPutChar wCh
+                        YOU HAVE NO RESPECT FOR LOGIC
+                    YOU HAVE NO RESPECT FOR LOGIC
                 YOU HAVE NO RESPECT FOR LOGIC
             YOU HAVE NO RESPECT FOR LOGIC
 
@@ -1755,6 +2061,30 @@ BECAUSE I'M GOING TO SAY PLEASE isI
     ENOUGH TALK
     BECAUSE I'M GOING TO SAY PLEASE isIF
         DO IT NOW termPrintIfconfig
+        GET TO THE CHOPPER cmdHandled
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+TALK TO YOURSELF "=== Check: sysinfo (s=115, y=121) ==="
+HEY CHRISTMAS TREE isSy
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isSy
+HERE IS MY INVITATION c0
+YOU ARE NOT YOU YOU ARE ME 115
+ENOUGH TALK
+BECAUSE I'M GOING TO SAY PLEASE isSy
+    HEY CHRISTMAS TREE isSy2
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isSy2
+    HERE IS MY INVITATION c1
+    YOU ARE NOT YOU YOU ARE ME 121
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isSy2
+        DO IT NOW termPrintSysinfo
         GET TO THE CHOPPER cmdHandled
         HERE IS MY INVITATION 1
         ENOUGH TALK
