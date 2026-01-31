@@ -1,0 +1,695 @@
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  WINDOW MANAGER - Basic overlapping window system"
+TALK TO YOURSELF "  Max 8 windows with title bars, close buttons, z-order"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "Window manager constants"
+LET ME TELL YOU SOMETHING MAX_WINDOWS 8
+LET ME TELL YOU SOMETHING WM_TITLE_H 24
+LET ME TELL YOU SOMETHING WM_BORDER 2
+LET ME TELL YOU SOMETHING WM_CLOSE_SIZE 18
+
+LET ME TELL YOU SOMETHING WM_COLOR_TITLE 0x00C0C0C0
+LET ME TELL YOU SOMETHING WM_COLOR_TITLE_ACTIVE 0x000060C0
+LET ME TELL YOU SOMETHING WM_COLOR_BORDER 0x00404040
+LET ME TELL YOU SOMETHING WM_COLOR_CLIENT 0x00FFFFFF
+LET ME TELL YOU SOMETHING WM_COLOR_CLOSE 0x00FF0000
+LET ME TELL YOU SOMETHING WM_COLOR_WHITE 0x00FFFFFF
+LET ME TELL YOU SOMETHING WM_COLOR_BLACK 0x00000000
+
+TALK TO YOURSELF "Window arrays (8 slots)"
+HEY CHRISTMAS TREE wmX
+LINE THEM UP
+THIS IS A WARRIOR
+HOW MANY 8
+PUT THEM IN LINE
+0 0 0 0 0 0 0 0
+
+HEY CHRISTMAS TREE wmY
+LINE THEM UP
+THIS IS A WARRIOR
+HOW MANY 8
+PUT THEM IN LINE
+0 0 0 0 0 0 0 0
+
+HEY CHRISTMAS TREE wmW
+LINE THEM UP
+THIS IS A WARRIOR
+HOW MANY 8
+PUT THEM IN LINE
+200 200 200 200 200 200 200 200
+
+HEY CHRISTMAS TREE wmH
+LINE THEM UP
+THIS IS A WARRIOR
+HOW MANY 8
+PUT THEM IN LINE
+150 150 150 150 150 150 150 150
+
+HEY CHRISTMAS TREE wmActive
+LINE THEM UP
+THIS IS A WARRIOR
+HOW MANY 8
+PUT THEM IN LINE
+0 0 0 0 0 0 0 0
+
+HEY CHRISTMAS TREE wmZOrder
+LINE THEM UP
+THIS IS A WARRIOR
+HOW MANY 8
+PUT THEM IN LINE
+0 1 2 3 4 5 6 7
+
+HEY CHRISTMAS TREE wmNextZ
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE wmFocused
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  createWindow(x, y, w, h) - Create a new window, return ID"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY createWindow
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE newX
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE newY
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE newW
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE newH
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE slot
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE found
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueSearch
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+STICK AROUND continueSearch
+    HEY CHRISTMAS TREE isInactive
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isInactive
+    HERE IS MY INVITATION WHICH ONE wmActive slot
+    YOU ARE NOT YOU YOU ARE ME 0
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE isInactive
+        GET TO THE CHOPPER WHICH ONE wmX slot
+        HERE IS MY INVITATION newX
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER WHICH ONE wmY slot
+        HERE IS MY INVITATION newY
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER WHICH ONE wmW slot
+        HERE IS MY INVITATION newW
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER WHICH ONE wmH slot
+        HERE IS MY INVITATION newH
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER WHICH ONE wmActive slot
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER WHICH ONE wmZOrder slot
+        HERE IS MY INVITATION wmNextZ
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER wmNextZ
+        HERE IS MY INVITATION wmNextZ
+        GET UP 1
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER wmFocused
+        HERE IS MY INVITATION slot
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER found
+        HERE IS MY INVITATION 1
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER continueSearch
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    BECAUSE I'M GOING TO SAY PLEASE continueSearch
+        GET TO THE CHOPPER slot
+        HERE IS MY INVITATION slot
+        GET UP 1
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER continueSearch
+        HERE IS MY INVITATION slot
+        YOU'RE NOT BIG ENOUGH MAX_WINDOWS
+        ENOUGH TALK
+    YOU HAVE NO RESPECT FOR LOGIC
+CHILL
+
+I'LL BE BACK slot
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  closeWindow(id) - Close a window"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY closeWindow
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE winId
+
+GET TO THE CHOPPER WHICH ONE wmActive winId
+HERE IS MY INVITATION 0
+ENOUGH TALK
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  drawWindow(fbAddr, fbPitch, id) - Draw a single window"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawWindow
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE winId
+
+HEY CHRISTMAS TREE wx
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER wx
+HERE IS MY INVITATION WHICH ONE wmX winId
+ENOUGH TALK
+
+HEY CHRISTMAS TREE wy
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER wy
+HERE IS MY INVITATION WHICH ONE wmY winId
+ENOUGH TALK
+
+HEY CHRISTMAS TREE ww
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER ww
+HERE IS MY INVITATION WHICH ONE wmW winId
+ENOUGH TALK
+
+HEY CHRISTMAS TREE wh
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER wh
+HERE IS MY INVITATION WHICH ONE wmH winId
+ENOUGH TALK
+
+TALK TO YOURSELF "Draw window border"
+DO IT NOW fillRect fbAddr fbPitch wx wy ww wh WM_COLOR_BORDER
+
+TALK TO YOURSELF "Draw title bar"
+HEY CHRISTMAS TREE titleX
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER titleX
+HERE IS MY INVITATION wx
+GET UP WM_BORDER
+ENOUGH TALK
+
+HEY CHRISTMAS TREE titleY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER titleY
+HERE IS MY INVITATION wy
+GET UP WM_BORDER
+ENOUGH TALK
+
+HEY CHRISTMAS TREE titleW
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER titleW
+HERE IS MY INVITATION ww
+GET DOWN WM_BORDER
+GET DOWN WM_BORDER
+ENOUGH TALK
+
+TALK TO YOURSELF "Use active color for focused window"
+HEY CHRISTMAS TREE isFocused
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER isFocused
+HERE IS MY INVITATION wmFocused
+YOU ARE NOT YOU YOU ARE ME winId
+ENOUGH TALK
+
+HEY CHRISTMAS TREE titleColor
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER titleColor
+HERE IS MY INVITATION WM_COLOR_TITLE
+ENOUGH TALK
+
+BECAUSE I'M GOING TO SAY PLEASE isFocused
+    GET TO THE CHOPPER titleColor
+    HERE IS MY INVITATION WM_COLOR_TITLE_ACTIVE
+    ENOUGH TALK
+YOU HAVE NO RESPECT FOR LOGIC
+
+DO IT NOW fillRect fbAddr fbPitch titleX titleY titleW WM_TITLE_H titleColor
+
+TALK TO YOURSELF "Draw client area"
+HEY CHRISTMAS TREE clientX
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER clientX
+HERE IS MY INVITATION wx
+GET UP WM_BORDER
+ENOUGH TALK
+
+HEY CHRISTMAS TREE clientY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER clientY
+HERE IS MY INVITATION wy
+GET UP WM_BORDER
+GET UP WM_TITLE_H
+ENOUGH TALK
+
+HEY CHRISTMAS TREE clientW
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER clientW
+HERE IS MY INVITATION ww
+GET DOWN WM_BORDER
+GET DOWN WM_BORDER
+ENOUGH TALK
+
+HEY CHRISTMAS TREE clientH
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER clientH
+HERE IS MY INVITATION wh
+GET DOWN WM_BORDER
+GET DOWN WM_BORDER
+GET DOWN WM_TITLE_H
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddr fbPitch clientX clientY clientW clientH WM_COLOR_CLIENT
+
+TALK TO YOURSELF "Draw close button [X] on right side of title bar"
+HEY CHRISTMAS TREE closeX
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER closeX
+HERE IS MY INVITATION wx
+GET UP ww
+GET DOWN WM_BORDER
+GET DOWN WM_CLOSE_SIZE
+GET DOWN 2
+ENOUGH TALK
+
+HEY CHRISTMAS TREE closeY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER closeY
+HERE IS MY INVITATION wy
+GET UP 3
+ENOUGH TALK
+
+DO IT NOW fillRect fbAddr fbPitch closeX closeY WM_CLOSE_SIZE WM_CLOSE_SIZE WM_COLOR_CLOSE
+
+TALK TO YOURSELF "Draw X on close button"
+HEY CHRISTMAS TREE xCharX
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER xCharX
+HERE IS MY INVITATION closeX
+GET UP 5
+ENOUGH TALK
+
+HEY CHRISTMAS TREE xCharY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER xCharY
+HERE IS MY INVITATION closeY
+GET UP 4
+ENOUGH TALK
+
+DO IT NOW drawChar fbAddr fbPitch xCharX xCharY 88 WM_COLOR_WHITE WM_COLOR_CLOSE
+
+TALK TO YOURSELF "Draw window ID in title"
+HEY CHRISTMAS TREE idCharX
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER idCharX
+HERE IS MY INVITATION wx
+GET UP 8
+ENOUGH TALK
+
+HEY CHRISTMAS TREE idCharY
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER idCharY
+HERE IS MY INVITATION wy
+GET UP 6
+ENOUGH TALK
+
+HEY CHRISTMAS TREE idChar
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER idChar
+HERE IS MY INVITATION winId
+GET UP 48
+ENOUGH TALK
+
+DO IT NOW drawChar fbAddr fbPitch idCharX idCharY idChar WM_COLOR_BLACK titleColor
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  drawAllWindows(fbAddr, fbPitch) - Draw windows back-to-front by z-order"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawAllWindows
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+HEY CHRISTMAS TREE z
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueZ
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+STICK AROUND continueZ
+    HEY CHRISTMAS TREE wi
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    
+    HEY CHRISTMAS TREE continueWi
+    THIS IS A WARRIOR
+    YOU SET US UP 1
+    
+    STICK AROUND continueWi
+        HEY CHRISTMAS TREE isActiveWin
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isActiveWin
+        HERE IS MY INVITATION WHICH ONE wmActive wi
+        YOU ARE NOT YOU YOU ARE ME 1
+        ENOUGH TALK
+        
+        BECAUSE I'M GOING TO SAY PLEASE isActiveWin
+            HEY CHRISTMAS TREE hasZ
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER hasZ
+            HERE IS MY INVITATION WHICH ONE wmZOrder wi
+            YOU ARE NOT YOU YOU ARE ME z
+            ENOUGH TALK
+            
+            BECAUSE I'M GOING TO SAY PLEASE hasZ
+                DO IT NOW drawWindow fbAddr fbPitch wi
+            YOU HAVE NO RESPECT FOR LOGIC
+        YOU HAVE NO RESPECT FOR LOGIC
+        
+        GET TO THE CHOPPER wi
+        HERE IS MY INVITATION wi
+        GET UP 1
+        ENOUGH TALK
+        
+        GET TO THE CHOPPER continueWi
+        HERE IS MY INVITATION wi
+        YOU'RE NOT BIG ENOUGH MAX_WINDOWS
+        ENOUGH TALK
+    CHILL
+    
+    GET TO THE CHOPPER z
+    HERE IS MY INVITATION z
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueZ
+    HERE IS MY INVITATION z
+    YOU'RE NOT BIG ENOUGH wmNextZ
+    ENOUGH TALK
+CHILL
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  handleWindowClick(mx, my) - Check if click hit a window"
+TALK TO YOURSELF "  Returns: 0=miss, 1=title bar hit, 2=close button hit"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY handleWindowClick
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE mx
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE my
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE ci
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE continueCi
+THIS IS A WARRIOR
+YOU SET US UP 1
+
+STICK AROUND continueCi
+    HEY CHRISTMAS TREE isActiveC
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isActiveC
+    HERE IS MY INVITATION WHICH ONE wmActive ci
+    YOU ARE NOT YOU YOU ARE ME 1
+    ENOUGH TALK
+    
+    BECAUSE I'M GOING TO SAY PLEASE isActiveC
+        HEY CHRISTMAS TREE cx
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER cx
+        HERE IS MY INVITATION WHICH ONE wmX ci
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE cy
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER cy
+        HERE IS MY INVITATION WHICH ONE wmY ci
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE cw
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER cw
+        HERE IS MY INVITATION WHICH ONE wmW ci
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE ch
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER ch
+        HERE IS MY INVITATION WHICH ONE wmH ci
+        ENOUGH TALK
+        
+        TALK TO YOURSELF "Check if click is inside window bounds"
+        HEY CHRISTMAS TREE inBoundsX1
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER inBoundsX1
+        HERE IS MY INVITATION mx
+        YOU'RE AT LEAST AS BIG AS cx
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE winRight
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER winRight
+        HERE IS MY INVITATION cx
+        GET UP cw
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE inBoundsX2
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER inBoundsX2
+        HERE IS MY INVITATION mx
+        YOU'RE NOT BIG ENOUGH winRight
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE inBoundsY1
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER inBoundsY1
+        HERE IS MY INVITATION my
+        YOU'RE AT LEAST AS BIG AS cy
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE winBottom
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER winBottom
+        HERE IS MY INVITATION cy
+        GET UP ch
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE inBoundsY2
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER inBoundsY2
+        HERE IS MY INVITATION my
+        YOU'RE NOT BIG ENOUGH winBottom
+        ENOUGH TALK
+        
+        HEY CHRISTMAS TREE inBounds
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER inBounds
+        HERE IS MY INVITATION inBoundsX1
+        KNOCK KNOCK inBoundsX2
+        KNOCK KNOCK inBoundsY1
+        KNOCK KNOCK inBoundsY2
+        ENOUGH TALK
+        
+        BECAUSE I'M GOING TO SAY PLEASE inBounds
+            TALK TO YOURSELF "Click is in window - check close button"
+            HEY CHRISTMAS TREE closeBtnX
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER closeBtnX
+            HERE IS MY INVITATION cx
+            GET UP cw
+            GET DOWN WM_BORDER
+            GET DOWN WM_CLOSE_SIZE
+            GET DOWN 2
+            ENOUGH TALK
+            
+            HEY CHRISTMAS TREE closeBtnY
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER closeBtnY
+            HERE IS MY INVITATION cy
+            GET UP 3
+            ENOUGH TALK
+            
+            HEY CHRISTMAS TREE closeBtnRight
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER closeBtnRight
+            HERE IS MY INVITATION closeBtnX
+            GET UP WM_CLOSE_SIZE
+            ENOUGH TALK
+            
+            HEY CHRISTMAS TREE closeBtnBottom
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER closeBtnBottom
+            HERE IS MY INVITATION closeBtnY
+            GET UP WM_CLOSE_SIZE
+            ENOUGH TALK
+            
+            HEY CHRISTMAS TREE inCloseX
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER inCloseX
+            HERE IS MY INVITATION mx
+            YOU'RE AT LEAST AS BIG AS closeBtnX
+            ENOUGH TALK
+            
+            HEY CHRISTMAS TREE inCloseX2
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER inCloseX2
+            HERE IS MY INVITATION mx
+            YOU'RE NOT BIG ENOUGH closeBtnRight
+            ENOUGH TALK
+            
+            HEY CHRISTMAS TREE inCloseY
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER inCloseY
+            HERE IS MY INVITATION my
+            YOU'RE AT LEAST AS BIG AS closeBtnY
+            ENOUGH TALK
+            
+            HEY CHRISTMAS TREE inCloseY2
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER inCloseY2
+            HERE IS MY INVITATION my
+            YOU'RE NOT BIG ENOUGH closeBtnBottom
+            ENOUGH TALK
+            
+            HEY CHRISTMAS TREE inClose
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER inClose
+            HERE IS MY INVITATION inCloseX
+            KNOCK KNOCK inCloseX2
+            KNOCK KNOCK inCloseY
+            KNOCK KNOCK inCloseY2
+            ENOUGH TALK
+            
+            BECAUSE I'M GOING TO SAY PLEASE inClose
+                DO IT NOW closeWindow ci
+                I'LL BE BACK 2
+            YOU HAVE NO RESPECT FOR LOGIC
+            
+            TALK TO YOURSELF "Check if in title bar"
+            HEY CHRISTMAS TREE titleBottom
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER titleBottom
+            HERE IS MY INVITATION cy
+            GET UP WM_TITLE_H
+            ENOUGH TALK
+            
+            HEY CHRISTMAS TREE inTitle
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER inTitle
+            HERE IS MY INVITATION my
+            YOU'RE NOT BIG ENOUGH titleBottom
+            ENOUGH TALK
+            
+            BECAUSE I'M GOING TO SAY PLEASE inTitle
+                GET TO THE CHOPPER wmFocused
+                HERE IS MY INVITATION ci
+                ENOUGH TALK
+                I'LL BE BACK 1
+            YOU HAVE NO RESPECT FOR LOGIC
+            
+            TALK TO YOURSELF "Click in client area"
+            GET TO THE CHOPPER wmFocused
+            HERE IS MY INVITATION ci
+            ENOUGH TALK
+            I'LL BE BACK 3
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+    
+    GET TO THE CHOPPER ci
+    HERE IS MY INVITATION ci
+    GET UP 1
+    ENOUGH TALK
+    
+    GET TO THE CHOPPER continueCi
+    HERE IS MY INVITATION ci
+    YOU'RE NOT BIG ENOUGH MAX_WINDOWS
+    ENOUGH TALK
+CHILL
+
+I'LL BE BACK 0
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  End of Window Manager Module"
+TALK TO YOURSELF "============================================================================"

@@ -1805,6 +1805,23 @@ STICK AROUND @NO PROBLEMO
                 ENOUGH TALK
                 DO IT NOW launchGame fbAddress fbPitch currentMode
             YOU HAVE NO RESPECT FOR LOGIC
+            
+            TALK TO YOURSELF "W=Open test window (scancode 0x11)"
+            HEY CHRISTMAS TREE isWKey
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER isWKey
+            HERE IS MY INVITATION scancode
+            YOU ARE NOT YOU YOU ARE ME 0x11
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE isWKey
+                HEY CHRISTMAS TREE newWin
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET YOUR ASS TO MARS newWin
+                DO IT NOW createWindow 100 100 300 200
+                DO IT NOW drawAllWindows fbAddress fbPitch
+            YOU HAVE NO RESPECT FOR LOGIC
         YOU HAVE NO RESPECT FOR LOGIC
     
         TALK TO YOURSELF "Handle ESC key to return to desktop"
