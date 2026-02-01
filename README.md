@@ -35,28 +35,40 @@ This is a real, bootable operating system kernel that provides:
 - ⏰ **Live desktop clock** — HH:MM:SS + MM/DD/YY in large centered display, ticks every second
 - 💀 **Visual shutdown** — Reverse loading bar + "Hasta la vista, baby." in giant red text, then halt
 
-All written in **21,000+ lines** of ArnoldC + x86 assembly across **22 modules**, compiled to a **212KB ELF** with **184 functions**, running directly on bare metal x86 (or QEMU).
+All written in **22,000+ lines** of ArnoldC + **3,000 lines** of x86 assembly across **22 modules**, compiled to a **213KB ELF** with **185 ArnoldC functions + 108 native assembly routines**, running directly on bare metal x86 (or QEMU).
+
+**75 commits** • **36 terminal commands** • **5 games** • **6 desktop apps** • **TCP/IP networking**
+
+📹 **[Demo Video](build/demo.mp4)** — 54-second tour of every feature
 
 ## Screenshots
 
-### Desktop
-The main desktop with teal background, application icons, menu bar, and ARNOLD taskbar button.
+### Boot → Login → Desktop
+![Boot Splash](screenshots/01-boot-splash.png)
+![Login Screen](screenshots/02-login-screen.png)
+![Desktop](screenshots/03-desktop.png)
 
-### Window Manager
-Multiple overlapping windows with blue (active) and gray (inactive) title bars, red close buttons, and numbered taskbar buttons.
+### Terminal (35 commands)
+![Neofetch](screenshots/04-terminal-neofetch.png)
+![Help](screenshots/05-terminal-help.png)
 
-### Games
-- **Snake** — Classic snake on a navy grid (key: 2)
-- **Pong** — Two-paddle pong (key: 3)
-- **Breakout** — Rainbow brick rows with paddle and ball (key: 4)
-- **Chopper** — "GET TO THE CHOPPER!" jungle obstacle game (key: 5)
-- **Skynet Defense** — Turret defense with projectiles (key: 6)
+### Games in Windows
+All 5 games render inside floating windows with the desktop visible behind.
 
-### Terminal
-Green-on-black terminal with `ARNOLD-OS>` prompt, 35 commands (key: 1)
+![Snake](screenshots/06-snake-windowed.png)
+![Chopper](screenshots/07-chopper-windowed.png)
+![Skynet](screenshots/08-skynet-windowed.png)
 
-### Start Menu
-Tab key opens a dark popup above the ARNOLD taskbar button, listing all apps and games with keyboard shortcuts.
+### Desktop Features
+![Clock Widget](screenshots/13-clock-widget.png)
+![Start Menu](screenshots/12-start-menu.png)
+![Context Menu](screenshots/11-context-menu.png)
+![Settings Themes](screenshots/10-settings-themes.png)
+
+### Networking & Easter Eggs
+![wget](screenshots/16-wget.png)
+![Cowsay](screenshots/14-cowsay.png)
+![Shutdown](screenshots/15-shutdown.png)
 
 ### Neofetch
 ```
