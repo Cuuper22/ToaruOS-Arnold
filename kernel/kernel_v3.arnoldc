@@ -471,6 +471,10 @@ HEY CHRISTMAS TREE shutdownFlag
 THIS IS A WARRIOR
 YOU SET US UP 0
 
+HEY CHRISTMAS TREE rebootFlag
+THIS IS A WARRIOR
+YOU SET US UP 0
+
 HEY CHRISTMAS TREE contextMenuOpen
 THIS IS A WARRIOR
 YOU SET US UP 0
@@ -4664,6 +4668,18 @@ STICK AROUND @NO PROBLEMO
     TALK TO YOURSELF "Check if shutdown was requested"
     BECAUSE I'M GOING TO SAY PLEASE shutdownFlag
         DO IT NOW runVisualShutdown fbAddress fbPitch
+    YOU HAVE NO RESPECT FOR LOGIC
+
+    TALK TO YOURSELF "Check if reboot was requested"
+    BECAUSE I'M GOING TO SAY PLEASE rebootFlag
+        GET TO THE CHOPPER rebootFlag
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        GET TO THE CHOPPER currentMode
+        HERE IS MY INVITATION 0
+        ENOUGH TALK
+        DO IT NOW drawBootSplash fbAddress fbPitch
+        DO IT NOW drawDesktop fbAddress fbPitch
     YOU HAVE NO RESPECT FOR LOGIC
 
     TALK TO YOURSELF "Update desktop clock if on desktop"
