@@ -1409,6 +1409,74 @@ draw_arrow_cursor:
     pop ebx
     ret
 
+; ================================================================
+; drawHLine(fbAddr, pitch, x, y, width, color)
+; Draws a horizontal line of pixels using rep stosd
+; After push ebp: [ebp+8]=fb, [ebp+12]=pitch, [ebp+16]=x, [ebp+20]=y, [ebp+24]=width, [ebp+28]=color
+; ================================================================
+global drawHLine
+drawHLine:
+    push ebp
+    mov ebp, esp
+    push edi
+    push ecx
+
+    mov edi, [ebp+8]       ; fbAddr
+    mov eax, [ebp+20]      ; y
+    imul eax, [ebp+12]     ; y * pitch
+    add edi, eax
+    mov eax, [ebp+16]      ; x
+    shl eax, 2             ; x * 4
+    add edi, eax            ; edi = start pixel
+
+    mov ecx, [ebp+24]      ; width
+    mov eax, [ebp+28]      ; color
+    rep stosd
+
+    pop ecx
+    pop edi
+    pop ebp
+    ret
+
+; ================================================================
+; drawVLine(fbAddr, pitch, x, y, height, color)
+; Draws a vertical line of pixels
+; ================================================================
+global drawVLine
+drawVLine:
+    push ebp
+    mov ebp, esp
+    push edi
+    push esi
+    push ebx
+    push ecx
+
+    mov edi, [ebp+8]       ; fbAddr
+    mov esi, [ebp+12]      ; pitch
+    mov eax, [ebp+20]      ; y
+    imul eax, esi           ; y * pitch
+    add edi, eax
+    mov eax, [ebp+16]      ; x
+    shl eax, 2
+    add edi, eax            ; edi = start pixel
+
+    mov ecx, [ebp+24]      ; height
+    mov eax, [ebp+28]      ; color
+.vl_loop:
+    test ecx, ecx
+    jle .vl_done
+    mov [edi], eax
+    add edi, esi            ; next row
+    dec ecx
+    jmp .vl_loop
+.vl_done:
+    pop ecx
+    pop ebx
+    pop esi
+    pop edi
+    pop ebp
+    ret
+
 ; fast_fill_rect(fbAddr, fbPitch, x, y, width, height, color)
 ; Uses rep stosd for ~100x speedup over putPixel loops
 ; Args: [esp+4]=fbAddr, [esp+8]=pitch, [esp+12]=x, [esp+16]=y,
