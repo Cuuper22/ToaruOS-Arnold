@@ -123,6 +123,7 @@ extern inl
 extern fast_fill_rect
 extern fast_memcpy32
 extern draw_wallpaper_dots
+extern draw_arrow_cursor
 extern pci_config_read
 extern pci_config_write
 extern pci_find_device

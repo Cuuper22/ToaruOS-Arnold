@@ -1025,6 +1025,390 @@ draw_wallpaper_dots:
     pop ebp
     ret
 
+; ================================================================
+; draw_arrow_cursor(fbAddr, pitch, x, y)
+; Draws a 12x16 arrow cursor with black outline + white fill
+; Args: [esp+4]=fbAddr, [esp+8]=pitch, [esp+12]=x, [esp+16]=y
+; ================================================================
+global draw_arrow_cursor
+draw_arrow_cursor:
+    push ebp
+    mov ebp, esp
+    push edi
+    push esi
+    push ebx
+
+    mov edi, [ebp+8]      ; fbAddr
+    mov esi, [ebp+12]     ; pitch
+    mov ecx, [ebp+16]     ; x
+    mov edx, [ebp+20]     ; y
+
+    ; Cursor bitmap: 16 rows, each encoded as 2 bytes (outline mask, fill mask)
+    ; Outline = black (0x00000000), Fill = white (0x00FFFFFF)
+    ; Row format: bits from MSB = leftmost pixel
+    ; We'll draw up to 12 pixels wide per row
+
+    ; Use stack-based bitmap data (16 rows x 2 words: outline, fill)
+    ; Row 0:  X            outline=0x800, fill=0x000
+    ; Row 1:  XX           outline=0xC00, fill=0x400
+    ; Row 2:  XWX          outline=0xE00, fill=0x400
+    ; Row 3:  XWWX         outline=0xF00, fill=0x600
+    ; Row 4:  XWWWX        outline=0xF80, fill=0x700
+    ; Row 5:  XWWWWX       outline=0xFC0, fill=0x780
+    ; Row 6:  XWWWWWX      outline=0xFE0, fill=0x7C0
+    ; Row 7:  XWWWWWWX     outline=0xFF0, fill=0x7E0
+    ; Row 8:  XWWWWWWWX    outline=0xFF8, fill=0x7F0
+    ; Row 9:  XWWWWWWWWX   outline=0xFFC, fill=0x7F8
+    ; Row 10: XWWWWWXXXXX  outline=0xFE0, fill=0x7C0  (narrow bottom)
+    ; Row 11: XWWXWWX      outline=0xFE0, fill=0x660
+    ; Row 12: XWX.XWWX     outline=0xE78, fill=0x430
+    ; Row 13: XX..XWWX     outline=0xC78, fill=0x030
+    ; Row 14: X....XWWX    outline=0x878, fill=0x030
+    ; Row 15:     XX       outline=0x060, fill=0x000
+
+    ; Simpler approach: iterate row by row with hardcoded pixel offsets
+    ; Each putPixel = pixel at (x+dx, y+row)
+
+    ; Helper macro concept: for each row, draw black outline then white fill
+    ; Use a simple loop with lookup table
+
+    ; Row 0: black at dx=0
+    mov eax, 0x00000000    ; black
+    call .draw_px          ; (0,0)
+
+    ; Row 1: black at 0,1; white at dx=0 skipped, actually:
+    ; Proper arrow: row 1 = black border + white interior
+    ; Let me just draw it directly
+
+    ; === Row 0 === (just tip)
+    ; black at (0,0)
+    ; already drawn above
+
+    ; === Row 1 ===
+    push ecx
+    push edx
+    inc edx                ; y+1
+    call .draw_px          ; black (0,1)
+    inc ecx                ; x+1
+    call .draw_px          ; black (1,1)
+    pop edx
+    pop ecx
+
+    ; === Row 2 ===
+    push ecx
+    push edx
+    add edx, 2
+    call .draw_px          ; black (0,2)
+    inc ecx
+    mov eax, 0x00FFFFFF    ; white
+    call .draw_px          ; white (1,2)
+    inc ecx
+    mov eax, 0x00000000    ; black
+    call .draw_px          ; black (2,2)
+    pop edx
+    pop ecx
+
+    ; === Row 3 ===
+    push ecx
+    push edx
+    add edx, 3
+    call .draw_px          ; black (0,3)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px          ; white (1,3)
+    inc ecx
+    call .draw_px          ; white (2,3)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (3,3)
+    pop edx
+    pop ecx
+
+    ; === Row 4 ===
+    push ecx
+    push edx
+    add edx, 4
+    call .draw_px          ; black (0,4)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px          ; white (1-3,4)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (4,4)
+    pop edx
+    pop ecx
+
+    ; === Row 5 ===
+    push ecx
+    push edx
+    add edx, 5
+    call .draw_px          ; black (0,5)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px          ; white (1-4,5)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (5,5)
+    pop edx
+    pop ecx
+
+    ; === Row 6 ===
+    push ecx
+    push edx
+    add edx, 6
+    call .draw_px          ; black (0,6)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px          ; white (1-5,6)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (6,6)
+    pop edx
+    pop ecx
+
+    ; === Row 7 ===
+    push ecx
+    push edx
+    add edx, 7
+    call .draw_px          ; black (0,7)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px          ; white (1-6,7)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (7,7)
+    pop edx
+    pop ecx
+
+    ; === Row 8 ===
+    push ecx
+    push edx
+    add edx, 8
+    call .draw_px          ; black (0,8)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px          ; white (1-7,8)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (8,8)
+    pop edx
+    pop ecx
+
+    ; === Row 9 ===
+    push ecx
+    push edx
+    add edx, 9
+    call .draw_px          ; black (0,9)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px          ; white (1-8,9)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (9,9)
+    pop edx
+    pop ecx
+
+    ; === Row 10 (bottom of arrow body) ===
+    push ecx
+    push edx
+    add edx, 10
+    call .draw_px          ; black (0,10)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px          ; white (1-4,10)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px
+    inc ecx
+    call .draw_px          ; black (5-8,10)
+    pop edx
+    pop ecx
+
+    ; === Row 11 ===
+    push ecx
+    push edx
+    add edx, 11
+    call .draw_px          ; black (0,11)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px
+    inc ecx
+    call .draw_px          ; white (1-2,11)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (3,11)
+    inc ecx
+    call .draw_px          ; black (4,11)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px
+    inc ecx
+    call .draw_px          ; white (5-6,11)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (7,11)
+    pop edx
+    pop ecx
+
+    ; === Row 12 ===
+    push ecx
+    push edx
+    add edx, 12
+    call .draw_px          ; black (0,12)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px          ; white (1,12)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (2,12)
+    ; gap at 3,4
+    add ecx, 3             ; skip to x+5
+    call .draw_px          ; black (5,12)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px
+    inc ecx
+    call .draw_px          ; white (6-7,12)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (8,12)
+    pop edx
+    pop ecx
+
+    ; === Row 13 ===
+    push ecx
+    push edx
+    add edx, 13
+    call .draw_px          ; black (0,13)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (1,13)
+    ; gap at 2,3,4
+    add ecx, 4             ; skip to x+5
+    call .draw_px          ; black (5,13)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px
+    inc ecx
+    call .draw_px          ; white (6-7,13)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (8,13)
+    pop edx
+    pop ecx
+
+    ; === Row 14 ===
+    push ecx
+    push edx
+    add edx, 14
+    ; gap at 0-4
+    add ecx, 5
+    call .draw_px          ; black (5,14)
+    inc ecx
+    mov eax, 0x00FFFFFF
+    call .draw_px          ; white (6,14)
+    inc ecx
+    mov eax, 0x00000000
+    call .draw_px          ; black (7,14)
+    pop edx
+    pop ecx
+
+    ; === Row 15 ===
+    push ecx
+    push edx
+    add edx, 15
+    add ecx, 5
+    call .draw_px          ; black (5,15)
+    inc ecx
+    call .draw_px          ; black (6,15)
+    pop edx
+    pop ecx
+
+    pop ebx
+    pop esi
+    pop edi
+    pop ebp
+    ret
+
+; Helper: draw pixel at (ecx, edx) with color eax
+; Uses edi=fbAddr, esi=pitch. Preserves ecx, edx.
+.draw_px:
+    push ebx
+    ; offset = edx * esi + ecx * 4
+    mov ebx, edx
+    imul ebx, esi          ; y * pitch
+    push ecx
+    shl ecx, 2             ; x * 4
+    add ebx, ecx
+    mov [edi + ebx], eax   ; write pixel
+    pop ecx
+    pop ebx
+    ret
+
 ; fast_fill_rect(fbAddr, fbPitch, x, y, width, height, color)
 ; Uses rep stosd for ~100x speedup over putPixel loops
 ; Args: [esp+4]=fbAddr, [esp+8]=pitch, [esp+12]=x, [esp+16]=y,
