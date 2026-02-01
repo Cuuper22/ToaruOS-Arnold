@@ -395,6 +395,15 @@ PUT THEM IN LINE
 0x2E 0x2E 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
 LET ME TELL YOU SOMETHING WELCOME_LOADING_LEN 18
 
+TALK TO YOURSELF "App splash loading text"
+HEY CHRISTMAS TREE loadingDots
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x4C 0x6F 0x61 0x64 0x69 0x6E 0x67 0x2E 0x2E 0x2E 0x00 0x00 0x00 0x00 0x00 0x00
+LET ME TELL YOU SOMETHING LOADING_DOTS_LEN 10
+
 TALK TO YOURSELF "Shutdown screen strings"
 HEY CHRISTMAS TREE shutdownMsg
 LINE THEM UP
@@ -2525,6 +2534,7 @@ HERE IS MY INVITATION gameMode
 YOU ARE NOT YOU YOU ARE ME MODE_SNAKE
 ENOUGH TALK
 BECAUSE I'M GOING TO SAY PLEASE isSnake
+    DO IT NOW showAppSplash fbAddr fbPitch iconSnake ICON_SNAKE_LEN
     DO IT NOW initSnake
     DO IT NOW clearScreen fbAddr fbPitch 0x00000020
     DO IT NOW drawGameFrame fbAddr fbPitch 112 84 800 600 83 110 97 107 101
@@ -2550,6 +2560,7 @@ BECAUSE I'M GOING TO SAY PLEASE checkPong
     YOU ARE NOT YOU YOU ARE ME MODE_PONG
     ENOUGH TALK
     BECAUSE I'M GOING TO SAY PLEASE isPong
+        DO IT NOW showAppSplash fbAddr fbPitch iconPong ICON_PONG_LEN
         DO IT NOW initPong
         DO IT NOW clearScreen fbAddr fbPitch 0x00000000
         DO IT NOW drawGameFrame fbAddr fbPitch 50 100 924 550 80 111 110 103 32
@@ -2576,6 +2587,7 @@ BECAUSE I'M GOING TO SAY PLEASE checkBreakout
     YOU ARE NOT YOU YOU ARE ME MODE_BREAKOUT
     ENOUGH TALK
     BECAUSE I'M GOING TO SAY PLEASE isBreakout
+        DO IT NOW showAppSplash fbAddr fbPitch iconBreakout ICON_BREAKOUT_LEN
         DO IT NOW initBreakout
         DO IT NOW clearScreen fbAddr fbPitch 0x00000020
         DO IT NOW drawGameFrame fbAddr fbPitch 52 72 920 660 66 114 101 97 107
@@ -3490,6 +3502,48 @@ DO IT NOW sleep_ticks 100
 
 TALK TO YOURSELF "Halt the system"
 DO IT NOW halt_system
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: showAppSplash - Brief loading splash when launching app"
+TALK TO YOURSELF "  Shows app name centered on dark background for ~200ms"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY showAppSplash
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE namePtr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE nameLen
+
+TALK TO YOURSELF "Dark screen"
+DO IT NOW fast_fill_rect fbAddr fbPitch 0 0 1024 768 0x00101820
+
+TALK TO YOURSELF "Loading... text"
+DO IT NOW drawStringAt fbAddr fbPitch 464 360 loadingDots LOADING_DOTS_LEN 0x00808080 0x00101820
+
+TALK TO YOURSELF "App name in 2x scale centered"
+HEY CHRISTMAS TREE splashX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE namePixW
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER namePixW
+HERE IS MY INVITATION nameLen
+YOU'RE FIRED 16
+ENOUGH TALK
+
+GET TO THE CHOPPER splashX
+HERE IS MY INVITATION 512
+GET DOWN namePixW
+HE HAD TO SPLIT 2
+ENOUGH TALK
+
+DO IT NOW drawStringBig fbAddr fbPitch splashX 320 namePtr nameLen 2 COLOR_WHITE 0x00101820
+
+DO IT NOW sleep_ticks 10
 
 HASTA LA VISTA, BABY
 
