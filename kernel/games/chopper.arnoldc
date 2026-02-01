@@ -325,11 +325,11 @@ HEY CHRISTMAS TREE continueLoop
 THIS IS A WARRIOR
 YOU SET US UP 1
 
-TALK TO YOURSELF "Draw sky background"
-DO IT NOW fillRect fbAddr fbPitch 0 0 1024 768 CHOP_SKY_COLOR
+TALK TO YOURSELF "Draw sky background (bounded to game window)"
+DO IT NOW fillRect fbAddr fbPitch 12 38 1000 692 CHOP_SKY_COLOR
 
-TALK TO YOURSELF "Draw ground"
-DO IT NOW fillRect fbAddr fbPitch 0 700 1024 68 CHOP_JUNGLE_COLOR
+TALK TO YOURSELF "Draw ground (bounded to game window)"
+DO IT NOW fillRect fbAddr fbPitch 12 700 1000 30 CHOP_JUNGLE_COLOR
 
 TALK TO YOURSELF "Draw obstacles"
 STICK AROUND continueLoop

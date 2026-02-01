@@ -155,7 +155,7 @@ Set-Content "$GEN_DIR\kernel.asm" $asmContent -NoNewline
 
 # Assemble bootloader
 Write-Host "[ASM ] Assembling bootloader - LISTEN TO ME VERY CAREFULLY"
-& $NASM -f elf32 -o "$BUILD_DIR\multiboot.o" $BOOT_ASM
+& $NASM -f elf32 -w-other -o "$BUILD_DIR\multiboot.o" $BOOT_ASM
 if ($LASTEXITCODE -ne 0) {
     throw "Bootloader assembly failed!"
 }

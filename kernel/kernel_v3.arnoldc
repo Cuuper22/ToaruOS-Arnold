@@ -2536,8 +2536,11 @@ ENOUGH TALK
 BECAUSE I'M GOING TO SAY PLEASE isSnake
     DO IT NOW showAppSplash fbAddr fbPitch iconSnake ICON_SNAKE_LEN
     DO IT NOW initSnake
-    DO IT NOW clearScreen fbAddr fbPitch 0x00000020
+    DO IT NOW drawDesktop fbAddr fbPitch
+    TALK TO YOURSELF "Window shadow (offset +4,+4 from frame)"
+    DO IT NOW fillRect fbAddr fbPitch 114 62 804 628 0x00181828
     DO IT NOW drawGameFrame fbAddr fbPitch 112 84 800 600 83 110 97 107 101
+    DO IT NOW fillRect fbAddr fbPitch 112 84 800 600 0x00000020
     DO IT NOW drawSnakeGame fbAddr fbPitch
     GET TO THE CHOPPER launched
     HERE IS MY INVITATION 1
@@ -2562,8 +2565,10 @@ BECAUSE I'M GOING TO SAY PLEASE checkPong
     BECAUSE I'M GOING TO SAY PLEASE isPong
         DO IT NOW showAppSplash fbAddr fbPitch iconPong ICON_PONG_LEN
         DO IT NOW initPong
-        DO IT NOW clearScreen fbAddr fbPitch 0x00000000
+        DO IT NOW drawDesktop fbAddr fbPitch
+        DO IT NOW fillRect fbAddr fbPitch 52 78 928 578 0x00181828
         DO IT NOW drawGameFrame fbAddr fbPitch 50 100 924 550 80 111 110 103 32
+        DO IT NOW fillRect fbAddr fbPitch 50 100 924 550 0x00000000
         DO IT NOW drawPongGame fbAddr fbPitch
         GET TO THE CHOPPER launched
         HERE IS MY INVITATION 1
@@ -2589,8 +2594,10 @@ BECAUSE I'M GOING TO SAY PLEASE checkBreakout
     BECAUSE I'M GOING TO SAY PLEASE isBreakout
         DO IT NOW showAppSplash fbAddr fbPitch iconBreakout ICON_BREAKOUT_LEN
         DO IT NOW initBreakout
-        DO IT NOW clearScreen fbAddr fbPitch 0x00000020
+        DO IT NOW drawDesktop fbAddr fbPitch
+        DO IT NOW fillRect fbAddr fbPitch 54 50 924 688 0x00181828
         DO IT NOW drawGameFrame fbAddr fbPitch 52 72 920 660 66 114 101 97 107
+        DO IT NOW fillRect fbAddr fbPitch 52 72 920 660 0x00000020
         DO IT NOW drawBreakoutInit fbAddr fbPitch
         GET TO THE CHOPPER launched
         HERE IS MY INVITATION 1
@@ -2615,7 +2622,8 @@ BECAUSE I'M GOING TO SAY PLEASE checkChopper
     ENOUGH TALK
     BECAUSE I'M GOING TO SAY PLEASE isChopper
         DO IT NOW initChopperGame
-        DO IT NOW clearScreen fbAddr fbPitch 0x00000000
+        DO IT NOW drawDesktop fbAddr fbPitch
+        DO IT NOW fillRect fbAddr fbPitch 14 16 1004 716 0x00181828
         DO IT NOW drawGameFrame fbAddr fbPitch 12 38 1000 692 67 104 111 112 32
         DO IT NOW drawChopperGame fbAddr fbPitch
         GET TO THE CHOPPER launched
@@ -2641,7 +2649,8 @@ BECAUSE I'M GOING TO SAY PLEASE checkSkynet
     ENOUGH TALK
     BECAUSE I'M GOING TO SAY PLEASE isSkynet
         DO IT NOW initSkynetGame
-        DO IT NOW clearScreen fbAddr fbPitch 0x00000000
+        DO IT NOW drawDesktop fbAddr fbPitch
+        DO IT NOW fillRect fbAddr fbPitch 14 16 1004 716 0x00181828
         DO IT NOW drawGameFrame fbAddr fbPitch 12 38 1000 692 83 107 121 110 116
         DO IT NOW drawSkynetGame fbAddr fbPitch
         GET TO THE CHOPPER launched
