@@ -450,11 +450,11 @@ HEY CHRISTMAS TREE continueLoop
 THIS IS A WARRIOR
 YOU SET US UP 1
 
-TALK TO YOURSELF "Draw background"
-DO IT NOW fillRect fbAddr fbPitch 0 0 1024 768 SKY_BG_COLOR
+TALK TO YOURSELF "Draw background (bounded to game window)"
+DO IT NOW fillRect fbAddr fbPitch 12 38 1000 692 SKY_BG_COLOR
 
-TALK TO YOURSELF "Draw HUD background"
-DO IT NOW fillRect fbAddr fbPitch 0 0 1024 50 SKY_HUD_COLOR
+TALK TO YOURSELF "Draw HUD background (bounded to game window)"
+DO IT NOW fillRect fbAddr fbPitch 12 38 1000 50 SKY_HUD_COLOR
 
 TALK TO YOURSELF "Draw title"
 DO IT NOW drawStringAt fbAddr fbPitch 420 15 skyTitle SKY_TITLE_LEN 0x00FFFFFF SKY_HUD_COLOR
@@ -468,8 +468,8 @@ DO IT NOW drawStringAt fbAddr fbPitch 700 15 skyLivesStr SKY_LIVES_LEN 0x0000FF0
 TALK TO YOURSELF "Draw wave"
 DO IT NOW drawStringAt fbAddr fbPitch 850 15 skyWaveStr SKY_WAVE_LEN 0x0000FFFF SKY_HUD_COLOR
 
-TALK TO YOURSELF "Draw defense line"
-DO IT NOW fillRect fbAddr fbPitch 70 60 4 650 0x00FFFF00
+TALK TO YOURSELF "Draw defense line (bounded to game window)"
+DO IT NOW fillRect fbAddr fbPitch 70 60 4 670 0x00FFFF00
 
 TALK TO YOURSELF "Draw turret"
 DO IT NOW drawSkynetTurret fbAddr fbPitch
