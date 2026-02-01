@@ -377,6 +377,24 @@ PUT THEM IN LINE
 0x52 0x65 0x66 0x72 0x65 0x73 0x68 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
 LET ME TELL YOU SOMETHING CTX_REFRESH_LEN 7
 
+TALK TO YOURSELF "Welcome login screen strings"
+HEY CHRISTMAS TREE welcomeLogin
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x57 0x65 0x6C 0x63 0x6F 0x6D 0x65 0x2C 0x20 0x55 0x73 0x65 0x72 0x00 0x00 0x00
+LET ME TELL YOU SOMETHING WELCOME_LOGIN_LEN 13
+
+HEY CHRISTMAS TREE welcomeLoading
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 32
+PUT THEM IN LINE
+0x4C 0x6F 0x61 0x64 0x69 0x6E 0x67 0x20 0x64 0x65 0x73 0x6B 0x74 0x6F 0x70 0x2E
+0x2E 0x2E 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+LET ME TELL YOU SOMETHING WELCOME_LOADING_LEN 18
+
 TALK TO YOURSELF "ESC instruction message: Press ESC to return"
 HEY CHRISTMAS TREE escMsg
 LINE THEM UP
@@ -3488,6 +3506,18 @@ DO IT NOW playBootJingle
 
 TALK TO YOURSELF "Show boot splash screen"
 DO IT NOW drawBootSplash fbAddress fbPitch
+
+TALK TO YOURSELF "Welcome screen — brief login-style message"
+DO IT NOW fillRect fbAddress fbPitch 0 0 1024 768 0x00101820
+
+TALK TO YOURSELF "Welcome message at 2x scale, centered"
+TALK TO YOURSELF "'Welcome, User' = 13 chars * 8px * 2 = 208px, centered at (1024-208)/2 = 408"
+DO IT NOW drawStringBig fbAddress fbPitch 408 320 welcomeLogin WELCOME_LOGIN_LEN 2 COLOR_WHITE 0x00101820
+
+TALK TO YOURSELF "Subtitle: Loading desktop..."
+DO IT NOW drawStringAt fbAddress fbPitch 420 370 welcomeLoading WELCOME_LOADING_LEN 0x00808080 0x00101820
+
+DO IT NOW sleep_ticks 50
 
 TALK TO YOURSELF "Draw initial desktop"
 DO IT NOW drawDesktop fbAddress fbPitch
