@@ -336,6 +336,47 @@ PUT THEM IN LINE
 0x63 0x6F 0x6E 0x2E 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
 LET ME TELL YOU SOMETHING WELCOME_LEN 36
 
+TALK TO YOURSELF "Context menu item strings"
+HEY CHRISTMAS TREE ctxTerminal
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x54 0x65 0x72 0x6D 0x69 0x6E 0x61 0x6C 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+LET ME TELL YOU SOMETHING CTX_TERMINAL_LEN 8
+
+HEY CHRISTMAS TREE ctxSettings
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x53 0x65 0x74 0x74 0x69 0x6E 0x67 0x73 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+LET ME TELL YOU SOMETHING CTX_SETTINGS_LEN 8
+
+HEY CHRISTMAS TREE ctxAbout
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x41 0x62 0x6F 0x75 0x74 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+LET ME TELL YOU SOMETHING CTX_ABOUT_LEN 5
+
+HEY CHRISTMAS TREE ctxScreensaver
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x53 0x63 0x72 0x65 0x65 0x6E 0x73 0x61 0x76 0x65 0x72 0x00 0x00 0x00 0x00 0x00
+LET ME TELL YOU SOMETHING CTX_SCREENSAVER_LEN 11
+
+HEY CHRISTMAS TREE ctxRefresh
+LINE THEM UP
+THIS IS A TINY WARRIOR
+HOW MANY 16
+PUT THEM IN LINE
+0x52 0x65 0x66 0x72 0x65 0x73 0x68 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+LET ME TELL YOU SOMETHING CTX_REFRESH_LEN 7
+
 TALK TO YOURSELF "ESC instruction message: Press ESC to return"
 HEY CHRISTMAS TREE escMsg
 LINE THEM UP
@@ -387,6 +428,18 @@ THIS IS A WARRIOR
 YOU SET US UP 0
 
 HEY CHRISTMAS TREE startMenuOpen
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE contextMenuOpen
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE contextMenuX
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE contextMenuY
 THIS IS A WARRIOR
 YOU SET US UP 0
 
@@ -3484,9 +3537,18 @@ STICK AROUND @NO PROBLEMO
     YOU ARE NOT ME lastMouseY
     ENOUGH TALK
     
+    HEY CHRISTMAS TREE btnChanged
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER btnChanged
+    HERE IS MY INVITATION mouseButtons
+    YOU ARE NOT ME lastMouseBtn
+    ENOUGH TALK
+
     GET TO THE CHOPPER mouseChanged
     HERE IS MY INVITATION xChanged
     CONSIDER THAT A DIVORCE yChanged
+    CONSIDER THAT A DIVORCE btnChanged
     ENOUGH TALK
     
     TALK TO YOURSELF "Redraw mouse cursor if moved (only on desktop)"
@@ -3562,6 +3624,62 @@ STICK AROUND @NO PROBLEMO
         ENOUGH TALK
         
         BECAUSE I'M GOING TO SAY PLEASE isClicked
+            TALK TO YOURSELF "First check if context menu is open and handle click"
+            HEY CHRISTMAS TREE ctxWasOpen
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER ctxWasOpen
+            HERE IS MY INVITATION contextMenuOpen
+            ENOUGH TALK
+
+            BECAUSE I'M GOING TO SAY PLEASE ctxWasOpen
+                HEY CHRISTMAS TREE ctxChoice
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET YOUR ASS TO MARS ctxChoice
+                DO IT NOW handleContextClick mouseX mouseY
+
+                TALK TO YOURSELF "Close the menu"
+                GET TO THE CHOPPER contextMenuOpen
+                HERE IS MY INVITATION 0
+                ENOUGH TALK
+
+                HEY CHRISTMAS TREE ctxHitSomething
+                THIS IS A WARRIOR
+                YOU SET US UP 0
+                GET TO THE CHOPPER ctxHitSomething
+                HERE IS MY INVITATION ctxChoice
+                YOU ARE NOT ME 0
+                ENOUGH TALK
+
+                BECAUSE I'M GOING TO SAY PLEASE ctxHitSomething
+                    TALK TO YOURSELF "99 = refresh desktop"
+                    HEY CHRISTMAS TREE isRefresh
+                    THIS IS A WARRIOR
+                    YOU SET US UP 0
+                    GET TO THE CHOPPER isRefresh
+                    HERE IS MY INVITATION ctxChoice
+                    YOU ARE NOT YOU YOU ARE ME 99
+                    ENOUGH TALK
+                    BECAUSE I'M GOING TO SAY PLEASE isRefresh
+                        DO IT NOW drawDesktop fbAddress fbPitch
+                        DO IT NOW drawAllWindows fbAddress fbPitch
+                        DO IT NOW drawTaskbarWindows fbAddress fbPitch
+                    BULLSHIT
+                        TALK TO YOURSELF "Switch to selected mode"
+                        GET TO THE CHOPPER currentMode
+                        HERE IS MY INVITATION ctxChoice
+                        ENOUGH TALK
+                        DO IT NOW launchGame fbAddress fbPitch currentMode
+                    YOU HAVE NO RESPECT FOR LOGIC
+                BULLSHIT
+                    TALK TO YOURSELF "Clicked outside menu — just close and redraw"
+                    DO IT NOW drawDesktop fbAddress fbPitch
+                    DO IT NOW drawAllWindows fbAddress fbPitch
+                    DO IT NOW drawTaskbarWindows fbAddress fbPitch
+                YOU HAVE NO RESPECT FOR LOGIC
+            YOU HAVE NO RESPECT FOR LOGIC
+
             TALK TO YOURSELF "First check if clicking a window"
             HEY CHRISTMAS TREE winHit
             THIS IS A WARRIOR
@@ -3704,6 +3822,110 @@ STICK AROUND @NO PROBLEMO
             YOU HAVE NO RESPECT FOR LOGIC
         YOU HAVE NO RESPECT FOR LOGIC
         
+        TALK TO YOURSELF "Check for right-click (PS/2 bit 1 = value 2) on desktop"
+        HEY CHRISTMAS TREE rBtnNow
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER rBtnNow
+        HERE IS MY INVITATION mouseButtons
+        KNOCK KNOCK 2
+        ENOUGH TALK
+
+        HEY CHRISTMAS TREE rBtnWas
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER rBtnWas
+        HERE IS MY INVITATION lastMouseBtn
+        KNOCK KNOCK 2
+        ENOUGH TALK
+
+        TALK TO YOURSELF "Right-click = btn2 now set AND btn2 was NOT set"
+        HEY CHRISTMAS TREE rNowSet
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER rNowSet
+        HERE IS MY INVITATION rBtnNow
+        LET OFF SOME STEAM BENNET 0
+        ENOUGH TALK
+
+        HEY CHRISTMAS TREE rWasClear
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER rWasClear
+        HERE IS MY INVITATION rBtnWas
+        YOU ARE NOT YOU YOU ARE ME 0
+        ENOUGH TALK
+
+        HEY CHRISTMAS TREE isRightClick
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isRightClick
+        HERE IS MY INVITATION rNowSet
+        KNOCK KNOCK rWasClear
+        ENOUGH TALK
+
+        BECAUSE I'M GOING TO SAY PLEASE isRightClick
+            TALK TO YOURSELF "Right-click detected! Open context menu at mouse pos"
+            TALK TO YOURSELF "Clamp menu so it stays on screen"
+            HEY CHRISTMAS TREE cmClampX
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER cmClampX
+            HERE IS MY INVITATION mouseX
+            ENOUGH TALK
+
+            HEY CHRISTMAS TREE cmTooFarX
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER cmTooFarX
+            HERE IS MY INVITATION mouseX
+            LET OFF SOME STEAM BENNET 880
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE cmTooFarX
+                GET TO THE CHOPPER cmClampX
+                HERE IS MY INVITATION 880
+                ENOUGH TALK
+            YOU HAVE NO RESPECT FOR LOGIC
+
+            HEY CHRISTMAS TREE cmClampY
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER cmClampY
+            HERE IS MY INVITATION mouseY
+            ENOUGH TALK
+
+            HEY CHRISTMAS TREE cmTooFarY
+            THIS IS A WARRIOR
+            YOU SET US UP 0
+            GET TO THE CHOPPER cmTooFarY
+            HERE IS MY INVITATION mouseY
+            LET OFF SOME STEAM BENNET 630
+            ENOUGH TALK
+            BECAUSE I'M GOING TO SAY PLEASE cmTooFarY
+                GET TO THE CHOPPER cmClampY
+                HERE IS MY INVITATION 630
+                ENOUGH TALK
+            YOU HAVE NO RESPECT FOR LOGIC
+
+            GET TO THE CHOPPER contextMenuX
+            HERE IS MY INVITATION cmClampX
+            ENOUGH TALK
+            GET TO THE CHOPPER contextMenuY
+            HERE IS MY INVITATION cmClampY
+            ENOUGH TALK
+            GET TO THE CHOPPER contextMenuOpen
+            HERE IS MY INVITATION 1
+            ENOUGH TALK
+            TALK TO YOURSELF "Close start menu if open"
+            GET TO THE CHOPPER startMenuOpen
+            HERE IS MY INVITATION 0
+            ENOUGH TALK
+            DO IT NOW drawDesktop fbAddress fbPitch
+            DO IT NOW drawAllWindows fbAddress fbPitch
+            DO IT NOW drawTaskbarWindows fbAddress fbPitch
+            DO IT NOW drawContextMenu fbAddress fbPitch
+        YOU HAVE NO RESPECT FOR LOGIC
+
         TALK TO YOURSELF "Handle mouse button release - stop drag"
         HEY CHRISTMAS TREE btnReleased
         THIS IS A WARRIOR

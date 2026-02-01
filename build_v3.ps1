@@ -66,7 +66,8 @@ $sourceFiles = @(
     "$ProjectRoot\kernel\apps\settings.arnoldc",
     "$ProjectRoot\kernel\apps\text_editor.arnoldc",
     "$ProjectRoot\kernel\apps\file_manager.arnoldc",
-    "$ProjectRoot\kernel\apps\easter_eggs.arnoldc"
+    "$ProjectRoot\kernel\apps\easter_eggs.arnoldc",
+    "$ProjectRoot\kernel\apps\context_menu.arnoldc"
 )
 
 & "$ProjectRoot\tools\merge_modules.ps1" `

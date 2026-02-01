@@ -1,0 +1,290 @@
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  Context Menu - Right-click popup on desktop"
+TALK TO YOURSELF "============================================================================"
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  drawContextMenu - Draw the right-click popup menu"
+TALK TO YOURSELF "  Shows: Terminal, Settings, About, Screensaver"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY drawContextMenu
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE cmFb
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE cmPitch
+
+TALK TO YOURSELF "Only draw if menu is open"
+BECAUSE I'M GOING TO SAY PLEASE contextMenuOpen
+
+    TALK TO YOURSELF "Dark background box at menu position"
+    DO IT NOW fast_fill_rect cmFb cmPitch contextMenuX contextMenuY 140 100 0x00202020
+
+    TALK TO YOURSELF "Light border"
+    DO IT NOW drawRect cmFb cmPitch contextMenuX contextMenuY 140 100 0x00808080
+
+    TALK TO YOURSELF "Separator after title"
+    HEY CHRISTMAS TREE sepY
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER sepY
+    HERE IS MY INVITATION contextMenuY
+    GET UP 20
+    ENOUGH TALK
+
+    HEY CHRISTMAS TREE sepX2
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER sepX2
+    HERE IS MY INVITATION contextMenuX
+    GET UP 140
+    ENOUGH TALK
+
+    TALK TO YOURSELF "Menu items"
+    HEY CHRISTMAS TREE itemY1
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER itemY1
+    HERE IS MY INVITATION contextMenuY
+    GET UP 6
+    ENOUGH TALK
+
+    HEY CHRISTMAS TREE itemY2
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER itemY2
+    HERE IS MY INVITATION contextMenuY
+    GET UP 26
+    ENOUGH TALK
+
+    HEY CHRISTMAS TREE itemY3
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER itemY3
+    HERE IS MY INVITATION contextMenuY
+    GET UP 46
+    ENOUGH TALK
+
+    HEY CHRISTMAS TREE itemY4
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER itemY4
+    HERE IS MY INVITATION contextMenuY
+    GET UP 66
+    ENOUGH TALK
+
+    HEY CHRISTMAS TREE itemY5
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER itemY5
+    HERE IS MY INVITATION contextMenuY
+    GET UP 86
+    ENOUGH TALK
+
+    HEY CHRISTMAS TREE itemX
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER itemX
+    HERE IS MY INVITATION contextMenuX
+    GET UP 8
+    ENOUGH TALK
+
+    TALK TO YOURSELF "Item: Terminal (green)"
+    DO IT NOW drawStringAt cmFb cmPitch itemX itemY1 ctxTerminal CTX_TERMINAL_LEN 0x0000FF00 0x00202020
+
+    TALK TO YOURSELF "Item: Settings (yellow)"
+    DO IT NOW drawStringAt cmFb cmPitch itemX itemY2 ctxSettings CTX_SETTINGS_LEN 0x00FFFF00 0x00202020
+
+    TALK TO YOURSELF "Item: About (cyan)"
+    DO IT NOW drawStringAt cmFb cmPitch itemX itemY3 ctxAbout CTX_ABOUT_LEN 0x0000FFFF 0x00202020
+
+    TALK TO YOURSELF "Item: Screensaver (magenta)"
+    DO IT NOW drawStringAt cmFb cmPitch itemX itemY4 ctxScreensaver CTX_SCREENSAVER_LEN 0x00FF00FF 0x00202020
+
+    TALK TO YOURSELF "Item: Refresh (white)"
+    DO IT NOW drawStringAt cmFb cmPitch itemX itemY5 ctxRefresh CTX_REFRESH_LEN 0x00FFFFFF 0x00202020
+
+YOU HAVE NO RESPECT FOR LOGIC
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  handleContextClick - Check if clicking a context menu item"
+TALK TO YOURSELF "  Returns: 0=miss, 1=terminal, 9=settings, 8=about, 12=screensaver, 99=refresh"
+TALK TO YOURSELF "============================================================================"
+LISTEN TO ME VERY CAREFULLY handleContextClick
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ccX
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE ccY
+GIVE THESE PEOPLE AIR
+
+HEY CHRISTMAS TREE ccResult
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+TALK TO YOURSELF "Check if click is inside context menu bounds"
+BECAUSE I'M GOING TO SAY PLEASE contextMenuOpen
+
+    HEY CHRISTMAS TREE inX
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+
+    HEY CHRISTMAS TREE cmRight
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER cmRight
+    HERE IS MY INVITATION contextMenuX
+    GET UP 140
+    ENOUGH TALK
+
+    HEY CHRISTMAS TREE cmBottom
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER cmBottom
+    HERE IS MY INVITATION contextMenuY
+    GET UP 100
+    ENOUGH TALK
+
+    TALK TO YOURSELF "Check X bounds"
+    HEY CHRISTMAS TREE xGe
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER xGe
+    HERE IS MY INVITATION ccX
+    YOU'RE AT LEAST AS BIG AS contextMenuX
+    ENOUGH TALK
+
+    HEY CHRISTMAS TREE xLt
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER xLt
+    HERE IS MY INVITATION cmRight
+    LET OFF SOME STEAM BENNET ccX
+    ENOUGH TALK
+
+    GET TO THE CHOPPER inX
+    HERE IS MY INVITATION xGe
+    KNOCK KNOCK xLt
+    ENOUGH TALK
+
+    BECAUSE I'M GOING TO SAY PLEASE inX
+        TALK TO YOURSELF "X is inside, now check which row"
+        HEY CHRISTMAS TREE relY
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER relY
+        HERE IS MY INVITATION ccY
+        GET DOWN contextMenuY
+        ENOUGH TALK
+
+        TALK TO YOURSELF "Row 0 (0-19): Terminal"
+        HEY CHRISTMAS TREE isRow0
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isRow0
+        HERE IS MY INVITATION 20
+        LET OFF SOME STEAM BENNET relY
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE isRow0
+            GET TO THE CHOPPER ccResult
+            HERE IS MY INVITATION 1
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+
+        TALK TO YOURSELF "Row 1 (20-39): Settings"
+        HEY CHRISTMAS TREE isRow1
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isRow1
+        HERE IS MY INVITATION 40
+        LET OFF SOME STEAM BENNET relY
+        ENOUGH TALK
+        HEY CHRISTMAS TREE isRow1b
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isRow1b
+        HERE IS MY INVITATION relY
+        YOU'RE AT LEAST AS BIG AS 20
+        ENOUGH TALK
+        HEY CHRISTMAS TREE row1Hit
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER row1Hit
+        HERE IS MY INVITATION isRow1
+        KNOCK KNOCK isRow1b
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE row1Hit
+            GET TO THE CHOPPER ccResult
+            HERE IS MY INVITATION 9
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+
+        TALK TO YOURSELF "Row 2 (40-59): About"
+        HEY CHRISTMAS TREE isRow2
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isRow2
+        HERE IS MY INVITATION 60
+        LET OFF SOME STEAM BENNET relY
+        ENOUGH TALK
+        HEY CHRISTMAS TREE isRow2b
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isRow2b
+        HERE IS MY INVITATION relY
+        YOU'RE AT LEAST AS BIG AS 40
+        ENOUGH TALK
+        HEY CHRISTMAS TREE row2Hit
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER row2Hit
+        HERE IS MY INVITATION isRow2
+        KNOCK KNOCK isRow2b
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE row2Hit
+            GET TO THE CHOPPER ccResult
+            HERE IS MY INVITATION 8
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+
+        TALK TO YOURSELF "Row 3 (60-79): Screensaver"
+        HEY CHRISTMAS TREE isRow3
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isRow3
+        HERE IS MY INVITATION 80
+        LET OFF SOME STEAM BENNET relY
+        ENOUGH TALK
+        HEY CHRISTMAS TREE isRow3b
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isRow3b
+        HERE IS MY INVITATION relY
+        YOU'RE AT LEAST AS BIG AS 60
+        ENOUGH TALK
+        HEY CHRISTMAS TREE row3Hit
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER row3Hit
+        HERE IS MY INVITATION isRow3
+        KNOCK KNOCK isRow3b
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE row3Hit
+            GET TO THE CHOPPER ccResult
+            HERE IS MY INVITATION 12
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+
+        TALK TO YOURSELF "Row 4 (80-99): Refresh"
+        HEY CHRISTMAS TREE isRow4
+        THIS IS A WARRIOR
+        YOU SET US UP 0
+        GET TO THE CHOPPER isRow4
+        HERE IS MY INVITATION relY
+        YOU'RE AT LEAST AS BIG AS 80
+        ENOUGH TALK
+        BECAUSE I'M GOING TO SAY PLEASE isRow4
+            GET TO THE CHOPPER ccResult
+            HERE IS MY INVITATION 99
+            ENOUGH TALK
+        YOU HAVE NO RESPECT FOR LOGIC
+    YOU HAVE NO RESPECT FOR LOGIC
+YOU HAVE NO RESPECT FOR LOGIC
+
+I'LL BE BACK ccResult
+HASTA LA VISTA, BABY
