@@ -296,6 +296,15 @@ YOU HAVE BEEN TERMINATED                   ; end main
 - **ArnoldC-Native** — Custom compiler generating x86 assembly
 - **Inspired by** — ToaruOS, Windows 95, and every Arnold movie ever made
 
+## Support This Project
+
+If you enjoyed this insanity, consider supporting the project:
+
+- ⭐ **Star this repo** — it helps more than you think
+- 💖 **[GitHub Sponsors](https://github.com/sponsors/Cuuper22)** — monthly support
+- ☕ **[Ko-fi](https://ko-fi.com/cuper22)** — one-time donation
+- 🔀 **Share it** — tell people an OS exists where variables are declared with "HEY CHRISTMAS TREE"
+
 ## License
 
 MIT License
