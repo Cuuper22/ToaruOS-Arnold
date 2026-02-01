@@ -1095,6 +1095,100 @@ DO IT NOW drawStringAt fbAddr fbPitch 120 6 menuHelp MENU_HELP_LEN COLOR_BLACK C
 HASTA LA VISTA, BABY
 
 TALK TO YOURSELF "============================================================================"
+TALK TO YOURSELF "  FUNCTION: drawDesktopClock - Large centered clock on desktop"
+TALK TO YOURSELF "  Renders HH:MM in 3x scale centered on screen"
+TALK TO YOURSELF "============================================================================"
+
+LISTEN TO ME VERY CAREFULLY drawDesktopClock
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbAddr
+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE fbPitch
+
+TALK TO YOURSELF "Read RTC time"
+HEY CHRISTMAS TREE clkH
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET YOUR ASS TO MARS clkH
+DO IT NOW read_rtc_hours
+
+HEY CHRISTMAS TREE clkM
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET YOUR ASS TO MARS clkM
+DO IT NOW read_rtc_minutes
+
+TALK TO YOURSELF "Clear clock area (160px wide, 30px tall at y=420)"
+DO IT NOW fast_fill_rect fbAddr fbPitch 432 415 160 35 themeDesktopBg
+
+TALK TO YOURSELF "Format HH:MM into clockBuf array"
+TALK TO YOURSELF "Hour tens digit"
+HEY CHRISTMAS TREE hTens
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER hTens
+HERE IS MY INVITATION clkH
+HE HAD TO SPLIT 10
+GET UP 48
+ENOUGH TALK
+
+TALK TO YOURSELF "Hour ones digit"
+HEY CHRISTMAS TREE hOnes
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE hTmp
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER hTmp
+HERE IS MY INVITATION clkH
+HE HAD TO SPLIT 10
+YOU'RE FIRED 10
+ENOUGH TALK
+GET TO THE CHOPPER hOnes
+HERE IS MY INVITATION clkH
+GET DOWN hTmp
+GET UP 48
+ENOUGH TALK
+
+TALK TO YOURSELF "Minute tens digit"
+HEY CHRISTMAS TREE mTens
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER mTens
+HERE IS MY INVITATION clkM
+HE HAD TO SPLIT 10
+GET UP 48
+ENOUGH TALK
+
+TALK TO YOURSELF "Minute ones digit"
+HEY CHRISTMAS TREE mOnes
+THIS IS A WARRIOR
+YOU SET US UP 0
+
+HEY CHRISTMAS TREE mTmp
+THIS IS A WARRIOR
+YOU SET US UP 0
+GET TO THE CHOPPER mTmp
+HERE IS MY INVITATION clkM
+HE HAD TO SPLIT 10
+YOU'RE FIRED 10
+ENOUGH TALK
+GET TO THE CHOPPER mOnes
+HERE IS MY INVITATION clkM
+GET DOWN mTmp
+GET UP 48
+ENOUGH TALK
+
+TALK TO YOURSELF "Draw each character at 3x scale"
+TALK TO YOURSELF "5 chars * 8px * 3scale = 120px, centered: (1024-120)/2 = 452"
+DO IT NOW drawCharBig fbAddr fbPitch 452 420 hTens 3 COLOR_WHITE themeDesktopBg
+DO IT NOW drawCharBig fbAddr fbPitch 476 420 hOnes 3 COLOR_WHITE themeDesktopBg
+DO IT NOW drawCharBig fbAddr fbPitch 500 420 58 3 COLOR_WHITE themeDesktopBg
+DO IT NOW drawCharBig fbAddr fbPitch 524 420 mTens 3 COLOR_WHITE themeDesktopBg
+DO IT NOW drawCharBig fbAddr fbPitch 548 420 mOnes 3 COLOR_WHITE themeDesktopBg
+
+HASTA LA VISTA, BABY
+
+TALK TO YOURSELF "============================================================================"
 TALK TO YOURSELF "  FUNCTION: drawTaskBar - Draw the task bar at bottom"
 TALK TO YOURSELF "============================================================================"
 
@@ -1825,8 +1919,11 @@ DO IT NOW drawIcon fbAddr fbPitch 120 iconY2 0x00103060 iconEditor ICON_EDITOR_L
 DO IT NOW drawIcon fbAddr fbPitch 120 iconY3 0x001A1A2E iconFiles ICON_FILES_LEN
 DO IT NOW drawIcon fbAddr fbPitch 120 iconY4 0x00505050 iconSettings ICON_SETTINGS_LEN
 
-TALK TO YOURSELF "Draw welcome message in center"
-DO IT NOW drawStringAt fbAddr fbPitch 350 400 welcomeMsg WELCOME_LEN COLOR_WHITE themeDesktopBg
+TALK TO YOURSELF "Draw welcome message above clock area"
+DO IT NOW drawStringAt fbAddr fbPitch 350 395 welcomeMsg WELCOME_LEN COLOR_WHITE themeDesktopBg
+
+TALK TO YOURSELF "Draw initial clock"
+DO IT NOW drawDesktopClock fbAddr fbPitch
 
 HASTA LA VISTA, BABY
 
@@ -4309,6 +4406,18 @@ STICK AROUND @NO PROBLEMO
         YOU HAVE NO RESPECT FOR LOGIC
     YOU HAVE NO RESPECT FOR LOGIC
     
+    TALK TO YOURSELF "Update desktop clock if on desktop"
+    HEY CHRISTMAS TREE isOnDesktop
+    THIS IS A WARRIOR
+    YOU SET US UP 0
+    GET TO THE CHOPPER isOnDesktop
+    HERE IS MY INVITATION currentMode
+    YOU ARE NOT YOU YOU ARE ME 0
+    ENOUGH TALK
+    BECAUSE I'M GOING TO SAY PLEASE isOnDesktop
+        DO IT NOW drawDesktopClock fbAddress fbPitch
+    YOU HAVE NO RESPECT FOR LOGIC
+
     TALK TO YOURSELF "Small delay to reduce CPU usage"
     WAIT A MOMENT
 CHILL
