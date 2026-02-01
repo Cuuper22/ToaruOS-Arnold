@@ -31,7 +31,11 @@ This is a real, bootable operating system kernel that provides:
 - 🖼️ **3D desktop icons** — Raised button effect with light/dark border highlights
 - 👋 **Terminal welcome banner** — Shows "ToaruOS-Arnold v4.0" and help hint on first open
 
-All written in ~6000+ lines of ArnoldC + x86 assembly across 22 modules, compiled and running directly on hardware (or QEMU).
+- 🔐 **Login screen** — "Welcome, User / Loading desktop..." transition between boot and desktop
+- ⏰ **Live desktop clock** — HH:MM:SS + MM/DD/YY in large centered display, ticks every second
+- 💀 **Visual shutdown** — Reverse loading bar + "Hasta la vista, baby." in giant red text, then halt
+
+All written in **21,000+ lines** of ArnoldC + x86 assembly across **22 modules**, compiled to a **212KB ELF** with **184 functions**, running directly on bare metal x86 (or QEMU).
 
 ## Screenshots
 
@@ -226,9 +230,11 @@ tools/
 - **Networking:** E1000 NIC (PCI MMIO), ARP, IPv4, ICMP, TCP, HTTP/1.0 client
 - **Font:** Custom 8×8 bitmap, full ASCII 32-126
 - **ELF Size:** ~201 KB
-- **Functions:** 182 across all source modules
-- **ELF size:** 207KB
-- **Commits:** 64+
+- **Functions:** 184 across all source modules
+- **ELF size:** 212KB (212,240 bytes)
+- **Source lines:** 21,359 (ArnoldC + x86 assembly)
+- **Modules:** 22 (kernel, terminal, 5 games, 6 apps, 3 libs, assembly runtime)
+- **Commits:** 70+
 - **Modules:** 21 ArnoldC source files + 1 assembly (6000+ lines)
 - **Terminal Commands:** 35
 - **Commits:** 59+
