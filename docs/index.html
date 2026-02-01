@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToaruOS-Arnold — A Desktop OS in Arnold Schwarzenegger Quotes</title>
+    <meta name="description" content="A complete desktop operating system where every keyword is an Arnold Schwarzenegger movie quote. 213KB kernel with GUI, games, terminal, and TCP/IP networking.">
+    <meta property="og:title" content="ToaruOS-Arnold — COME WITH ME IF YOU WANT TO BOOT">
+    <meta property="og:description" content="A desktop OS written entirely in ArnoldC. 185 functions, 5 games, TCP/IP networking. Every keyword is a Schwarzenegger quote.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cuuper22.github.io/ToaruOS-Arnold/">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Courier New', monospace;
+            background: #0a0a14;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(180deg, #1a0a0a 0%, #0a0a14 100%);
+        }
+        .hero h1 {
+            font-size: 3em;
+            color: #dc3545;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(220,53,69,0.3);
+        }
+        .hero .tagline {
+            font-size: 1.4em;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        .hero .quote {
+            font-size: 1.8em;
+            color: #dc3545;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat .num {
+            font-size: 2.2em;
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .stat .label {
+            font-size: 0.9em;
+            color: #888;
+        }
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: #dc3545;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #ff4757;
+            box-shadow: 0 0 20px rgba(220,53,69,0.5);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: #dc3545;
+            border: 2px solid #dc3545;
+        }
+        .btn-secondary:hover {
+            background: rgba(220,53,69,0.1);
+        }
+        .section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .section h2 {
+            font-size: 1.8em;
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .feature {
+            background: #12121e;
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .feature h3 {
+            color: #dc3545;
+            margin-bottom: 8px;
+        }
+        .feature p {
+            color: #999;
+            font-size: 0.95em;
+        }
+        .code-block {
+            background: #12121e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        .code-block code {
+            color: #0f0;
+            font-size: 0.9em;
+        }
+        .code-comment { color: #666; }
+        .code-keyword { color: #dc3545; }
+        .code-string { color: #f0c040; }
+        .support {
+            text-align: center;
+            padding: 60px 20px;
+            background: #12121e;
+        }
+        .support h2 { margin-bottom: 20px; }
+        .support p { color: #999; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9em;
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2em; }
+            .hero .quote { font-size: 1.3em; }
+            .stats { gap: 20px; }
+            .stat .num { font-size: 1.6em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>ToaruOS-Arnold</h1>
+        <div class="tagline">A Desktop OS Written in Arnold Schwarzenegger Quotes</div>
+        <div class="quote">"COME WITH ME IF YOU WANT TO BOOT"</div>
+        
+        <div class="stats">
+            <div class="stat"><div class="num">213KB</div><div class="label">Kernel Size</div></div>
+            <div class="stat"><div class="num">185</div><div class="label">ArnoldC Functions</div></div>
+            <div class="stat"><div class="num">108</div><div class="label">ASM Routines</div></div>
+            <div class="stat"><div class="num">36</div><div class="label">Terminal Commands</div></div>
+            <div class="stat"><div class="num">0</div><div class="label">Lines of C</div></div>
+        </div>
+        
+        <div class="buttons">
+            <a href="https://github.com/Cuuper22/ToaruOS-Arnold" class="btn btn-primary">⭐ View on GitHub</a>
+            <a href="https://ko-fi.com/cuper22" class="btn btn-secondary">☕ Support</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>What Is This?</h2>
+        <p>A real, bootable operating system kernel written entirely in <strong>ArnoldC</strong> — the esoteric programming language where every keyword is an Arnold Schwarzenegger movie quote. No C. No Rust. Just pure Arnold running on bare metal x86.</p>
+        
+        <div class="code-block"><code>
+<span class="code-keyword">HEY CHRISTMAS TREE</span> myVariable      <span class="code-comment">; declare variable</span>
+<span class="code-keyword">YOU SET US UP</span> 42                    <span class="code-comment">; initialize to 42</span>
+<span class="code-keyword">GET TO THE CHOPPER</span> myVariable       <span class="code-comment">; begin assignment</span>
+<span class="code-keyword">HERE IS MY INVITATION</span> 10            <span class="code-comment">; load 10</span>
+<span class="code-keyword">GET UP</span> 5                            <span class="code-comment">; add 5</span>
+<span class="code-keyword">ENOUGH TALK</span>                         <span class="code-comment">; end assignment</span>
+
+<span class="code-keyword">BECAUSE I'M GOING TO SAY PLEASE</span> condition   <span class="code-comment">; if</span>
+    <span class="code-keyword">TALK TO YOURSELF</span> <span class="code-string">"Hello World"</span>   <span class="code-comment">; print</span>
+<span class="code-keyword">BULLSHIT</span>                                     <span class="code-comment">; else</span>
+    <span class="code-keyword">TALK TO YOURSELF</span> <span class="code-string">"Goodbye"</span>      <span class="code-comment">; print</span>
+<span class="code-keyword">YOU HAVE NO RESPECT FOR LOGIC</span>               <span class="code-comment">; endif</span>
+        </code></div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>🖥️ Full Desktop GUI</h3>
+                <p>Menu bar, taskbar with RTC clock, 8 clickable icons with 3D borders, wallpaper dots, arrow cursor.</p>
+            </div>
+            <div class="feature">
+                <h3>🎮 5 Games in Windows</h3>
+                <p>Snake, Pong, Breakout, Chopper, Skynet Defense — all in floating windows with desktop visible.</p>
+            </div>
+            <div class="feature">
+                <h3>📟 36-Command Terminal</h3>
+                <p>neofetch, cowsay, fortune, ping, wget, matrix, shutdown, and 29 more. Full shell experience.</p>
+            </div>
+            <div class="feature">
+                <h3>🌐 TCP/IP Networking</h3>
+                <p>E1000 NIC driver, ARP, ICMP ping, full TCP handshake, HTTP client. wget fetches real webpages.</p>
+            </div>
+            <div class="feature">
+                <h3>🧮 Desktop Apps</h3>
+                <p>Calculator, text editor, file manager, settings with 5 Arnold movie color themes.</p>
+            </div>
+            <div class="feature">
+                <h3>🎬 Easter Eggs</h3>
+                <p>DVD "I'LL BE BACK" screensaver, cowsay Arnold, fortune quotes, dramatic shutdown sequence.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="support">
+        <h2>Support This Project</h2>
+        <p>If you enjoyed this beautiful insanity, consider supporting the project. Every star and donation helps.</p>
+        <div class="buttons">
+            <a href="https://github.com/sponsors/Cuuper22" class="btn btn-primary">💖 GitHub Sponsors</a>
+            <a href="https://ko-fi.com/cuper22" class="btn btn-secondary">☕ Ko-fi</a>
+            <a href="https://github.com/Cuuper22/ToaruOS-Arnold" class="btn btn-secondary">⭐ Star on GitHub</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Built by Cuper Y. Ashraf · January 2026 · "I'LL BE BACK... with more features."</p>
+    </div>
+</body>
+</html>
