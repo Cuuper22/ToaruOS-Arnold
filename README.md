@@ -25,8 +25,13 @@ This is a real, bootable operating system kernel that provides:
 - 🎮 **Game window frames** — All 5 games render inside windows with title bars and close buttons
 - 🔮 **Easter eggs** — `fortune` (random Arnold quotes), `cowsay` (ASCII art Arnold), `matrix` (Matrix rain effect), `neofetch` (ASCII Terminator + system stats), `shutdown` (dramatic service termination)
 - ⚡ **Native fast rendering** — `rep stosd` assembly for ~100x fillRect speedup
+- 🖱️ **Arrow cursor** — Classic 12x16 pointer with black outline, visible on any background
+- 🎨 **Wallpaper dot grid** — Subtle dotted pattern across desktop, theme-aware
+- 📋 **Right-click context menu** — 5 color-coded items (Terminal, Settings, About, Screensaver, Refresh)
+- 🖼️ **3D desktop icons** — Raised button effect with light/dark border highlights
+- 👋 **Terminal welcome banner** — Shows "ToaruOS-Arnold v4.0" and help hint on first open
 
-All written in ~6000+ lines of ArnoldC + x86 assembly across 21 modules, compiled and running directly on hardware (or QEMU).
+All written in ~6000+ lines of ArnoldC + x86 assembly across 22 modules, compiled and running directly on hardware (or QEMU).
 
 ## Screenshots
 
@@ -221,7 +226,9 @@ tools/
 - **Networking:** E1000 NIC (PCI MMIO), ARP, IPv4, ICMP, TCP, HTTP/1.0 client
 - **Font:** Custom 8×8 bitmap, full ASCII 32-126
 - **ELF Size:** ~201 KB
-- **Functions:** 200+ across all source modules
+- **Functions:** 182 across all source modules
+- **ELF size:** 207KB
+- **Commits:** 64+
 - **Modules:** 21 ArnoldC source files + 1 assembly (6000+ lines)
 - **Terminal Commands:** 35
 - **Commits:** 59+
