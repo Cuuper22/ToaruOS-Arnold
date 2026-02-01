@@ -2739,44 +2739,8 @@ DO IT NOW get_mouse_x
 GET YOUR ASS TO MARS my
 DO IT NOW get_mouse_y
 
-TALK TO YOURSELF "Draw a simple white cross cursor"
-DO IT NOW putPixel fbAddr fbPitch mx my COLOR_WHITE
-
-HEY CHRISTMAS TREE mx1
-THIS IS A WARRIOR
-YOU SET US UP 0
-GET TO THE CHOPPER mx1
-HERE IS MY INVITATION mx
-GET UP 1
-ENOUGH TALK
-DO IT NOW putPixel fbAddr fbPitch mx1 my COLOR_WHITE
-
-HEY CHRISTMAS TREE mx2
-THIS IS A WARRIOR
-YOU SET US UP 0
-GET TO THE CHOPPER mx2
-HERE IS MY INVITATION mx
-GET DOWN 1
-ENOUGH TALK
-DO IT NOW putPixel fbAddr fbPitch mx2 my COLOR_WHITE
-
-HEY CHRISTMAS TREE my1
-THIS IS A WARRIOR
-YOU SET US UP 0
-GET TO THE CHOPPER my1
-HERE IS MY INVITATION my
-GET UP 1
-ENOUGH TALK
-DO IT NOW putPixel fbAddr fbPitch mx my1 COLOR_WHITE
-
-HEY CHRISTMAS TREE my2
-THIS IS A WARRIOR
-YOU SET US UP 0
-GET TO THE CHOPPER my2
-HERE IS MY INVITATION my
-GET DOWN 1
-ENOUGH TALK
-DO IT NOW putPixel fbAddr fbPitch mx my2 COLOR_WHITE
+TALK TO YOURSELF "Draw proper arrow cursor (12x16, black outline + white fill)"
+DO IT NOW draw_arrow_cursor fbAddr fbPitch mx my
 
 HASTA LA VISTA, BABY
 
@@ -3563,7 +3527,7 @@ STICK AROUND @NO PROBLEMO
         
         BECAUSE I'M GOING TO SAY PLEASE isDesktopCursor
             TALK TO YOURSELF "Erase old cursor position"
-            DO IT NOW fillRect fbAddress fbPitch lastMouseX lastMouseY 12 19 themeDesktopBg
+            DO IT NOW fillRect fbAddress fbPitch lastMouseX lastMouseY 12 18 themeDesktopBg
             
             TALK TO YOURSELF "Draw new cursor"
             DO IT NOW drawCursor fbAddress fbPitch
