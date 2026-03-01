@@ -1,3 +1,9 @@
+## Why
+
+I wanted to understand operating systems — not by reading about them, but by writing one. The ArnoldC constraint started as a joke but became the point: if you can build a desktop OS with networking in a language where malloc() is "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MEMORY," you understand what you're doing at a level that no amount of textbook reading provides.
+
+22,000 lines later, this thing boots, draws windows, plays Snake, and fetches webpages over TCP. Every line of it is an Arnold Schwarzenegger quote.
+
 # ToaruOS-Arnold v3.0
 
 **"COME WITH ME IF YOU WANT TO BOOT"**
