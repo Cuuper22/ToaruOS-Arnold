@@ -1,3 +1,13 @@
+## Why
+
+I wanted to understand operating systems at the level where there's nothing between you and the hardware. Reading about page tables and interrupt handlers is one thing. Writing them is different.
+
+The ArnoldC part started as a constraint — what if every keyword is an Arnold Schwarzenegger quote? Turns out that constraint became the whole point. When your variable declaration is `HEY CHRISTMAS TREE` and your memory allocator is `I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MEMORY`, you can't hide behind abstractions. Every line forces you to understand what it actually does.
+
+22,000 lines of ArnoldC and 3,000 lines of x86 assembly later: it boots, draws windows, runs Snake, handles mouse and keyboard, and fetches webpages over a TCP/IP stack I wrote from the Ethernet frames up. The whole thing compiles to a 213KB binary.
+
+`EVERYBODY CHILL` disables interrupts. It makes more sense than it should.
+
 # ToaruOS-Arnold v3.0
 
 **"COME WITH ME IF YOU WANT TO BOOT"**
