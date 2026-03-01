@@ -1,5 +1,19 @@
 # ToaruOS-Arnold V3 Build Script (Windows Native)
 # "DO IT NOW" - The build system
+#
+# Prerequisites:
+#   - NASM (nasm.exe in PATH)
+#   - i686-elf cross-compiler toolchain (i686-elf-ld.exe, i686-elf-objcopy.exe)
+#   - ArnoldC-Native compiler JAR (Scala-based, requires Java 17+)
+#   - Java 17+ runtime (java.exe in PATH)
+#   - QEMU (optional, for -Run flag: qemu-system-i386.exe)
+#
+# Environment variables (optional overrides):
+#   $env:I686_ELF_LD       - Path to i686-elf-ld.exe
+#   $env:I686_ELF_OBJCOPY  - Path to i686-elf-objcopy.exe
+#   $env:ARNOLDC_JAR       - Path to ArnoldC-Native.jar
+#   $env:NASM              - Path to nasm.exe
+#   $env:QEMU              - Path to qemu-system-i386.exe
 
 param(
     [switch]$Run,
@@ -9,13 +23,13 @@ param(
 $ErrorActionPreference = "Stop"
 $ProjectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 
-# Tool paths
-$NASM = "nasm"
-$LD = "C:\Users\Acer\i686-elf-tools\bin\i686-elf-ld.exe"
-$OBJCOPY = "C:\Users\Acer\i686-elf-tools\bin\i686-elf-objcopy.exe"
+# Tool paths with environment variable fallbacks
+$NASM = if ($env:NASM) { $env:NASM } else { "nasm" }
+$LD = if ($env:I686_ELF_LD) { $env:I686_ELF_LD } else { "C:\Users\Acer\i686-elf-tools\bin\i686-elf-ld.exe" }
+$OBJCOPY = if ($env:I686_ELF_OBJCOPY) { $env:I686_ELF_OBJCOPY } else { "C:\Users\Acer\i686-elf-tools\bin\i686-elf-objcopy.exe" }
 $JAVA = "java"
-$ARNOLDC_JAR = "C:\Users\Acer\Desktop\ArnoldC-Native\target\scala-2.13\ArnoldC-Native.jar"
-$QEMU = "C:\Program Files\qemu\qemu-system-i386.exe"
+$ARNOLDC_JAR = if ($env:ARNOLDC_JAR) { $env:ARNOLDC_JAR } else { "C:\Users\Acer\Desktop\ArnoldC-Native\target\scala-2.13\ArnoldC-Native.jar" }
+$QEMU = if ($env:QEMU) { $env:QEMU } else { "C:\Program Files\qemu\qemu-system-i386.exe" }
 
 # Directories
 $BUILD_DIR = "$ProjectRoot\build"

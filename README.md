@@ -1,4 +1,4 @@
-# ToaruOS-Arnold v4.0
+# ToaruOS-Arnold v3.0
 
 **"COME WITH ME IF YOU WANT TO BOOT"**
 
@@ -29,7 +29,7 @@ This is a real, bootable operating system kernel that provides:
 - 🎨 **Wallpaper dot grid** — Subtle dotted pattern across desktop, theme-aware
 - 📋 **Right-click context menu** — 5 color-coded items (Terminal, Settings, About, Screensaver, Refresh)
 - 🖼️ **3D desktop icons** — Raised button effect with light/dark border highlights
-- 👋 **Terminal welcome banner** — Shows "ToaruOS-Arnold v4.0" and help hint on first open
+- 👋 **Terminal welcome banner** — Shows "ToaruOS-Arnold v3.0" and help hint on first open
 
 - 🔐 **Login screen** — "Welcome, User / Loading desktop..." transition between boot and desktop
 - ⏰ **Live desktop clock** — HH:MM:SS + MM/DD/YY in large centered display, ticks every second
@@ -72,7 +72,7 @@ All 5 games render inside floating windows with the desktop visible behind.
 
 ### Neofetch
 ```
-   .---.     OS: ToaruOS-Arnold v4.0
+   .---.     OS: ToaruOS-Arnold v3.0
   |o   o|    Kernel: ArnoldC + x86 ASM
   | --  |    Display: 1024x768 32bpp
    '--'      Net: E1000 TCP/IP
@@ -128,20 +128,51 @@ Content-type: text/html
 Content-Length: 137
 
 <html><body><h1>HASTA LA VISTA, BABY!</h1>
-<p>This page was fetched by ToaruOS-Arnold v4.0</p></body></html>
+<p>This page was fetched by ToaruOS-Arnold v3.0</p></body></html>
 ```
 
 ## Building
 
-### Requirements
+### Build Prerequisites
 
-- **ArnoldC-Native compiler** — Custom fork that generates x86 NASM assembly
-- **NASM** — Netwide Assembler
-- **i686-elf toolchain** — Cross-compiler linker (`i686-elf-ld`)
-- **Java 17+** — For ArnoldC-Native (Scala-based)
-- **QEMU** — For testing (`qemu-system-i386`)
-- **PowerShell** — Build scripts are Windows PowerShell
+Before building ToaruOS-Arnold, you need the following tools:
 
+#### 1. NASM (Netwide Assembler)
+- **Windows**: Download from https://www.nasm.us/pub/nasm/releasebuilds/
+- **Scoop**: `scoop install nasm`
+- Add to PATH or set `$env:NASM` environment variable
+
+#### 2. i686-elf Cross-Compiler Toolchain
+- Required: `i686-elf-ld` (linker) and `i686-elf-objcopy`
+- **Windows**: Pre-built binaries at https://github.com/lordmilko/i686-elf-tools/releases
+- Download and extract to a local directory
+- Optionally set `$env:I686_ELF_LD` and `$env:I686_ELF_OBJCOPY`
+
+#### 3. ArnoldC-Native Compiler
+- **Repository**: https://github.com/Cuuper22/ArnoldC-Native
+- Clone and build using sbt (Scala Build Tool):
+  ```bash
+  git clone https://github.com/Cuuper22/ArnoldC-Native.git
+  cd ArnoldC-Native
+  sbt assembly
+  ```
+- Set `$env:ARNOLDC_JAR` to the compiled JAR path (e.g., `target/scala-2.13/ArnoldC-Native.jar`)
+
+#### 4. Java Runtime 17+
+- Required to run ArnoldC-Native (Scala-based)
+- **Windows**: Download from https://adoptium.net/
+- **Scoop**: `scoop bucket add java && scoop install temurin-lts-jdk`
+- Ensure `java.exe` is in PATH
+
+#### 5. QEMU (Optional, for testing)
+- Required for running the OS in a virtual machine
+- **Windows**: Download from https://www.qemu.org/download/#windows
+- **Scoop**: `scoop install qemu`
+- Set `$env:QEMU` to installation path (optional)
+
+#### 6. PowerShell
+- Build scripts require Windows PowerShell or PowerShell 7
+- Windows 10/11 includes PowerShell by default
 ### Quick Build (Windows)
 
 ```powershell
