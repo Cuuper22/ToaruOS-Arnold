@@ -1,0 +1,4 @@
+# Fix GitHub language detection — primary language is ArnoldC (custom), not PowerShell
+*.arnoldc linguist-language=ArnoldC
+*.ps1 linguist-detectable=false
+*.asm linguist-detectable=true
