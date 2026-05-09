@@ -93,6 +93,14 @@ If you are evaluating this as systems work, treat it like a working operating-sy
 
 What this repo shows about me: when a constraint is absurd enough, I tend to follow it all the way down until it becomes a real systems problem.
 
+## Current state and caveats
+
+This is a QEMU-targeted 32-bit x86 hobby kernel, not a POSIX-compatible operating system. The GUI, terminal, apps, games, input handling, and networking demo are implemented inside the kernel code in this repo.
+
+The repository includes a tracked build artifact at `build/toaruos-arnold.elf`, plus screenshots and demo videos, so reviewers can inspect the result without rebuilding the compiler chain first. Rebuilding is Windows-first because the project grew out of a local OS-dev loop; use the environment variable overrides below if your tools live somewhere else.
+
+The networking path targets QEMU user networking with an emulated E1000 NIC. The packet code is real assembly in `boot/multiboot.asm`, but it is intentionally a minimal stack for `ping` and HTTP/1.0 `wget`, not a general-purpose networking subsystem.
+
 ## Building
 
 <details>
@@ -109,6 +117,9 @@ What this repo shows about me: when a constraint is absurd enough, I tend to fol
 ### Build & run
 
 ```powershell
+# Run the tracked ELF without rebuilding
+qemu-system-i386 -m 128M -vga std -kernel build\toaruos-arnold.elf
+
 # Build everything
 .\build_v3.ps1
 
