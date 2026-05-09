@@ -2,9 +2,9 @@
 
 I wanted to understand operating systems at the level where there's nothing between you and the hardware. Reading about page tables and interrupt handlers is one thing. Writing them is different.
 
-The ArnoldC part started as a constraint — what if every keyword is an Arnold Schwarzenegger quote? Turns out that constraint became the whole point. When your variable declaration is `HEY CHRISTMAS TREE` and your memory allocator is `I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MEMORY`, you can't hide behind abstractions. Every line forces you to understand what it actually does.
+The ArnoldC part started as a constraint - what if every keyword is an Arnold Schwarzenegger quote? Turns out that constraint became the whole point. When your variable declaration is `HEY CHRISTMAS TREE` and your memory allocator is `I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MEMORY`, you can't hide behind abstractions. Every line forces you to understand what it actually does.
 
-I had to build the compiler first. ArnoldC only compiled to JVM bytecode — I forked it and [added native x86 code generation](https://github.com/Cuuper22/ArnoldC-Native) so it could target bare metal.
+I had to build the compiler first. ArnoldC only compiled to JVM bytecode - I forked it and [added native x86 code generation](https://github.com/Cuuper22/ArnoldC-Native) so it could target bare metal.
 
 22,000+ lines of ArnoldC and x86 assembly later: it boots, draws windows, runs games, handles mouse and keyboard, and fetches webpages over a TCP/IP stack I wrote from the Ethernet frames up. The whole thing compiles to a ~213KB binary.
 
@@ -12,15 +12,13 @@ I had to build the compiler first. ArnoldC only compiled to JVM bytecode — I f
 
 # ToaruOS-Arnold
 
-A complete desktop operating system written in ArnoldC — the programming language where every keyword is an Arnold Schwarzenegger movie quote. Boots to a GUI desktop with window manager, terminal, games, apps, and TCP/IP networking. No C. No Rust. Just Arnold on bare metal x86.
+A complete desktop operating system written in ArnoldC - the programming language where every keyword is an Arnold Schwarzenegger movie quote. Boots to a GUI desktop with window manager, terminal, games, apps, and TCP/IP networking. No C. No Rust. Just Arnold on bare metal x86.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Demo
 
-<!-- TODO: Add GIF showing boot → desktop → running an app -->
-
-*To be added — animated GIF of the OS booting to desktop and running an app in QEMU.*
+![ToaruOS-Arnold booting and running in QEMU](demo.gif)
 
 ## Screenshots
 
@@ -52,7 +50,7 @@ Window manager with drag, z-ordering, and focus. Start menu, right-click context
 35+ commands including `neofetch`, `cowsay`, `matrix`, `fortune`, `wget`, `ifconfig`, `ping`, `shutdown`. Full 80×25 buffer with PS/2 keyboard input and scancode mapping.
 
 ### Games
-5 playable games — Snake, Pong, Breakout, Chopper, Skynet Defense — all rendering inside floating windows with the desktop visible behind them.
+5 playable games - Snake, Pong, Breakout, Chopper, Skynet Defense - all rendering inside floating windows with the desktop visible behind them.
 
 ### Apps
 Calculator (4×4 button grid), text editor (80×32 with cursor blink), file manager (virtual filesystem navigation), settings, about dialog with T-800 pixel art.
@@ -75,24 +73,36 @@ Writing an OS in ArnoldC meant solving problems that don't exist in any other la
 
 **No negative numbers.** Unsigned 32-bit only. Bouncing animations use clamp-before-subtract and direction flags.
 
-**Performance.** The original `fillRect` called `putPixel` per pixel — 786K calls for a full-screen fill. Fixed with native `rep stosd` assembly for ~100x speedup, plus dirty-rect rendering.
+**Performance.** The original `fillRect` called `putPixel` per pixel - 786K calls for a full-screen fill. Fixed with native `rep stosd` assembly for ~100x speedup, plus dirty-rect rendering.
 
 **Comparison operator confusion.** `LET OFF SOME STEAM BENNET` means `>` (not `<`). `YOU ARE NOT ME` means `!=` (not `>`). Many hours lost to this.
 
-**Network byte order.** x86 is little-endian, network is big-endian. Every protocol field needs manual byte swapping, and ArnoldC only has 32-bit integers — so byte-level packet construction lives in assembly.
+**Network byte order.** x86 is little-endian, network is big-endian. Every protocol field needs manual byte swapping, and ArnoldC only has 32-bit integers - so byte-level packet construction lives in assembly.
 
-**The worst bug:** `mov dx, 0x3F8` (serial port debug output) was silently corrupting `edx` — which held the TCP header size. x86 partial register writes. The most insidious bug in the project.
+**The worst bug:** `mov dx, 0x3F8` (serial port debug output) was silently corrupting `edx` - which held the TCP header size. x86 partial register writes. The most insidious bug in the project.
+
+## How to inspect it
+
+If you are evaluating this as systems work, treat it like a working operating-system lab, not a novelty-language gag.
+
+1. Start with `boot/multiboot.asm`. That is where the project earns the right to call itself bare metal: VBE setup, interrupts, PS/2 input, and the E1000 networking path.
+2. Read `kernel/kernel_v3.arnoldc` for the main event loop and desktop rendering model.
+3. Read `kernel/window_manager.arnoldc` and `kernel/terminal.arnoldc` to see the GUI and shell surfaces.
+4. Skim `tools/merge_modules.ps1` and `build_v3.ps1` to understand how many ArnoldC modules become one bootable kernel.
+5. Run the QEMU command below with networking enabled, then try `wget` inside the terminal. That is the shortest path from "funny language" to "this thing has a TCP stack."
+
+What this repo shows about me: when a constraint is absurd enough, I tend to follow it all the way down until it becomes a real systems problem.
 
 ## Building
 
 <details>
 <summary>Prerequisites</summary>
 
-1. **NASM** — [nasm.us](https://www.nasm.us/pub/nasm/releasebuilds/) or `scoop install nasm`
-2. **i686-elf cross-compiler** — `i686-elf-ld` and `i686-elf-objcopy` from [i686-elf-tools](https://github.com/lordmilko/i686-elf-tools/releases)
-3. **ArnoldC-Native** — [github.com/Cuuper22/ArnoldC-Native](https://github.com/Cuuper22/ArnoldC-Native). Clone, `sbt assembly`, set `$env:ARNOLDC_JAR`
-4. **Java 17+** — [adoptium.net](https://adoptium.net/) or `scoop install temurin-lts-jdk`
-5. **QEMU** (optional) — [qemu.org](https://www.qemu.org/download/#windows) or `scoop install qemu`
+1. **NASM** - [nasm.us](https://www.nasm.us/pub/nasm/releasebuilds/) or `scoop install nasm`
+2. **i686-elf cross-compiler** - `i686-elf-ld` and `i686-elf-objcopy` from [i686-elf-tools](https://github.com/lordmilko/i686-elf-tools/releases)
+3. **ArnoldC-Native** - [github.com/Cuuper22/ArnoldC-Native](https://github.com/Cuuper22/ArnoldC-Native). Clone, `sbt assembly`, set `$env:ARNOLDC_JAR`
+4. **Java 17+** - [adoptium.net](https://adoptium.net/) or `scoop install temurin-lts-jdk`
+5. **QEMU** (optional) - [qemu.org](https://www.qemu.org/download/#windows) or `scoop install qemu`
 
 </details>
 
@@ -123,26 +133,26 @@ qemu-system-i386 -m 128M -vga std -kernel build\toaruos-arnold.elf `
 
 ```
 boot/
-  multiboot.asm          — Multiboot bootloader, VBE 1024×768×32, IRQs, mouse,
+  multiboot.asm          - Multiboot bootloader, VBE 1024×768×32, IRQs, mouse,
                            PIT, E1000 NIC driver, ARP/IP/ICMP/TCP/HTTP stack
 kernel/
-  kernel_v3.arnoldc      — Main kernel: desktop, input loop, rendering, font
-  window_manager.arnoldc — Window system: create/close/drag/z-order/taskbar
-  terminal.arnoldc       — Terminal emulator: 80×25 buffer, scancode mapping
-  terminal_commands.arnoldc — 35+ commands
-  gui/                   — GUI components
-  shell/                 — Shell components
-  special/               — Special features
+  kernel_v3.arnoldc      - Main kernel: desktop, input loop, rendering, font
+  window_manager.arnoldc - Window system: create/close/drag/z-order/taskbar
+  terminal.arnoldc       - Terminal emulator: 80×25 buffer, scancode mapping
+  terminal_commands.arnoldc - 35+ commands
+  gui/                   - GUI components
+  shell/                 - Shell components
+  special/               - Special features
   lib/
-    random.arnoldc       — PRNG (timer-seeded)
-    timer.arnoldc        — PIT timer access
-    speaker.arnoldc      — PC speaker
-  games/                 — Snake, Pong, Breakout, Chopper, Skynet Defense
-  apps/                  — Calculator, Settings, Text Editor, File Manager, About
-screenshots/             — 16 QEMU captures
+    random.arnoldc       - PRNG (timer-seeded)
+    timer.arnoldc        - PIT timer access
+    speaker.arnoldc      - PC speaker
+  games/                 - Snake, Pong, Breakout, Chopper, Skynet Defense
+  apps/                  - Calculator, Settings, Text Editor, File Manager, About
+screenshots/             - 16 QEMU captures
 tools/
-  merge_modules.ps1      — Module merger with dedup
-  test_*.ps1             — Automated QEMU test scripts
+  merge_modules.ps1      - Module merger with dedup
+  test_*.ps1             - Automated QEMU test scripts
 ```
 
 ## Technical details
@@ -185,9 +195,9 @@ YOU HAVE BEEN TERMINATED                   ; end main
 
 ## Credits
 
-- **ArnoldC Language** — Created by [Lauri Hartikka](https://github.com/lhartikk)
-- **ArnoldC-Native Compiler** — [Cuuper22/ArnoldC-Native](https://github.com/Cuuper22/ArnoldC-Native)
-- **Inspired by** — [ToaruOS](https://github.com/klange/toaruos), Windows 95, and every Arnold movie ever made
+- **ArnoldC Language** - Created by [Lauri Hartikka](https://github.com/lhartikk)
+- **ArnoldC-Native Compiler** - [Cuuper22/ArnoldC-Native](https://github.com/Cuuper22/ArnoldC-Native)
+- **Inspired by** - [ToaruOS](https://github.com/klange/toaruos), Windows 95, and every Arnold movie ever made
 
 ## License
 
